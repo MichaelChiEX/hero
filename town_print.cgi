@@ -8,9 +8,9 @@
 #    直接メールによる質問は一切お受けいたしておりません。       #
 #################################################################
 
-require 'jcode.pl';
-require 'sub.cgi';
-require 'conf.cgi';
+require './jcode.pl';
+require './sub.cgi';
+require './conf.cgi';
 
 if($MENTE) { &error2("資料載入中。請稍等。"); }
 &decode;
