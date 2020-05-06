@@ -3,9 +3,9 @@ sub move{
 	&town_open;
 	&con_open;
 
-        open(IN,"./logfile/ability/$mid.cgi");
-        @ABDATA = <IN>;
-        close(IN);
+	open(IN,"./logfile/ability/$mid.cgi");
+	@ABDATA = <IN>;
+	close(IN);
 
 	foreach(@ABDATA){
 		($kabno,$kabname,$kabcom,$kabdmg,$kabrate,$kabpoint,$kabclass,$kabtype)=split(/<>/);
@@ -30,14 +30,12 @@ sub move{
 		$tpr.= "<TD width=15 height=5 bgcolor=ffffcc><font size=1>$i</font></TD>";
 	}
 	for($i=0;$i<6;$i++){
-		$n = $i;
-		$tpr.= "<TR><TD bgcolor=ffffcc><font size=1>$n</font></td>";
+		$tpr.= "<TR><TD bgcolor=ffffcc><font size=1>$i</font></td>";
 		for($j=0;$j<6;$j++){
-			$m_hit=0;$tx=0;
+			$m_hit=0;
 			foreach(@TOWN_DATA){
 				($town2_id,$town2_name,$town2_con,$town2_ele,$town2_gold,$town2_arm,$town2_pro,$town2_acc,$town2_ind,$town2_tr,$town2_s,$town2_x,$town2_y)=split(/<>/);
 				if("$town2_x" eq "$j" && "$town2_y" eq "$i"){$m_hit=1;last;}
-				$tx++;
 			}
 			$col="";
 			if($m_hit){
@@ -60,31 +58,26 @@ sub move{
 	}
 	$tpr.="</table>";
 
-        foreach(@TOWN_DATA){
-                ($town2_id,$town2_name,$town2_con,$town2_ele,$town2_gold,$town2_arm,$town2_pro,$town2_acc,$town2_ind,$town2_tr,$town2_s,$town2_x,$town2_y)=split(/<>/);
-                if($town_name ne $town2_name){
-                    $xx=abs($town2_x-$town_x);
-                    $yy=abs($town2_y-$town_y);
-	            if($xx <= "1" && $yy <= "1"){
-                        $towntable.="<TR><TD bgcolor=yellow>($town2_x,$town2_y)</TD><TD bgcolor=yellow>$town2_name</TD><TD bgcolor=yellow>$ELE[$town2_ele]</TD><TD bgcolor=yellow>免費</TD><TD bgcolor=yellow><input type=button class=FC value=移動 onclick='javascript:moves($town2_id);'></TD></TR>";
-		    }elsif($moveall){
-                        $towntable.="<TR><TD bgcolor=#EEEEFF>($town2_x,$town2_y)</TD><TD bgcolor=#EEEEFF>$town2_name</TD><TD bgcolor=#EEEEFF>$ELE[$town2_ele]</TD><TD bgcolor=#EEEEFF>飛行術</TD><TD bgcolor=#EEEEFF><input type=button class=FC value=移動 onclick='javascript:moves($town2_id);'></TD></TR>";
-                    }else{
-                    	$coins=($xx+$yy)*5;
+	foreach(@TOWN_DATA){
+		($town2_id,$town2_name,$town2_con,$town2_ele,$town2_gold,$town2_arm,$town2_pro,$town2_acc,$town2_ind,$town2_tr,$town2_s,$town2_x,$town2_y)=split(/<>/);
+		next if($town_name eq $town2_name);
+		
+		$xx=abs($town2_x-$town_x);
+		$yy=abs($town2_y-$town_y);
+		if($xx <= "1" && $yy <= "1"){
+			$towntable.="<TR><TD bgcolor=yellow>($town2_x,$town2_y)</TD><TD bgcolor=yellow>$town2_name</TD><TD bgcolor=yellow>$ELE[$town2_ele]</TD><TD bgcolor=yellow>免費</TD><TD bgcolor=yellow><input type=button class=FC value=移動 onclick='javascript:moves($town2_id);'></TD></TR>";
+		}elsif($moveall){
+			$towntable.="<TR><TD bgcolor=#EEEEFF>($town2_x,$town2_y)</TD><TD bgcolor=#EEEEFF>$town2_name</TD><TD bgcolor=#EEEEFF>$ELE[$town2_ele]</TD><TD bgcolor=#EEEEFF>飛行術</TD><TD bgcolor=#EEEEFF><input type=button class=FC value=移動 onclick='javascript:moves($town2_id);'></TD></TR>";
+		}else{
+			$coins=($xx+$yy)*5;
 			if($mbank+$mgold>100000000){
 				$coins*=4;
 			}elsif($mbank+$mgold>30000000){
 				$coins*=2;
 			}
-                    	$towntable.="<TR><TD bgcolor=white>($town2_x,$town2_y)</TD><TD bgcolor=white>$town2_name</TD><TD bgcolor=white>$ELE[$town2_ele]</TD><TD bgcolor=white>$coins萬</TD><TD bgcolor=white><input type=button class=FC value=移動 onclick='javascript:moves($town2_id);'></TD></TR>";
-                    }
-                }
-                if($town_name ne $town2_name){
-			$towntable.="<TR><TD bgcolor=yellow>($town2_x,$town2_y)</TD><TD bgcolor=yellow>$town2_name</TD><TD bgcolor=yellow>$ELE[$town2_ele]</TD><TD bgcolor=yellow>免費</TD><TD bgcolor=yellow><input type=button class=FC value=移動 onclick='javascript:moves($town2_id);'></TD></TR>";
-                }
-
-                $tx++;
-        }
+			$towntable.="<TR><TD bgcolor=white>($town2_x,$town2_y)</TD><TD bgcolor=white>$town2_name</TD><TD bgcolor=white>$ELE[$town2_ele]</TD><TD bgcolor=white>$coins萬</TD><TD bgcolor=white><input type=button class=FC value=移動 onclick='javascript:moves($town2_id);'></TD></TR>";
+		}
+	}
 	&header;
 	
 	print <<"EOF";
