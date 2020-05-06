@@ -128,6 +128,10 @@ print <<"EOF";
 $status_s
 <table width=94% align=center CLASS=CC>
 	    <tr>
+	    <td>
+		<font align=left color="ffffff" size=3 id="totalPlayer">
+	    </td>
+		<tr>
 	    <td bgcolor="ffffff" id="guestList">
 	    </TD>
 	    </tr><tr><td><iframe onload="javascript:try{setframeheight();}catch(e){}" framebroder="0" width="100%" height="500" id="actionframe" name="actionframe" style="display:none" scrolling="no"></iframe>
