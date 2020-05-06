@@ -17,14 +17,10 @@ sub move{
 
 	foreach(@CON_DATA){
 		($con2_id,$con2_name,$con2_ele,$con2_gold,$con2_king,$con2_yaku,$con2_cou,$con2_mes,$con2_etc)=split(/<>/);
-		if("$con2_id" eq "$town_con"){$hit=1;}
 		$CONELE[$con2_id]=$con2_ele;
 		$CONNAME[$con2_id]=$con2_name;
-		$c_no++;
 	}
-	if(!$hit){$con2_ele=0;$con2_name="無所屬";$con2_id=0;}
 
-	$i=0;
 	$tpr="<table bgcolor=663300><TD width=15 height=5 bgcolor=ffffcc CLASS=GC>　</TD>";
 	for($i=0;$i<6;$i++){
 		$tpr.= "<TD width=15 height=5 bgcolor=ffffcc><font size=1>$i</font></TD>";
@@ -37,7 +33,6 @@ sub move{
 				($town2_id,$town2_name,$town2_con,$town2_ele,$town2_gold,$town2_arm,$town2_pro,$town2_acc,$town2_ind,$town2_tr,$town2_s,$town2_x,$town2_y)=split(/<>/);
 				if("$town2_x" eq "$j" && "$town2_y" eq "$i"){$m_hit=1;last;}
 			}
-			$col="";
 			if($m_hit){
 				if($town2_id eq $mpos){
 					$col = $ELE_C[$CONELE[$town2_con]];
@@ -61,7 +56,7 @@ sub move{
 	foreach(@TOWN_DATA){
 		($town2_id,$town2_name,$town2_con,$town2_ele,$town2_gold,$town2_arm,$town2_pro,$town2_acc,$town2_ind,$town2_tr,$town2_s,$town2_x,$town2_y)=split(/<>/);
 		next if($town_name eq $town2_name);
-		
+
 		$xx=abs($town2_x-$town_x);
 		$yy=abs($town2_y-$town_y);
 		if($xx <= "1" && $yy <= "1"){
