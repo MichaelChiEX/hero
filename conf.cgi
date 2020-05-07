@@ -104,7 +104,7 @@ $MES3="10";
 $CHARAIMG="627";
 
 #圖檔路徑http://www.xxx.com/images
-$IMG="http://www.xxx.com/images";
+$IMG="/hero_data/img";
 
 #街画像
 $TOWN_IMG=$IMG."/town/machi.jpg";#昼背景
@@ -119,10 +119,10 @@ $SENDMAIL = '/usr/bin/sendmail';
 #URL設定(※)
 $LINK1="首頁";
 $LINKURL1="/";
-$LINK2="討論區";
+$LINK2="";
 $LINKURL2="";
-$LINK3="遊戲説明";
-$LINKURL3="/hero_data/html/manual.html";
+$LINK3="";
+$LINKURL3="";
 $LINK4="玩家列表";
 $LINKURL4="./ranking.cgi";
 $LINK5="傳說的英雄";
