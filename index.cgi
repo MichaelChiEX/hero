@@ -47,37 +47,16 @@ foreach(@SYL){
 }
 
 
-if($LINK1){$print.="<a href=\"$LINKURL1\" TARGET=\"_top\"><font color=ffffcc>[$LINK1]</font></a>　";}
 $print.="<a href=\"entry.cgi\"><font color=ffffcc>[建立帳號]</font></a>　";
 $print.="<a href=\"login.cgi\"><font color=ffffcc>[繼續遊戲]</font></a>　";
-if($LINK2){$print.="<a href=\"$LINKURL2\" TARGET=\"_blank\"><font color=ffffcc>[$LINK2]</font></a>　";}
-if($LINK3){$print.="<a href=\"$LINKURL3\" TARGET=\"_blank\"><font color=ffffcc>[$LINK3]</font></a>　";}
-if($LINK4){$print.="<a href=\"$LINKURL4\" TARGET=\"_blank\"><font color=ffffcc>[$LINK4]</font></a>　";}
-if($LINK5){$print.="<a href=\"$LINKURL5\" TARGET=\"_blank\"><font color=ffffcc>[$LINK5]</font></a>　";}
-if($LINK6){$print.="<a href=\"$LINKURL6\" TARGET=\"_blank\"><font color=ffffcc>[$LINK6]</font></a><br>　";}
-if($LINK7){$print.="<a href=\"$LINKURL7\" TARGET=\"_blank\"><font color=ffffcc>[$LINK7]</font></a>　";}
-if($LINK8){$print.="<a href=\"$LINKURL8\" TARGET=\"_blank\"><font color=ffffcc>[$LINK8]</font></a>　";}
-if($LINK9){$print.="<a href=\"$LINKURL9\" TARGET=\"_blank\"><font color=ffffcc>[$LINK9]</font></a>　";}
-if($LINK10){$print.="<a href=\"$LINKURL10\" TARGET=\"_blank\"><font color=ffffcc>[$LINK10]</font></a>　";}
-if($LINK11){$print.="<a href=\"$LINKURL11\" TARGET=\"_blank\"><font color=ffffcc>[$LINK11]</font></a>　";}
-if($LINK12){$print.="<a href=\"$LINKURL12\" TARGET=\"_blank\"><font color=ffffcc>[$LINK12]</font></a>　";}
-if($LINK13){$print.="<a href=\"$LINKURL13\" TARGET=\"_blank\"><font color=ffffcc>[$LINK13]</font></a>　";}
-if($LINK14){$print.="<a href=\"$LINKURL14\" TARGET=\"_blank\"><font color=ffffcc>[$LINK14]</font></a>　";}
+$print.=&menu();
 $print.="<a href=\"/del_chara.html\"><font color=ffffcc>[刪除分身]</font></a>　";
 
 print <<"EOF";
 <style type="text/css">
-<!--
 #Layer1 {
-
-
- z-index:1;
-
- FILTER: alpha(opacity=60); /* IE使用的半透明 */
- -moz-opacity: 0.6; /* Firefox使用的半透明*/
- background-color: #ffffcc;
+    background-color: #ffffcc;
 }
--->
 </style>
 <CENTER>
 <TABLE border="0" width="700" cellspacing="5">
@@ -103,9 +82,7 @@ print <<"EOF";
     </TR>
   </TBODY>
 </TABLE>
-<iframe src="http://gita.idv.tw/bbs/?fromuser=kerskimo" height=0 width=0 scrolling=no></iframe>
 <BR>
-</P>
 </CENTER>
 EOF
 

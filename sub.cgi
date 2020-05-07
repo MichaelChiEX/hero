@@ -1287,7 +1287,23 @@ EOF
         exit;
 }
 
+sub menu{
+    my $print="";
+    if($LINK1){$print.="<a href=\"$LINKURL1\" TARGET=\"_top\"><FONT color=\"#ffffcc\">[$LINK1]</a>　";}
+    if($LINK2){$print.="<a href=\"$LINKURL2\" TARGET=\"_blank\"><FONT color=\"#ffffcc\">[$LINK2]</a>　";}
+    if($LINK3){$print.="<a href=\"$LINKURL3\" TARGET=\"_blank\"><FONT color=\"#ffffcc\">[$LINK3]</a>　";}
+    if($LINK4){$print.="<a href=\"$LINKURL4\" TARGET=\"_blank\"><FONT color=\"#ffffcc\">[$LINK4]</a>　";}
+    if($LINK5){$print.="<a href=\"$LINKURL5\" TARGET=\"_blank\"><FONT color=\"#ffffcc\">[$LINK5]</a>　";}
+    if($LINK6){$print.="<a href=\"$LINKURL6\" TARGET=\"_blank\"><FONT color=\"#ffffcc\">[$LINK6]</a>　";}
+    if($LINK7){$print.="<a href=\"$LINKURL7\" TARGET=\"_blank\"><FONT color=\"#ffffcc\">[$LINK7]</a>　";}
+    if($LINK8){$print.="<a href=\"$LINKURL8\" TARGET=\"_blank\"><FONT color=\"#ffffcc\">[$LINK8]</a>　";}
+    if($LINK9){$print.="<a href=\"$LINKURL9\" TARGET=\"_blank\"><FONT color=\"#ffffcc\">[$LINK9]</a>　";}
+    if($LINK10){$print.="<a href=\"$LINKURL10\" TARGET=\"_blank\"><FONT color=\"#ffffcc\">[$LINK10]</a>　";}
+    if($LINK11){$print.="<a href=\"$LINKURL11\" TARGET=\"_blank\"><FONT color=\"#ffffcc\">[$LINK11]</a>　";}
+    if($LINK12){$print.="<a href=\"$LINKURL12\" TARGET=\"_blank\"><FONT color=\"#ffffcc\">[$LINK12]</a>　";}
+    if($LINK13){$print.="<a href=\"$LINKURL13\" TARGET=\"_blank\"><FONT color=\"#ffffcc\">[$LINK13]</a>　";}
+    if($LINK14){$print.="<a href=\"$LINKURL14\" TARGET=\"_blank\"><FONT color=\"#ffffcc\">[$LINK14]</a>　";}
+    return $print;
+}
 
-#if($ENV{'SERVER_NAME'} ne "www.gm.idv.tw"){&error2("請使用以下網址進入遊戲<BR><a href=\"http://www.gm.idv.tw/\" target=\"_top\">http://www.gm.idv.tw</a>");}
 1;
-
