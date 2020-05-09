@@ -1,97 +1,100 @@
 #! /usr/bin/perl
-        require './jcode.pl';
-        require './sub.cgi';
-        require './conf.cgi';
-        require './data/abini.cgi';
-        &decode;
-        &header;
+require './jcode.pl';
+require './sub.cgi';
+require './conf.cgi';
+&decode;
+&header;
 
-    open(IN,"./data/ability.cgi");
-    @ABILITY = <IN>;
-    close(IN);
+open(IN,"./data/ability.cgi");
+@ABILITY = <IN>;
+close(IN);
 
-    open(IN,"./data/class.cgi") or &error("無法開啟檔案status\change.pl(5)");
-    @CLASS_DATA = <IN>;
-    close(IN);
+open(IN,"./data/class.cgi");
+@CLASS_DATA = <IN>;
+close(IN);
 
-    #@jlist = split(/,/,$AJOB[$mclass]);
-    $ij=1;
-    $ij2=0;
-        $JOBS[1]="1,2,3,4,5,6";
-        $JOBS[2]="7,8,9,10,11,12";
-        $JOBS[3]="17,18,19,20,22,21";
-        $JOBS[4]="23,24,25,26,28,27";
-        $JOBS[5]="13,14,15,16,29,30";
-	$JOBS[6]="31,32,33,34,35,36";
-        $ABDatas[0]="力";
-        $ABDatas[1]="命";
-        $ABDatas[2]="智";
-        $ABDatas[3]="精";
-        $ABDatas[4]="運";
-        $ABDatas[5]="速";
+$JOBS[1]="1,2,3,4,5,6";
+$JOBS[2]="7,8,9,10,11,12";
+$JOBS[3]="17,18,19,20,22,21";
+$JOBS[4]="23,24,25,26,28,27";
+$JOBS[5]="13,14,15,16,29,30";
+$JOBS[6]="31,32,33,34,35,36";
+
+$ABDatas[0]="力";
+$ABDatas[1]="命";
+$ABDatas[2]="智";
+$ABDatas[3]="精";
+$ABDatas[4]="運";
+$ABDatas[5]="速";
  
-        for($ij=1;$ij<7;$ij++){
-                if ($ij eq 1){
-                        $title="１";
-                }elsif ($ij eq 2){
-                        $title="２";
-                }elsif ($ij eq 3){
-                        $title="３";
-                }elsif ($ij eq 4){
-                        $title="４";
-		}elsif ($ij eq 6){
-			$title="５";
-                }elsif ($ij eq 5){
-                        $title="複合";
-                }
-                $ctable.="<p align=center><i><b><font size=4 color=#FFFFFF>$title階職</font></b></i></p><table id=table6 cellSpacing=0 cellPadding=0 width=100% border=1 bgcolor=#FFFFFF><tr>";
-                $ctable.="<td align=middle width=10% bgColor=#ccffff><b>系別</b></td>";
-                $ctable.="<td align=middle width=10% bgColor=#ccffff><b>名稱</b></td>";
-                $ctable.="<td align=middle width=30% bgColor=#ccffff><b>條件</b></td>";
-                $ctable.="<td align=middle width=15% bgColor=#ccffff>可習得奧義</td>";
-                $ctable.="<td align=middle width=35% bgColor=#ccffff>職業基本能力</td></tr>";
-                $ij2=0;
-		@TJOBS=split(/,/,$JOBS[$ij]);
-		foreach(@TJOBS){
-                        ($cname,$cjp,$cnou,$cup,$cflg,$ctype)=split(/<>/,$CLASS_DATA[$TJOBS[$ij2]]);
-                        ($cjp[0],$cjp[1],$cjp[2],$cjp[3],$cjp[4],$cjp[5]) = split(/,/,$cjp);
-                        ($cp[0],$cp[1],$cp[2],$cp[3],$cp[4],$cp[5]) = split(/,/,$cnou);
-                        ($cu[0],$cu[1],$cu[2],$cu[3],$cu[4],$cu[5],$cu[6],$cu[7]) = split(/,/,$cup);
-			$cj=0;
-                        $uplimit="";
-                        $uplimit2="";
-			#熟練、屬性條件
-                        foreach(@cjp){
-                               if ($cjp[$cj]>0) {
-					if ($uplimit ne""){$uplimit.="、";}
-					$uplimit.="$TYPE[$cj]:$cjp[$cj]";
-			       }
-                               if ($cp[$cj]>0) {
-					if ($uplimit2 ne""){$uplimit2.="、";}
-					$uplimit2.="$ABDatas[$cj]:$cp[$cj]";
-			       }
+for($job_level=1;$job_level<7;$job_level++){
+	if ($job_level <= 4){
+		$title="$job_level";
+	}elsif ($job_level eq 6){
+		$title="5";
+	}elsif ($job_level eq 5){
+		$title="複合";
+	}
 
-                               $cj++;
-                        }
-			#奧義
-		$clname="";
-            foreach(@ABILITY){
-                    ($abno,$abname,$abcom,$abdmg,$abrate,$abpoint,$abclass,$abtype)=split(/<>/);
-			if($TJOBS[$ij2] eq $abclass) {
-                                if($clname ne ""){$clname.="、";} 
-				$clname.=$abname;
+	$ctable.="
+	<p align=center><i><b><font size=4 color=#FFFFFF>$title階職</font></b></i></p>
+	<table id=table6 cellSpacing=0 cellPadding=0 width=100% border=1 bgcolor=#FFFFFF>
+		<tr>
+			<td align=middle width=10% bgColor=#ccffff><b>系別</b></td>
+			<td align=middle width=10% bgColor=#ccffff><b>名稱</b></td>
+			<td align=middle width=30% bgColor=#ccffff><b>條件</b></td>
+			<td align=middle width=15% bgColor=#ccffff>可習得奧義</td>
+			<td align=middle width=35% bgColor=#ccffff>職業基本能力</td>
+		</tr>";
+
+	foreach $job_idx (split(/,/,$JOBS[$job_level])){
+		($cname,$cjp,$cnou,$cup,$cflg,$ctype)=split(/<>/,$CLASS_DATA[$job_idx]);
+		@cjp = split(/,/,$cjp);
+		@cp = split(/,/,$cnou);
+		@cu = split(/,/,$cup);
+
+		@uplimit=(); @uplimit2=();
+		#熟練、屬性條件
+		for($i=0; $i<=5; $i++){
+			if (@cjp[$i]>0) {
+				push(@uplimit, "$TYPE[$i]:@cjp[$i]");
 			}
-            }
-		if($clname eq""){$clname="「沒有專屬奧義」";}
-			$ctable.="<tr><td align=middle><font color=#ff0000>$TYPE[$ctype]</font></td><td><font color=#0000ff>$cname</font></td><td><font color=#808000>$uplimit<br>$uplimit2</font></td><td><font color=#AA5555>$clname</td><td align=middle><font color=#ff0000>ＨＰ：$cu[0],ＭＰ：$cu[1]<BR>力：$cu[2],命：$cu[3],智：$cu[4],精：$cu[5],運：$cu[6],速$cu[7]</font></td></tr>";
-                        $ij2++;
+			if (@cp[$i]>0) {
+				push(@uplimit2, "$ABDatas[$i]:@cp[$i]");
+			}
 		}
-		
-		$ctable.="</tr></table>";
-        }
+
+		#奧義
+		@clname=();
+		foreach(@ABILITY){
+			($abno,$abname,$abcom,$abdmg,$abrate,$abpoint,$abclass,$abtype)=split(/<>/);
+			if($job_idx eq $abclass) {
+				push(@clname, $abname);
+			}
+		}
+
+		$uplimit = join("、", @uplimit);
+		$uplimit2 = join("、", @uplimit2);
+		$clname = join("、", @clname);
+
+		if($clname eq""){
+			$clname="「沒有專屬奧義」";
+		}
+
+		$ctable.="
+		<tr>
+			<td align=middle><font color=#ff0000>$TYPE[$ctype]</font></td>
+			<td><font color=#0000ff>$cname</font></td>
+			<td><font color=#808000>$uplimit<br>$uplimit2</font></td>
+			<td><font color=#AA5555>$clname</td>
+			<td align=middle><font color=#ff0000>ＨＰ：@cu[0],ＭＰ：@cu[1]<BR>力：@cu[2],命：@cu[3],智：@cu[4],精：@cu[5],運：@cu[6],速@cu[7]</font></td>
+		</tr>";
+	}
+	$ctable.="</table>";
+}
 
 
-       print <<"EOF";
+print <<"EOF";
 <p align="center"><font size="5" color=yellow><b><i>職業一覽</i></b></font></p>
 $ctable
 <p align="center"><font size="5" color=yellow><b><i>五階職技能說明</i></b></font></p>
