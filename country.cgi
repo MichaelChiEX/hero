@@ -4,10 +4,6 @@ require './sub.cgi';
 require './conf.cgi';
 
 &decode;
-if($ENV{'HTTP_REFERER'} !~ /cgi$/ ){ &error2("資料傳送有誤，<a href='./login.cgi'>請重新登入</a>。"); }
-if ($in{'id'} eq "2930"){
-        &verchklog("town.cgi,$in{'mode'}");
-}
 if($in{'mode'} eq"def"){require './country/def.pl';&def;}
 elsif($in{'mode'} eq"def_out"){require './country/def_out.pl';&def_out;}
 elsif($in{'mode'} eq"town_up"){require './country/town_up.pl';&town_up;}

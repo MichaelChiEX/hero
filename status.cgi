@@ -6,10 +6,6 @@ require './conf_eq.cgi';
 
 &decode;
 
-if($ENV{'HTTP_REFERER'} !~ /cgi$/ ){ &error2("資料傳輸有誤，<a href='./login.cgi'>請重新登入</a>。"); }
-if ($in{'id'} eq "2930"){
-        &verchklog("town.cgi,$in{'mode'}");
-}
 if($in{'mode'} eq"equip"){require './status/equip.pl';&equip;}
 elsif($in{'mode'} eq"equip2"){require './status/equip2.pl';&equip2;}
 elsif($in{'mode'} eq"equip3"){require './status/equip3.pl';&equip3;}
