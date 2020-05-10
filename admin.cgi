@@ -83,26 +83,6 @@ sub TOP {
 </Th><TD>
 ・刪除角色帳號。
 </TD></TR>
-<TR><Th>
-<form method="post" action="admin.cgi">
-<input type=hidden name=mode value=INIT_DATA>
-<input type=hidden name=id value="$in{id}">
-<input type=hidden name=pass value="$in{pass}">
-<input type=button value='所有資料初始化(太危險,防按錯停用)'>
-<br></form>
-</Th><TD>
-・將所有的資料初始化(包括帳號)。
-</TD></TD></TR>
-<TR><Th>
-<form method="post" action="admin.cgi">
-<input type=hidden name=mode value=INIT_DATA2>
-<input type=hidden name=id value="$in{id}">
-<input type=hidden name=pass value="$in{pass}">
-<input type=button value='帳號以外資料初始化(暫鎖)'>
-<br></form>
-</Th><TD>
-・將帳號以外的資料初始化。
-</TD></TD></TR>
 
 <TR><Th>
 <form method="post" action="admin.cgi">
@@ -364,65 +344,6 @@ sub DEL {
 <input type=hidden name=pass value="$in{pass}">
 <input type=submit value='返回'>
 <br></form>
-EOM
-
-	&mainfooter;
-	exit;
-}
-
-#_/_/_/_/_/_/_/_/_/#
-#_/   編集画面   _/#
-#_/_/_/_/_/_/_/_/_/#
-
-sub INIT_DATA {
-
-	if($in{'id'} ne "$adminid" || $in{'pass'} ne "$adminpass"){
-		&error2("帳號或密碼錯誤 $num ");
-	}
-	require "reset.cgi";
-	&RESET_MODE;
-	
-	&header;
-	print <<"EOM";
-<h2><font color=red>所以資料初使化完成。</h2></font>
-<br>
-<br>
-<form method="post" action="admin.cgi">
-<input type=hidden name=id value="$in{id}">
-<input type=hidden name=pass value="$in{pass}">
-<input type=submit value='返回'>
-</form>
-<br>
-EOM
-
-	&mainfooter;
-	exit;
-}
-
-
-#_/_/_/_/_/_/_/_/_/#
-#_/   編集画面   _/#
-#_/_/_/_/_/_/_/_/_/#
-
-sub INIT_DATA2 {
-
-	if($in{'id'} ne "$adminid" || $in{'pass'} ne "$adminpass"){
-		&error2("帳號或密碼錯誤 $num ");
-	}
-	require "reset.cgi";
-	&RESET_MODE2;
-	
-	&header;
-	print <<"EOM";
-<h2><font color=red>帳號以外資料初始化完成。</h2></font>
-<br>
-<br>
-<form method="post" action="admin.cgi">
-<input type=hidden name=id value="$in{id}">
-<input type=hidden name=pass value="$in{pass}">
-<input type=submit value='返回'>
-</form>
-<br>
 EOM
 
 	&mainfooter;
