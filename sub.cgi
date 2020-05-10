@@ -37,7 +37,7 @@ sub chara_open{
 	if($IDLETIME>600){
 		$IDLETIME=600;
 	}
-	if(!$login && $date>$mdate+$IDLETIME && $mid ne $GMID){
+	if(!$login && $date>$mdate+$IDLETIME && $mid ne $GMID && $no_idle_check ne 1){
 		&ext_open;
 		if($member_point eq""){
 			&error2("你已有一段時間($IDLETIME秒)未動作，<a href='./login.cgi'>請重新登入</a>。");
