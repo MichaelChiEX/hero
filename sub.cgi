@@ -1303,4 +1303,21 @@ sub menu{
     return $print;
 }
 
+sub insert_mes_to_top{
+    my($filename, $mes, $max_keep) = @_;
+
+    open(IN, $filename);
+    @CONTENT=<IN>;
+    close(IN);
+
+    unshift(@CONTENT, $mes);
+    if($max_keep){
+        splice(@CONTENT, $max_keep);
+    }
+    
+    open(OUT,">$filename");
+    print OUT @CONTENT;
+    close(OUT);
+}
+
 1;

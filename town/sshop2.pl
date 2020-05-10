@@ -28,7 +28,6 @@ sub sshop2{
 
 
 		$bidc = "<font color=#AAAAFF>$mname</font>以<font color=yellow>$bidgold 萬</font>的價格購得<font color=green>$f_name</font>。";
-                $mes_max=$MES3;
                 $aite ="交易所訊息";
 
                 open(IN,"./logfile/mes/$f_id.cgi");
@@ -38,7 +37,7 @@ sub sshop2{
 if($mid eq $GMID){
         splice(@MMES_DATA,20);
 }else{
-        splice(@MMES_DATA,$mes_max);
+        splice(@MMES_DATA,$MES_MAX);
 }
                 open(OUT,">./logfile/mes/$f_id.cgi");
                 print OUT @MMES_DATA;

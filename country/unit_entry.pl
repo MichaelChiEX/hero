@@ -40,7 +40,7 @@ sub unit_entry {
 	@UNIT_DATA = <IN>;
 	close(IN);
 	$MESFILE="./meslog/unit/$munit.cgi";
-	$mes_max=$MES2;$eid=4;
+	$eid=4;
 
 	open(IN,"$MESFILE");
 	@MES_DATA = <IN>;
@@ -48,7 +48,7 @@ sub unit_entry {
 
 	$smess="<font color=red>$mname成功加入了隊伍。</font>";
 	unshift(@MES_DATA,"$mid<>4<>$aite<>$mchara<>$name<>$smess<>$daytime<>\n");
-	splice(@MES_DATA,$mes_max);
+	splice(@MES_DATA,$MES_MAX);
 	if($MESFILE ne".cgi"){
 		open(OUT,">$MESFILE");
 		print OUT @MES_DATA;

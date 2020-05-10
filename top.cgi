@@ -693,7 +693,7 @@ function chat_show(dtstr){
   }
   fmes[dt[1]]++;fmes_tmp=fmes[dt[1]];
   if(oTb){
-     create_tb(oTb,dt[2],dt[3],dt[4],dt[5],$MES1+privadd);
+     create_tb(oTb,dt[2],dt[3],dt[4],dt[5],$MES_MAX+privadd);
      if(getObj('town_datas')){
         shotmes[dt[1]]="<a href=#"+dows+"><font color=#AAAAFF>["+shmt+"]</font></a>"+dt[3]+dt[4]+"<font color=gray>"+dt[5]+"</font><BR>";
      }

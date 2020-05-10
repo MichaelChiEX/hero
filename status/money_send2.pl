@@ -58,7 +58,7 @@ sub money_send2{
 	if($mid eq $GMID){
 		splice(@MES_DATA,20);
 	}else{
-		splice(@MES_DATA,$MES3);
+		splice(@MES_DATA,$MES_MAX);
 	}
 	open(OUT,">$MESFILE");
 	print OUT @MES_DATA;
@@ -72,7 +72,7 @@ sub money_send2{
 	if($eid eq $GMID){
 		splice(@MES2_DATA,20);
 	}else{
-                splice(@MES2_DATA,$MES3);
+                splice(@MES2_DATA,$MES_MAX);
 	}
 	open(OUT,">$MESFILE2");
 	print OUT @MES2_DATA;

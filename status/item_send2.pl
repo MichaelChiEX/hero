@@ -87,7 +87,7 @@ sub item_send2{
 	if($mid eq $GMID){
 		splice(@MES_DATA,20);
 	}else{
-	        splice(@MES_DATA,$MES3);
+	        splice(@MES_DATA,$MES_MAX);
 	}
 	open(OUT,">$MESFILE");
 	print OUT @MES_DATA;
@@ -99,7 +99,7 @@ sub item_send2{
 	close(IN);
 	unshift(@MES2_DATA,"$mid<>$eid<>$mname<>$mchara<>$name<><font color=blue>$mname傳送了</font><font color=red>$send_item_name</font><font color=shite>給你。</font><>$tt<>\n");
 	if($eid eq $GMID)){
-		splice(@MES2_DATA,$MES3);
+		splice(@MES2_DATA,$MES_MAX);
 	}else{
                 splice(@MES2_DATA,20);
 	}

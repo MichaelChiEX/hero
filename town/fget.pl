@@ -46,7 +46,6 @@ sub fget{
 		&enemy_input;
 		$f_p2=$f_p/10000;
 		$bidc = "<font color=blue>$f_hname</font>的<font color=red>$f_name</font>被<font color=green>$f_lname</font>花費<font color=red>$f_p2萬</font>取得。";
-                $mes_max=$MES3;
                 $aite ="拍賣訊息";
 
                 open(IN,"./logfile/mes/$f_id.cgi");
@@ -56,7 +55,7 @@ sub fget{
 if($mid eq $GMID){
         splice(@MMES_DATA,20);
 }else{
-        splice(@MMES_DATA,$mes_max);
+        splice(@MMES_DATA,$MES_MAX);
 }
                 open(OUT,">./logfile/mes/$f_id.cgi");
                 print OUT @MMES_DATA;

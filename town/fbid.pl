@@ -29,7 +29,6 @@ sub fbid{
 	if($f_max<=$bidgold){
 		$bidc = "<font color=#AAAAFF>$mname</font>以<font color=yellow>$g2 萬</font>的價格直接標得<font color=green>$f_name</font>。";
 		&maplog("<font color=red>[得標]</font><font color=blue>$mname</font>以<font color=red>$g2 萬</font>的價格直接標得<font color=green>$f_name</font>。");
-                $mes_max=$MES3;
                 $aite ="拍賣訊息";
 
                 open(IN,"./logfile/mes/$f_id.cgi");
@@ -39,7 +38,7 @@ sub fbid{
 if($mid eq $GMID){
         splice(@MMES_DATA,20);
 }else{
-        splice(@MMES_DATA,$mes_max);
+        splice(@MMES_DATA,$MES_MAX);
 }
                 open(OUT,">./logfile/mes/$f_id.cgi");
                 print OUT @MMES_DATA;
