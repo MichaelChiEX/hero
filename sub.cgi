@@ -721,9 +721,6 @@ sub decode{
 		$val =~ tr/+/ /;
 		$val =~ s/%([a-fA-F0-9][a-fA-F0-9])/pack("C",hex($1))/eg;
 		
-		# 文字コードをシフトJIS変換
-		&jcode'convert(*val, "sjis", "", "z");
-
 		# タグ處理
 		$val =~ s/</&lt;/g;
 		$val =~ s/>/&gt;/g;

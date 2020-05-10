@@ -94,9 +94,6 @@ _/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/_/
 $TITLE管理人
   Home:   $LINKURL1
 EOM
-	# JISコードへ変換
-    	&jcode'convert(*mail_sub,'jis');
-    	&jcode'convert(*mail_msg,'jis');
 
 	# コメント內の改行とタグを復元
 	$mail_msg =~ s/<br>/\n/ig;

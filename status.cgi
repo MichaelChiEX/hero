@@ -1,5 +1,4 @@
 #! /usr/bin/perl
-require './jcode.pl';
 require './sub.cgi';
 require './conf.cgi';
 require './conf_eq.cgi';
