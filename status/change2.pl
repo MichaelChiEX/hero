@@ -4,23 +4,29 @@ sub change2{
 	&ext_open;
 	if($in{'job'} eq ""){&error("你沒有選擇要轉職的職業。");}
 	if($mlv<50){&error("轉職失敗:你的等級未達到５０級。");}
+
 	($ext_tl_chara,$ext_tl_name,$ext_tl_month,$ext_tl_type[0],$ext_tl_type[1],$ext_tl_type[2],$ext_tl_type[3],$ext_tl_type[4],$ext_tl_type[5],$ext_tl_king,$ext_tl_lose,$ext_tl_lvup,$ext_tl_gift,$ext_tl_mix,$ext_tl_rshop,$ext_tl_goditem)=split(/,/,$ext_total);
-	open(IN,"./data/class.cgi") or &error("檔案開啟失敗status\change1.pl(6)。");
+	open(IN,"./data/class.cgi");
 	@CLASS_DATA = <IN>;
 	close(IN);
 
 	($cname,$cjp,$cnou,$cup,$cflg,$ctype)=split(/<>/,$CLASS_DATA[$in{'job'}]);
 	($hpup,$mpup,$strup,$vitup,$intup,$faiup,$dexup,$agiup) = split(/,/,$cup);
+
 	$uptmp=int($ext_tl_lvup/100);
 	if($uptmp>50){$uptmp=50;}
-        $memberup=$member_level*20;
+
 	$stotalup=int($mtotal/2000);
 	if ($stotalup>50){$stotalup=50;}
 	$totalup=$stotalup+rand(int($mtotal/1000));
+
+	$memberup=$member_level*20;
 	if($memberup<$totalup){$memberup=$totalup;}
 	if($memberup>100){$memberup=100;}
+
 	$showbouns="<BR>本月升級獎勵,所有屬性增加:$uptmp";
-        $showbouns2="<BR>總戰數/會員等級加成,所有性增加:$memberup";
+	$showbouns2="<BR>總戰數/會員等級加成,所有性增加:$memberup";
+
 	for($i=0;$i<6;$i++){
 		$jup[$i]=sqrt(sqrt(sqrt($mjp[$i])));
 		$jup[$i]=int($jup[$i]*$jup[$i]*$jup[$i]);
@@ -36,11 +42,10 @@ sub change2{
 		}else{
 			$jup3[$i]=0;
 		}
-#int(rand($uptmp));
 	}
-if($marmno eq"mix" && $marmele eq $mele){$mmaxhp-=1000;}
-if($mprono eq"mix" && $mproele eq $mele){$mmaxhp-=1000;}
-if($maccno eq"mix" && $maccele eq $mele){$mmaxmp-=1000;}
+	if($marmno eq"mix" && $marmele eq $mele){$mmaxhp-=1000;}
+	if($mprono eq"mix" && $mproele eq $mele){$mmaxhp-=1000;}
+	if($maccno eq"mix" && $maccele eq $mele){$mmaxmp-=1000;}
 
 	$mmaxmaxhp = $mmaxstr*5 + $mmaxvit*10 + $mmaxmen*3 - 1500;
 	$mmaxmaxmp = $mmaxint*7 + $mmaxmen*3 - 1000;
@@ -57,9 +62,9 @@ if($maccno eq"mix" && $maccele eq $mele){$mmaxmp-=1000;}
 	if($mmaxmp<30){$mmaxmp=30;}
 	if($mmaxhp>$mmaxmaxhp){$mmaxhp=$mmaxmaxhp;}
 	if($mmaxmp>$mmaxmaxmp){$mmaxmp=$mmaxmaxmp;}
-if($marmno eq"mix" && $marmele eq $mele){$mmaxhp+=1000;}
-if($mprono eq"mix" && $mproele eq $mele){$mmaxhp+=1000;}
-if($maccno eq"mix" && $maccele eq $mele){$mmaxmp+=1000;}
+	if($marmno eq"mix" && $marmele eq $mele){$mmaxhp+=1000;}
+	if($mprono eq"mix" && $mproele eq $mele){$mmaxhp+=1000;}
+	if($maccno eq"mix" && $maccele eq $mele){$mmaxmp+=1000;}
 	if($mmaxhp<$mhp){$mhp=$mmaxhp;}
 	if($mmaxmp<$mmp){$mmp=$mmaxmp;}
 
@@ -99,36 +104,36 @@ if($maccno eq"mix" && $maccele eq $mele){$mmaxmp+=1000;}
 	
 	$mtype="$ctype";
 	$mex=0;
-	
 	$mabp = $job[$in{'job'}];
-
-	&header;
-	
-	print <<"EOF";
-<TABLE border="0" width="80%" bgcolor="#ffffff" height="150" align=center CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">轉職神殿</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/palace.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="#ffffcc"><font color=#AAAAFF>$mname</font>轉業為<font color=red>「$JOB[$in{'job'}]」</font>。$showbouns
-$showbouns2</FONT></TD>
-    </TR>
-    <TR>
-      <TD colspan="2" align="right">
-$BACKTOWNBUTTON
-      </TD>	
-    </TR>
-  </TBODY>
-</TABLE>
-EOF
-	&chara_input;
 	#轉職後可降等50級
 	$down_lv_limit=50;
 	#轉職後洗點能力重置
 	$ext_para_add="0,0,0,0,0,0";
+	
+	&chara_input;
 	&ext_input;
+
+	&header;
+	
+	print <<"EOF";
+	<table border="0" width="80%" bgcolor="#ffffff" height="150" align=center CLASS=FC>
+		<tbody>
+			<tr>
+				<td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">轉職神殿</font></td>
+			</tr>
+			<tr>
+				<td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/palace.jpg"></td>
+				<td bgcolor="#330000"><font color="#ffffcc"><font color=#AAAAFF>$mname</font>轉業為<font color=red>「$JOB[$in{'job'}]」</font>。$showbouns
+				$showbouns2</font></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="right">
+					$BACKTOWNBUTTON
+				</td>	
+			</tr>
+		</tbody>
+	</table>
+EOF
 	&footer;
 	exit;
 }
