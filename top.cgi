@@ -157,11 +157,11 @@ $status_s
             <TABLE border="0" width=100% bgcolor="#FFFFFF" CLASS=CC>
               <TBODY>
                 <TR>
-                <form action="./etc.cgi" method="post">
+                <form action="./etc.cgi" method="post" target="actionframe">
                 <input type=hidden name=id value=$mid>
                 <INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
                 <input type=hidden name=mode value=setkey>
-                  <TD bgcolor="#FFFFFF" width=100>快速指令<INPUT type="submit" CLASS=MFC value="設定" onSubmit="return" check()>
+                  <TD bgcolor="#FFFFFF" width=100>快速指令<INPUT type="button" CLASS=MFC value="設定" onclick="actform(this.form)">
 		</TD>
 </form>
                 <form action="" method="post" id="fastf" target="actionframe">
