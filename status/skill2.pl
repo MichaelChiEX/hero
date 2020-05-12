@@ -28,31 +28,32 @@ sub skill2{
 	}
 	if(!$hit){&error("資料傳輸有誤，<a href='./login.cgi'>請重新登入</a>。");}
 
-	&header;
-	
-	print <<"EOF";
-<TABLE border="0" width="80%" bgcolor="#ffffff" height="150" align=center CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">奧義修行</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/palace2.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color=#AAAAFF>$mname</font> <FONT color="#ffffcc">已學得</font> <font color=red>$abname</font>。</FONT></TD>
-    </TR>
-    <TR>
-      <TD colspan="2" align="right">
-	<form action="./status.cgi" method="POST">
-	<INPUT type=hidden name=id value=$mid>
-	<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-	<INPUT type=hidden name=mode value=skill>
-	<INPUT type=submit CLASS=FC value=回到奧義取得/修行畫面></form></TD>
-	
-    </TR>
-  </TBODY>
-</TABLE>
-EOF
 	&chara_input;
+
+	&header;
+	print <<"EOF";
+	<table border="0" width="80%" bgcolor="#ffffff" height="150" align=center class=FC>
+		<tbody>
+			<tr>
+				<td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">奧義修行</font></td>
+			</tr>
+			<tr>
+				<td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/palace2.jpg"></td>
+				<td bgcolor="#330000"><font color=#AAAAFF>$mname</font> <font color="#ffffcc">已學得</font> <font color=red>$abname</font>。</font></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="right">
+				<form action="./status.cgi" method="POST">
+				<input type=hidden name=id value=$mid>
+				<input type=hidden name=pass value=$mpass>
+				<input type=hidden name=rmode value=$in{'rmode'}>
+				<input type=hidden name=mode value=skill>
+				<input type=submit class=FC value=回到奧義取得/修行畫面></form></td>
+			</tr>
+		</tbody>
+	</table>
+EOF
+
 	&footer;
 	exit;
 }

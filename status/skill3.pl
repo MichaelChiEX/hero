@@ -23,7 +23,7 @@ sub skill3{
 		$coment="$mname的界限值上昇！。";
 		$rate=1;
 	}
-	$com.="$coment<BR>";
+
 	if ($mmaxstr <400) {$mmaxstr += $JMAX[$mtype][0]*$rate;}
 	if ($mmaxvit <400) {$mmaxvit += $JMAX[$mtype][1]*$rate;}
 	if ($mmaxint <400) {$mmaxint += $JMAX[$mtype][2]*$rate;}
@@ -31,40 +31,35 @@ sub skill3{
 	if ($mmaxdex <400) {$mmaxdex += $JMAX[$mtype][4]*$rate;}
 	if ($mmaxagi <400) {$mmaxagi += $JMAX[$mtype][5]*$rate;}
 
-	#if($mmaxstr>=400){$mmaxstr = 400;}
-	#if($mmaxvit>=400){$mmaxvit = 400;}
-	#if($mmaxint>=400){$mmaxint = 400;}
-	#if($mmaxmen>=400){$mmaxmen = 400;}
-	#if($mmaxdex>=400){$mmaxdex = 400;}
-	#if($mmaxagi>=400){$mmaxagi = 400;}
 	$mmax="$mmaxstr,$mmaxvit,$mmaxint,$mmaxmen,$mmaxdex,$mmaxagi,$mmaxlv";
 
 	&chara_input;
-	&header;
-	
+
+	&header;	
 	print <<"EOF";
-<TABLE border="0" width="80%" bgcolor="#ffffff" height="150" align=center CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">修行</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/palace2.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="#ffffcc">$mname<font color=red>進行了修行。<BR>$coment</FONT></TD>
-    </TR>
-    <TR>
-      <TD colspan="2" align="right">
-	<form action="./status.cgi" method="POST">
-	<INPUT type=hidden name=id value=$mid>
-	<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-	<INPUT type=hidden name=mode value=skill>
-	<INPUT type=submit CLASS=FC value=回到奧義取得/修行畫面></form></TD>
-	
-    </TR>
-  </TBODY>
-</TABLE>
+	<table border="0" width="80%" bgcolor="#ffffff" height="150" align=center CLASS=FC>
+		<tbody>
+			<tr>
+				<td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">修行</font></td>
+			</tr>
+			<tr>
+				<td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/palace2.jpg"></td>
+				<td bgcolor="#330000"><font color="#ffffcc">$mname<font color=red>進行了修行。<br>$coment</font></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="right">
+					<form action="./status.cgi" method="POST">
+						<input type=hidden name=id value=$mid>
+						<input type=hidden name=pass value=$mpass>
+						<input type=hidden name=rmode value=$in{'rmode'}>
+						<input type=hidden name=mode value=skill>
+						<input type=submit CLASS=FC value=回到奧義取得/修行畫面>
+					</form>
+				</td>
+			</tr>
+		</tbody>
+	</table>
 EOF
-	&chara_input;
 	&footer;
 	exit;
 }
