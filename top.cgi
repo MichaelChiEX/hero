@@ -280,7 +280,6 @@ $status_s
                     <OPTION value=prof_edit>更改自傳
                     <OPTION>==== 其他 ====
                     <OPTION value=hero>登錄傳說英雄
-                    <OPTION value=backup>資料備份
                     <OPTION value=con_renew>更新所屬國家情報
                     </SELECT>
 

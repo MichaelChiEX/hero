@@ -38,7 +38,6 @@ elsif($in{'mode'} eq"getabp"){require './status/getabp.pl';&getabp;}
 elsif($in{'mode'} eq"getabp2"){require './status/getabp2.pl';&getabp2;}
 elsif($in{'mode'} eq"chat"){require './status/chat.pl';&chat;}
 elsif($in{'mode'} eq"hero"){require './status/hero.pl';&hero;}
-elsif($in{'mode'} eq"backup"){require './status/backup.pl';&backup;}
 elsif($in{'mode'} eq"outpet"){require './status/outpet.pl';&outpet;}
 else{&error2("資料傳送錯誤,請重新選擇。");}
 exit;
