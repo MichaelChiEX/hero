@@ -1,5 +1,4 @@
 sub toubatsu2{
-	#討伐
 	&chara_open;
 	&town_open;
 	&con_open;
@@ -22,16 +21,15 @@ sub toubatsu2{
 	($mhpr,$mmpr,$mtim)=split(/<>/,$BC_DATA[0]);
 	if($mhpr eq""){$mhpr=1;}
 	if($mmpr eq""){$mmpr=1;}
-                if($in{'player'} eq $GMID){
-$mhpr=1;$mmpr=1;
-                }
+	if($in{'player'} eq $GMID){
+		$mhpr=1;$mmpr=1;
+	}
 
 	if($mhpr<0.2){&error("目前的狀態無法進行討伐。");}
 	$mhp=int($mmaxhp*$mhpr);
 	$mmp=int($mmaxmp*$mmpr);
 
 	$mtotal++;
-	$date = time();
 	$ktime = $KTIME - $date + $mdate2;
 	if($ktime>0 && $mid ne $GMID){&error("離下次討伐時間剩 $ktime 秒。");}
 	if($con_id eq 0){
@@ -40,54 +38,24 @@ $mhpr=1;$mmpr=1;
 		}
 	}
 	
-	foreach(@TOWN_DATA){
-		($town2_id,$town2_name,$town2_con,$town2_ele,$town2_gold,$town2_arm,$town2_pro,$town2_acc,$town2_ind,$town2_tr,$town2_s,$town2_x,$town2_y,$town2_etc)=split(/<>/);
-		if($in{'tid'} eq $town2_id){$tohit=1;last;}
-		$tx++;
-	}
-
-	$dir="./logfile/chara";
-	opendir(dirlist,"$dir");
-	$i=0;
-	while($file = readdir(dirlist)){
-		if($file =~ /\.cgi/i){
-			$datames = "查詢：$dir/$file<br>\n";
-			if(!open(cha,"$dir/$file")){
-				&error("找不到檔案：$dir/$file。<br>\n");
-			}
-			@cha = <cha>;
-			close(cha);
-			$list[$i]="$file";
-			($rid,$rpass,$rname,$rurl,$rchara,$rsex,$rhp,$rmaxhp,$rmp,$rmaxmp,$rele,$rstr,$rvit,$rint,$rfai,$rdex,$ragi,$rmax,$rcom,$rgold,$rbank,$rex,$rtotalex,$rabp,$rjp,$rcex,$runit,$rcon,$rarm,$rpro,$racc,$rtec,$rsta,$rpos,$rmes,$rhost,$rdate,$rsyo,$rclass,$rtotal,$rkati,$rtype) = split(/<>/,$cha[0]);
-			if($rcon eq $town2_con){$zin++;}
-			elsif($rcon eq $mcon){$zin2++;}
-		}
-		$mn++;
-	}
-	closedir(dirlist);
-
 	$conhit=0;
 	foreach(@CON_DATA){
 		($con2_id,$con2_name,$con2_con,$con2_ele,$con2_gold,$con2_king,$con2_yaku,$con2_cou,$con2_mes,$con2_etc)=split(/<>/);
 		if($town2_con eq $con2_id){$conhit=1;last;}
-		$tx++;
 	}
 	if(!$conhit){$con2_ele=0;$con2_name="無所屬";}
-	$imm_kill="1";	
-	require './battle_suport.cgi';
 
-	$dhit=0;
+	require './battle_suport.cgi';
 
 	$enemy_id=$in{'player'};
 	&enemy_open;
+	&equip_open;
 
 	&maplog5("<a href=\"/hero_data/inv/$battlecount.html\" TARGET=\"_blank\"><font color=black>【討伐】</font></a><font color=red>$con_name國</font>的 <font color=blue>$mname</font> 對 <font color=red>$ename</font> 進行討伐。");
 	
-	&equip_open;
-        #神之必殺效果減半
-        $god_kill="2";
+	#神之必殺效果減半
+	$god_kill="2";
 	&PARA;
-
 	
 	open(IN,"./logfile/battle/$enemy_id.cgi");
 	@BE_DATA = <IN>;
@@ -106,89 +74,89 @@ $mhpr=1;$mmpr=1;
 
 	&header;
 	$blog.= <<"EOF";
-<TABLE border="0" width="100%" align=center height="144" CLASS=TOC>
-  <TBODY>
-    <TR>
-      <TD colspan="3" align="center" bgcolor="$ELE_BG[$town_ele]"><FONT color="#ffffcc">$town_name </FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#cccccc" width="30%">
-      <TABLE border="0" width="100%" height="100%" bgcolor=$ELE_BG[$mele] align=right>
-        <TBODY>
-          <TR>
-            <TD rowspan="2"><FONT size="-1"><img src="$IMG/chara/$mchara.gif"></FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">HP</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">$mhp/$mmaxhp</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">攻擊力</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">$mstr(+$marmdmg+<font color=red>$mpetdmg</font>)</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">武器</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">$marmname<BR>
-            【$marmdmg/$marmwei】</FONT></TD>
-          </TR>
-          <TR>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">MP</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">$mmp/$mmaxmp</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">防御力</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">$mvit(+$mprodmg+$maccdmg+<font color=red>$mpetdef</font>)</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">防具</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">$mproname<BR>
-            【$mprodmg/$mprowei】</FONT></TD>
-          </TR>
-          <TR>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">$mname<font color=blue>$mpetname2</font></FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">職業</FONT></TD>
-            <TD bgcolor=$FCOLOR2>$JOB[$mclass]</TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">速度</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">$magi+<font color=red>$mpetspeed</font></FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">飾品</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">$maccname<BR>
-            【$maccdmg/$maccwei】</FONT></TD>
-          </TR>
-        </TBODY>
-      </TABLE>
-      </TD>
-      <TD align="center" bgcolor="$FCOLOR2" width="20%"><IMG src="$IMG/town/machi.jpg" width="150" height="113" border="0"></TD>
-      <TD bgcolor="#cccccc" width=30%>
-      <TABLE border="0" width="100%" height="100%" bgcolor=$ELE_BG[$eele]>
-        <TBODY>
-          <TR>
-            <TD rowspan="2"><FONT size="-1"><img src="$IMG/chara/$echara.gif"></FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">HP</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">$ehp/$emaxhp</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">攻擊力</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">$estr(+$earmdmg+<font color=red>$epetdmg</font>)</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">武器</FONT></TD>
-          <TD bgcolor=$FCOLOR2><FONT size="-1">$earmname<BR>【$earmdmg/$earmwei】</FONT></TD>
-         </TR>
-          <TR>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">MP</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">$emp/$emaxmp</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">防御力</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">$evit(+$eprodmg+$eaccdmg+<font color=red>$epetdef</font>)</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">防具</FONT></TD>
-         <TD bgcolor=$FCOLOR2><FONT size="-1">$eproname<BR>【$eprodmg/$eprowei】</FONT></TD>
-         </TR>
-          <TR>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">$ename<font color=blue>$epetname2</font></FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">職業</FONT></TD>
-            <TD bgcolor=$FCOLOR2>$JOB[$eclass]</TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">速度</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">$eagi+<font color=red>$epetspeed</font></FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">飾品</FONT></TD>
-          <TD bgcolor=$FCOLOR2><FONT size="-1">$eaccname<BR>【$eaccdmg/$eaccwei】</FONT></TD>
-         </TR>
-        </TBODY>
-      </TABLE>
-      </TD>
-    </TR>
-    <TR>
-      <TD bgcolor=#000000><font color="white" size="-1">「$mcom」</font></TD>
-      <TD align=center bgcolor="666600"><font color="white" size="-1">戰鬥宣言</font></TD>
-      <TD bgcolor=#000000><font color="white" size="-1">「$ecom」</font></TD>
-    </TR>
-  </TBODY>
-</TABLE>
-<BR><BR>
+	<table border="0" width="100%" align=center height="144" CLASS=TOC>
+		<TBODY>
+			<tr>
+				<td colspan="3" align="center" bgcolor="$ELE_BG[$town_ele]"><font color="#ffffcc">$town_name </font></td>
+			</tr>
+			<tr>
+				<td bgcolor="#cccccc" width="30%">
+					<table border="0" width="100%" height="100%" bgcolor=$ELE_BG[$mele] align=right>
+						<TBODY>
+							<tr>
+								<td rowspan="2"><font size="-1"><img src="$IMG/chara/$mchara.gif"></font></td>
+								<td bgcolor=$FCOLOR2><font size="-1">HP</font></td>
+								<td bgcolor=$FCOLOR2><font size="-1">$mhp/$mmaxhp</font></td>
+								<td bgcolor=$FCOLOR2><font size="-1">攻擊力</font></td>
+								<td bgcolor=$FCOLOR2><font size="-1">$mstr(+$marmdmg+<font color=red>$mpetdmg</font>)</font></td>
+								<td bgcolor=$FCOLOR2><font size="-1">武器</font></td>
+								<td bgcolor=$FCOLOR2><font size="-1">$marmname<br>
+								【$marmdmg/$marmwei】</font></td>
+							</tr>
+							<tr>
+								<td bgcolor=$FCOLOR2><font size="-1">MP</font></td>
+								<td bgcolor=$FCOLOR2><font size="-1">$mmp/$mmaxmp</font></td>
+								<td bgcolor=$FCOLOR2><font size="-1">防御力</font></td>
+								<td bgcolor=$FCOLOR2><font size="-1">$mvit(+$mprodmg+$maccdmg+<font color=red>$mpetdef</font>)</font></td>
+								<td bgcolor=$FCOLOR2><font size="-1">防具</font></td>
+								<td bgcolor=$FCOLOR2><font size="-1">$mproname<br>
+								【$mprodmg/$mprowei】</font></td>
+							</tr>
+							<tr>
+								<td bgcolor=$FCOLOR2><font size="-1">$mname<font color=blue>$mpetname2</font></font></td>
+								<td bgcolor=$FCOLOR2><font size="-1">職業</font></td>
+								<td bgcolor=$FCOLOR2>$JOB[$mclass]</td>
+								<td bgcolor=$FCOLOR2><font size="-1">速度</font></td>
+								<td bgcolor=$FCOLOR2><font size="-1">$magi+<font color=red>$mpetspeed</font></font></td>
+								<td bgcolor=$FCOLOR2><font size="-1">飾品</font></td>
+								<td bgcolor=$FCOLOR2><font size="-1">$maccname<br>
+								【$maccdmg/$maccwei】</font></td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+				<td align="center" bgcolor="$FCOLOR2" width="20%"><IMG src="$IMG/town/machi.jpg" width="150" height="113" border="0"></td>
+				<td bgcolor="#cccccc" width=30%>
+					<table border="0" width="100%" height="100%" bgcolor=$ELE_BG[$eele]>
+						<TBODY>
+						<tr>
+							<td rowspan="2"><font size="-1"><img src="$IMG/chara/$echara.gif"></font></td>
+							<td bgcolor=$FCOLOR2><font size="-1">HP</font></td>
+							<td bgcolor=$FCOLOR2><font size="-1">$ehp/$emaxhp</font></td>
+							<td bgcolor=$FCOLOR2><font size="-1">攻擊力</font></td>
+							<td bgcolor=$FCOLOR2><font size="-1">$estr(+$earmdmg+<font color=red>$epetdmg</font>)</font></td>
+							<td bgcolor=$FCOLOR2><font size="-1">武器</font></td>
+						<td bgcolor=$FCOLOR2><font size="-1">$earmname<br>【$earmdmg/$earmwei】</font></td>
+						</tr>
+						<tr>
+							<td bgcolor=$FCOLOR2><font size="-1">MP</font></td>
+							<td bgcolor=$FCOLOR2><font size="-1">$emp/$emaxmp</font></td>
+							<td bgcolor=$FCOLOR2><font size="-1">防御力</font></td>
+							<td bgcolor=$FCOLOR2><font size="-1">$evit(+$eprodmg+$eaccdmg+<font color=red>$epetdef</font>)</font></td>
+							<td bgcolor=$FCOLOR2><font size="-1">防具</font></td>
+						<td bgcolor=$FCOLOR2><font size="-1">$eproname<br>【$eprodmg/$eprowei】</font></td>
+						</tr>
+						<tr>
+							<td bgcolor=$FCOLOR2><font size="-1">$ename<font color=blue>$epetname2</font></font></td>
+							<td bgcolor=$FCOLOR2><font size="-1">職業</font></td>
+							<td bgcolor=$FCOLOR2>$JOB[$eclass]</td>
+							<td bgcolor=$FCOLOR2><font size="-1">速度</font></td>
+							<td bgcolor=$FCOLOR2><font size="-1">$eagi+<font color=red>$epetspeed</font></font></td>
+							<td bgcolor=$FCOLOR2><font size="-1">飾品</font></td>
+						<td bgcolor=$FCOLOR2><font size="-1">$eaccname<br>【$eaccdmg/$eaccwei】</font></td>
+						</tr>
+						</tbody>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td bgcolor=#000000><font color="white" size="-1">「$mcom」</font></td>
+				<td align=center bgcolor="666600"><font color="white" size="-1">戰鬥宣言</font></td>
+				<td bgcolor=#000000><font color="white" size="-1">「$ecom」</font></td>
+			</tr>
+		</tbody>
+	</table>
+	<br><br>
 EOF
 	&BATTLE;
 	
@@ -203,7 +171,6 @@ EOF
 	print OUT @N_COUNT;
 	close(OUT);
 
-
 	print <<"EOF";
 	$blog
 	<center>
@@ -213,7 +180,7 @@ $BACKTOWNBUTTON
 EOF
 	&chara_input;
 
-#健康度
+	#健康度
 	$mhpr=int($mhp*100/$mmaxhp)/100-0.1;
 	if($mhpr<0.05){$mhpr=0.05;}
 	$mmpr=int($mmp*100/$mmaxmp)/100-0.1;
@@ -238,7 +205,6 @@ EOF
 	&footer;
 	exit;
 }
-
 
 sub BATTLE{##戰鬥處理
 	while($turn<=50){
@@ -284,30 +250,38 @@ sub BATTLE{##戰鬥處理
 			
 			$blog.= <<"EOF";
 			<center>
-			<TABLE border="0" width="400" bgcolor="#000000" CLASS=TC>
-  			<TBODY><TR>
-      			<TD colspan="2" align="center" bgcolor="$FCOLOR"><FONT color="#ffffcc">勝利！</FONT></TD>
-    			</TR>
-    			<TR><TD colspan="2" align="center" bgcolor="$FCOLOR2">獲得<FONT color="#cc0000">$get_ex</FONT>經驗值<BR>
-      			獲得<FONT color="#000099">$get_gold</FONT> Gold！<BR>$com<BR>
-      			獲得<FONT color="#cc0000">$getabp</FONT>熟練度<BR>
-			<TABLE border="0" bgcolor="#990000">
-        		<TBODY><TR>
-            		<TD bgcolor="#ffffcc">經驗值</TD>
-            		<TD bgcolor="#ffffcc">$mex(+$get_ex)point</TD>
-          		</TR>
-          		<TR><TD bgcolor="#ffffcc">Gold</TD>
-            		<TD bgcolor="#ffffcc">$mgold(+$get_gold)Gold</TD>
-          		</TR></TBODY></TABLE>
-      			</TD></TR>
-  			</TBODY></TABLE>
+			<table border="0" width="400" bgcolor="#000000" CLASS=TC>
+				<TBODY>
+					<tr>
+						<td colspan="2" align="center" bgcolor="$FCOLOR"><font color="#ffffcc">勝利！</font></td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center" bgcolor="$FCOLOR2">
+							獲得<font color="#cc0000">$get_ex</font>經驗值<br>
+							獲得<font color="#000099">$get_gold</font> Gold！<br>$com<br>
+							獲得<font color="#cc0000">$getabp</font>熟練度<br>
+							<table border="0" bgcolor="#990000">
+								<TBODY>
+									<tr>
+										<td bgcolor="#ffffcc">經驗值</td>
+										<td bgcolor="#ffffcc">$mex(+$get_ex)point</td>
+									</tr>
+									<tr>
+										<td bgcolor="#ffffcc">Gold</td>
+										<td bgcolor="#ffffcc">$mgold(+$get_gold)Gold</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 			</center>
 EOF
 			last;
 		}if($lose){
 			&maplog5("<font color=blue>【敗北】</font>$mname 討伐 $ename 失敗。。");
 			
-			#$bmess.="$mname所持金減半。";
 			$lose_gold=$mgold-int($mgold/2);
 			$mgold-=$lose_gold;
 			if($sensei){
@@ -317,120 +291,120 @@ EOF
 			}
 			$blog.= <<"EOF";
 			<center>
-			<TABLE border="0" width="400" bgcolor="#000000" CLASS=TC>
-  			<TBODY><TR>
-      			<TD colspan="2" align="center" bgcolor="$FCOLOR"><FONT color="#ffffcc">敗北！</FONT></TD>
-    			</TR>
-    			<TR><TD colspan="2" align="center" bgcolor="$FCOLOR2">
-			<FONT color="#ff0000">$mname的所持金減半！！</FONT><BR>
-      			<BR>
-
-      			<TABLE border="0" bgcolor="#990000">
-        		<TBODY><TR>
-            		<TD bgcolor="#ffffcc">失去了<FONT color="#000099">$lose_gold</FONT> Gold！</TD>
-          		</TR></TBODY></TABLE>
-      			</TD></TR>
-  			</TBODY></TABLE>
+			<table border="0" width="400" bgcolor="#000000" CLASS=TC>
+				<TBODY>
+					<tr>
+						<td colspan="2" align="center" bgcolor="$FCOLOR"><font color="#ffffcc">敗北！</font></td>
+					</tr>
+					<tr>
+						<td colspan="2" align="center" bgcolor="$FCOLOR2">
+							<font color="#ff0000">$mname的所持金減半！！</font><br>
+							<br>
+							<table border="0" bgcolor="#990000">
+								<TBODY>
+									<tr>
+										<td bgcolor="#ffffcc">失去了<font color="#000099">$lose_gold</font> Gold！</td>
+									</tr>
+								</tbody>
+							</table>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 			</center>
 EOF
 			last;
 		}
-			if($sensei){
-				&BATTLEPRINT;
-			}else{
-				&MBATTLEPRINT;
-			}
-		
+		if($sensei){
+			&BATTLEPRINT;
+		}else{
+			&MBATTLEPRINT;
+		}
 	}
 	if(!$win && !$lose){
-			if($sensei){
-				$mmess.="此戰未分出勝負$BACKTOWNBUTTON。";
-				&BATTLEPRINT;
-			}else{
-				$bmess.="此戰未分出勝負$BACKTOWNBUTTON。";
-				&MBATTLEPRINT;
-			}
+		if($sensei){
+			$mmess.="此戰未分出勝負$BACKTOWNBUTTON。";
+			&BATTLEPRINT;
+		}else{
+			$bmess.="此戰未分出勝負$BACKTOWNBUTTON。";
+			&MBATTLEPRINT;
+		}
 	}
 	$mdate2=time();
-	
 }
 
 #回合別戰鬥結果表示
 sub BATTLEPRINT{
 	$blog.= <<"EOF";
-<CENTER>
-
-
-<TABLE border="0" width="80%" bgcolor="#000000" CLASS=TC>
-  <TBODY>
-    <TR>
-      <TD colspan="8" align="center" bgcolor="$FCOLOR"><B><FONT color="#ffffcc">第$turn回合</FONT></B></TD>
-    </TR>
-    <TR>
-      <TD colspan="4" bgcolor="000063" align="center"><FONT color="$FCOLOR2"><B><FONT size="-1">$mname</FONT></B></FONT></TD>
-      <TD colspan="4" bgcolor="9c0000" align="center"><B><FONT size="-1" color="$FCOLOR2">$ename</FONT></B></TD>
-    </TR>
-    <TR>
-      <TD colspan="4" bgcolor="#003300" align="center"><IMG src="$IMG/chara/$mchara.gif"></TD>
-      <TD colspan="4" bgcolor="#003300" align="center"><IMG src="$IMG/chara/$echara.gif"></TD>
-    </TR>
-    <TR>
-      <TD colspan="4" bgcolor="$FCOLOR2" align="center"><font size=-1>$bmess</font></TD>
-      <TD colspan="4" bgcolor="$FCOLOR2" align="center"><font size=-1>$mmess</font></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ccffff" width=12.5%>HP</TD>
-      <TD bgcolor="#ccffff" width=12.5%>$mhp/$mmaxhp</TD>
-      <TD bgcolor="#ccffff" width=12.5%>MP</TD>
-      <TD bgcolor="#ccffff" width=12.5%>$mmp/$mmaxmp</TD>
-      <TD bgcolor="#ccffff" width=12.5%>HP</TD>
-      <TD bgcolor="#ccffff" width=12.5%>$ehp/$emaxhp</TD>
-      <TD bgcolor="#ccffff" width=12.5%>MP</TD>
-      <TD bgcolor="#ccffff" width=12.5%>$emp/$emaxmp</TD>
-    </TR>
-  </TBODY>
-</TABLE>
-</CENTER>
-<BR><BR><BR><P>
+	<center>
+	<table border="0" width="80%" bgcolor="#000000" CLASS=TC>
+		<TBODY>
+			<tr>
+				<td colspan="8" align="center" bgcolor="$FCOLOR"><b><font color="#ffffcc">第$turn回合</font></b></td>
+			</tr>
+			<tr>
+				<td colspan="4" bgcolor="000063" align="center"><font color="$FCOLOR2"><b><font size="-1">$mname</font></b></font></td>
+				<td colspan="4" bgcolor="9c0000" align="center"><b><font size="-1" color="$FCOLOR2">$ename</font></b></td>
+			</tr>
+			<tr>
+				<td colspan="4" bgcolor="#003300" align="center"><IMG src="$IMG/chara/$mchara.gif"></td>
+				<td colspan="4" bgcolor="#003300" align="center"><IMG src="$IMG/chara/$echara.gif"></td>
+			</tr>
+			<tr>
+				<td colspan="4" bgcolor="$FCOLOR2" align="center"><font size=-1>$bmess</font></td>
+				<td colspan="4" bgcolor="$FCOLOR2" align="center"><font size=-1>$mmess</font></td>
+			</tr>
+			<tr>
+				<td bgcolor="#ccffff" width=12.5%>HP</td>
+				<td bgcolor="#ccffff" width=12.5%>$mhp/$mmaxhp</td>
+				<td bgcolor="#ccffff" width=12.5%>MP</td>
+				<td bgcolor="#ccffff" width=12.5%>$mmp/$mmaxmp</td>
+				<td bgcolor="#ccffff" width=12.5%>HP</td>
+				<td bgcolor="#ccffff" width=12.5%>$ehp/$emaxhp</td>
+				<td bgcolor="#ccffff" width=12.5%>MP</td>
+				<td bgcolor="#ccffff" width=12.5%>$emp/$emaxmp</td>
+			</tr>
+		</tbody>
+	</table>
+	</center>
+	<br><br><br>
 EOF
 }
 
 sub MBATTLEPRINT{
 	$blog.= <<"EOF";
-<CENTER>
-
-
-<TABLE border="0" width="80%" bgcolor="#000000" CLASS=TC>
-  <TBODY>
-    <TR>
-      <TD colspan="8" align="center" bgcolor="$FCOLOR"><B><FONT color="#ffffcc">$turn回合</FONT></B></TD>
-    </TR>
-    <TR>
-      <TD colspan="4" bgcolor="9c0000" align="center"><B><FONT size="-1" color="$FCOLOR2">$ename</FONT></B></TD>
-      <TD colspan="4" bgcolor="000063" align="center"><FONT color="$FCOLOR2"><B><FONT size="-1">$mname</FONT></B></FONT></TD>
-    </TR>
-    <TR>
-      <TD colspan="4" bgcolor="#003300" align="center"><IMG src="$IMG/chara/$echara.gif"></TD>
-      <TD colspan="4" bgcolor="#003300" align="center"><IMG src="$IMG/chara/$mchara.gif"></TD>
-    </TR>
-    <TR>
-      <TD colspan="4" bgcolor="$FCOLOR2" align="center"><font size=-1>$mmess</font></TD>
-      <TD colspan="4" bgcolor="$FCOLOR2" align="center"><font size=-1>$bmess</font></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ccffff" width=12.5%>HP</TD>
-      <TD bgcolor="#ccffff" width=12.5%>$ehp/$emaxhp</TD>
-      <TD bgcolor="#ccffff" width=12.5%>MP</TD>
-      <TD bgcolor="#ccffff" width=12.5%>$emp/$emaxmp</TD>
-      <TD bgcolor="#ccffff" width=12.5%>HP</TD>
-      <TD bgcolor="#ccffff" width=12.5%>$mhp/$mmaxhp</TD>
-      <TD bgcolor="#ccffff" width=12.5%>MP</TD>
-      <TD bgcolor="#ccffff" width=12.5%>$mmp/$mmaxmp</TD>
-    </TR>
-  </TBODY>
-</TABLE>
-</CENTER>
-<BR><BR><BR><P>
+	<center>
+	<table border="0" width="80%" bgcolor="#000000" CLASS=TC>
+		<TBODY>
+			<tr>
+				<td colspan="8" align="center" bgcolor="$FCOLOR"><b><font color="#ffffcc">$turn回合</font></b></td>
+			</tr>
+			<tr>
+				<td colspan="4" bgcolor="9c0000" align="center"><b><font size="-1" color="$FCOLOR2">$ename</font></b></td>
+				<td colspan="4" bgcolor="000063" align="center"><font color="$FCOLOR2"><b><font size="-1">$mname</font></b></font></td>
+			</tr>
+			<tr>
+				<td colspan="4" bgcolor="#003300" align="center"><IMG src="$IMG/chara/$echara.gif"></td>
+				<td colspan="4" bgcolor="#003300" align="center"><IMG src="$IMG/chara/$mchara.gif"></td>
+			</tr>
+			<tr>
+				<td colspan="4" bgcolor="$FCOLOR2" align="center"><font size=-1>$mmess</font></td>
+				<td colspan="4" bgcolor="$FCOLOR2" align="center"><font size=-1>$bmess</font></td>
+			</tr>
+			<tr>
+				<td bgcolor="#ccffff" width=12.5%>HP</td>
+				<td bgcolor="#ccffff" width=12.5%>$ehp/$emaxhp</td>
+				<td bgcolor="#ccffff" width=12.5%>MP</td>
+				<td bgcolor="#ccffff" width=12.5%>$emp/$emaxmp</td>
+				<td bgcolor="#ccffff" width=12.5%>HP</td>
+				<td bgcolor="#ccffff" width=12.5%>$mhp/$mmaxhp</td>
+				<td bgcolor="#ccffff" width=12.5%>MP</td>
+				<td bgcolor="#ccffff" width=12.5%>$mmp/$mmaxmp</td>
+			</tr>
+		</tbody>
+	</table>
+	</center>
+	<br><br><br>
 EOF
 }
 sub log_print{
@@ -439,21 +413,19 @@ sub log_print{
 	<head>
 	<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
 	<STYLE type="text/css">
-	<!--
-A:HOVER{
- color: $ALINK
-}
-.BC {border-top-width : medium;border-right-width : medium;border-bottom-width : medium;border-left-width :medium; border-color : $ELE_BG[0] $ELE_BG[0] $ELE_BG[0] $ELE_BG[0];border-style : double double double double;background-color : $ELE_BG[0];color : black;}
-.TC {border-top-width : medium;border-right-width : medium;border-bottom-width : medium;border-left-width :medium; border-color : $FCOLOR $FCOLOR $FCOLOR $FCOLOR;border-style : double double double double;background-color : $FCOLOR;color : black;}
-.CC {border-top-width : medium;border-right-width : medium;border-bottom-width : medium;border-left-width :medium; border-color : $ELE_BG[$con_ele] $ELE_BG[$con_ele] $ELE_BG[$con_ele] $ELE_BG[$con_ele];border-style : double double double double;background-color : $ELE_BG[$con_ele];color : black;}
-.CC2 {border-top-width : medium;border-right-width : medium;border-bottom-width : medium;border-left-width :medium; border-color : $ELE_BG[$con2_ele] $ELE_BG[$con2_ele] $ELE_BG[$con2_ele] $ELE_BG[$con2_ele];border-style : double double double double;background-color : $ELE_BG[$con2_ele];color : black;}
-.MC {border-top-width : medium;border-right-width : medium;border-bottom-width : medium;border-left-width :medium; border-color : $ELE_BG[$wele] $ELE_BG[$wele] $ELE_BG[$wele] $ELE_BG[$wele];border-style : double double double double;background-color : $ELE_BG[$wele];color : black;}
-.MFC {border-top-width : medium;border-right-width : medium;border-bottom-width : medium;border-left-width : $ELE_BG[$con_ele];border-top-color : $ELE_BG[$con_ele];border-right-color : $ELE_BG[$con_ele];border-bottom-color : $ELE_BG[$con_ele];border-left-color : $ELE_BG[$con_ele];border-style : double double double double;background-color : $ELE_C[$con_ele];color : black;}
-.FC {border-top-width : medium;border-right-width : medium;border-bottom-width : medium;border-left-width : $FCOLOR;border-top-color : $FCOLOR;border-right-color : $FCOLOR;border-bottom-color : $FCOLOR;border-left-color : $FCOLOR;border-style : double double double double;background-color : $FCOLOR2;color : black;}
-.TOC {border-top-width : medium;border-right-width : medium;border-bottom-width : medium;border-left-width :medium; border-color : $ELE_BG[$town_ele] $ELE_BG[$town_ele] $ELE_BG[$town_ele] $ELE_BG[$town_ele];border-style : double double double double;background-color : $ELE_BG[$town_ele];color : black;}
-.dmg { color: #FF0000; font-size: 10pt }
-.clit { color: #0000FF; font-size: 10pt }
--->
+	A:HOVER{
+		color: $ALINK
+	}
+	.BC {border-top-width : medium;border-right-width : medium;border-bottom-width : medium;border-left-width :medium; border-color : $ELE_BG[0] $ELE_BG[0] $ELE_BG[0] $ELE_BG[0];border-style : double double double double;background-color : $ELE_BG[0];color : black;}
+	.TC {border-top-width : medium;border-right-width : medium;border-bottom-width : medium;border-left-width :medium; border-color : $FCOLOR $FCOLOR $FCOLOR $FCOLOR;border-style : double double double double;background-color : $FCOLOR;color : black;}
+	.CC {border-top-width : medium;border-right-width : medium;border-bottom-width : medium;border-left-width :medium; border-color : $ELE_BG[$con_ele] $ELE_BG[$con_ele] $ELE_BG[$con_ele] $ELE_BG[$con_ele];border-style : double double double double;background-color : $ELE_BG[$con_ele];color : black;}
+	.CC2 {border-top-width : medium;border-right-width : medium;border-bottom-width : medium;border-left-width :medium; border-color : $ELE_BG[$con2_ele] $ELE_BG[$con2_ele] $ELE_BG[$con2_ele] $ELE_BG[$con2_ele];border-style : double double double double;background-color : $ELE_BG[$con2_ele];color : black;}
+	.MC {border-top-width : medium;border-right-width : medium;border-bottom-width : medium;border-left-width :medium; border-color : $ELE_BG[$wele] $ELE_BG[$wele] $ELE_BG[$wele] $ELE_BG[$wele];border-style : double double double double;background-color : $ELE_BG[$wele];color : black;}
+	.MFC {border-top-width : medium;border-right-width : medium;border-bottom-width : medium;border-left-width : $ELE_BG[$con_ele];border-top-color : $ELE_BG[$con_ele];border-right-color : $ELE_BG[$con_ele];border-bottom-color : $ELE_BG[$con_ele];border-left-color : $ELE_BG[$con_ele];border-style : double double double double;background-color : $ELE_C[$con_ele];color : black;}
+	.FC {border-top-width : medium;border-right-width : medium;border-bottom-width : medium;border-left-width : $FCOLOR;border-top-color : $FCOLOR;border-right-color : $FCOLOR;border-bottom-color : $FCOLOR;border-left-color : $FCOLOR;border-style : double double double double;background-color : $FCOLOR2;color : black;}
+	.TOC {border-top-width : medium;border-right-width : medium;border-bottom-width : medium;border-left-width :medium; border-color : $ELE_BG[$town_ele] $ELE_BG[$town_ele] $ELE_BG[$town_ele] $ELE_BG[$town_ele];border-style : double double double double;background-color : $ELE_BG[$town_ele];color : black;}
+	.dmg { color: #FF0000; font-size: 10pt }
+	.clit { color: #0000FF; font-size: 10pt }
 	</STYLE>
 	<title>$TITLE</title></head>
 	<body background=\"$BGIF\" bgcolor=\"$BG\">

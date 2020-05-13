@@ -4,13 +4,8 @@ sub bat{
 	&equip_open;
 	&ext_open;
 	&quest_open;
-        $date = time();
-#                $ext_tmpx2=$ext_lock-$date;
-#                $ext_tmpx=int(($ext_tmpx2)/60/60);
-#                if($ext_tmpx2>0){
-#			&verchklog("封鎖後戰鬥($ext_robot)");
-#                        &error3("你的帳號已被封鎖,需要$ext_tmpx小時($ext_tmpx2秒)才會解除");
-#                }
+	$date = time();
+
 	if($ext_quest_total<$mtotal && $mtotal ne""){
 		if ($ext_quest_total eq"-1" || $ext_quest_total eq""){
 			if($mpos ne $quest_town_no){
@@ -49,59 +44,26 @@ sub bat{
 	if($mtotal eq""){
 		$ext_quest_total="-1";
 	}
-#	if($ext_check_robot ne"" && $in{'verchk'} eq""){
-#		$u_date=$date-$vertime;
-#		if($u_date>120){
-#			&verchklog("上次$ext_check_robot驗證顯示時間:$u_date秒前");
-#		}
-#                &verchklog("重進驗證:$ext_check_robot");
-#		&createver;
-#		&vercheck_form;
-#	}elsif (int(rand(60)) eq 15){
-#		&createver;
-#		if($SP_LOG){
-#			&verchklog("驗證碼產生:$ext_check_robot");
-#		}
-#                &vercheck_form;
-#        }else{
-#                $ext_check_robot="";
-#        }
+
 	($ext_kinghit,$ext_kingtophit,$ext_kingcount)=split(/,/,$ext_kingetc);
 	if($in{'mode'} eq "" || $SEN[$in{'mode'}] eq ""){&error("資料傳輸錯誤，<a href='./login.cgi'>請重新登入</a>。");}
-#	if ($in{'verchk'} ne $ext_check_robot && $ext_check_robot ne""){
-#		$e_addrobot=($ext_robot % 3) + 1;
-#                $ext_robot++;
-#                &verchklog("驗證錯誤($ext_robot)");
-#                $ext_lock=$date+600*$e_addrobot;
-#		$ext_check_robot="";
-#		&ext_input;
-#		&error3("驗證失敗,封鎖$e_addrobot 0分鐘");
-#	}else{
-		#特別ID LOG
-#		if($SP_LOG){
-#		}
-#		$ext_check_robot="";
-#	}
-        open(IN,"./data/guest_list.cgi");
-        @newguest = <IN>;
-        close(IN);
+	open(IN,"./data/guest_list.cgi");
+	@newguest = <IN>;
+	close(IN);
 	$player=@newguest;
 	$mixsp=0;
-if($in{'rnd2'} eq "" && $mtotal ne"0"){&error2("系統已進行更新，請重新登入");}
+	if($in{'rnd2'} eq "" && $mtotal ne"0"){&error2("系統已進行更新，請重新登入");}
 	if($member_point eq""){
-	foreach(@newguest) {
-                ($gname,$gtime,$gcon,$ghost,$gid)=split(/<>/);
-                if($gid ne $mid && $ghost eq $mhost){
-                        &maplog3("[變更IP後重複]$mname與$gname 登入後IP相同。");
-			&error2("你的ＩＰ與 $gname 相同,重複IP無法同時登入");
-#                }elsif($gid eq $mid && $ghost ne $mhost && $mid ne $GMID){
-#			&maplog3("[變更IP]$mname登入後IP變更，需要重新登入。");
-#                        &error2("你的主機ＩＰ登入後變更，請重新登入$ghost->$mhost");
-		}
+		foreach(@newguest) {
+			($gname,$gtime,$gcon,$ghost,$gid)=split(/<>/);
+			if($gid ne $mid && $ghost eq $mhost){
+				&maplog3("[變更IP後重複]$mname與$gname 登入後IP相同。");
+				&error2("你的ＩＰ與 $gname 相同,重複IP無法同時登入");
+			}
         }
 	}
 	if($player>$ADDTIMEMAX){
-	        $BTIME+=($player-$ADDTIMEMAX);
+		$BTIME+=($player-$ADDTIMEMAX);
 		if($BTIME>35){$BTIME=35;}
 		if($BTIME>=30){
 			if($ADDEX eq 1){
@@ -116,19 +78,17 @@ if($in{'rnd2'} eq "" && $mtotal ne"0"){&error2("系統已進行更新，請重�
 		}
 	}
 	if($member_fix_time){
-                $BTIME=15;
-        }
+		$BTIME=15;
+	}
 	if ($mid eq $GMID){
-	        $BTIME=5;
+		$BTIME=5;
 	}
 	$btime = $BTIME - $date + $mdate;
 	if($btime>0){&error("離下次可戰鬥時間剩$btime 秒。");}
 
-	$rand=int(rand(1000));
-	
 	if(int(rand(50)) eq 7 && $in{'mode'}<30){$monfile="monster2.cgi";$reamon=1;}
 	else{$monfile="monster.cgi";}
-	open(IN,"./data/$monfile") or &error("檔案無法開啟battle/battle.pl(16)。");
+	open(IN,"./data/$monfile");
 	@MON_DATA = <IN>;
 	close(IN);
 
@@ -138,11 +98,11 @@ if($in{'rnd2'} eq "" && $mtotal ne"0"){&error2("系統已進行更新，請重�
 		$CHECK_MAP=0;
 	}
 	if ($moya ne $in{'rnd'}) {
-			&error("戰鬥後請勿按重新整理");
+		&error("戰鬥後請勿按重新整理");
 	}elsif($in{'mode'} eq 30){
 		$mode=5;
 		$mixsp=1;
-        }elsif($in{'mode'} eq 31){
+	}elsif($in{'mode'} eq 31){
 		$mixsp=1;
 		if($nowmap eq""){
 			$SEN[$in{'mode'}].="入口";
@@ -150,11 +110,11 @@ if($in{'rnd2'} eq "" && $mtotal ne"0"){&error2("系統已進行更新，請重�
 			$SEN[$in{'mode'}].="王座";
 			$killking=1;
 		}elsif($nowmap<25){
-                        $SEN[$in{'mode'}].=$nowmap."層";
+			$SEN[$in{'mode'}].=$nowmap."層";
 		}else{
 			$SEN[$in{'mode'}].="1層";
 		}
-                $mode=6;
+		$mode=6;
 	}elsif($in{'mode'} eq 5){
 		$mode=1;
 		if($mex%11 ne 0 && $CHECK_MAP eq 1){
@@ -163,9 +123,8 @@ if($in{'rnd2'} eq "" && $mtotal ne"0"){&error2("系統已進行更新，請重�
 	}
 	elsif($in{'mode'} eq 6){
 		$mode=2;
-		#Zeeman 修塔100%出現
 		if($moya%40 ne "0" && $CHECK_MAP eq 1){
-                        &lockaccout();
+			&lockaccout();
 		}
 	}elsif($in{'mode'} eq 7){
 		$mode=2;
@@ -173,93 +132,92 @@ if($in{'rnd2'} eq "" && $mtotal ne"0"){&error2("系統已進行更新，請重�
 			$xmode=1;
 			$mode2=18;
 		}
-		
 		if($moya%80 ne "7" && $CHECK_MAP eq 1){
-                        &lockaccout();
+			&lockaccout();
 		}
 	}elsif($in{'mode'} eq 8){
 		$mode=3;
 		if($moya%300 ne "8" && $CHECK_MAP eq 1){
-                        &lockaccout();
+			&lockaccout();
 		}
 	}
 	elsif($in{'mode'} eq 9){
 		$mode=4;
 		if($moya%1000 ne "9" && $CHECK_MAP eq 1){
-                        &lockaccout();
+			&lockaccout();
 		}
 	}
 	elsif($in{'mode'} eq 10){
 		$mode=1;
 		if($moya ne "777" && $CHECK_MAP eq 1){
-                        &lockaccout();
+			&lockaccout();
 		}
 	}
 	elsif($in{'mode'} eq 11){
 		$mode=2;
 		if($moya%2500 ne "17" && $CHECK_MAP eq 1){
-                        &lockaccout();
+			&lockaccout();
 		}
 	}
 	elsif($in{'mode'} eq 12){
 		$mode=3;
 		if($moya ne "55555" && $CHECK_MAP eq 1){
-                        &lockaccout();
+			&lockaccout();
 		}
 	}
 	elsif($in{'mode'} eq 13){
 		$mode=3;
 		if($moya%5000 ne "773" && $CHECK_MAP eq 1){
-                        &lockaccout();
+			&lockaccout();
 		}
 	}
 	elsif($in{'mode'} eq 14){
 		$mode=1;
 		if($moya ne "77777" && $CHECK_MAP eq 1){
-                        &lockaccout();
+			&lockaccout();
 		}
 	}
 	elsif($in{'mode'} eq 15){
 		$mode=1;
 		if($moya ne "775" && $moya ne "776" && $CHECK_MAP eq 1){
-                        &lockaccout();
+			&lockaccout();
 		}
 	}
 	elsif($in{'mode'} eq 20){
 		$mode=1;
 		if ($mtotal%100 ne "1"){
-                        &lockaccout();
+			&lockaccout();
 		}
 	}
 	elsif($in{'mode'} eq 21){
 		$mode=2;
 		if ($mtotal%300 ne "2"){
-                        &lockaccout();
+			&lockaccout();
 		}
 	}
 	elsif($in{'mode'} eq 22){
 		$mode=3;
 		if ($mtotal%600 ne "3"){
-                        &lockaccout();
+			&lockaccout();
 		}
 	}
 	elsif($in{'mode'} eq 23){
 		$mode=3;
 		if ($mtotal%3000 ne "4"){
-                        &lockaccout();
+			&lockaccout();
 		}
 	}
-        elsif($in{'mode'} eq 24){
-                $mode=4;
-                if ($mtotal%10000 ne "5"){
-                        &lockaccout();
-                }
-        }elsif($in{'mode'} eq 40){
-                $mode=7;
+	elsif($in{'mode'} eq 24){
+		$mode=4;
+		if ($mtotal%10000 ne "5"){
+			&lockaccout();
+		}
+	}elsif($in{'mode'} eq 40){
+		$mode=7;
 	}
-        if($SP_LOG){
-                &verchklog("戰:".$SEN[$in{'mode'}]);
-        }
+	if($SP_LOG){
+		&verchklog("戰:".$SEN[$in{'mode'}]);
+	}
  
 	$mtotal++;
 	#排名統計
@@ -269,14 +227,14 @@ if($in{'rnd2'} eq "" && $mtotal ne"0"){&error2("系統已進行更新，請重�
 	&time_data;
 	if($ext_tl_month ne "$mon"){
 		$ext_tl_month=$mon;
-                $ext_tl_type[0]=0;
-                $ext_tl_type[1]=0;
-                $ext_tl_type[2]=0;
-                $ext_tl_type[3]=0;
-                $ext_tl_type[4]=0;
-                $ext_tl_type[5]=0;
-                $ext_tl_king=0;
-                $ext_tl_lose=0;
+		$ext_tl_type[0]=0;
+		$ext_tl_type[1]=0;
+		$ext_tl_type[2]=0;
+		$ext_tl_type[3]=0;
+		$ext_tl_type[4]=0;
+		$ext_tl_type[5]=0;
+		$ext_tl_king=0;
+		$ext_tl_lose=0;
 		$ext_tl_lvup=0;
 		$ext_tl_gift=0;
 		$ext_tl_mix=0;
@@ -298,28 +256,27 @@ if($in{'rnd2'} eq "" && $mtotal ne"0"){&error2("系統已進行更新，請重�
 	        open(IN,"./data/townmonster.cgi");
 	        @tmdata = <IN>;
 	        close(IN);
-		foreach(@tmdata){
-	 	       ($ename,$eab,$etec,$esk,$e_ex,$e_gold,$etype,$elv)=split(/<>/);
-			($ehp,$emp,$str,$vit,$eint,$efai,$edex,$eagi,$eele)=split(/,/,$eab);
-			if("$etype" eq"$town_id" && $ehp>0 && $ename ne""){
-				if ($ehp<10000){
-					$ehp=10000;
+			foreach(@tmdata){
+				($ename,$eab,$etec,$esk,$e_ex,$e_gold,$etype,$elv)=split(/<>/);
+				($ehp,$emp,$str,$vit,$eint,$efai,$edex,$eagi,$eele)=split(/,/,$eab);
+				if("$etype" eq"$town_id" && $ehp>0 && $ename ne""){
+					if ($ehp<10000){
+						$ehp=10000;
+					}
+					$godmonsterhit++;
+					last;
 				}
-				$godmonsterhit++;
-				last;
 			}
-		}
 		}
 	}
 	if(!$godmonsterhit){
-	        @N_MON_DATA=();
-	        foreach(@MON_DATA){
-	                ($ename,$eab,$etec,$esk,$e_ex,$e_gold,$etype,$elv)=split(/<>/);
-	                if($elv eq $mode){
+		@N_MON_DATA=();
+		foreach(@MON_DATA){
+			($ename,$eab,$etec,$esk,$e_ex,$e_gold,$etype,$elv)=split(/<>/);
+			if($elv eq $mode){
 				push(@N_MON_DATA,"$_");
 			}
-	        }
-	        if(@N_MON_DATA ==()){&error("資料出現異常");}
+		}
 		if($in{'mode'} eq"31"){
 			if($nowmap eq""){
 				$rand=0;
@@ -339,22 +296,6 @@ if($in{'rnd2'} eq "" && $mtotal ne"0"){&error2("系統已進行更新，請重�
 				$ehp=$ext_kinghp;
 			}
 		}
-		#禁區怪越來越強
-	#	if($in{'mode'} eq"31"){
-			#$nowmapup=$nowmap;
-			#if($nowmapup eq""){
-			#	$nowmapup=1;
-			#}
-                        #$nowmapup2=1+$nowmapup/50;
-			#$nowmapup=1+$nowmapup/10;
-			#$ehp=int($ehp*$nowmapup);
-			#$str=int($str*$nowmapup);
-			#$vit=int($vit*$nowmapup);
-			#$eint=int($eint*$nowmapup2);
-			#$efai=int($efai*$nowmapup2);
-			#$edex=int($edex*$nowmapup2);
-			#$eagi=int($eagi*$nowmapup2);
-	#	}
 	}
 	if($in{'mode'} ne"31" || $rand ne 25){
 		$emaxhp=int(($ehp+$mmaxhp/2)/1.5);
@@ -388,96 +329,95 @@ if($in{'rnd2'} eq "" && $mtotal ne"0"){&error2("系統已進行更新，請重�
 	&header;
 	
 	print <<"EOF";
-<TABLE border="0" width="100%" align=center height="144" CLASS=TOC>
-  <TBODY>
-    <TR>
-      <TD colspan="3" align="center" bgcolor="$ELE_BG[$town_ele]" style="font-size:12pt"><FONT color="#ffffcc">$town_name $sen<font color=#AAAAFF>$SEN[$in{'mode'}]</font></FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#cccccc" width="30%">
-      <TABLE border="0" width="100%" height="100%" bgcolor=$ELE_BG[$mele] align=right>
-        <TBODY>
-          <TR>
-            <TD rowspan="2"><FONT size="-1"><img src="$IMG/chara/$mchara.gif"></FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">HP</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">$mhp/$mmaxhp</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">攻擊力</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">$mstr $chi1(+$marmdmg+<font color=red>$mpetdmg)</font></FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">武器</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">$marmname<BR>
-            【$marmdmg/$marmwei】</FONT></TD>
-          </TR>
-          <TR>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">MP</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">$mmp/$mmaxmp</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">防御力</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">$mvit $chi1(+$mprodmg+$maccdmg+<font color=red>$mpetdef</font>)</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">防具</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">$mproname<BR>
-            【$mprodmg/$mprowei】</FONT></TD>
-          </TR>
-          <TR>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">$mname$petname2</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">職業</FONT></TD>
-            <TD bgcolor=$FCOLOR2>$JOB[$mclass]</TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">速度</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">$magi+<font color=red>$mpetspeed</font></FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">飾品</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">$maccname<BR>
-            【$maccdmg/$maccwei】</FONT></TD>
-          </TR>
-        </TBODY>
-      </TABLE>
-      </TD>
-      <TD align="center" bgcolor="$FCOLOR2" width="20%"><a href="#lower"><IMG src="$IMG/etc/$mode2.jpg" width="150" height="113" border="0"></a></TD>
-      <TD bgcolor="#cccccc" width=30%>
-      <TABLE border="0" width="100%" height="100%" bgcolor=$ELE_BG[$eele]>
-        <TBODY>
-          <TR>
-            <TD rowspan="2"><FONT size="-1"><img src="$IMG/$echara.gif"></FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">HP</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">$ehp/$emaxhp</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">攻擊力</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">$estr $chi2</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">武器</FONT></TD>
-          </TR>
-          <TR>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">MP</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">$emp/$emaxmp</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">防御力</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">$evit $chi2</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">防具</FONT></TD>
-         </TR>
-          <TR>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">$ename</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">職業</FONT></TD>
-            <TD bgcolor=$FCOLOR2></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">速度</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">$eagi</FONT></TD>
-            <TD bgcolor=$FCOLOR2><FONT size="-1">飾品</FONT></TD>
-          </TR>
-        </TBODY>
-      </TABLE>
-      </TD>
-    </TR>
-    <TR>
-      <TD bgcolor=#000000><font color="white" size="-1">「$mcom」</font></TD>
-      <TD align=center bgcolor="666600"><font color="white" size="-1">戰鬥宣言</font></TD>
-      <TD bgcolor=#000000><font color="white" size="-1">「・・・」</font></TD>
-    </TR>
-  </TBODY>
-</TABLE>
-<BR><BR>
+<table border="0" width="100%" align=center height="144" CLASS=TOC>
+  <tbody>
+    <tr>
+      <td colspan="3" align="center" bgcolor="$ELE_BG[$town_ele]" style="font-size:12pt"><font color="#ffffcc">$town_name $sen<font color=#AAAAFF>$SEN[$in{'mode'}]</font></font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#cccccc" width="30%">
+      <table border="0" width="100%" height="100%" bgcolor=$ELE_BG[$mele] align=right>
+        <tbody>
+          <tr>
+            <td rowspan="2"><font size="-1"><img src="$IMG/chara/$mchara.gif"></font></td>
+            <td bgcolor=$FCOLOR2><font size="-1">HP</font></td>
+            <td bgcolor=$FCOLOR2><font size="-1">$mhp/$mmaxhp</font></td>
+            <td bgcolor=$FCOLOR2><font size="-1">攻擊力</font></td>
+            <td bgcolor=$FCOLOR2><font size="-1">$mstr $chi1(+$marmdmg+<font color=red>$mpetdmg)</font></font></td>
+            <td bgcolor=$FCOLOR2><font size="-1">武器</font></td>
+            <td bgcolor=$FCOLOR2><font size="-1">$marmname<br>
+            【$marmdmg/$marmwei】</font></td>
+          </tr>
+          <tr>
+            <td bgcolor=$FCOLOR2><font size="-1">MP</font></td>
+            <td bgcolor=$FCOLOR2><font size="-1">$mmp/$mmaxmp</font></td>
+            <td bgcolor=$FCOLOR2><font size="-1">防御力</font></td>
+            <td bgcolor=$FCOLOR2><font size="-1">$mvit $chi1(+$mprodmg+$maccdmg+<font color=red>$mpetdef</font>)</font></td>
+            <td bgcolor=$FCOLOR2><font size="-1">防具</font></td>
+            <td bgcolor=$FCOLOR2><font size="-1">$mproname<br>
+            【$mprodmg/$mprowei】</font></td>
+          </tr>
+          <tr>
+            <td bgcolor=$FCOLOR2><font size="-1">$mname$petname2</font></td>
+            <td bgcolor=$FCOLOR2><font size="-1">職業</font></td>
+            <td bgcolor=$FCOLOR2>$JOB[$mclass]</td>
+            <td bgcolor=$FCOLOR2><font size="-1">速度</font></td>
+            <td bgcolor=$FCOLOR2><font size="-1">$magi+<font color=red>$mpetspeed</font></font></td>
+            <td bgcolor=$FCOLOR2><font size="-1">飾品</font></td>
+            <td bgcolor=$FCOLOR2><font size="-1">$maccname<br>
+            【$maccdmg/$maccwei】</font></td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+      <td align="center" bgcolor="$FCOLOR2" width="20%"><a href="#lower"><IMG src="$IMG/etc/$mode2.jpg" width="150" height="113" border="0"></a></td>
+      <td bgcolor="#cccccc" width=30%>
+      <table border="0" width="100%" height="100%" bgcolor=$ELE_BG[$eele]>
+        <tbody>
+          <tr>
+            <td rowspan="2"><font size="-1"><img src="$IMG/$echara.gif"></font></td>
+            <td bgcolor=$FCOLOR2><font size="-1">HP</font></td>
+            <td bgcolor=$FCOLOR2><font size="-1">$ehp/$emaxhp</font></td>
+            <td bgcolor=$FCOLOR2><font size="-1">攻擊力</font></td>
+            <td bgcolor=$FCOLOR2><font size="-1">$estr $chi2</font></td>
+            <td bgcolor=$FCOLOR2><font size="-1">武器</font></td>
+          </tr>
+          <tr>
+            <td bgcolor=$FCOLOR2><font size="-1">MP</font></td>
+            <td bgcolor=$FCOLOR2><font size="-1">$emp/$emaxmp</font></td>
+            <td bgcolor=$FCOLOR2><font size="-1">防御力</font></td>
+            <td bgcolor=$FCOLOR2><font size="-1">$evit $chi2</font></td>
+            <td bgcolor=$FCOLOR2><font size="-1">防具</font></td>
+         </tr>
+          <tr>
+            <td bgcolor=$FCOLOR2><font size="-1">$ename</font></td>
+            <td bgcolor=$FCOLOR2><font size="-1">職業</font></td>
+            <td bgcolor=$FCOLOR2></td>
+            <td bgcolor=$FCOLOR2><font size="-1">速度</font></td>
+            <td bgcolor=$FCOLOR2><font size="-1">$eagi</font></td>
+            <td bgcolor=$FCOLOR2><font size="-1">飾品</font></td>
+          </tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td bgcolor=#000000><font color="white" size="-1">「$mcom」</font></td>
+      <td align=center bgcolor="666600"><font color="white" size="-1">戰鬥宣言</font></td>
+      <td bgcolor=#000000><font color="white" size="-1">「・・・」</font></td>
+    </tr>
+  </tbody>
+</table>
+<br><br>
 EOF
 
 
 ##戰鬥處理
 	$turn=0;
 	$maxturn=30;
-        if($killking){$maxturn=20;}
-        while($turn<=$maxturn){
+	if($killking){$maxturn=20;}
+	while($turn<=$maxturn){
 		$turn++;
-		if($turn>100){&error("回合錯誤");}
 		$bmess="";
 		$mmess="";
 		if($mab[15] && $mabdmg[15]>$eabdmg[15] && int(rand(3-$mabdmg[15])) eq 0){$sensei = 1;}
@@ -495,12 +435,11 @@ EOF
 				if($runb<5){$runb=5;}
 				if($reamon && int(rand($runb)) eq 4){$mmess.="$ename逃跑了。";last;}
 				&EATT;
-
 			}
 		}else{
 			if($ehp>0){
-                                $runb=int($mtotal/500);
-                                if($runb<5){$runb=5;}
+				$runb=int($mtotal/500);
+				if($runb<5){$runb=5;}
 				if($reamon && int(rand($runb)) eq 4){$mmess.="$ename逃跑了。";last;}
 				&EATT;
 			}
@@ -520,7 +459,6 @@ EOF
 					$nowmap="1";
 					$ext_kinghp="0";
 					$kingover=1;
-#$ext_kinghit,$ext_kingtophit,$ext_kingcount
 					if($ext_kingtophit eq""){$ext_kingtophit=99;}
 					if($ext_kingtophit>$ext_kinghit){$ext_kingtophit=$ext_kinghit;}
 					$ext_kinghit=0;
@@ -550,18 +488,18 @@ EOF
 				$mode=5;
 				$get_ex = 100;
 				$z_gold = int(rand($mex*20));
-				$com.="<font color=blueviolet><b>發現隱藏的財寶！</b></font><BR><font color=blue size=4><b>$z_gold</b></font>Gold。<BR>";
+				$com.="<font color=blueviolet><b>發現隱藏的財寶！</b></font><br><font color=blue size=4><b>$z_gold</b></font>Gold。<br>";
 			}
 			elsif($in{'mode'} eq 7){
 				$mode=10;
 				$get_ex = 100;
 				$z_gold = int(rand(500000));
-				$com.="<font color=blueviolet><b>發現隱藏的財寶</b></font><BR><font color=blue size=4><b>$z_gold</b></font>Gold。<BR>";
+				$com.="<font color=blueviolet><b>發現隱藏的財寶</b></font><br><font color=blue size=4><b>$z_gold</b></font>Gold。<br>";
 			}elsif($in{'mode'} eq 8){
 				$mode=10;
 				$get_ex = 100;
 				$z_gold = int(rand(2000000));
-				$com.="<font color=blueviolet><b>發現隱藏的財寶</b></font><BR><font color=blue size=4><b>$z_gold</b></font>Gold。<BR>";
+				$com.="<font color=blueviolet><b>發現隱藏的財寶</b></font><br><font color=blue size=4><b>$z_gold</b></font>Gold。<br>";
 				
 			}
 			$getabp=$mode;
@@ -576,38 +514,37 @@ EOF
 			}elsif($mode eq"6"){
 				if($nowmap eq""){$nowmap=0;}
 				$getabp=5+$nowmap;
-                                if (int(rand(100))>=98){
-                                        $getabp=$getabp*10;
-                                }
-                                if($kingover){
+				if (int(rand(100))>=98){
+						$getabp=$getabp*10;
+				}
+				if($kingover){
 					$getabp=1000;
-                                        $z_gold = int(rand(5000000));
+					$z_gold = int(rand(5000000));
 					if(int(rand(10)) < 13){
-                                        $muprnd=int(rand(6));
+						$muprnd=int(rand(6));
 
-                                        if($muprnd eq "0"){
-                                                $mmaxstr += 1;
-                                                $com.="<font color=orange>力的界限值上昇了１點！！</font><BR>";
-                                        }elsif($muprnd eq "1"){
-                                                $mmaxvit += 1;
-                                                $com.="<font color=orange>生命的界限值上昇了１點！！</font><BR>";
-                                        }elsif($muprnd eq "2"){
-                                                $mmaxint += 1;
-                                                $com.="<font color=orange>智力的界限值上昇了１點！！</font><BR>";
-                                        }elsif($muprnd eq "3"){
-                                                $mmaxmen += 1;
-                                                $com.="<font color=orange>精神的界限值上昇了１點！！</font><BR>";
-                                        }elsif($muprnd eq "4"){
-                                                $mmaxdex += 1;
-                                                $com.="<font color=orange>運的界限值上昇了１點！！</font><BR>";
-                                        }elsif($muprnd eq "5"){
-                                                $mmaxagi += 1;
-                                                $com.="<font color=orange>速的界限值上昇了１點！！</font><BR>";
-                                        }
-					$mmax="$mmaxstr,$mmaxvit,$mmaxint,$mmaxmen,$mmaxdex,$mmaxagi,$mmaxlv";
+						if($muprnd eq "0"){
+							$mmaxstr += 1;
+							$com.="<font color=orange>力的界限值上昇了１點！！</font><br>";
+						}elsif($muprnd eq "1"){
+							$mmaxvit += 1;
+							$com.="<font color=orange>生命的界限值上昇了１點！！</font><br>";
+						}elsif($muprnd eq "2"){
+							$mmaxint += 1;
+							$com.="<font color=orange>智力的界限值上昇了１點！！</font><br>";
+						}elsif($muprnd eq "3"){
+							$mmaxmen += 1;
+							$com.="<font color=orange>精神的界限值上昇了１點！！</font><br>";
+						}elsif($muprnd eq "4"){
+							$mmaxdex += 1;
+							$com.="<font color=orange>運的界限值上昇了１點！！</font><br>";
+						}elsif($muprnd eq "5"){
+							$mmaxagi += 1;
+							$com.="<font color=orange>速的界限值上昇了１點！！</font><br>";
+						}
+						$mmax="$mmaxstr,$mmaxvit,$mmaxint,$mmaxmen,$mmaxdex,$mmaxagi,$mmaxlv";
 					}
-                                }
-
+				}
 			}
 			if($in{'mode'} eq 9){
 				$mode=9;
@@ -618,34 +555,33 @@ EOF
 				$z_gold = int(rand(2000000));
 				if($muprnd eq "0"){
 					$mmaxstr += 1;
-					$com.="<font color=orange>力的界限值上昇了１點！！</font><BR>";
+					$com.="<font color=orange>力的界限值上昇了１點！！</font><br>";
 				}elsif($muprnd eq "1"){
 					$mmaxvit += 1;
-					$com.="<font color=orange>生命的界限值上昇了１點！！</font><BR>";
+					$com.="<font color=orange>生命的界限值上昇了１點！！</font><br>";
 				}elsif($muprnd eq "2"){
 					$mmaxint += 1;
-					$com.="<font color=orange>智力的界限值上昇了１點！！</font><BR>";
+					$com.="<font color=orange>智力的界限值上昇了１點！！</font><br>";
 				}elsif($muprnd eq "3"){
 					$mmaxmen += 1;
-					$com.="<font color=orange>精神的界限值上昇了１點！！</font><BR>";
+					$com.="<font color=orange>精神的界限值上昇了１點！！</font><br>";
 				}elsif($muprnd eq "4"){
 					$mmaxdex += 1;
-					$com.="<font color=orange>運的界限值上昇了１點！！</font><BR>";
+					$com.="<font color=orange>運的界限值上昇了１點！！</font><br>";
 				}elsif($muprnd eq "5"){
 					$mmaxagi += 1;
-					$com.="<font color=orange>速的界限值上昇了１點！！</font><BR>";
+					$com.="<font color=orange>速的界限值上昇了１點！！</font><br>";
 				}
 				$mmax="$mmaxstr,$mmaxvit,$mmaxint,$mmaxmen,$mmaxdex,$mmaxagi,$mmaxlv";
-				$com.="$mname<font color=blueviolet><b>發現隱藏的財寶</b></font>獲得<BR><font color=blue size=4><b>$z_gold</b></font>Gold。<BR>";
+				$com.="$mname<font color=blueviolet><b>發現隱藏的財寶</b></font>獲得<br><font color=blue size=4><b>$z_gold</b></font>Gold。<br>";
 			}
 			if($in{'mode'} eq 6){
 				$mode=6;
-				#Zeeman	$get_ex = 100;
 				$get_ex = 100;
 				$getabp=int(rand(50));
 				if(int(rand(20)) eq 7){$getabp=300;}
 				$z_gold = int(rand(100000));
-				$com.="$mname<font color=blueviolet><b>發現隱藏的財寶</b></font>獲得<BR><font color=blue size=4><b>$z_gold</b></font>Gold。<BR>";
+				$com.="$mname<font color=blueviolet><b>發現隱藏的財寶</b></font>獲得<br><font color=blue size=4><b>$z_gold</b></font>Gold。<br>";
 			}
 			if($in{'mode'} eq 13){
 				$getabp = 1000;
@@ -654,17 +590,17 @@ EOF
 				$getabp = 100;
 				$get_ex = 100;
 				$z_gold = int(rand(250000))+250000;
-				$com.="$mname<font color=blueviolet><b>得到試練獎勵</b></font>獲得<BR><font color=blue size=4><b>$z_gold</b></font>Gold。<BR>";				
+				$com.="$mname<font color=blueviolet><b>得到試練獎勵</b></font>獲得<br><font color=blue size=4><b>$z_gold</b></font>Gold。<br>";				
 			}elsif($in{'mode'} eq 21){
 				$getabp = 500;
 				$get_ex = 100;
 				$z_gold = int(rand(500000))+500000;
-				$com.="$mname<font color=blueviolet><b>得到試練獎勵</b></font>獲得<BR><font color=blue size=4><b>$z_gold</b></font>Gold。<BR>";				
+				$com.="$mname<font color=blueviolet><b>得到試練獎勵</b></font>獲得<br><font color=blue size=4><b>$z_gold</b></font>Gold。<br>";				
 			}elsif($in{'mode'} eq 22){
 				$getabp = 1000;
 				$get_ex = 100;
 				$z_gold = int(rand(1000000))+1000000;
-				$com.="$mname<font color=blueviolet><b>得到試練獎勵</b></font>獲得<BR><font color=blue size=4><b>$z_gold</b></font>Gold。<BR>";				
+				$com.="$mname<font color=blueviolet><b>得到試練獎勵</b></font>獲得<br><font color=blue size=4><b>$z_gold</b></font>Gold。<br>";				
 			}
 			if($in{'mode'} eq 23 || $in{'mode'} eq 22){
 				if($in{'mode'} eq 23){
@@ -675,22 +611,22 @@ EOF
 
 				if($muprnd eq "0"){
 					$mmaxstr += 1;
-					$com.="<font color=orange>力的界限值上昇了１點！！</font><BR>";
+					$com.="<font color=orange>力的界限值上昇了１點！！</font><br>";
 				}elsif($muprnd eq "1"){
 					$mmaxvit += 1;
-					$com.="<font color=orange>生命的界限值上昇了１點！！</font><BR>";
+					$com.="<font color=orange>生命的界限值上昇了１點！！</font><br>";
 				}elsif($muprnd eq "2"){
 					$mmaxint += 1;
-					$com.="<font color=orange>智力的界限值上昇了１點！！</font><BR>";
+					$com.="<font color=orange>智力的界限值上昇了１點！！</font><br>";
 				}elsif($muprnd eq "3"){
 					$mmaxmen += 1;
-					$com.="<font color=orange>精神的界限值上昇了１點！！</font><BR>";
+					$com.="<font color=orange>精神的界限值上昇了１點！！</font><br>";
 				}elsif($muprnd eq "4"){
 					$mmaxdex += 1;
-					$com.="<font color=orange>運的界限值上昇了１點！！</font><BR>";
+					$com.="<font color=orange>運的界限值上昇了１點！！</font><br>";
 				}elsif($muprnd eq "5"){
 					$mmaxagi += 1;
-					$com.="<font color=orange>速的界限值上昇了１點！！</font><BR>";
+					$com.="<font color=orange>速的界限值上昇了１點！！</font><br>";
 				}
 				$mmax="$mmaxstr,$mmaxvit,$mmaxint,$mmaxmen,$mmaxdex,$mmaxagi,$mmaxlv";
 
@@ -702,14 +638,6 @@ EOF
 			
 			if($reamon eq 1){$getabp=$mode*20;}
 
-#Zeeman
-#$get_ex=1000;
-#$getabp=1000;
-#			if ($in{'verchk'} ne"") {
-#				$get_ex+=$VERADDEX;
-#				$getabp+=$VERADDABP;
-#				$get_gold+=$VERADDGOLD;
-#			}
 			#經驗加成
 			$get_ex=int($get_ex*$ADDEX);
 			#熟練加成
@@ -723,30 +651,30 @@ EOF
 				$mex+=$get_ex;
 			}
 			$mtotalex+=$get_ex;
-			#Zeeman + 99999999
+
 			if($mode eq"7"){
-				$get_gold=($epoint + int(rand($epoint/5))); #+int(rand(99999999));
+				$get_gold=($epoint + int(rand($epoint/5)));
 			}else{
 				$get_gold=($epoint + int(rand($epoint/5)))*4;
 			}
 			#金錢任務加成
 			if($quest_time[1]>=$date){
 				$quest_get_gold=$get_gold;
-				$com.="<font color=green size=3>$QUEST_NAME[1]任務效果，增加$quest_get_gold Gold</font>。<BR>";
+				$com.="<font color=green size=3>$QUEST_NAME[1]任務效果，增加$quest_get_gold Gold</font>。<br>";
 			}
-                        #金錢加成
+			#金錢加成
 			$get_gold=int($get_gold*$ADDGOLD);
 			#熟練任務加成
 			if($quest_time[2]>=$date){
 				if($quest_abp>200){
 					$quest_abp=200;
 				}
-				$com.="<font color=green size=3>$QUEST_NAME[2]任務效果，增加$quest_abp熟練</font>。<BR>";
+				$com.="<font color=green size=3>$QUEST_NAME[2]任務效果，增加$quest_abp熟練</font>。<br>";
 			}else{
 				$quest_abp=0;
 			}
 			if($member_level>0){
-				$com.="<font color=green size=3>等級$member_level贊助效果，增加$member_level熟練</font>。<BR>";
+				$com.="<font color=green size=3>等級$member_level贊助效果，增加$member_level熟練</font>。<br>";
 			}
 			
 			$mabp+=$getabp+$quest_abp+$member_level;
@@ -759,14 +687,11 @@ EOF
 			}
 			if(int(rand(10-$find)) eq 1){
 				$add_gold=int(rand($get_gold*5+1000));
-				$com.="額外獲得<font color=orange size=4>$add_gold</font>Gold。<BR>";
+				$com.="額外獲得<font color=orange size=4>$add_gold</font>Gold。<br>";
 			}
 			$get_gold2=$get_gold+$add_gold + $z_gold+$quest_get_gold;
 
 			$mgold+=$get_gold2;
-
-			##レベルアップ
-
 
 			&LVUP;
 
@@ -781,8 +706,6 @@ EOF
 			if(int(rand($maxrand2)) eq "1" || $in{'mode'} eq "13"){
 				&MAXUP;
 			}
-#Zeeman
-#&MAXUP;
 
 			##宝箱ゲット
 			$reaup = 0;
@@ -792,7 +715,7 @@ EOF
 			#地圖打寶率
 			if($in{'mode'} eq 4){$reaup += 2000;}
 			elsif($in{'mode'} eq "30") {$reaup += 3000;}
-                        elsif($kingover){$reaup = 9900;}
+			elsif($kingover){$reaup = 9900;}
 			elsif($in{'mode'} eq "31") {$reaup += 4000;}
 			
 			$han2=int(rand(10000-$reaup));
@@ -800,7 +723,7 @@ EOF
 				$sr_rnd=400-$member_level*30;
 				$sr_rnd2=50-$member_level*3;
 				if($sr_rnd <100){$sr_rnd=100;}
-                                if($sr_rnd2 <25){$sr_rnd2=25;}
+				if($sr_rnd2 <25){$sr_rnd2=25;}
 				if (int(rand($sr_rnd)) eq "8"){
 					$reahit=1;
 				}elsif ($mab[38] && int(rand($sr_rnd2)) eq "10") {
@@ -820,29 +743,29 @@ EOF
 					}else{
 						$ext_mix[$ino]++;
 					}
-					$com.="<BR><B>發現<font color=#ff0066>$ELE[$ino]原料</font></B>!!<BR>";
+					$com.="<br><B>發現<font color=#ff0066>$ELE[$ino]原料</font></B>!!<br>";
 					if($STORITM_MAX<$ext_mix[$ino]){
 						$com.="<font color=#ff0000>但因此原料數量達倉庫上限,所以被丟棄</font>";
 						$ext_mix[$ino]--;
 					#原料任務效果
 					}elsif($quest_time[5]>=$date){
 						$ext_mix[$ino]++;
-	                                        $com.="<BR><font color=green><B>$QUEST_NAME[5]任務效果追加１個<font color=#ff0066>$ELE[$ino]原料</font></B>!!</font><BR>";	
-	                                        if($STORITM_MAX<$ext_mix[$ino]){
-        	                                        $com.="<font color=#ff0000>但因此原料數量達倉庫上限,所以被丟棄</font>";
-                	                                $ext_mix[$ino]--;
+						$com.="<br><font color=green><B>$QUEST_NAME[5]任務效果追加１個<font color=#ff0066>$ELE[$ino]原料</font></B>!!</font><br>";	
+						if($STORITM_MAX<$ext_mix[$ino]){
+							$com.="<font color=#ff0000>但因此原料數量達倉庫上限,所以被丟棄</font>";
+							$ext_mix[$ino]--;
 						}
 					}
 					$iflg=1;
 					$reano=5;
 				}elsif(($mid eq $GMID || int(rand(2500)) eq 1) && $in{'mode'} eq "31" && $nowmap>5){
 					#地獄草
-                                        $rflg=1;
+					$rflg=1;
 					$reahit=1;
 					$REA="item";
-                                        $ino=51;
-                                        $iflg=1;
-                                        $reano=3;
+					$ino=51;
+					$iflg=1;
+					$reano=3;
 				}
 			}
 			if($in{'mode'} eq "12" && int(rand(5)) eq "3"){
@@ -876,11 +799,11 @@ EOF
 					$rrand=15;
 				}
 				#降低物品出現率
-				if ($brand >4){$brand=int(rand(7));}
-                                if ($brand >4){$brand=5;}
-                                if ($brand eq 4 && !$mab[36]) {
-                                        $brand=int(rand(6));
-                                }
+                if ($brand >4){$brand=int(rand(7));}
+				if ($brand >4){$brand=5;}
+				if ($brand eq 4 && !$mab[36]) {
+					$brand=int(rand(6));
+				}
 
 				if($brand eq 1){
 					$REA="rarearm";
@@ -929,19 +852,19 @@ EOF
 			} else {
 				$rrand=15;
 			}
-                        $act_rnd=500;
-                        $act_rnd-=$member_level*40;
-                        if($act_rnd<100){$act_rnd=100;}
-#KO魔王掉奧義石
+			$act_rnd=500;
+			$act_rnd-=$member_level*40;
+			if($act_rnd<100){$act_rnd=100;}
+			#KO魔王掉奧義石
 			if($kingover &&!$reahit && int(rand($act_rnd/2)) eq 33){
 				$tmp_get[0]=92;
-                                $tmp_get[1]=93;
-                                $tmp_get[2]=94;
-                                $tmp_get[3]=95;
-                                $tmp_get[4]=96;
-                                $tmp_get[5]=97;
-                                $tmp_get[6]=98;
-                                $tmp_get[7]=108;
+				$tmp_get[1]=93;
+				$tmp_get[2]=94;
+				$tmp_get[3]=95;
+				$tmp_get[4]=96;
+				$tmp_get[5]=97;
+				$tmp_get[6]=98;
+				$tmp_get[7]=108;
 
 				$REA="";
 				$reano="7";
@@ -953,88 +876,84 @@ EOF
 			        @ABILITY = <IN>;
 			        close(IN);
 			        foreach(@ABILITY){
-			                ($abno,$abname,$abcom)=split(/<>/);
+						($abno,$abname,$abcom)=split(/<>/);
 					if($abno eq $rndsta){
 						last;
 					}
 				}
 				$REA[0]="$abname-奧義之石(飾)<>300000<>2<>0<>0<>80<>10<>$rndsta<><><>";
 			}elsif(!$reahit && $in{'mode'} eq"40" && (int(rand($act_rnd)) eq 3 || $mid eq $GMID)){
-#魔王城掉奧義石
-                                $REA="";
-                                $reano="7";
-                                $ino=0;
-                                $reahit=1;
-                                $rndsta=int(rand(54));
+			#魔王城掉奧義石
+				$REA="";
+				$reano="7";
+				$ino=0;
+				$reahit=1;
+				$rndsta=int(rand(54));
 				if($rndsta eq 53){
 					$rndsta=int(rand(22));
 					if($rndsta eq 21){
 						$rndsta=int(rand(6));
-                                                $rndsta=$ext_stone[$rndsta];
+						$rndsta=$ext_stone[$rndsta];
 					}else{
-	                                        $rndsta=$adv_stone[$rndsta];
+						$rndsta=$adv_stone[$rndsta];
 					}
 				}else{
 					$rndsta=$normal_stone[$rndsta];
 				}
 				if($rndsta eq""){$rndsta="1";}
-                                open(IN,"./data/ability.cgi");
-                                @ABILITY = <IN>;
-                                close(IN);
-                                foreach(@ABILITY){
-                                        ($abno,$abname,$abcom)=split(/<>/);
-                                        if($abno eq $rndsta){
-                                                last;
-                                        }
-                                }
+				open(IN,"./data/ability.cgi");
+				@ABILITY = <IN>;
+				close(IN);
+				foreach(@ABILITY){
+					($abno,$abname,$abcom)=split(/<>/);
+					if($abno eq $rndsta){
+						last;
+					}
+				}
 				$reqx=int(rand(3));
 				if($reqx eq 0){
 					$req_namex="武";
 				}elsif($reqx eq 1){
-                                        $req_namex="防";
+					$req_namex="防";
 				}elsif($reqx eq 2){
-                                        $req_namex="飾";
+					$req_namex="飾";
 				}
-                                $REA[0]="$abname-奧義之石($req_namex)<>300000<>$reqx<>0<>0<>80<>10<>$rndsta<><><>";
+				$REA[0]="$abname-奧義之石($req_namex)<>300000<>$reqx<>0<>0<>80<>10<>$rndsta<><><>";
 			}
-#
-#活動區
-#加倍
-$act_rnd=int($act_rnd/2);
-                        if(!$reahit && $ACTOPEN>0 && int(rand($act_rnd)) eq 35 && $ext_today_total<1501){
+
+			#活動區
+			#加倍
+			$act_rnd=int($act_rnd/2);
+			if(!$reahit && $ACTOPEN>0 && int(rand($act_rnd)) eq 35 && $ext_today_total<1501){
 #1/10的機會得到無限冒險抽獎券
 				if (int(rand(10)) eq 7) {$ACTOPEN=8;}
 				($act[1],$act[2],$act[3],$act[4],$act[5],$act[6],$act[7],$act[8],$act[9])=split(/,/,$ext_action);
-                                $act[$ACTOPEN]+=1;
+				$act[$ACTOPEN]+=1;
 				$ext_action="$act[1],$act[2],$act[3],$act[4],$act[5],$act[6],$act[7],$act[8],$act[9]";
 				$REA="actionitem";
 				$reano=6;
 				$ino=$ACTOPEN-1;
 				$reahit=1;
-				$com.="<BR><B>發獲得<font color=#ff0066>$ACTITEM[$ACTOPEN]</font></B>!!<BR>";
+				$com.="<br><B>發獲得<font color=#ff0066>$ACTITEM[$ACTOPEN]</font></B>!!<br>";
 				&maplog("<font color=#ff0066>[活動]</font><font color=blue>$mname</font>於<font color=green><font color=blue>$SEN[$in{'mode'}]</font></font>獲得<font color=red>$ACTITEM[$ACTOPEN]</font>!!");
 				&maplog7("<font color=#ff0066>[活動]</font><font color=blue>$mname</font>於<font color=green><font color=blue>$SEN[$in{'mode'}]</font></font>獲得<font color=red>$ACTITEM[$ACTOPEN]</font>!!");
-
 			}
 #活動區結束
 			if ($con_id eq "0"){$rndtmp=500;}else{$rndtmp=2000;}
-                        if(!$reahit && int(rand($rndtmp)) eq 50){
-                                        #建國之石
-                                        $rflg=1;
-                                        $REA="mixitem";
-                                        $ino=$eele;
-                                        $ino=0;
-                                        if($ext_mix[$ino] eq ""){
-                                                $ext_mix[$ino]=1;
-                                        }else{
-                                                $ext_mix[$ino]++;
-                                        }
-                                        $com.="<BR><B>發現<font color=#ff0066>建國之石</font></B>!!<BR>";
-                                        $iflg=1;
-                                        $reano=5;
-#&maplog("<font color=#ff0066>[打寶]</font><font color=blue>$mname</font>於<font color=green><font color=blue>$SEN[$in{'mode'}]</font></font>獲得<font color=red>建國之石</font>!!");
-#                                        &maplog7("<font color=#ff0066>[打寶]</font><font color=blue>$mname</font>於<font color=green><font color=blue>$SEN[$in{'mode'}]</font></font>獲得$led<font color=red>建國之石</font>!!");
-
+				if(!$reahit && int(rand($rndtmp)) eq 50){
+					#建國之石
+					$rflg=1;
+					$REA="mixitem";
+					$ino=$eele;
+					$ino=0;
+					if($ext_mix[$ino] eq ""){
+						$ext_mix[$ino]=1;
+					}else{
+						$ext_mix[$ino]++;
+					}
+					$com.="<br><B>發現<font color=#ff0066>建國之石</font></B>!!<br>";
+					$iflg=1;
+					$reano=5;
 			}
 			if($reahit){
 				if ($ext_tl_gift eq ""){$ext_tl_gift=0;}
@@ -1053,30 +972,30 @@ $act_rnd=int($act_rnd/2);
 				@ITEM = <IN>;
 				close(IN);
 				if(@ITEM<$ITM_MAX && $it_name ne ""){
-				if ($REA eq "rarearm" || $REA eq "rarepro" || $REA eq "rareacc"){
-					$rand_val=17-int($mtotal/10000);
-					if ($rand_val<8) {
-						$rand_val=8;
-					}
-					$rand_val-=$member_level;
-					if($rand_val<3){$rand_val=3;}
-					if ($mid eq $GMID) {$rand_val=2;}
-					if (int(rand($rand_val)) eq 1) {
-						$rnd_srar=int(rand($SRARCOUNT));
-						if ($rnd_srar eq 14) {
+					if ($REA eq "rarearm" || $REA eq "rarepro" || $REA eq "rareacc"){
+						$rand_val=17-int($mtotal/10000);
+						if ($rand_val<8) {
+							$rand_val=8;
+						}
+						$rand_val-=$member_level;
+						if($rand_val<3){$rand_val=3;}
+						if ($mid eq $GMID) {$rand_val=2;}
+						if (int(rand($rand_val)) eq 1) {
 							$rnd_srar=int(rand($SRARCOUNT));
+							if ($rnd_srar eq 14) {
+								$rnd_srar=int(rand($SRARCOUNT));
+							}
+							$it_ele=int(rand(8));
+							$it_type=$SRAR[$rnd_srar][0];
+							if ($REA eq "rarearm") {
+								$it_name=$SRAR[$rnd_srar][1] . "之" . $ARM[$it_ele] . "★";
+							}elsif ($REA eq "rarepro") {
+								$it_name=$SRAR[$rnd_srar][1] . $TPRO[$it_ele] . "★";
+							}elsif ($REA eq "rareacc") {
+								$it_name=$SRAR[$rnd_srar][1] . $TACC[$it_ele] . "★";
+							}
+							$rnd_srar=int(rand(21));
 						}
-						$it_ele=int(rand(8));
-						$it_type=$SRAR[$rnd_srar][0];
-						if ($REA eq "rarearm") {
-							$it_name=$SRAR[$rnd_srar][1] . "之" . $ARM[$it_ele] . "★";
-						}elsif ($REA eq "rarepro") {
-							$it_name=$SRAR[$rnd_srar][1] . $TPRO[$it_ele] . "★";
-						}elsif ($REA eq "rareacc") {
-							$it_name=$SRAR[$rnd_srar][1] . $TACC[$it_ele] . "★";
-						}
-						$rnd_srar=int(rand(21));
-					}
 						$up_var=0;
 						if(int(rand($rand_val*2)) eq 5){
 							$up_var=0.4;
@@ -1093,16 +1012,16 @@ $act_rnd=int($act_rnd/2);
 						}else{
 							$it_wei-=int($up_var*50);
 						}
-					
-					$it_desc="(".$it_dmg."/".$it_wei.")(".$ELE[$it_ele].")";
-					if ($ext_tl_goditem eq""){$ext_tl_goditem=0;}
-					$ext_tl_goditem++;
-				}
+						
+						$it_desc="(".$it_dmg."/".$it_wei.")(".$ELE[$it_ele].")";
+						if ($ext_tl_goditem eq""){$ext_tl_goditem=0;}
+						$ext_tl_goditem++;
+					}
 					push(@ITEM,"rea<>$reano<>$it_name<>$it_val<>$it_dmg<>$it_wei<>$it_ele<>$it_hit<>$it_cl<>$it_type<>$it_sta<>0<>\n");
 					open(OUT,">./logfile/item/$in{'id'}.cgi");
 					print OUT @ITEM;
 					close(OUT);
-					$com.="<BR><B>發現<font color=#ff0066>$it_name $it_desc</font></B>!!<BR>";
+					$com.="<br><B>發現<font color=#ff0066>$it_name $it_desc</font></B>!!<br>";
 					&maplog("<font color=#ff0066>[打寶]</font><font color=blue>$mname</font>於<font color=green><font color=blue>$SEN[$in{'mode'}]</font></font>獲得<font color=red>$it_name</font><font color=green>$it_desc</font>!!");
 					&maplog7("<font color=#ff0066>[打寶]</font><font color=blue>$mname</font>於<font color=green><font color=blue>$SEN[$in{'mode'}]</font></font>獲得$led<font color=red>$it_name</font><font color=green>$it_desc</font>!!");
 				}
@@ -1110,34 +1029,34 @@ $act_rnd=int($act_rnd/2);
 
 			print <<"EOF";
 			<center><a name=lower></a>
-			<TABLE border="0" width="400" bgcolor="#000000" CLASS=TC>
-  			<TBODY><TR>
-      			<TD colspan="2" align="center" bgcolor="$FCOLOR"><FONT color="#ffffcc">勝利！</FONT></TD>
-    			</TR>
-    			<TR><TD colspan="2" align="center" bgcolor="$FCOLOR2">
-			獲得<FONT color="#cc0000">$get_ex</FONT>經驗<BR>
-      			獲得<FONT color="#000099">$get_gold</FONT> Gold！<BR>
-			獲得<FONT color="#cc0000">$getabp</FONT>熟練度<BR>
-			$com<BR>$showmsg<BR>
-      			<TABLE border="0" bgcolor="#990000">
-        		<TBODY><TR>
-            		<TD bgcolor="#ffffcc">經驗值</TD>
-            		<TD bgcolor="#ffffcc">$mex(+$get_ex)point</TD>
-          		</TR>
-          		<TR><TD bgcolor="#ffffcc">Gold</TD>
-            		<TD bgcolor="#ffffcc">$mgold(+$get_gold2)Gold</TD>
-          		</TR></TBODY></TABLE>
-      			</TD></TR>
-  			</TBODY></TABLE>
+			<table border="0" width="400" bgcolor="#000000" CLASS=TC>
+  			<tbody><tr>
+      			<td colspan="2" align="center" bgcolor="$FCOLOR"><font color="#ffffcc">勝利！</font></td>
+    			</tr>
+    			<tr><td colspan="2" align="center" bgcolor="$FCOLOR2">
+			獲得<font color="#cc0000">$get_ex</font>經驗<br>
+      			獲得<font color="#000099">$get_gold</font> Gold！<br>
+			獲得<font color="#cc0000">$getabp</font>熟練度<br>
+			$com<br>$showmsg<br>
+      			<table border="0" bgcolor="#990000">
+        		<tbody><tr>
+            		<td bgcolor="#ffffcc">經驗值</td>
+            		<td bgcolor="#ffffcc">$mex(+$get_ex)point</td>
+          		</tr>
+          		<tr><td bgcolor="#ffffcc">Gold</td>
+            		<td bgcolor="#ffffcc">$mgold(+$get_gold2)Gold</td>
+          		</tr></tbody></table>
+      			</td></tr>
+  			</tbody></table>
 			</center>
 EOF
 			last;
 		}if($lose){
-                        if ($quest2_town_no eq $mpos && $quest2_limit_time>$date && $quest2_map eq $in{'mode'} && $quest2_count<10){
-                                $quest2_count=0;
-                        }
+			if ($quest2_town_no eq $mpos && $quest2_limit_time>$date && $quest2_map eq $in{'mode'} && $quest2_count<10){
+				$quest2_count=0;
+			}
 			$ext_tl_lose++;
-                        #禁地回入口
+			#禁地回入口
 			if($in{'mode'} eq"31" && !$killking){
 				if($mab[39] && $nowmap ne""){
 					if($mabdmg[39]<$nowmap){
@@ -1152,19 +1071,18 @@ EOF
 				$ext_kinghp=$ehp+1000;
 				if($ext_kinghp>200000){$ext_kinghp=200000;}
 				if(int(rand(10)) >6 ){
-                                        if($mab[39] && $mabdmg[39]<$nowmap){
-                                                $nowmap-=$mabdmg[39];
-                                        }else{
-                                                $nowmap="";
-                                        }
-					if($nowmap eq""){
-						$losecom.="<font color=red>你被魔王推回到入口$nowmap!</font><BR>";
+					if($mab[39] && $mabdmg[39]<$nowmap){
+							$nowmap-=$mabdmg[39];
 					}else{
-						$losecom.="<font color=red>你被魔王推回$mabdmg[39]層!</font><BR>";
+							$nowmap="";
+					}
+					if($nowmap eq""){
+						$losecom.="<font color=red>你被魔王推回到入口$nowmap!</font><br>";
+					}else{
+						$losecom.="<font color=red>你被魔王推回$mabdmg[39]層!</font><br>";
 					}
 				}
 			}
-			#$bmess.="$mname的所持金減半。";
 			$lose_gold=$mgold-int($mgold/2);
 			$mgold-=$lose_gold;
 			&atp;
@@ -1175,18 +1093,18 @@ EOF
 			}
 			print <<"EOF";
 			<center><a name=lower></a>
-			<TABLE border="0" width="400" bgcolor="#000000" CLASS=TC>
-  			<TBODY>
-    			<TR><TD colspan="2" align="center" bgcolor="$FCOLOR2">
-			<FONT color="#ff0000">$mname的所持金減半！！</FONT><BR>
-      			<BR>
+			<table border="0" width="400" bgcolor="#000000" CLASS=TC>
+  			<tbody>
+    			<tr><td colspan="2" align="center" bgcolor="$FCOLOR2">
+			<font color="#ff0000">$mname的所持金減半！！</font><br>
+      			<br>
 
-      			<TABLE border="0" bgcolor="#990000">
-        		<TBODY><TR>$losecom
-            		<TD bgcolor="#ffffcc">失去了<FONT color="#000099">$lose_gold</FONT> Gold！</TD>
-          		</TR></TBODY></TABLE>
-      			</TD></TR>
-  			</TBODY></TABLE>
+      			<table border="0" bgcolor="#990000">
+        		<tbody><tr>$losecom
+            		<td bgcolor="#ffffcc">失去了<font color="#000099">$lose_gold</font> Gold！</td>
+          		</tr></tbody></table>
+      			</td></tr>
+  			</tbody></table>
 			</center>
 EOF
 			last;
@@ -1199,29 +1117,29 @@ EOF
 	}
 	if(!$win && !$lose){
 		&atp;
-                        if($killking){
-                                $ext_kinghp=$ehp+1000;
-                                if($ext_kinghp>200000){$ext_kinghp=200000;}
-                                if(int(rand(10)) >3 ){
-                                        if($mab[39] && $mabdmg[39]<$nowmap){
-                                                $nowmap-=$mabdmg[39];
-                                        }else{
-                                                $nowmap="";
-                                        }
-                                        if($nowmap eq""){
-                                                $mmess.="<font color=red>你被魔王推回到入口!</font><BR>";
-                                        }else{
-                                                $mmess.="<font color=red>你被魔王推回$mabdmg[39]層!</font><BR>";
-                                        }
-                                }
-                        }
-                if($sensei){
-                        $mmess.="<center><a name=lower></a>此戰未分出勝負。";
-                        &BPRINT;
-                } else {
-                        $bmess.="<center><a name=lower></a>此戰未分出勝負。";
-                        &MPRINT;
-                }
+		if($killking){
+			$ext_kinghp=$ehp+1000;
+			if($ext_kinghp>200000){$ext_kinghp=200000;}
+			if(int(rand(10)) >3 ){
+				if($mab[39] && $mabdmg[39]<$nowmap){
+					$nowmap-=$mabdmg[39];
+				}else{
+					$nowmap="";
+				}
+				if($nowmap eq""){
+					$mmess.="<font color=red>你被魔王推回到入口!</font><br>";
+				}else{
+					$mmess.="<font color=red>你被魔王推回$mabdmg[39]層!</font><br>";
+				}
+			}
+		}
+		if($sensei){
+			$mmess.="<center><a name=lower></a>此戰未分出勝負。";
+			&BPRINT;
+		} else {
+			$bmess.="<center><a name=lower></a>此戰未分出勝負。";
+			&MPRINT;
+		}
 
 	}
 
@@ -1300,19 +1218,19 @@ $buttonl[0]=<<"EOF";
         <form action="./town.cgi" method="POST">
         <input type=hidden name=id value="$mid">
         <input type=hidden name=pass value="$mpass">
-        <INPUT type=hidden name=mode value=inn>
+        <input type=hidden name=mode value=inn>
         <input type=hidden name=rmode value=$rmode>
         <input type="submit" value="住宿" CLASS=FC style="HEIGHT: 48px" ></td>
         </form>
 EOF
 $buttonl[2]=<<"EOF";
         <form action="./town.cgi" method="post">
-        <INPUT type=hidden name=azuke value=$mgold>
-        <INPUT type=hidden name=id value=$mid>
-        <INPUT type=hidden name=pass value=$mpass>
+        <input type=hidden name=azuke value=$mgold>
+        <input type=hidden name=id value=$mid>
+        <input type=hidden name=pass value=$mpass>
 	<input type=hidden name=rmode value=$rmode>
-        <INPUT type=hidden name=mode value=bankall>
-        <INPUT type=submit value=全部存入銀行 CLASS=FC style="HEIGHT: 48px"></td></form>
+        <input type=hidden name=mode value=bankall>
+        <input type=submit value=全部存入銀行 CLASS=FC style="HEIGHT: 48px"></td></form>
 EOF
 	print <<"EOF";
 <center>
@@ -1341,9 +1259,9 @@ sub atp{
 			$k_val-=$mmaxhp*2;
 			$ihit=1;
 			$pnum = int($k_val/2);
-			$bmess.= "<BR>使用〔$k_name〕剩餘<font color=red>$pnum</font>)<BR>";
+			$bmess.= "<br>使用〔$k_name〕剩餘<font color=red>$pnum</font>)<br>";
 			if($k_val <0){
-				$bmess.= "<font color=red>〔$k_name〕消失了。。</font><BR>";
+				$bmess.= "<font color=red>〔$k_name〕消失了。。</font><br>";
 			}else{
 				push(@NEW_C_ITEM,"$k_no<>$k_mark<>$k_name<>$k_val<>$k_dmg<>$k_wei<>$k_ele<>$k_hit<>$k_cl<>$k_type<>$k_sta<>$k_flg<>\n");
 			}
@@ -1356,11 +1274,11 @@ sub atp{
 	close(OUT);
 }
 sub lockaccout{
-                $e_addrobot=($ext_robot % 3) + 1;
-                $ext_robot++;
-                &verchklog("不當進入($ext_robot)");
-                $ext_lock=$date+600*$e_addrobot;
-                &ext_input;
-                &error3("封鎖 $e_addrobot 分鐘");
+	$e_addrobot=($ext_robot % 3) + 1;
+	$ext_robot++;
+	&verchklog("不當進入($ext_robot)");
+	$ext_lock=$date+600*$e_addrobot;
+	&ext_input;
+	&error3("封鎖 $e_addrobot 分鐘");
 }
 1;
