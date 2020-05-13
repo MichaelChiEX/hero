@@ -632,43 +632,6 @@ if($NCONCOUNT>=1){
 	}
 }
 }
-##參加者リスト
-sub guest_list {
-
-	open(IN,"./data/guest_list.cgi");
-	@guest = <IN>;
-	close(IN);
-	&host_name;
-	$timer = time();@newguest=();
-	foreach(@guest) {
-		($gname,$gtime,$gcon,$ghost,$gid)=split(/<>/);
-		if($timer>$gtime+($CMDTIME*100)){next;}
-		elsif($mname eq $gname){
-			#if($timer<$gtime+3){&error("操作過快,每次操作時間為$CMDTIME秒");}
-			if($timer<$gtime+3){&error("操作過快,每次操作時間為3秒");}
-			$ghit=1;
-			push(@newguest,"$mname<>$timer<>$con_ele<>$host<>$mid<>\n");
-
-#"<a href=\"javascript:void(0);\" onClick=\"window.open('./status_print.cgi?id=$pid', 'newwin', 'width=600,height=400,scrollbars =yes')\"><font color=$ELE_BG[$gcon]>$mname</a></font>";
-#			$guestlist.="<font color=$ELE_BG[$gcon]>★$mname</font>";
-$pid = &id_change("$mid");
-			$guestlist.="★<a href=\"javascript:void(0);\" onClick=\"window.open('./status_print.cgi?id=$pid', 'newwin', 'width=600,height=400,scrollbars =yes')\"><font color=$ELE_BG[$gcon]>$mname</a></font>";
-		}
-		else{
-$pid = &id_change("$gid");
-			push(@newguest,"$gname<>$gtime<>$gcon<>$ghost<>$gid<>\n");
-			$guestlist.="★<a href=\"javascript:void(0);\" onClick=\"window.open('./status_print.cgi?id=$pid', 'newwin', 'width=600,height=400,scrollbars =yes')\"><font color=$ELE_BG[$gcon]>$gname</a></font>";
-		}
-	}
-	if(!$ghit){
-		push(@newguest,"$mname<>$timer<>$con_ele<>$host<>$mid<>\n");
-		$guestlist.="<font color=$ELE_BG[$mcon]>★$mname</font>";
-	}
-	open(OUT,">./data/guest_list.cgi") or &error('檔案無法開啟(sub.cgi)340。');
-	print OUT @newguest;
-	close(OUT);
-
-}
 
 ###時間取得
 sub time_data{
@@ -854,26 +817,7 @@ EOF
         &footer;
         exit;
 }
-sub aerror {
-    print "Cache-Control: no-cache\n";
-    print "Pragma: no-cache\n";
-    print "Content-type: text/html\n\n";
-	print <<"EOF";
-ERROR<>$_[0]
 
-EOF
-	exit;
-}
-sub aerror2 {
-    print "Cache-Control: no-cache\n";
-    print "Pragma: no-cache\n";
-    print "Content-type: text/html\n\n";
-	print <<"EOF";
-ERROR2<>$_[0]
-
-EOF
-	exit;
-}
 ##展開任務資料
 sub quest_open{
         ($quest_town_no,$quest_town_name)=split(/:/,$ext_quest_town);
@@ -1072,156 +1016,7 @@ sub mainfooter{
         </html>
 EOF
 }
-sub createver {
-                open(IN,"vercode.cgi");
-                @VER_DATA = <IN>;
-                close(IN);
-                $vcode="";
-                $ilen=int(rand(3))+4;
-                for ($i=0;$i<$ilen;$i++){
-                        ($vcodes[0],$vcodes[1])=split(/\n/,$VER_DATA[int(rand(1100))]);
-                        $vcode.=$vcodes[0];
-                }
-                $ext_check_robot=$vcode;
-}
-sub vercheck_form {
-        $date = time();
-                $ext_tmpx2=$ext_lock-$date;
-                $ext_tmpx=int(($ext_tmpx2)/60/60);
-                if($ext_tmpx2>0){
-&verchklog("封鎖後戰鬥($ext_robot)");
-                        &error3("你的帳號已被封鎖,需要$ext_tmpx小時($ext_tmpx2秒)才會解除");
-                }
-        &header;
 
-	$tts=time();
-	$ntime=$tts-$vertime;
-                $vrnd=int(rand(100));
-                open(IN,"vercode.cgi");
-                @VER_DATA = <IN>;
-                close(IN);
-                $vcode="";
-        $VERRND=int(rand(6))+1;
-        for ($x=1;$x<=6;$x++){
-                $vcode="";
-                $vcode3="";
-                $ilen=int(rand(3))+4;
-                for ($i=0;$i<$ilen;$i++){
-                        ($vcodes[0],$vcodes[1])=split(/\n/,$VER_DATA[int(rand(1100))]);
-                        $vcode.=$vcodes[0];
-                }
-                if($x eq $VERRND){
-                        $vcode=$ext_check_robot;
-                }
-                if($vertime % 5 eq 1){
-                        $VERBUTTON.="<input type=button Class=FC value=".$x."."."$vcode style=width:100px;height:50px onclick=javascript:submits$vrnd('$vcode') name=B1>　　";
-                }else{
-                        $VERBUTTON.=$x."."."$vcode<input type=button Class=FC style=width:100px;height:50px value=選擇 onclick=javascript:submits$vrnd('$vcode') name=B1>　　　";
-                }
-		if($x %3 eq 0){$VERBUTTON.="<BR><BR>";}
-        }
-                $vertime=$tts;
-                &ext_input;
-        print <<"EOF";
-        <center>
-        <TABLE border="0" width="100%" bgcolor="#660000" CLASS=TC height=900 onclick="verlog('click');">
-        <TBODY>
-        <TR>
-        <TD valign=top height=40 align="center" style="color:#FFFFCC"><B><font size=5>外掛驗證</font><BR></B><B>請盡快選擇與下方句子一樣的選項<BR></B></TD>
-        </TR>
-        <TR>
-        <TD valign=top height=50 align="center" style="color:#EEEECC;"><B><IMG src="/showver.php?ver=$mid&check=$vertime" border=0></B></TD>
-        </TR>
-        <TR>
-        <TD bgcolor="#ffffff" valign=top align="center"><BR><B>$_[0]</B>
-        <CENTER>
-$VERBUTTON
-        </CENTER>
-        </TD>
-        </TR>
-        </TBODY>
-        </TABLE>
-        </CENTER>
-        <BR><BR>
-        </form>
-        <P><hr size=0></center>
-        </center>
-                <form action=./battle.cgi method=post id=battlef$vrnd target=actionframe>
-                <input type=hidden name=id value=$mid>
-                <INPUT type=hidden name=pass value=$mpass>
-                <input type=hidden name=rmode value=$in{'rmode'}>
-                <input type=hidden name=mode value=$in{'mode'}>
-                <input type=hidden name=rnd value=$moya>
-                <input type=hidden name=rnd2 value=$moya>
-                <input type=hidden name=verchk>
-                </form>
-<form target=_top action=/index.html id=outf>
-<form>
-<script language=javascript>
-function submits$vrnd(v){
-        battlef$vrnd.verchk.value=v;
-        battlef$vrnd.submit();
-}
-function GetXmlHttpObject(){
-        var xmlHttp=null;
-        try
-          {
-          // Firefox, Opera 8.0+, Safari
-          xmlHttp=new XMLHttpRequest();
-          }
-        catch (e)
-          {
-          // Internet Explorer
-          try
-            {
-            xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
-            }
-          catch (e)
-            {
-            xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
-            }
-          }
-        return xmlHttp;
-}
-var cnt=2;
-function verlog(opr){
-        if(opr=='click'){cnt--;}
-        if(opr=='click' && battlef$vrnd.verchk.value !=''){
-        }else if(cnt<1 || opr==''){
-        sid=Math.random();
-        var url='';
-        xmlHttp=GetXmlHttpObject();
-        if (xmlHttp==null) {
-                return;
-        }
-        url='verlog.cgi';
-        params='id=$in{'id'}&pass=$in{'pass'}&sid='+sid+'&opr='+opr;
-        xmlHttp.onreadystatechange=function(){
-                if(xmlHttp.readyState==4 && xmlHttp.status == 200){
-                        var d = xmlHttp.responseText;
-                }else if(xmlHttp.readyState==2){
-
-                }
-        }
-
-        if (url != '') {
-                xmlHttp.open("POST",url,true);
-                xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xmlHttp.setRequestHeader("Content-length", params.length);
-                xmlHttp.setRequestHeader("Connection", "close");
-                xmlHttp.send(params);
-        }
-        if(opr==''){
-                setTimeout("verlog('');",60000);
-        }
-        }
-}
-setTimeout("verlog('');",60000);
-</script>
-EOF
-        &footer;
-        exit;
-}
 sub quest_form {
 	&header;
         print <<"EOF";

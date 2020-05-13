@@ -143,17 +143,4 @@ print"<center><a href=./nranking.cgi><font color=#ffffff><b>本月戰數排名</
 	print"</table>";
 	print"<center><font color=yellow>遊戲人數：$mn名</font></center><BR>";
 &mainfooter;
-sub id_change {
-	local($inpw) = $_[0];
-
-	@yy = unpack("C*", $inpw);
-	$word="";
-	foreach(@yy){
-		$word .= "$_\,";
-	}
-	chomp($word);
-	$encrypt = reverse($word);
-
-	return $encrypt;
-}
 exit;

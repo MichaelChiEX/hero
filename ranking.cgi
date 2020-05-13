@@ -85,17 +85,5 @@ if($rcon ne"a9"){
 	print"<center><font color=yellow>遊戲人數：$mn名</font></center><BR>";
 	print"\n<script language=javascript>\nfunction opstatus(pid){\nwindow.open('./status_print.cgi?id='+pid, 'newwin', 'width=600,height=400,scrollbars =yes');\n}\n</script>\n";
 &mainfooter;
-sub id_change {
-	local($inpw) = $_[0];
 
-	@yy = unpack("C*", $inpw);
-	$word="";
-	foreach(@yy){
-		$word .= "$_\,";
-	}
-	chomp($word);
-	$encrypt = reverse($word);
-
-	return $encrypt;
-}
 exit;

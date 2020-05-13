@@ -114,20 +114,5 @@ EOF
 
 	exit;
 }
-#----------------------#
-#  パスワード暗号處理  #
-#----------------------#
-sub id_change {
-	local($inpw) = $_[0];
 
-	@yy = unpack("C*", $inpw);
-	$word="";
-	foreach(@yy){
-		$word .= "$_\,";
-	}
-	chomp($word);
-	$encrypt = reverse($word);
-
-	return $encrypt;
-}
 1;
