@@ -31,7 +31,7 @@ sub chara_open{
 	}else{
 	        $smbank.="萬".($mbank%10000);;
 	}
-
+        $date = time();
 	$mlv = int($mex/100)+1;
 	($mjp[0],$mjp[1],$mjp[2],$mjp[3],$mjp[4],$mjp[5]) = split(/,/,$mjp);
 	($mmaxstr,$mmaxvit,$mmaxint,$mmaxmen,$mmaxdex,$mmaxagi,$mmaxlv) = split(/,/,$mmax);
