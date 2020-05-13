@@ -14,7 +14,6 @@ require './sub.cgi';
 &decode;
 
 $open_chara_id = decrypt($in{'id'});
-$no_idle_check=1;
 &chara_open;
 &equip_open;
 

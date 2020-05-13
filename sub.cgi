@@ -32,18 +32,6 @@ sub chara_open{
 	        $smbank.="萬".($mbank%10000);;
 	}
 
-	$date = time();
-	$IDLETIME+=int($mtotal/200);
-	if($IDLETIME>600){
-		$IDLETIME=600;
-	}
-	if(!$login && $date>$mdate+$IDLETIME && $mid ne $GMID && $no_idle_check ne 1){
-		&ext_open;
-		if($member_point eq""){
-			&error2("你已有一段時間($IDLETIME秒)未動作，<a href='./login.cgi'>請重新登入</a>。");
-		}
-        }
-
 	$mlv = int($mex/100)+1;
 	($mjp[0],$mjp[1],$mjp[2],$mjp[3],$mjp[4],$mjp[5]) = split(/,/,$mjp);
 	($mmaxstr,$mmaxvit,$mmaxint,$mmaxmen,$mmaxdex,$mmaxagi,$mmaxlv) = split(/,/,$mmax);
