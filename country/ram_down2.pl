@@ -72,22 +72,22 @@ sub ram_down2 {
 	
 	&maplog("<font color=red>[計略]</font><font color=blue>$mname</font>實行計略→</font color=green>$town2_name</font>的$com下降<font color=red>$up</font>。");
 	print <<"EOF";
-<TABLE border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">計略</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/siro.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="#ffffcc">$town2_name的$com下降$up。</FONT></TD>
-    </TR>
-    <TR>
-      <TD colspan="2" align="center">
+<table border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">計略</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/siro.jpg"></td>
+      <td bgcolor="#330000"><font color="#ffffcc">$town2_name的$com下降$up。</font></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
 $BACKTOWNBUTTON
-     </TD>
-    </TR>
-  </TBODY>
-</TABLE>
+     </td>
+    </tr>
+  </tbody>
+</table>
 <center></center>
 EOF
 

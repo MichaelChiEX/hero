@@ -10,28 +10,28 @@ sub con_change3{
 	&header;
 	
 	print <<"EOF";
-<TABLE border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">下野</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/country.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="#ffffcc">你身上需要有５００萬才可以下野成為無所屬。<BR>而你的名聲及能力將回到原點。<BR>確定要下野？</FONT></TD>
-    </TR>
-    <TR>
-      <TD colspan="2" align="center">
+<table border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">下野</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/country.jpg"></td>
+      <td bgcolor="#330000"><font color="#ffffcc">你身上需要有５００萬才可以下野成為無所屬。<br>而你的名聲及能力將回到原點。<br>確定要下野？</font></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
 	<form action="./country.cgi" method="post">
-	<INPUT type=hidden name=id value=$mid>
-	<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+	<input type=hidden name=id value=$mid>
+	<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
 	
-	<INPUT type=hidden name=mode value=con_change4>
-	<INPUT type=submit value=下野 CLASS=FC></form>
+	<input type=hidden name=mode value=con_change4>
+	<input type=submit value=下野 CLASS=FC></form>
 $BACKTOWNBUTTON
-      </TD>	
-    </TR>
-  </TBODY>
-</TABLE>
+      </td>	
+    </tr>
+  </tbody>
+</table>
 <center></center>
 EOF
 

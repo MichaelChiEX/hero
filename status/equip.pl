@@ -72,10 +72,10 @@ sub equip{
     <table border="0" width="90%" align=center class=TC height="400">
         <tbody>
             <tr>
-                <td colspan="2" align="center" bgcolor="$FCOLOR"><FONT color="$FCOLOR2">使用/裝備/寵物</FONT></td>
+                <td colspan="2" align="center" bgcolor="$FCOLOR"><font color="$FCOLOR2">使用/裝備/寵物</font></td>
             </tr>
             <tr>
-                <td colspan=2 align="center" bgcolor="000000" height=50><FONT color="$FCOLOR2">請選擇你要使用的物品、裝備或要上場的寵物。</FONT></td>
+                <td colspan=2 align="center" bgcolor="000000" height=50><font color="$FCOLOR2">請選擇你要使用的物品、裝備或要上場的寵物。</font></td>
             </tr>
             <tr>
                 <td bgcolor="#ffffff" align=center>

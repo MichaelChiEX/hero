@@ -75,14 +75,14 @@ sub toubatsu2{
 	&header;
 	$blog.= <<"EOF";
 	<table border="0" width="100%" align=center height="144" CLASS=TOC>
-		<TBODY>
+		<tbody>
 			<tr>
 				<td colspan="3" align="center" bgcolor="$ELE_BG[$town_ele]"><font color="#ffffcc">$town_name </font></td>
 			</tr>
 			<tr>
 				<td bgcolor="#cccccc" width="30%">
 					<table border="0" width="100%" height="100%" bgcolor=$ELE_BG[$mele] align=right>
-						<TBODY>
+						<tbody>
 							<tr>
 								<td rowspan="2"><font size="-1"><img src="$IMG/chara/$mchara.gif"></font></td>
 								<td bgcolor=$FCOLOR2><font size="-1">HP</font></td>
@@ -115,10 +115,10 @@ sub toubatsu2{
 						</tbody>
 					</table>
 				</td>
-				<td align="center" bgcolor="$FCOLOR2" width="20%"><IMG src="$IMG/town/machi.jpg" width="150" height="113" border="0"></td>
+				<td align="center" bgcolor="$FCOLOR2" width="20%"><img src="$IMG/town/machi.jpg" width="150" height="113" border="0"></td>
 				<td bgcolor="#cccccc" width=30%>
 					<table border="0" width="100%" height="100%" bgcolor=$ELE_BG[$eele]>
-						<TBODY>
+						<tbody>
 						<tr>
 							<td rowspan="2"><font size="-1"><img src="$IMG/chara/$echara.gif"></font></td>
 							<td bgcolor=$FCOLOR2><font size="-1">HP</font></td>
@@ -175,7 +175,7 @@ EOF
 	$blog
 	<center>
 $BACKTOWNBUTTON
-	<P><hr size=0></center>
+	<p><hr size=0></center>
 	</center>
 EOF
 	&chara_input;
@@ -251,7 +251,7 @@ sub BATTLE{##戰鬥處理
 			$blog.= <<"EOF";
 			<center>
 			<table border="0" width="400" bgcolor="#000000" CLASS=TC>
-				<TBODY>
+				<tbody>
 					<tr>
 						<td colspan="2" align="center" bgcolor="$FCOLOR"><font color="#ffffcc">勝利！</font></td>
 					</tr>
@@ -261,7 +261,7 @@ sub BATTLE{##戰鬥處理
 							獲得<font color="#000099">$get_gold</font> Gold！<br>$com<br>
 							獲得<font color="#cc0000">$getabp</font>熟練度<br>
 							<table border="0" bgcolor="#990000">
-								<TBODY>
+								<tbody>
 									<tr>
 										<td bgcolor="#ffffcc">經驗值</td>
 										<td bgcolor="#ffffcc">$mex(+$get_ex)point</td>
@@ -292,7 +292,7 @@ EOF
 			$blog.= <<"EOF";
 			<center>
 			<table border="0" width="400" bgcolor="#000000" CLASS=TC>
-				<TBODY>
+				<tbody>
 					<tr>
 						<td colspan="2" align="center" bgcolor="$FCOLOR"><font color="#ffffcc">敗北！</font></td>
 					</tr>
@@ -301,7 +301,7 @@ EOF
 							<font color="#ff0000">$mname的所持金減半！！</font><br>
 							<br>
 							<table border="0" bgcolor="#990000">
-								<TBODY>
+								<tbody>
 									<tr>
 										<td bgcolor="#ffffcc">失去了<font color="#000099">$lose_gold</font> Gold！</td>
 									</tr>
@@ -338,7 +338,7 @@ sub BATTLEPRINT{
 	$blog.= <<"EOF";
 	<center>
 	<table border="0" width="80%" bgcolor="#000000" CLASS=TC>
-		<TBODY>
+		<tbody>
 			<tr>
 				<td colspan="8" align="center" bgcolor="$FCOLOR"><b><font color="#ffffcc">第$turn回合</font></b></td>
 			</tr>
@@ -347,8 +347,8 @@ sub BATTLEPRINT{
 				<td colspan="4" bgcolor="9c0000" align="center"><b><font size="-1" color="$FCOLOR2">$ename</font></b></td>
 			</tr>
 			<tr>
-				<td colspan="4" bgcolor="#003300" align="center"><IMG src="$IMG/chara/$mchara.gif"></td>
-				<td colspan="4" bgcolor="#003300" align="center"><IMG src="$IMG/chara/$echara.gif"></td>
+				<td colspan="4" bgcolor="#003300" align="center"><img src="$IMG/chara/$mchara.gif"></td>
+				<td colspan="4" bgcolor="#003300" align="center"><img src="$IMG/chara/$echara.gif"></td>
 			</tr>
 			<tr>
 				<td colspan="4" bgcolor="$FCOLOR2" align="center"><font size=-1>$bmess</font></td>
@@ -375,7 +375,7 @@ sub MBATTLEPRINT{
 	$blog.= <<"EOF";
 	<center>
 	<table border="0" width="80%" bgcolor="#000000" CLASS=TC>
-		<TBODY>
+		<tbody>
 			<tr>
 				<td colspan="8" align="center" bgcolor="$FCOLOR"><b><font color="#ffffcc">$turn回合</font></b></td>
 			</tr>
@@ -384,8 +384,8 @@ sub MBATTLEPRINT{
 				<td colspan="4" bgcolor="000063" align="center"><font color="$FCOLOR2"><b><font size="-1">$mname</font></b></font></td>
 			</tr>
 			<tr>
-				<td colspan="4" bgcolor="#003300" align="center"><IMG src="$IMG/chara/$echara.gif"></td>
-				<td colspan="4" bgcolor="#003300" align="center"><IMG src="$IMG/chara/$mchara.gif"></td>
+				<td colspan="4" bgcolor="#003300" align="center"><img src="$IMG/chara/$echara.gif"></td>
+				<td colspan="4" bgcolor="#003300" align="center"><img src="$IMG/chara/$mchara.gif"></td>
 			</tr>
 			<tr>
 				<td colspan="4" bgcolor="$FCOLOR2" align="center"><font size=-1>$mmess</font></td>

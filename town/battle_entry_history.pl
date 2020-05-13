@@ -46,7 +46,7 @@ sub battle_entry_history{
 			}else{
                                 $entry_list[0].="<tr bgcolor=#AAAAFF><td height=5 colspan=2></td></tr>\n";
 			}
-                        $entry_list[0].="<tr><td align=right><img height=50 width=50 src=$IMG/chara/$echara.gif></td><td align=left style='color:blue'>$ename<BR>$etotal<BR>$estatus</td></tr>";
+                        $entry_list[0].="<tr><td align=right><img height=50 width=50 src=$IMG/chara/$echara.gif></td><td align=left style='color:blue'>$ename<br>$etotal<br>$estatus</td></tr>";
                         $entry_count[0]++;
                         $nj++;
                         $ntime=$ebattletime;
@@ -80,7 +80,7 @@ sub battle_entry_history{
                         }else{
                                 $entry_list[1].="<tr bgcolor=#AAAAFF><td height=5 colspan=2></td></tr>\n";
                         }
-                        $entry_list[1].="<tr><td align=right><img height=50 width=50 src=$IMG/chara/$echara.gif></td><td align=left style='color:blue'>$ename<BR>$etotal<BR>$estatus</td></tr>";
+                        $entry_list[1].="<tr><td align=right><img height=50 width=50 src=$IMG/chara/$echara.gif></td><td align=left style='color:blue'>$ename<br>$etotal<br>$estatus</td></tr>";
                         $entry_count[1]++;
                         $nj++;
                         $ntime=$ebattletime;
@@ -114,7 +114,7 @@ sub battle_entry_history{
                         }else{
                                 $entry_list[2].="<tr bgcolor=#AAAAFF><td height=5 colspan=2></td></tr>\n";
                         }
-                        $entry_list[2].="<tr><td align=right><img height=50 width=50 src=$IMG/chara/$echara.gif></td><td align=left style='color:blue'>$ename<BR>$etotal<BR>$estatus</td></tr>";
+                        $entry_list[2].="<tr><td align=right><img height=50 width=50 src=$IMG/chara/$echara.gif></td><td align=left style='color:blue'>$ename<br>$etotal<br>$estatus</td></tr>";
                         $entry_count[2]++;
                         $nj++;
                         $ntime=$ebattletime;
@@ -148,7 +148,7 @@ sub battle_entry_history{
                         }else{
                                 $entry_list[3].="<tr bgcolor=#AAAAFF><td height=5 colspan=2></td></tr>\n";
                         }
-                        $entry_list[3].="<tr><td align=right><img height=50 width=50 src=$IMG/chara/$echara.gif></td><td align=left style='color:blue'>$ename<BR>$etotal<BR>$estatus</td></tr>";
+                        $entry_list[3].="<tr><td align=right><img height=50 width=50 src=$IMG/chara/$echara.gif></td><td align=left style='color:blue'>$ename<br>$etotal<br>$estatus</td></tr>";
                         $entry_count[3]++;
                         $nj++;
                         $ntime=$ebattletime;
@@ -156,17 +156,17 @@ sub battle_entry_history{
                 $entry_list[3].="</table>";
 	&header;
         print <<"EOF";
-<TABLE border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">天下第一武道會參賽者名單</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/arena.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="#ffffcc">你目前站在天下第一武道會的會場,觀看著本次參賽者的報名清單<BR>目前對戰情況如下</FONT></TD>
-    </TR>
-    <TR>
-      <TD colspan="2" align="center">
+<table border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">天下第一武道會參賽者名單</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/arena.jpg"></td>
+      <td bgcolor="#330000"><font color="#ffffcc">你目前站在天下第一武道會的會場,觀看著本次參賽者的報名清單<br>目前對戰情況如下</font></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
         <table class=TC width=90% valign=top>
         <tr><td colspan=4 align=center bgcolor=#FFCCAA><font color=black size=3><b>§對戰情況§</b></font></td></tr><tr>
         <tr>
@@ -203,10 +203,10 @@ $entry_list[0]
 </table>
         </td>
         </tr>
-        </TD>
-    </TR>
-  </TBODY>
-</TABLE>
+        </td>
+    </tr>
+  </tbody>
+</table>
 <script language="javascript">
 function shows(sv){
 	document.getElementById('table0').style.display='none';

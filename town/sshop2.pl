@@ -12,7 +12,7 @@ sub sshop2{
 	if($f_id eq $mid){&error("無法購買自己售出的物品。");}
 	if($mbank < $f_max){&error("你銀行裏的金額不足$bidgold萬。");}
 	if($f_name ne $in{'f_name'}){
-		&error("你要購買的物品已經被買走或是資料已被更新<BR>請重新進入交易所確認。");
+		&error("你要購買的物品已經被買走或是資料已被更新<br>請重新進入交易所確認。");
 	}
 	$date = time();
 	if($bidgold <= $f_p){$hit=1;}
@@ -64,26 +64,26 @@ if($mid eq $GMID){
 	&header;
 	
 print <<"EOF";
-<TABLE border="0" width="80%" align=center bgcolor="#000000" height="150" CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="$FCOLOR"><FONT color="$FCOLOR2">交易所</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="$FCOLOR2" width=20% align=center><img src="$IMG/etc/buki.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="$FCOLOR2">$bidc</FONT></TD>
-    </TR>
-    <TR>
-    <TD colspan="2" align="center" bgcolor="ffffff">
+<table border="0" width="80%" align=center bgcolor="#000000" height="150" CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="$FCOLOR"><font color="$FCOLOR2">交易所</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="$FCOLOR2" width=20% align=center><img src="$IMG/etc/buki.jpg"></td>
+      <td bgcolor="#330000"><font color="$FCOLOR2">$bidc</font></td>
+    </tr>
+    <tr>
+    <td colspan="2" align="center" bgcolor="ffffff">
 	<form action="./town.cgi" method="POST">
-	<INPUT type=hidden name=mode value=sshop>
-	<INPUT type=hidden name=id value=$mid>
-	<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-	<INPUT type=submit CLASS=FC value=回到交易所></TD></form>
-	</TD>
-    </TR>
-  </TBODY>
-</TABLE>
+	<input type=hidden name=mode value=sshop>
+	<input type=hidden name=id value=$mid>
+	<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+	<input type=submit CLASS=FC value=回到交易所></td></form>
+	</td>
+    </tr>
+  </tbody>
+</table>
 <center></center>
 EOF
 

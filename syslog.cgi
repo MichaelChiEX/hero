@@ -37,8 +37,8 @@ print <<"EOF";
     </tr>
   </tbody>
 </table>
-<BR>
-</P>
+<br>
+</p>
 </center>
 <hr>
 EOF

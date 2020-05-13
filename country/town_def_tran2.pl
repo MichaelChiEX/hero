@@ -48,22 +48,22 @@ sub town_def_tran2 {
         &town_input;
         &maplog("<font color=blueviolet>[練兵]</font><font color=blue>$mname</font>對<font color=green>$town_name</font>進行練兵。");
         print <<"EOF";
-<TABLE border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">訓練士兵</FONT>/FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/siro.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="#ffffcc">$town_name的士兵$com提升了$up_value。</FONT></TD>
-    </TR>
-    <TR>
-      <TD colspan="2" align="center">
+<table border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">訓練士兵</font>/FONT></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/siro.jpg"></td>
+      <td bgcolor="#330000"><font color="#ffffcc">$town_name的士兵$com提升了$up_value。</font></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
 $BACKTOWNBUTTON
-        </TD>
-    </TR>
-  </TBODY>
-</TABLE>
+        </td>
+    </tr>
+  </tbody>
+</table>
 <center></center>
 EOF
 

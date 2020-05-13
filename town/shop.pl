@@ -49,7 +49,7 @@ sub shop {
 	if($mcon eq $town_con && $town_con ne 0){
 		$val_off=int($mcex/100)+1;
 		if($val_off>15){$val_off=15;}
-		$mes="<BR><font color=#AAAAFF>$mname</font>你好。你在此地購物將獲得<font color=yellow size=5>$val_off%</font>的優惠。";
+		$mes="<br><font color=#AAAAFF>$mname</font>你好。你在此地購物將獲得<font color=yellow size=5>$val_off%</font>的優惠。";
 	}
 
 	if($in{'mode'} eq"arm"){$idata="arm";$itype=0;$dev=$town_arm;}
@@ -67,9 +67,9 @@ sub shop {
 		$arm_val=int($arm_val*(1-$val_off/100));
 		if(($town_id eq $arm_pos || $arm_pos eq"all") && $arm_val2>0 && ($arm_val2<=($dev*$dev*10+100)||$dev>=999)){
 			if($arm_sta && $in{'mode'} ne "item"){$arm_name="$arm_name";}
-			$armtable.="<TR><TD width=5% bgcolor=ffffcc><input type=radio name=no value=$no></TD><TD bgcolor=white><font size=2>$arm_name</font></TD><TD bgcolor=white align=right><font size=2>$arm_val Gold</font></TD><TD bgcolor=white><font size=2>$arm_dmg</font></TD><TD bgcolor=white><font size=2>$arm_wei</font></TD><TD bgcolor=white><font size=2>$ELE[$arm_ele]</font></TD><TD bgcolor=white><font size=2>$arm_type</font></TD></TR>";
+			$armtable.="<tr><td width=5% bgcolor=ffffcc><input type=radio name=no value=$no></td><td bgcolor=white><font size=2>$arm_name</font></td><td bgcolor=white align=right><font size=2>$arm_val Gold</font></td><td bgcolor=white><font size=2>$arm_dmg</font></td><td bgcolor=white><font size=2>$arm_wei</font></td><td bgcolor=white><font size=2>$ELE[$arm_ele]</font></td><td bgcolor=white><font size=2>$arm_type</font></td></tr>";
 		}elsif($quest1_town_no eq $town_id && $arm_name eq $quest1_item){
-                        $armtable.="<TR><TD width=5% bgcolor=ffffcc><input type=radio name=no value=$no></TD><TD bgcolor=white><font size=2>$arm_name</font></TD><TD bgcolor=white align=right><font size=2>$arm_val Gold</font></TD><TD bgcolor=white><font size=2>$arm_dmg</font></TD><TD bgcolor=white><font size=2>$arm_wei</font></TD><TD bgcolor=white><font size=2>$ELE[$arm_ele]</font></TD><TD bgcolor=white><font size=2>$arm_type</font></TD></TR>";
+                        $armtable.="<tr><td width=5% bgcolor=ffffcc><input type=radio name=no value=$no></td><td bgcolor=white><font size=2>$arm_name</font></td><td bgcolor=white align=right><font size=2>$arm_val Gold</font></td><td bgcolor=white><font size=2>$arm_dmg</font></td><td bgcolor=white><font size=2>$arm_wei</font></td><td bgcolor=white><font size=2>$ELE[$arm_ele]</font></td><td bgcolor=white><font size=2>$arm_type</font></td></tr>";
 		}
 		$no++;
 	}
@@ -82,7 +82,7 @@ sub shop {
 			$arm_val=int($arm_val*(1-$val_off/100));
 			if(($town_id eq $arm_pos && $arm_t eq $itype) && $arm_val>0 && ($arm_val<=($dev*$dev*10+100) || $dev>=999)){
 				if($arm_sta){$arm_name="$arm_name";}
-				$armtable.="<TR><TD width=5% bgcolor=ffffcc><input type=radio name=no value=$no></TD><TD bgcolor=white><font size=2>$arm_name</font></TD><TD bgcolor=white align=right><font size=2>$arm_val Gold</font></TD><TD bgcolor=white><font size=2>$arm_dmg</font></TD><TD bgcolor=white><font size=2>$arm_wei</font></TD><TD bgcolor=white><font size=2>$ELE[$arm_ele]</font></TD><TD bgcolor=white><font size=2>$arm_type</font></TD></TR>";
+				$armtable.="<tr><td width=5% bgcolor=ffffcc><input type=radio name=no value=$no></td><td bgcolor=white><font size=2>$arm_name</font></td><td bgcolor=white align=right><font size=2>$arm_val Gold</font></td><td bgcolor=white><font size=2>$arm_dmg</font></td><td bgcolor=white><font size=2>$arm_wei</font></td><td bgcolor=white><font size=2>$ELE[$arm_ele]</font></td><td bgcolor=white><font size=2>$arm_type</font></td></tr>";
 			}
 			$no++;
 		}
@@ -101,9 +101,9 @@ sub shop {
 	                elsif($it_no eq "rea" && $it_ki eq 3){$sel_val=3000000;}
                 	elsif($it_no eq "rea"){$sel_val=10000000;}
 		
-			$ittable.="<TR><TD width=5% bgcolor=ffffcc><input type=radio name=itno value=$no2></TD><TD bgcolor=white><font size=2>$it_name</font></TD><TD bgcolor=white><font size=2>$sel_val</font></TD><TD bgcolor=white><font size=2>$it_dmg</font></TD><TD bgcolor=white><font size=2>$it_wei</font></TD><TD bgcolor=white><font size=2>$ELE[$it_ele]</font></TD><TD bgcolor=white><font size=2>$EQU[$it_ki]</font></TD></TR>";
+			$ittable.="<tr><td width=5% bgcolor=ffffcc><input type=radio name=itno value=$no2></td><td bgcolor=white><font size=2>$it_name</font></td><td bgcolor=white><font size=2>$sel_val</font></td><td bgcolor=white><font size=2>$it_dmg</font></td><td bgcolor=white><font size=2>$it_wei</font></td><td bgcolor=white><font size=2>$ELE[$it_ele]</font></td><td bgcolor=white><font size=2>$EQU[$it_ki]</font></td></tr>";
 		}else{
-		        $pettable.="<TR><TD width=5% bgcolor=ffffcc><input type=radio name=itno value=$no2></TD><TD bgcolor=white><font size=2>$it_hit</font></TD><TD bgcolor=white><font size=2>$it_name</font></TD><TD bgcolor=white><font size=2>$it_val</font></TD><TD bgcolor=white><font size=2>$it_dmg</font></TD><TD bgcolor=white><font size=2>$it_wei</font></TD><TD bgcolor=white><font size=2>$ELE[$it_ele]</font></TD><TD bgcolor=white><font size=2>$EQU[$it_ki]</font></TD></TR>";
+		        $pettable.="<tr><td width=5% bgcolor=ffffcc><input type=radio name=itno value=$no2></td><td bgcolor=white><font size=2>$it_hit</font></td><td bgcolor=white><font size=2>$it_name</font></td><td bgcolor=white><font size=2>$it_val</font></td><td bgcolor=white><font size=2>$it_dmg</font></td><td bgcolor=white><font size=2>$it_wei</font></td><td bgcolor=white><font size=2>$ELE[$it_ele]</font></td><td bgcolor=white><font size=2>$EQU[$it_ki]</font></td></tr>";
 		}
 		$no2++;
 	}
@@ -111,17 +111,17 @@ sub shop {
 	&header;
 	
 	print <<"EOF";
-<TABLE border="0" width="90%" align=center bgcolor="#000000" height="150" CLASS=TC>
-  <TBODY>
-    <TR>
-      <TD colspan="3" align="center" bgcolor="$FCOLOR"><FONT color="#ffffcc">$EQU[$itype]店</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/buki.jpg"></TD>
-      <TD bgcolor="#330000" colspan="3"><FONT color="#ffffcc">[$EQU[$itype]店]<BR>歡迎光臨。$mes<BR>請選擇要購買的物品。</FONT></TD>
-    </TR>
-    <TR>
-      <TD align=center bgcolor="ffffff" colspan=2 width=55%>
+<table border="0" width="90%" align=center bgcolor="#000000" height="150" CLASS=TC>
+  <tbody>
+    <tr>
+      <td colspan="3" align="center" bgcolor="$FCOLOR"><font color="#ffffcc">$EQU[$itype]店</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/buki.jpg"></td>
+      <td bgcolor="#330000" colspan="3"><font color="#ffffcc">[$EQU[$itype]店]<br>歡迎光臨。$mes<br>請選擇要購買的物品。</font></td>
+    </tr>
+    <tr>
+      <td align=center bgcolor="ffffff" colspan=2 width=55%>
 	<table border=0 width="100%" bgcolor=$FCOLOR CLASS=TC>
 	<tr><td colspan=7 align=center><font color=ffffcc>商品一覽</font></td></tr>
 	<tr>
@@ -129,16 +129,16 @@ sub shop {
 	</tr>
 	<form action="./town.cgi" method="post">
 	$armtable
-	<TR><TD colspan=7 align=center bgcolor="ffffff">
-	<INPUT type=hidden name=id value=$mid>
-	<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-	<INPUT type=hidden name=itype value=$itype>
-	<INPUT type=hidden name=mode value=buy>
-	<INPUT type=submit CLASS=FC value=購入></TD></TR></form>
+	<tr><td colspan=7 align=center bgcolor="ffffff">
+	<input type=hidden name=id value=$mid>
+	<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+	<input type=hidden name=itype value=$itype>
+	<input type=hidden name=mode value=buy>
+	<input type=submit CLASS=FC value=購入></td></tr></form>
 	</table>
 	
-	<TD bgcolor="#ffffff" align=center>
-	$STPR<BR>
+	<td bgcolor="#ffffff" align=center>
+	$STPR<br>
 	<table colspan=3 width=90% align=center CLASS=MC>
 	<tr><td bgcolor="$ELE_BG[$mele]"><font color=ffffcc>種類</font></td><td bgcolor="$ELE_BG[$mele]"><font color=ffffcc>名稱</font></td><td bgcolor="$ELE_BG[$mele]"><font color=ffffcc>奧義</font></td><td bgcolor="$ELE_BG[$mele]"><font color=ffffcc>威力/重量</font></td></tr>
 	<tr><td bgcolor="$ELE_C[$mele]">武器</td><td bgcolor="$ELE_C[$mele]">$marmname</td><td bgcolor="$ELE_C[$mele]">$abname1</td><td bgcolor="$ELE_C[$mele]">$marmdmg/$marmwei</td></tr>
@@ -146,48 +146,48 @@ sub shop {
 	<tr><td bgcolor="$ELE_C[$mele]">飾品</td><td bgcolor="$ELE_C[$mele]">$maccname</td><td bgcolor="$ELE_C[$mele]">$abname3</td><td bgcolor="$ELE_C[$mele]">$maccdmg/$maccwei</td></tr>
 	</table>
 	<table border=0 width="90%" align=center bgcolor=$FCOLOR CLASS=TC>
-	<BR>
-	<TR><td colspan=7 align=center bgcolor="$FCOLOR"><font color=ffffcc>目前所持物品</font></td></tr>
-	<TR>
-	<TD bgcolor=ffffcc></TD><td bgcolor=white><font size=2>名稱</font></td><td bgcolor=white><font size=2>價值</font></td><td bgcolor=white><font size=2>威力</font></td><td bgcolor=white><font size=2>重量</font></td><td bgcolor=white><font size=2>屬性</font></td><td bgcolor=white><font size=2>種類</font></td>
-	</TR>
+	<br>
+	<tr><td colspan=7 align=center bgcolor="$FCOLOR"><font color=ffffcc>目前所持物品</font></td></tr>
+	<tr>
+	<td bgcolor=ffffcc></td><td bgcolor=white><font size=2>名稱</font></td><td bgcolor=white><font size=2>價值</font></td><td bgcolor=white><font size=2>威力</font></td><td bgcolor=white><font size=2>重量</font></td><td bgcolor=white><font size=2>屬性</font></td><td bgcolor=white><font size=2>種類</font></td>
+	</tr>
 	<form action="./town.cgi" method="POST">
 	$ittable
-	<TR><TD colspan=7 align=center bgcolor=ffffff>
-	<INPUT type=hidden name=id value=$mid>
-	<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-	<INPUT type=hidden name=itype value=$itype>
-	<INPUT type=hidden name=mode value=sell>
-	<INPUT type=submit CLASS=FC value=賣出物品></TD></form>
-	</TR></font>
+	<tr><td colspan=7 align=center bgcolor=ffffff>
+	<input type=hidden name=id value=$mid>
+	<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+	<input type=hidden name=itype value=$itype>
+	<input type=hidden name=mode value=sell>
+	<input type=submit CLASS=FC value=賣出物品></td></form>
+	</tr></font>
 	</table>
 
  <table border=0 width="90%" align=center bgcolor=$FCOLOR CLASS=TC>
-        <BR>
-        <TR><td colspan=8 align=center bgcolor="$FCOLOR"><font color=ffffcc>寵物一覽</font></td></tr>
-        <TR>
-        <TD bgcolor=ffffcc></TD><td bgcolor=white><font size=2>等級</font></td><td bgcolor=white><font size=2>名稱</font></td><td bgcolor=white><font size=2>威力</font></td><td bgcolor=white><font size=2>防禦</font></td><td bgcolor=white><font size=2>速度</font></td><td bgcolor=white><font size=2>屬性</font></td><td bgcolor=white><font size=2>種類</font></td>
-        </TR>
+        <br>
+        <tr><td colspan=8 align=center bgcolor="$FCOLOR"><font color=ffffcc>寵物一覽</font></td></tr>
+        <tr>
+        <td bgcolor=ffffcc></td><td bgcolor=white><font size=2>等級</font></td><td bgcolor=white><font size=2>名稱</font></td><td bgcolor=white><font size=2>威力</font></td><td bgcolor=white><font size=2>防禦</font></td><td bgcolor=white><font size=2>速度</font></td><td bgcolor=white><font size=2>屬性</font></td><td bgcolor=white><font size=2>種類</font></td>
+        </tr>
         <form action="./town.cgi" method="POST">
         $pettable
-        <TR><TD colspan=8 align=center bgcolor=ffffff>
-        <INPUT type=hidden name=id value=$mid>
-        <INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-        <INPUT type=hidden name=itype value=$itype>
-        <INPUT type=hidden name=mode value=sell>
-        <INPUT type=submit CLASS=FC value=丟棄寵物></TD></form>
-        </TR></font>
+        <tr><td colspan=8 align=center bgcolor=ffffff>
+        <input type=hidden name=id value=$mid>
+        <input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+        <input type=hidden name=itype value=$itype>
+        <input type=hidden name=mode value=sell>
+        <input type=submit CLASS=FC value=丟棄寵物></td></form>
+        </tr></font>
         </table>
 
-	</TD>
-    </TR>
-    <TR>
-    <TD colspan="3" align="center" bgcolor="ffffff">
+	</td>
+    </tr>
+    <tr>
+    <td colspan="3" align="center" bgcolor="ffffff">
 $BACKTOWNBUTTON
-	</TD>
-    </TR>
-  </TBODY>
-</TABLE>
+	</td>
+    </tr>
+  </tbody>
+</table>
 EOF
 
 	&footer;

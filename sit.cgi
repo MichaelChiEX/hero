@@ -95,13 +95,13 @@ $conlist.="</table>";
 
 
 ##マップ表示
-$tpr="<table bgcolor=663300><TD width=15 height=10 bgcolor=ffffcc CLASS=GC>　</TD>";
+$tpr="<table bgcolor=663300><td width=15 height=10 bgcolor=ffffcc CLASS=GC>　</td>";
 for($i=0;$i<6;$i++){
-	$tpr.= "<TD width=15 height=10 bgcolor=ffffcc><font size=1>$i</font></TD>";
+	$tpr.= "<td width=15 height=10 bgcolor=ffffcc><font size=1>$i</font></td>";
 }
 for($i=0;$i<6;$i++){
 	$n = $i;
-	$tpr.= "<TR><TD bgcolor=ffffcc><font size=1>$n</font></td>";
+	$tpr.= "<tr><td bgcolor=ffffcc><font size=1>$n</font></td>";
 	for($j=0;$j<6;$j++){
 		$m_hit=0;$tx=0;
 		foreach(@TOWN_DATA){
@@ -115,15 +115,15 @@ for($i=0;$i<6;$i++){
 			$col = $ELE_BG[$CONELE[$town2_con]];
 			
 			if($town2_id eq 0){
-				$tpr.= "<TH bgcolor=$col><img src=\"$IMG/town/m_2.gif\" title=\"$town2_name【$CONNAME[$town2_con]國】\" width=15 height=10></TH>";
+				$tpr.= "<th bgcolor=$col><img src=\"$IMG/town/m_2.gif\" title=\"$town2_name【$CONNAME[$town2_con]國】\" width=15 height=10></th>";
 			}else{
-				$tpr.= "<TH bgcolor=$col><img src=\"$IMG/town/m_4.gif\" title=\"$town2_name【$CONNAME[$town2_con]國】\" width=15 height=10></TH>";
+				$tpr.= "<th bgcolor=$col><img src=\"$IMG/town/m_4.gif\" title=\"$town2_name【$CONNAME[$town2_con]國】\" width=15 height=10></th>";
 			}
 		}else{
-			$tpr.= "<TH>　</TH>";
+			$tpr.= "<th>　</th>";
 		}
 	}
-	$tpr.= "</TR>";
+	$tpr.= "</tr>";
 }
 $tpr.="</table>";
 
@@ -132,7 +132,7 @@ open(IN,"./data/maplog2.cgi");
 @MA = <IN>;
 close(IN);
 foreach(@MA){
-	$mapl.="<b><font color=$FCOLOR>●$MA[$m]</font></b><BR>";
+	$mapl.="<b><font color=$FCOLOR>●$MA[$m]</font></b><br>";
 	$m++;
 }
 
@@ -149,58 +149,58 @@ if($c_no>4){
 $c_no2=$c_no-1;
 ($c_idl,$c_namel,$korankl,$grankl,$trankl,$pointl)=split(/<>/,$NCONS[$c_no2]);
 if($c_no>1){
-	$com.="目前有$c_no國。「$c_name國」最為強大。<BR>";
+	$com.="目前有$c_no國。「$c_name國」最為強大。<br>";
 	if($c_no>4){
-		$com.="其次為「$c_name2國」及「$c_name3國」。<BR>";
+		$com.="其次為「$c_name2國」及「$c_name3國」。<br>";
 	}
-	$com.="人口最多為「$KRANK1國」、財力最富的為「$GRANK1國」、領土最大為「$TRANK1國」。<BR>";
+	$com.="人口最多為「$KRANK1國」、財力最富的為「$GRANK1國」、領土最大為「$TRANK1國」。<br>";
 	if($korank eq 1){
-		$com.="「$c_name國」的人口目前最多、今後「$c_name國」將成為世界發展的指標。<BR>";
+		$com.="「$c_name國」的人口目前最多、今後「$c_name國」將成為世界發展的指標。<br>";
 	}else{
 		$hit=1;
-		$com.="但「$KRANK1國」人民數量多於「$c_name國」、今後發展值得觀注。是「$c_name」最大的威脅。<BR>";
+		$com.="但「$KRANK1國」人民數量多於「$c_name國」、今後發展值得觀注。是「$c_name」最大的威脅。<br>";
 	}if($grank ne 1 && !$hit){
-		$com.="「$GRANK1國」的戰力處於劣勢、但國家財力雄厚，會不會直起急追是值得觀察的。<BR>";
+		$com.="「$GRANK1國」的戰力處於劣勢、但國家財力雄厚，會不會直起急追是值得觀察的。<br>";
 	}
 	if($c_no>2){
-		$com.="「$c_namel國」的情勢不如預期樂觀、他們需要更多優秀的人才。到底未來會如何發展下去，就看他們自己了。<BR>";
+		$com.="「$c_namel國」的情勢不如預期樂觀、他們需要更多優秀的人才。到底未來會如何發展下去，就看他們自己了。<br>";
 	}
 	if($c_no eq 2){
-		$com.="冒險世界有兩個國家在競爭，只要一方失敗，另一方將會統一這個世界・・・<BR>";
+		$com.="冒險世界有兩個國家在競爭，只要一方失敗，另一方將會統一這個世界・・・<br>";
 	}
 }elsif($c_no>0){
-	$com.="目前冒險世界只有「$c_name國」。如果沒有其他的競爭者，「$c_name國」將會統一這個世界。<BR>";
+	$com.="目前冒險世界只有「$c_name國」。如果沒有其他的競爭者，「$c_name國」將會統一這個世界。<br>";
 }else{
-	$com.="目前還沒有人建立國家<BR>";
+	$com.="目前還沒有人建立國家<br>";
 }
 print <<"EOF";
-<CENTER>
-<TABLE border="0" bgcolor="#660033" width="700" cellspacing="5" height="509">
-  <TBODY>
-    <TR>
-      <TD colspan="2" width="696" align="center"><FONT style="font-size:30px" font color="#ffff99">世界情勢</FONT></TD>
-    </TR>
-    <TR>
-      <TD align="center" bgcolor="#330000" width="30%" height="80">
-	$tpr<BR>
-      </TD>
-　　　<TD colspan="1" align="left" bgcolor="#844200" width="70%" height="80">
-	<FONT style="font-size:17px" font face="標楷體" color="#ffffcc"><各國情況><BR>$com</FONT>
-      </TD>
-    </TR>
-    <TR>
-      <TD colspan="2" bgcolor="#330000">
-	<FONT style="font-size:15px" font face="標楷體" color="#660000">$conlist</FONT>
-      </TD>
-    </TR>
-    <TR>
-      <TD colspan="2" bgcolor="#ffffcc">
-	<FONT style="font-size:15px" font face="標楷體" color="#660000"><歷史><BR>$mapl</FONT>
-	</TD>
-    </TR>
-  </TBODY>
-</TABLE>
-</CENTER>
+<center>
+<table border="0" bgcolor="#660033" width="700" cellspacing="5" height="509">
+  <tbody>
+    <tr>
+      <td colspan="2" width="696" align="center"><font style="font-size:30px" font color="#ffff99">世界情勢</font></td>
+    </tr>
+    <tr>
+      <td align="center" bgcolor="#330000" width="30%" height="80">
+	$tpr<br>
+      </td>
+　　　<td colspan="1" align="left" bgcolor="#844200" width="70%" height="80">
+	<font style="font-size:17px" font face="標楷體" color="#ffffcc"><各國情況><br>$com</font>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" bgcolor="#330000">
+	<font style="font-size:15px" font face="標楷體" color="#660000">$conlist</font>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" bgcolor="#ffffcc">
+	<font style="font-size:15px" font face="標楷體" color="#660000"><歷史><br>$mapl</font>
+	</td>
+    </tr>
+  </tbody>
+</table>
+</center>
 
 <hr>
 EOF

@@ -62,17 +62,17 @@ sub petup {
 	
 	print <<"EOF";
 
-<TABLE border="0" width="90%" align=center bgcolor="#000000" height="150" CLASS=TC>
-  <TBODY>
-    <TR>
-      <TD colspan="3" align="center" bgcolor="$FCOLOR"><FONT color="#ffffcc">寵物店</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/arena.jpg"></TD>
-      <TD bgcolor="#330000" colspan="3"><FONT color="#ffffcc">[店員]<BR>歡迎來到寵物店。<BR>請把你要訓練的寵物帶在身上。<br>要讓你的寵物有更強壯的體魄，需要用你的熟練訓練牠，讓牠成長。</FONT></TD>
-    </TR>
-    <TR>
-      <TD align=center bgcolor="ffffff" colspan=2 width=55%>
+<table border="0" width="90%" align=center bgcolor="#000000" height="150" CLASS=TC>
+  <tbody>
+    <tr>
+      <td colspan="3" align="center" bgcolor="$FCOLOR"><font color="#ffffcc">寵物店</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/arena.jpg"></td>
+      <td bgcolor="#330000" colspan="3"><font color="#ffffcc">[店員]<br>歡迎來到寵物店。<br>請把你要訓練的寵物帶在身上。<br>要讓你的寵物有更強壯的體魄，需要用你的熟練訓練牠，讓牠成長。</font></td>
+    </tr>
+    <tr>
+      <td align=center bgcolor="ffffff" colspan=2 width=55%>
 	<table border=0 width="100%" bgcolor=$FCOLOR CLASS=TC>
 	<tr><td colspan=6 align=center><font color=ffffcc>你身上的寵物</font></td></tr>
 	<tr>
@@ -81,38 +81,38 @@ sub petup {
 	<tr>
         <td bgcolor=ffffcc></td><td bgcolor=white>$showpetname</td><td bgcolor=white>$mpetlv</td><td bgcolor=white>$mpetdmg</td><td bgcolor=white>$mpetdef</td><td bgcolor=white>$mpetspeed</td><td bgcolor=white>$abname1</td>
 	</tr>
-	<TR><TD colspan=7 align=center bgcolor="ffffff">
+	<tr><td colspan=7 align=center bgcolor="ffffff">
 	<form action="./town.cgi" method="post">
-	<INPUT type=hidden name=id value=$mid>
-	<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-	<INPUT type=hidden name=mode value=petup2>
+	<input type=hidden name=id value=$mid>
+	<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+	<input type=hidden name=mode value=petup2>
 	$tranbutton</form>
 
 	<form action="./town.cgi" method="post">
-        <INPUT type=hidden name=id value=$mid>
-        <INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-        <INPUT type=hidden name=mode value=petup2>
-	<INPUT type=hidden name=gold value=Y>
-        $tranbutton2</form><TD></TR>
+        <input type=hidden name=id value=$mid>
+        <input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+        <input type=hidden name=mode value=petup2>
+	<input type=hidden name=gold value=Y>
+        $tranbutton2</form><td></tr>
 	</table>
 	
-	<TD bgcolor="#ffffff" align=center>
-	$STPR<BR>
+	<td bgcolor="#ffffff" align=center>
+	$STPR<br>
 	<table colspan=3 width=90% align=center CLASS=MC>
 	<tr><td bgcolor="$ELE_BG[$mele]"><font color=ffffcc>種類</font></td><td bgcolor="$ELE_BG[$mele]"><font color=ffffcc>名稱</font></td><td bgcolor="$ELE_BG[$mele]"><font color=ffffcc>威力/重量</font></td></tr>
 	<tr><td bgcolor="$ELE_C[$mele]">武器</td><td bgcolor="$ELE_C[$mele]">$marmname</td><td bgcolor="$ELE_C[$mele]">$marmdmg/$marmwei</td></tr>
 	<tr><td bgcolor="$ELE_C[$mele]">防具</td><td bgcolor="$ELE_C[$mele]">$mproname</td><td bgcolor="$ELE_C[$mele]">$mprodmg/$mprowei</td></tr>
 	<tr><td bgcolor="$ELE_C[$mele]">飾品</td><td bgcolor="$ELE_C[$mele]">$maccname</td><td bgcolor="$ELE_C[$mele]">$maccdmg/$maccwei</td></tr>
 	</table>
-	</TD>
-    </TR>
-    <TR>
-    <TD colspan="3" align="center" bgcolor="ffffff">
+	</td>
+    </tr>
+    <tr>
+    <td colspan="3" align="center" bgcolor="ffffff">
 $BACKTOWNBUTTON
-	</TD>
-    </TR>
-  </TBODY>
-</TABLE>
+	</td>
+    </tr>
+  </tbody>
+</table>
 EOF
 
 	&footer;

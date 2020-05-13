@@ -42,24 +42,24 @@ if(!$hit){
 
 &header;
 print <<"EOF";
-<BR>
-<BR>
-<CENTER>
+<br>
+<br>
+<center>
 <form action="top.cgi" method="POST" target="main">
-<TABLE border="0" width="400" CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD bgcolor=$FCOLOR colspan=2 align=center><font size=3 color=$FCOLOR2>認證完成$com</font></TD>
-    </TR>
-    <TR>
-      <TD colspan="2" align=center>
+<table border="0" width="400" CLASS=FC>
+  <tbody>
+    <tr>
+      <td bgcolor=$FCOLOR colspan=2 align=center><font size=3 color=$FCOLOR2>認證完成$com</font></td>
+    </tr>
+    <tr>
+      <td colspan="2" align=center>
 	<input type=hidden name=id value=$mid>
-    	<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-	<input type=submit CLASS=FC value=$com2進入遊戲></TD>
-    </TR>
-  </TBODY>
-</TABLE>
-</CENTER>
+    	<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+	<input type=submit CLASS=FC value=$com2進入遊戲></td>
+    </tr>
+  </tbody>
+</table>
+</center>
 </form>
 EOF
 &mainfooter;

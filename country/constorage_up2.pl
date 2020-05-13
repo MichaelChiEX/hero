@@ -27,29 +27,29 @@ sub constorage_up2 {
         &header;
 
         print <<"EOF";
-<TABLE border="0" width="90%" align=center bgcolor="#000000" height="150" CLASS=TC>
-  <TBODY>
-    <TR>
-      <TD colspan="4" align="center" bgcolor="$FCOLOR"><FONT color="#ffffcc">擴充國庫</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/storage.jpg"></TD>
-      <TD bgcolor="#330000" colspan="3"><FONT color="#ffffcc"><font color=#AAAAFF>$con_name國</font>的國庫容量增加為<font color=yellow>$conitem_next</font>。</TD>
-    </TR>
-    <TR>
-    <TD colspan="4" align="center" bgcolor="ffffff">
-	<BR>
+<table border="0" width="90%" align=center bgcolor="#000000" height="150" CLASS=TC>
+  <tbody>
+    <tr>
+      <td colspan="4" align="center" bgcolor="$FCOLOR"><font color="#ffffcc">擴充國庫</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/storage.jpg"></td>
+      <td bgcolor="#330000" colspan="3"><font color="#ffffcc"><font color=#AAAAFF>$con_name國</font>的國庫容量增加為<font color=yellow>$conitem_next</font>。</td>
+    </tr>
+    <tr>
+    <td colspan="4" align="center" bgcolor="ffffff">
+	<br>
         <form action="./country.cgi" method="POST">
-	<INPUT type=hidden name=mode value=constorage_up>
-        <INPUT type=hidden name=id value=$mid>
-        <INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-        <INPUT type=submit CLASS=FC value=回到擴充畫面></form>
-	<BR>
+	<input type=hidden name=mode value=constorage_up>
+        <input type=hidden name=id value=$mid>
+        <input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+        <input type=submit CLASS=FC value=回到擴充畫面></form>
+	<br>
 $BACKTOWNBUTTON
-        </TD>
-    </TR>
-  </TBODY>
-</TABLE>
+        </td>
+    </tr>
+  </tbody>
+</table>
 EOF
 
         &footer;

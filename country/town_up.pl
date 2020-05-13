@@ -33,24 +33,24 @@ sub town_up {
 	}
 	&header;
 	print <<"EOF";
-<TABLE border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">城鎮開發</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/town.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="#ffffcc">對$town_name進行開發，以及對黑商的行賄。<BR>名聲需要大於５００，請選擇要開發的項目。<BR>國家資金：<font color="yellow">$scon_gold</FONT><BR><FONT color="#ffffcc">黑商每提升一等關係，每天可交換的原料多１個</TD>
-    </TR>
-    <TR>
-      <TD colspan="2" align="center">
+<table border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">城鎮開發</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/town.jpg"></td>
+      <td bgcolor="#330000"><font color="#ffffcc">對$town_name進行開發，以及對黑商的行賄。<br>名聲需要大於５００，請選擇要開發的項目。<br>國家資金：<font color="yellow">$scon_gold</font><br><font color="#ffffcc">黑商每提升一等關係，每天可交換的原料多１個</td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
 	<form action="./country.cgi" method="post">
 	$list
-	<INPUT type=text size=5 name=gold>萬
-	<INPUT type=hidden name=id value=$mid>
-	<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-	<INPUT type=hidden name=mode value=town_up2>
-	<INPUT type=submit value=開發 CLASS=FC></form>
+	<input type=text size=5 name=gold>萬
+	<input type=hidden name=id value=$mid>
+	<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+	<input type=hidden name=mode value=town_up2>
+	<input type=submit value=開發 CLASS=FC></form>
 <table class="TC" border="0" width="100%" bgColor="#883300" id="table1">
 	<tr>
 		<td colSpan="4" align="middle"><font color="#FFFFCC">本鎮($ELE[$town_ele])原料黑商關係</font></td>
@@ -65,17 +65,17 @@ $mix_list
 	
 </table>
 $BACKTOWNBUTTON
-</TD>
+</td>
 		<form method="post" action="./country.cgi" name="mix_up">
-			<INPUT type=hidden name=gold value=10000>
-		        <INPUT type=hidden name=id value=$mid>
-		        <INPUT type=hidden name=pow>
-		        <INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-		        <INPUT type=hidden name=mode value=town_up2>
+			<input type=hidden name=gold value=10000>
+		        <input type=hidden name=id value=$mid>
+		        <input type=hidden name=pow>
+		        <input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+		        <input type=hidden name=mode value=town_up2>
 		   </form>	
-    </TR>
-  </TBODY>
-</TABLE>
+    </tr>
+  </tbody>
+</table>
 <script language="javascript">
 function mix_ups(ele){
 	mix_up.pow.value=ele;

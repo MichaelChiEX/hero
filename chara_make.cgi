@@ -63,7 +63,7 @@ $max="200,200,200,200,200,200";
 $class=0;$kati=0;$total=0;$pos=0;
 $pet="";
 $date = time();
-if($ATTESTATION){$mailcom="<BR><font color=red>※你的認證信將發送到你的Email信箱中。</font>";}
+if($ATTESTATION){$mailcom="<br><font color=red>※你的認證信將發送到你的Email信箱中。</font>";}
 
 open(IN,"./data/country.cgi") or &error2("城市文件無法開啟。");
 @CON_DATA = <IN>;
@@ -119,45 +119,45 @@ $mid="$id";
 &header;
 
 print <<"EOF";
-<P align="center"><BR>
-登錄完成</P>
-<CENTER>
-<TABLE border="0" width="415" height="67" bgcolor="#990099">
-  <TBODY>
-    <TR>
-      <TD bgcolor="#660066" colspan="3" align="center"><FONT color="#ffffcc">登錄情報</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc">角色名稱</TD>
-      <TD bgcolor="#ffffcc">$in{'name'}</TD>
-    </TR><TR>
-      <TD bgcolor="#ffffcc">帳號</TD>
-      <TD bgcolor="#ffffcc">$id</TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc">密碼</TD>
-      <TD bgcolor="#ffffcc">$pass</TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc">所屬國家</TD>
-      <TD bgcolor="#ffffcc">$con_name</TD>
-    </TR>
-    <TR>
-      <TD colspan="3" bgcolor="#ffcc99"><FONT color="#993399">帳號已新建完成。<BR>
-      請記得你的帳號及密碼。<BR>
-      </TD>
-    </TR>
-    <TR>
-      <TD colspan="3" align=center bgcolor="#ffcc99">
+<p align="center"><br>
+登錄完成</p>
+<center>
+<table border="0" width="415" height="67" bgcolor="#990099">
+  <tbody>
+    <tr>
+      <td bgcolor="#660066" colspan="3" align="center"><font color="#ffffcc">登錄情報</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc">角色名稱</td>
+      <td bgcolor="#ffffcc">$in{'name'}</td>
+    </tr><tr>
+      <td bgcolor="#ffffcc">帳號</td>
+      <td bgcolor="#ffffcc">$id</td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc">密碼</td>
+      <td bgcolor="#ffffcc">$pass</td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc">所屬國家</td>
+      <td bgcolor="#ffffcc">$con_name</td>
+    </tr>
+    <tr>
+      <td colspan="3" bgcolor="#ffcc99"><font color="#993399">帳號已新建完成。<br>
+      請記得你的帳號及密碼。<br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3" align=center bgcolor="#ffcc99">
       	<form action="./top.cgi" method="POST">
-	<INPUT type=hidden name=id value=$in{'id'}>
-	<INPUT type=hidden name=pass value=$in{'pass'}>
-	<INPUT type=submit CLASS=FC value=進入遊戲></form>
-      </TD>
-    </TR>
-  </TBODY>
-</TABLE>
-</CENTER>
+	<input type=hidden name=id value=$in{'id'}>
+	<input type=hidden name=pass value=$in{'pass'}>
+	<input type=submit CLASS=FC value=進入遊戲></form>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</center>
 
 EOF
 

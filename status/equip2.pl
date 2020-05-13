@@ -46,7 +46,7 @@ sub equip2 {
 		if($it_type eq"0"){
 			$mhp += $it_dmg;
 			if($mhp>$mmaxhp){$mhp = $mmaxhp;}
-			$mess.="<BR>HP回復<font color=red>$it_dmg</font>。";
+			$mess.="<br>HP回復<font color=red>$it_dmg</font>。";
 		}elsif($it_type eq"3"){
 			if($mele <= 0){
 				($arm_no2,$it_name2,$it_val2,$it_dmg2,$it_wei2,$arm_ele2,$it_hit2,$it_cl2,$it_sta2,$it_type2,$it_flg2)=split(/,/,$marm);
@@ -61,9 +61,9 @@ sub equip2 {
 				if($acc_no2 eq"mix" && $acc_ele2 eq $mele){$mmaxmp+=1000;}
 				if ($mhp>$mmaxhp){$mhp=$mmaxhp;}
 				if ($mmp>$mmaxmp){$mmp=$mmaxmp;}
-				$mess.="<BR>屬性變更為<font color=red>$ELE[$it_ele]</font>\。";
+				$mess.="<br>屬性變更為<font color=red>$ELE[$it_ele]</font>\。";
 			}else{
-				$mess.="<BR>什麼事都沒發生・・・。";
+				$mess.="<br>什麼事都沒發生・・・。";
 			}
 		}elsif($it_type eq"4"){
 			$upval = $it_dmg;
@@ -78,27 +78,27 @@ sub equip2 {
 			if($rndmax eq "0"){
 				$eathit=1;
 				$mmaxstr += $upval;
-				$mess.="<font color=orange>力量 界限值上昇了$upval點！！</font><BR>";
+				$mess.="<font color=orange>力量 界限值上昇了$upval點！！</font><br>";
 			}elsif($rndmax eq "1"){
 				$eathit=1;
 				$mmaxvit += $upval;
-				$mess.="<font color=orange>生命 界限值上昇了$upval點！！</font><BR>";
+				$mess.="<font color=orange>生命 界限值上昇了$upval點！！</font><br>";
 			}elsif($rndmax eq "2"){
 				$eathit=1;
 				$mmaxint += $upval;
-				$mess.="<font color=orange>智力 界限值上昇了$upval點！！</font><BR>";
+				$mess.="<font color=orange>智力 界限值上昇了$upval點！！</font><br>";
 			}elsif($rndmax eq "3"){
 				$eathit=1;
 				$mmaxmen += $upval;
-				$mess.="<font color=orange>精神 界限值上昇了$upval點！！</font><BR>";
+				$mess.="<font color=orange>精神 界限值上昇了$upval點！！</font><br>";
 			}elsif($rndmax eq "4"){
 				$eathit=1;
 				$mmaxdex += $upval;
-				$mess.="<font color=orange>運氣 界限值上昇了$upval點！！</font><BR>";
+				$mess.="<font color=orange>運氣 界限值上昇了$upval點！！</font><br>";
 			}elsif($rndmax eq "5"){
 				$eathit=1;
 				$mmaxagi += $upval;
-				$mess.="<font color=orange>速度 界限值上昇了$upval點！！</font><BR>";
+				$mess.="<font color=orange>速度 界限值上昇了$upval點！！</font><br>";
 			}
 			$mmax="$mmaxstr,$mmaxvit,$mmaxint,$mmaxmen,$mmaxdex,$mmaxagi,$mmaxlv";
 		}elsif($it_type eq"5"){
@@ -112,9 +112,9 @@ sub equip2 {
 				$mele = 0;
 				if ($mhp>$mmaxhp){$mhp=$mmaxhp;}
 				if ($mmp>$mmaxmp){$mmp=$mmaxmp;}
-				$mess.="<BR>屬性變更為無屬性。";
+				$mess.="<br>屬性變更為無屬性。";
 			}else{
-				$mess.="<BR>什麼事都沒發生・・・。";
+				$mess.="<br>什麼事都沒發生・・・。";
 			}
 		}elsif($it_type eq"9"){
 			open(IN,"./logfile/battle/$in{'id'}.cgi");
@@ -136,21 +136,21 @@ sub equip2 {
 			print OUT @N_BC;
 			close(OUT);
 
-			$mess.="<BR>傷口治癒了。";
+			$mess.="<br>傷口治癒了。";
 		}elsif($it_type eq"10"){
 			if(int(rand(4)) eq 1 || $it_dmg eq"999"){
 				$moya = 777;
-				$mess.="<BR><font color=red>你看到了夜空出現閃爍的星星・・・</font>";
+				$mess.="<br><font color=red>你看到了夜空出現閃爍的星星・・・</font>";
 			}else{
-				$mess.="<BR>什麼事都沒有發生。。。";
+				$mess.="<br>什麼事都沒有發生。。。";
 			}
 		}elsif($it_type eq"11"){
 			$mabp += $it_dmg;
-			$mess.="<BR>熟練度增加了<font color=red>$it_dmg</font>。";
+			$mess.="<br>熟練度增加了<font color=red>$it_dmg</font>。";
 		}elsif($it_type eq"12"){
 			$mjp[$it_ele] += $it_dmg;
 			if($mjp[$it_ele]>$MAXJOB){$mjp[$it_ele] = $MAXJOB;}
-			$mess.="<BR>$TYPE[$it_ele]熟練度增加了<font color=red>$it_dmg</font>。";
+			$mess.="<br>$TYPE[$it_ele]熟練度增加了<font color=red>$it_dmg</font>。";
 		}elsif($it_type eq"13"){
 			($arm_no2,$it_name2,$it_val2,$it_dmg2,$it_wei2,$arm_ele2,$it_hit2,$it_cl2,$it_sta2,$it_type2,$it_flg2)=split(/,/,$marm);
 			($pro_no2,$it_name2,$it_val2,$it_dmg2,$it_wei2,$pro_ele2,$it_hit2,$it_cl2,$it_sta2,$it_type2,$it_flg2)=split(/,/,$mpro);
@@ -164,7 +164,7 @@ sub equip2 {
 			if($acc_no2 eq"mix" && $acc_ele2 eq $mele){$mmaxmp+=1000;}
 			if ($mhp>$mmaxhp){$mhp=$mmaxhp;}
 			if ($mmp>$mmaxmp){$mmp=$mmaxmp;}
-			$mess.="<BR>屬性變為<font color=red>$ELE[$it_ele]</font>。";
+			$mess.="<br>屬性變為<font color=red>$ELE[$it_ele]</font>。";
 		}elsif($it_type eq"14" || $it_type eq"20" || $it_type eq"21" || $it_type eq"22"){
 			if ($it_type eq"14"){
 				$rit_sta=$weapon_stone[int(rand(100))];
@@ -189,7 +189,7 @@ sub equip2 {
 			}
 			$rit_val=30000;$rit_wei=0;$rit_ele=0;$reano=7;
 			push(@ITEM,"rea<>$reano<>$rit_name<>$rit_val<>$rit_dmg<>$rit_wei<>$rit_ele<>$rit_hit<>$rit_cl<>$rit_sta<>$rit_type<>0<>\n");
-			$mess.="<BR>$it_name寶箱後出現了<font color=red>$rit_name</font>！！！";
+			$mess.="<br>$it_name寶箱後出現了<font color=red>$rit_name</font>！！！";
 			&maplog("<font color=orange>[寶箱]</font><font color=blue>$mname</font>打開了<font color=green>$it_name</font>獲得<font color=red>$rit_name</font><font color=green>$rit_desc</font>。");
 			&maplog7("<font color=orange>[寶箱]</font><font color=blue>$mname</font>打開了<font color=green>$it_name</font>獲得<font color=red>$rit_name</font><font color=green>$rit_desc</font>。");
 		}elsif($it_type eq"23"){
@@ -295,11 +295,11 @@ sub equip2 {
 				$rit_desc="(".$rit_dmg."/".$rit_wei.")(".$ELE[$rit_ele].")";
 
 				push(@ITEM,"rea<>$reano<>$rit_name<>$rit_val<>$rit_dmg<>$rit_wei<>$rit_ele<>$rit_hit<>$rit_cl<>$rit_sta<>$rit_type<>0<>\n");
-				$mess.="<BR>打開寶箱後出現了<font color=red>$rit_name</font>$rit_desc！！！";
+				$mess.="<br>打開寶箱後出現了<font color=red>$rit_name</font>$rit_desc！！！";
 				&maplog("<font color=orange>[寶箱]</font><font color=blue>$mname</font>打開了<font color=green>寶箱</font>獲得<font color=red>$rit_name</font><font color=green>$rit_desc</font>。");
 				&maplog7("<font color=orange>[寶箱]</font><font color=blue>$mname</font>打開了<font color=green>寶箱</font>獲得<font color=red>$rit_name</font><font color=green>$rit_desc</font>。");
 			}else{
-				$mess.="<BR>寶箱中什麼都沒有・・・。";
+				$mess.="<br>寶箱中什麼都沒有・・・。";
 				&maplog("<font color=orange>[寶箱]</font><font color=blue>$mname</font>打開了<font color=green>寶箱</font>結果確是空的・・・。");
 			}
 		}elsif($it_type eq"24"){
@@ -311,13 +311,13 @@ sub equip2 {
 		}elsif($it_type eq"25"){
 			if(int(rand(5)) eq 1 && $it_no eq"rea"){
 				$moya = 77777;
-				$mess.="<BR><font color=red>你從秘寶地圖中看出了寶藏的置位！</font>";
+				$mess.="<br><font color=red>你從秘寶地圖中看出了寶藏的置位！</font>";
 			}else{
-				$mess.="<BR>這張地圖破損得太嚴重，你看不出寶藏的藏身之處。。。";
+				$mess.="<br>這張地圖破損得太嚴重，你看不出寶藏的藏身之處。。。";
 			}
 		}elsif($it_type eq"26"){
 			$moya = int(rand(15));
-			$mess.="<BR>好像發生了什麼不錯的事・・・？";
+			$mess.="<br>好像發生了什麼不錯的事・・・？";
 		}elsif($it_type eq"27"){
 			if($down_lv_limit eq""){$down_lv_limit=50;}
 			if($down_lv_limit>50){$down_lv_limit=50}
@@ -327,12 +327,12 @@ sub equip2 {
 			$down_lv_limit-=$it_dmg;
 			if($mlv<1){&error("你的等級需要大於$it_dmg才可使用");}
 			if($down_lv_limit<0){&error("你本轉可降等剩餘$down_lv_limit2");}
-			$mess.="<BR>你的等級下降了<b>$it_dmg</b>級,你本轉可降等剩餘$down_lv_limit";
+			$mess.="<br>你的等級下降了<b>$it_dmg</b>級,你本轉可降等剩餘$down_lv_limit";
 		}elsif($it_type eq"31"){
 			$mlv-=$it_dmg;
 			$mex-=$it_dmg*100;
 			if($mlv<1){&error("你的等級需要大於$it_dmg才可使用");}
-			$mess.="<BR>你的等級下降了<b>$it_dmg</b>級,你本轉可降等剩餘$down_lv_limit(本次使用未扣剩餘數)";
+			$mess.="<br>你的等級下降了<b>$it_dmg</b>級,你本轉可降等剩餘$down_lv_limit(本次使用未扣剩餘數)";
 		}elsif($it_type eq"32"){
 			$rnditem[0]="rea<>3<>防奧石之箱<>10000<>0<>0<>0<>80<>10<>寶物<>20<><>";
 			$rnditem[1]="rea<>3<>武奧石之箱<>10000<>0<>0<>0<>80<>10<>寶物<>14<><>";
@@ -357,7 +357,7 @@ sub equip2 {
 			$giftitem=$rnditem[int(rand(20))];
 			push(@ITEM,"$giftitem\n");
 			($git1,$git2,$git3,$git4,$git5,$git6,$git7)=split(/<>/,$giftitem);
-			$mess.="<BR>打開新春褔袋後出現了<font color=red>$git3</font>($git5)！！！";
+			$mess.="<br>打開新春褔袋後出現了<font color=red>$git3</font>($git5)！！！";
 			&maplog("<font color=orange>[寶箱]</font><font color=blue>$mname</font>打開了<font color=green>新春褔袋</font>獲得<font color=red>$git3</font><font color=green>($git5)</font>。");
 			&maplog7("<font color=orange>[寶箱]</font><font color=blue>$mname</font>打開了<font color=green>新春褔袋</font>獲得<font color=red>$git3</font><font color=green>($git5)</font>。");
 		}elsif($it_type eq"30"){
@@ -409,64 +409,64 @@ sub equip2 {
 			$upval = 1;
 			if($it_dmg eq "0" && $mmaxstr<500){
 				$mmaxstr += $upval;
-				$mess.="<font color=orange>力量 界限值上昇了$upval點！！</font><BR>";
+				$mess.="<font color=orange>力量 界限值上昇了$upval點！！</font><br>";
 			}elsif($it_dmg eq "1" && $mmaxvit<500){
 				$mmaxvit += $upval;
-				$mess.="<font color=orange>生命 界限值上昇了$upval點！！</font><BR>";
+				$mess.="<font color=orange>生命 界限值上昇了$upval點！！</font><br>";
 			}elsif($it_dmg eq "2" && $mmaxint<500){
 				$mmaxint += $upval;
-				$mess.="<font color=orange>智力 界限值上昇了$upval點！！</font><BR>";
+				$mess.="<font color=orange>智力 界限值上昇了$upval點！！</font><br>";
 			}elsif($it_dmg eq "3" && $mmaxmen<500){
 				$mmaxmen += $upval;
-				$mess.="<font color=orange>精神 界限值上昇了$upval點！！</font><BR>";
+				$mess.="<font color=orange>精神 界限值上昇了$upval點！！</font><br>";
 			}elsif($it_dmg eq "4" && $mmaxdex<500){
 				$mmaxdex += $upval;
-				$mess.="<font color=orange>運氣 界限值上昇了$upval點！！</font><BR>";
+				$mess.="<font color=orange>運氣 界限值上昇了$upval點！！</font><br>";
 			}elsif($it_dmg eq "5" && $mmaxagi<500){
 				$mmaxagi += $upval;
-				$mess.="<font color=orange>速度 界限值上昇了$upval點！！</font><BR>";
+				$mess.="<font color=orange>速度 界限值上昇了$upval點！！</font><br>";
 			}
 			$mmax="$mmaxstr,$mmaxvit,$mmaxint,$mmaxmen,$mmaxdex,$mmaxagi,$mmaxlv";
 		}elsif($it_type eq "101"){
 			$upval = 2;
 			if($it_dmg eq "0" && $mmaxstr<500){
 				$mmaxstr += $upval;
-				$mess.="<font color=orange>力 界限值上昇了$upval點！！</font><BR>";
+				$mess.="<font color=orange>力 界限值上昇了$upval點！！</font><br>";
 			}elsif($it_dmg eq "1" && $mmaxvit<500){
 				$mmaxvit += $upval;
-				$mess.="<font color=orange>生命 界限值上昇了$upval點！！</font><BR>";
+				$mess.="<font color=orange>生命 界限值上昇了$upval點！！</font><br>";
 			}elsif($it_dmg eq "2" && $mmaxint<500){
 				$mmaxint += $upval;
-				$mess.="<font color=orange>智力 界限值上昇了$upval點！！</font><BR>";
+				$mess.="<font color=orange>智力 界限值上昇了$upval點！！</font><br>";
 			}elsif($it_dmg eq "3" && $mmaxmen<500){
 				$mmaxmen += $upval;
-				$mess.="<font color=orange>精神 界限值上昇了$upval點！！</font><BR>";
+				$mess.="<font color=orange>精神 界限值上昇了$upval點！！</font><br>";
 			}elsif($it_dmg eq "4" && $mmaxdex<500){
 				$mmaxdex += $upval;
-				$mess.="<font color=orange>運氣 界限值上昇了$upval點！！</font><BR>";
+				$mess.="<font color=orange>運氣 界限值上昇了$upval點！！</font><br>";
 			}elsif($it_dmg eq "5" && $mmaxagi<500){
 				$mmaxagi += $upval;
-				$mess.="<font color=orange>速度 界限值上昇了$upval點！！</font><BR>";
+				$mess.="<font color=orange>速度 界限值上昇了$upval點！！</font><br>";
 			}
 
 			if($it_wei eq "0"){
 				$mmaxstr -= $upval;
-				$mess.="<font color=blue>力量 界限值下降了$upval點。。</font><BR>";
+				$mess.="<font color=blue>力量 界限值下降了$upval點。。</font><br>";
 			}elsif($it_wei eq "1"){
 				$mmaxvit -= $upval;
-				$mess.="<font color=blue>生命 界限值下降了$upval點。。</font><BR>";
+				$mess.="<font color=blue>生命 界限值下降了$upval點。。</font><br>";
 			}elsif($it_wei eq "2"){
 				$mmaxint -= $upval;
-				$mess.="<font color=blue>智力 界限值下降了$upval點。。</font><BR>";
+				$mess.="<font color=blue>智力 界限值下降了$upval點。。</font><br>";
 			}elsif($it_wei eq "3"){
 				$mmaxmen -= $upval;
-				$mess.="<font color=blue>精神 界限值下降了$upval點。。</font><BR>";
+				$mess.="<font color=blue>精神 界限值下降了$upval點。。</font><br>";
 			}elsif($it_wei eq "4"){
 				$mmaxdex -= $upval;
-				$mess.="<font color=blue>運氣 界限值下降了$upval點。。</font><BR>";
+				$mess.="<font color=blue>運氣 界限值下降了$upval點。。</font><br>";
 			}elsif($it_wei eq "5"){
 				$mmaxagi -= $upval;
-				$mess.="<font color=blue>速度 界限值下降了$upval點。。</font><BR>";
+				$mess.="<font color=blue>速度 界限值下降了$upval點。。</font><br>";
 			}
 
 			if($mmaxstr<100){$mmaxstr=100;}

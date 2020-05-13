@@ -51,17 +51,17 @@ sub rpetup {
 	
 	print <<"EOF";
 
-<TABLE border="0" width="90%" align=center bgcolor="#000000" height="150" CLASS=TC>
-  <TBODY>
-    <TR>
-      <TD colspan="3" align="center" bgcolor="$FCOLOR"><FONT color="#ffffcc">傳說中的馴獸師</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/1.jpg"></TD>
-      <TD bgcolor="#330000" colspan="3"><FONT color="#ffffcc">[傳說中的馴獸師]<BR>你好,讓我幫你訓練寵物需要一定的酬勞。<BR>請將你要訓練的寵物帶在身上，支付酬勞後我們就開始訓練。</FONT></TD>
-    </TR>
-    <TR>
-      <TD align=center bgcolor="ffffff" colspan=2 width=55%>
+<table border="0" width="90%" align=center bgcolor="#000000" height="150" CLASS=TC>
+  <tbody>
+    <tr>
+      <td colspan="3" align="center" bgcolor="$FCOLOR"><font color="#ffffcc">傳說中的馴獸師</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/1.jpg"></td>
+      <td bgcolor="#330000" colspan="3"><font color="#ffffcc">[傳說中的馴獸師]<br>你好,讓我幫你訓練寵物需要一定的酬勞。<br>請將你要訓練的寵物帶在身上，支付酬勞後我們就開始訓練。</font></td>
+    </tr>
+    <tr>
+      <td align=center bgcolor="ffffff" colspan=2 width=55%>
 	<table border=0 width="100%" bgcolor=$FCOLOR CLASS=TC>
 	<tr><td colspan=6 align=center><font color=ffffcc>你身上的寵物</font></td></tr>
 	<form action="./town.cgi" method="post">
@@ -71,30 +71,30 @@ sub rpetup {
 	<tr>
         <td bgcolor=ffffcc></td><td bgcolor=white>$showpetname</td><td bgcolor=white>$mpetlv</td><td bgcolor=white>$mpetdmg</td><td bgcolor=white>$mpetdef</td><td bgcolor=white>$mpetspeed</td><td bgcolor=white>$abname1</td>
 	</tr>
-	<TR><TD colspan=7 align=center bgcolor="ffffff">
-	<INPUT type=hidden name=id value=$mid>
-	<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-	<INPUT type=hidden name=mode value=rpetup2>
-	$tranbutton</TD></TR></form>
+	<tr><td colspan=7 align=center bgcolor="ffffff">
+	<input type=hidden name=id value=$mid>
+	<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+	<input type=hidden name=mode value=rpetup2>
+	$tranbutton</td></tr></form>
 	</table>
 	
-	<TD bgcolor="#ffffff" align=center>
-	$STPR<BR>
+	<td bgcolor="#ffffff" align=center>
+	$STPR<br>
 	<table colspan=3 width=90% align=center CLASS=MC>
 	<tr><td bgcolor="$ELE_BG[$mele]"><font color=ffffcc>種類</font></td><td bgcolor="$ELE_BG[$mele]"><font color=ffffcc>名稱</font></td><td bgcolor="$ELE_BG[$mele]"><font color=ffffcc>威力/重量</font></td></tr>
 	<tr><td bgcolor="$ELE_C[$mele]">武器</td><td bgcolor="$ELE_C[$mele]">$marmname</td><td bgcolor="$ELE_C[$mele]">$marmdmg/$marmwei</td></tr>
 	<tr><td bgcolor="$ELE_C[$mele]">防具</td><td bgcolor="$ELE_C[$mele]">$mproname</td><td bgcolor="$ELE_C[$mele]">$mprodmg/$mprowei</td></tr>
 	<tr><td bgcolor="$ELE_C[$mele]">飾品</td><td bgcolor="$ELE_C[$mele]">$maccname</td><td bgcolor="$ELE_C[$mele]">$maccdmg/$maccwei</td></tr>
 	</table>
-	</TD>
-    </TR>
-    <TR>
-    <TD colspan="3" align="center" bgcolor="ffffff">
+	</td>
+    </tr>
+    <tr>
+    <td colspan="3" align="center" bgcolor="ffffff">
 $BACKTOWNBUTTON
-	</TD>
-    </TR>
-  </TBODY>
-</TABLE>
+	</td>
+    </tr>
+  </tbody>
+</table>
 EOF
 
 	&footer;

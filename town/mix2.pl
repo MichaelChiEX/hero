@@ -267,11 +267,11 @@ sub mix2 {
 					}else{
 						$MIXARMADDDMG[$xmarmele]="已達到上限";
 					}
-                                        $susmsg.="<BR>第$i次:成功強化了<font color=#AAAAFF>$marmname</font><font color=yellow>威力+$MIXARMADDDMG[$xmarmele],重量-$MIXARMADDWEI[$xmarmele]</font>";
+                                        $susmsg.="<br>第$i次:成功強化了<font color=#AAAAFF>$marmname</font><font color=yellow>威力+$MIXARMADDDMG[$xmarmele],重量-$MIXARMADDWEI[$xmarmele]</font>";
 					
                                         $marm="$xmarmno,$marmname,$xmarmval,$xmarmdmg,$xmarmwei,$xmarmele,$xmarmhit,$xmarmcl,$xmarmsta,$xmarmtype,$xmarmflg";
                                 }else{
-                                	$susmsg.="<BR>第$i次:強化失敗了";
+                                	$susmsg.="<br>第$i次:強化失敗了";
                                 }
 				}
 
@@ -323,10 +323,10 @@ sub mix2 {
                                         }else{
                                                 $MIXPROADDDMG[$xmproele]="已達到上限";
                                         }
-                                        $susmsg.="<BR>第$i次:成功強化了<font color=#AAAAFF>$mproname</font><font color=yellow>威力+$MIXPROADDDMG[$xmproele],重量-$MIXPROADDWEI[$xmproele]</font>";
+                                        $susmsg.="<br>第$i次:成功強化了<font color=#AAAAFF>$mproname</font><font color=yellow>威力+$MIXPROADDDMG[$xmproele],重量-$MIXPROADDWEI[$xmproele]</font>";
                                         $mpro="$xmprono,$mproname,$xmproval,$xmprodmg,$xmprowei,$xmproele,$xmprohit,$xmprocl,$xmprosta,$xmprotype,$xmproflg";
 								}else{
-									$susmsg.="<BR>第$i次:強化失敗了";
+									$susmsg.="<br>第$i次:強化失敗了";
 								}
 					}
                         }
@@ -505,10 +505,10 @@ sub mix2 {
                                         }else{
                                                 $MIXACCADDDMG[$xmaccele]="已達到上限";
                                         }
-                                        $susmsg="<BR>第$i次:你已成功強化了<font color=#AAAAFF>$maccname</font><font color=yellow>威力+$MIXACCADDDMG[$xmaccele],重量-$MIXACCADDWEI[$xmaccele]</font>";
+                                        $susmsg="<br>第$i次:你已成功強化了<font color=#AAAAFF>$maccname</font><font color=yellow>威力+$MIXACCADDDMG[$xmaccele],重量-$MIXACCADDWEI[$xmaccele]</font>";
                                         $macc="$xmaccno,$maccname,$xmaccval,$xmaccdmg,$xmaccwei,$xmaccele,$xmacchit,$xmacccl,$xmaccsta,$xmacctype,$xmaccflg";
                                                                 }else{
-                                                                        $susmsg.="<BR>第$i次:強化失敗了";
+                                                                        $susmsg.="<br>第$i次:強化失敗了";
                                                                 }
 					}
                         }
@@ -732,26 +732,26 @@ sub mix2 {
 	&header;
 	
 	print <<"EOF";
-<TABLE border="0" width="80%" bgcolor="#ffffff" height="150" align=center CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">工房</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/inn2.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="#ffffcc"><font color=#AAAAFF>$mname</font>$susmsg</FONT></TD>
-    </TR>
-    <TR>
-      <TD colspan="2" align="right">
+<table border="0" width="80%" bgcolor="#ffffff" height="150" align=center CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">工房</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/inn2.jpg"></td>
+      <td bgcolor="#330000"><font color="#ffffcc"><font color=#AAAAFF>$mname</font>$susmsg</font></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
         <form action="./town.cgi" method="POST">
-        <INPUT type=hidden name=id value=$mid>
-        <INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-	<INPUT type=hidden name=mode value=mix>
-        <INPUT type=submit CLASS=FC value=回到工房></form></TD>
+        <input type=hidden name=id value=$mid>
+        <input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+	<input type=hidden name=mode value=mix>
+        <input type=submit CLASS=FC value=回到工房></form></td>
 
-    </TR>
-  </TBODY>
-</TABLE>
+    </tr>
+  </tbody>
+</table>
 
 EOF
 

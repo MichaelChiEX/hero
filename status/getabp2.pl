@@ -38,27 +38,27 @@ sub getabp2{
 	
 	&header;
 	print <<"EOF";
-<TABLE border="0" width="80%" bgcolor="#ffffff" height="150" align=center CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">取得完成</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/palace2.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="#ffffcc">已成功取得<font color=red>$getabp</font>熟練度。</FONT></TD>
-    </TR>
-    <TR>
-      <TD colspan="2" align="right">
+<table border="0" width="80%" bgcolor="#ffffff" height="150" align=center CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">取得完成</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/palace2.jpg"></td>
+      <td bgcolor="#330000"><font color="#ffffcc">已成功取得<font color=red>$getabp</font>熟練度。</font></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
 	<form action="./status.cgi" method="POST">
-	<INPUT type=hidden name=id value=$mid>
-	<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-	<INPUT type=hidden name=mode value=getabp>
-	<INPUT type=submit CLASS=FC value=回到取得熟練值畫面></form>
+	<input type=hidden name=id value=$mid>
+	<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+	<input type=hidden name=mode value=getabp>
+	<input type=submit CLASS=FC value=回到取得熟練值畫面></form>
 $BACKTOWNBUTTON
-    </TD>
-    </TR>
-  </TBODY>
-</TABLE>
+    </td>
+    </tr>
+  </tbody>
+</table>
 EOF
 	&footer;
 	exit;

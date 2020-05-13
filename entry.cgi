@@ -31,7 +31,7 @@ function changeImg(obj){
 <table border="0" width="700" height="500" class=TC>
     <tbody>
         <tr>
-            <td colspan="2" bgcolor="$FCOLOR" align="center"><FONT size="+2"><B><FONT color="#ffffcc" size="+2">建立新的角色</FONT></B></FONT></td>
+            <td colspan="2" bgcolor="$FCOLOR" align="center"><font size="+2"><b><font color="#ffffcc" size="+2">建立新的角色</font></b></font></td>
         </tr>
         <tr>
             <td colspan="2" bgcolor="#ffffcc">※建立你的角色。<br>
@@ -41,27 +41,27 @@ function changeImg(obj){
         </tr>
         <tr>
             <td bgcolor="#ffffcc">角色名稱</td>
-            <td bgcolor="#ffffcc"><INPUT size=30 name=name><br>
+            <td bgcolor="#ffffcc"><input size=30 name=name><br>
             ※請使用全形２～８個字(或半形４～１６個字)</td>
         </tr>
         <tr>
             <td bgcolor="#ffffcc">帳號</td>
-            <td bgcolor="#ffffcc"><INPUT size=20 name=id><br>
+            <td bgcolor="#ffffcc"><input size=20 name=id><br>
             ※帳號請使用４～８個半形字</td>
         </tr>
         <tr>
             <td bgcolor="#ffffcc">密碼</td>
-            <td bgcolor="#ffffcc"><INPUT type=password size=20 name=pass><br>
+            <td bgcolor="#ffffcc"><input type=password size=20 name=pass><br>
             ※密碼請使用４～８個半形字</td>
         </tr>
         <tr>
             <td bgcolor="#ffffcc">Email</td>
-            <td bgcolor="#ffffcc"><INPUT type=text size=20 name=mail value=@><br>
+            <td bgcolor="#ffffcc"><input type=text size=20 name=mail value=@><br>
             ※請輸入你的Email $mailcom</td>
         </tr>
         <tr>
             <td bgcolor="#ffffcc">Email（確認用）</td>
-            <td bgcolor="#ffffcc"><INPUT type=text size=20 name=mailconfirm value=@><br>
+            <td bgcolor="#ffffcc"><input type=text size=20 name=mailconfirm value=@><br>
             ※請再度輸入你的Email。</td>
         </tr>
         <tr>

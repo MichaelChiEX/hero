@@ -42,22 +42,22 @@ sub town_armdel2 {
         &header;
 
         print <<"EOF";
-<TABLE border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">特產品刪除</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/buki.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="#ffffcc">成功刪除了持產品：<font color=red>$carm_name</font>($carm_dmg/$carm_wei)($ELE[$carm_ele])。</TD>
-    </TR>
-    <TR>
-      <TD colspan="2" align="center">
+<table border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">特產品刪除</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/buki.jpg"></td>
+      <td bgcolor="#330000"><font color="#ffffcc">成功刪除了持產品：<font color=red>$carm_name</font>($carm_dmg/$carm_wei)($ELE[$carm_ele])。</td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
 $BACKTOWNBUTTON
-</TD>
-    </TR>
-  </TBODY>
-</TABLE>
+</td>
+    </tr>
+  </tbody>
+</table>
 <center></center>
 EOF
 

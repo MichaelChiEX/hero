@@ -33,33 +33,33 @@ sub town_arm {
 	&header;
 	
 	print <<"EOF";
-<TABLE border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">武器．防具開發</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/buki.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="#ffffcc">特產品的開發。<BR>請選擇要開發的項目並輸入要投資的金額。<BR>如果選擇的屬性與國家或城鎮的屬性一樣，將會有加成的效果。<BR>每個城填可開發三樣特產品。<BR>目前國家的資金：$scon_gold</FONT></TD>
-    </TR>
-    <TR>
-      <TD colspan="2" align="center">
+<table border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">武器．防具開發</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/buki.jpg"></td>
+      <td bgcolor="#330000"><font color="#ffffcc">特產品的開發。<br>請選擇要開發的項目並輸入要投資的金額。<br>如果選擇的屬性與國家或城鎮的屬性一樣，將會有加成的效果。<br>每個城填可開發三樣特產品。<br>目前國家的資金：$scon_gold</font></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
 	<form action="./country.cgi" method="post">
 	種類：$list 
-	種類２（武器種類選擇）：$tlist <BR>
-	名稱：<INPUT type=text size=15 name=name>
-	屬性：$elelist<BR>
-	威力：<INPUT type=text size=5 name=dmg>萬Gold
-	重量：<INPUT type=text size=5 name=wei>萬Gold<BR>
-	<INPUT type=hidden name=id value=$mid>
-	<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-	<INPUT type=hidden name=mode value=town_arm2>
-	<INPUT type=submit value=開發 CLASS=FC></form>
+	種類２（武器種類選擇）：$tlist <br>
+	名稱：<input type=text size=15 name=name>
+	屬性：$elelist<br>
+	威力：<input type=text size=5 name=dmg>萬Gold
+	重量：<input type=text size=5 name=wei>萬Gold<br>
+	<input type=hidden name=id value=$mid>
+	<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+	<input type=hidden name=mode value=town_arm2>
+	<input type=submit value=開發 CLASS=FC></form>
 $BACKTOWNBUTTON
-	</TD>	
-    </TR>
-  </TBODY>
-</TABLE>
+	</td>	
+    </tr>
+  </tbody>
+</table>
 <center></center>
 EOF
 	&footer;

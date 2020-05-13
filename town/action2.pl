@@ -38,7 +38,7 @@ sub action2 {
 	&header;
 	
 	print <<"EOF";
-	<TABLE border="0" width="80%" bgcolor="#ffffff" height="150" align=center CLASS=FC>
+	<table border="0" width="80%" bgcolor="#ffffff" height="150" align=center CLASS=FC>
 		<tbody>
 			<tr>
 				<td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">$ACTNAME[$ACTOPEN]活動兌換所</font></td>

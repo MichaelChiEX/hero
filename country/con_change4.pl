@@ -38,22 +38,22 @@ sub con_change4{
 	&header;
 	
 	print <<"EOF";
-<TABLE border="0" width="80%" bgcolor="#ffffff" height="150" align=center CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">下野</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/country.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="#ffffcc">你已經成功下野，成為無所屬國民。</FONT></TD>
-    </TR>
-    <TR>
-      <TD colspan="2" align="right">
+<table border="0" width="80%" bgcolor="#ffffff" height="150" align=center CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">下野</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/country.jpg"></td>
+      <td bgcolor="#330000"><font color="#ffffcc">你已經成功下野，成為無所屬國民。</font></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
 $BACKTOWNBUTTON
-     </TD>	
-    </TR>
-  </TBODY>
-</TABLE>
+     </td>	
+    </tr>
+  </tbody>
+</table>
 EOF
 	&chara_input;
 	&maplog("<font color=black>[下野]</font><font color=blue>$mname</font>離開了原有的國家，成為無所屬國民。");

@@ -55,25 +55,25 @@ sub conv_write {
 	&header;
 	
 	print <<"EOF";
-<TABLE border="0" width="80%" align=center bgcolor="#ffffff" height="120" CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD align="center" bgcolor="#993300"><FONT color="#ffffcc">留言</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#330000" height=100><FONT color="#ffffcc">留言完成。</FONT></TD>
-    </TR>
-    <TR>
-      <TD align="center">
+<table border="0" width="80%" align=center bgcolor="#ffffff" height="120" CLASS=FC>
+  <tbody>
+    <tr>
+      <td align="center" bgcolor="#993300"><font color="#ffffcc">留言</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#330000" height=100><font color="#ffffcc">留言完成。</font></td>
+    </tr>
+    <tr>
+      <td align="center">
 	<form action="./country.cgi" method="POST">
-	<INPUT type=hidden name=mode value=$conv>
-	<INPUT type=hidden name=id value=$mid>
-	<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-	<INPUT type=submit CLASS=FC value=OK></form></TD>
+	<input type=hidden name=mode value=$conv>
+	<input type=hidden name=id value=$mid>
+	<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+	<input type=submit CLASS=FC value=OK></form></td>
 	
-    </TR>
-  </TBODY>
-</TABLE>
+    </tr>
+  </tbody>
+</table>
 <center></center>
 EOF
 

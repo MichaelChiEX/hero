@@ -18,13 +18,13 @@ sub ram_down {
 	if(!$hit){$con2_ele=0;$con2_name="無所屬";$con2_id=0;}
 
 	$i=0;
-	$tpr="<table bgcolor=663300><TD width=15 height=5 bgcolor=ffffcc CLASS=GC>　</TD>";
+	$tpr="<table bgcolor=663300><td width=15 height=5 bgcolor=ffffcc CLASS=GC>　</td>";
 	for($i=0;$i<6;$i++){
-		$tpr.= "<TD width=15 height=5 bgcolor=ffffcc><font size=1>$i</font></TD>";
+		$tpr.= "<td width=15 height=5 bgcolor=ffffcc><font size=1>$i</font></td>";
 	}
 	for($i=0;$i<6;$i++){
 		$n = $i;
-		$tpr.= "<TR><TD bgcolor=ffffcc><font size=1>$n</font></td>";
+		$tpr.= "<tr><td bgcolor=ffffcc><font size=1>$n</font></td>";
 		for($j=0;$j<6;$j++){
 			$m_hit=0;$tx=0;
 			foreach(@TOWN_DATA){
@@ -41,15 +41,15 @@ sub ram_down {
 				}
 			
 				if($town2_id eq 0){
-					$tpr.= "<TH bgcolor=$col><img src=\"$IMG/town/m_2.gif\" title=\"$town2_name【$CONNAME[$town2_con]】\" width=15 height=10></TH>";
+					$tpr.= "<th bgcolor=$col><img src=\"$IMG/town/m_2.gif\" title=\"$town2_name【$CONNAME[$town2_con]】\" width=15 height=10></th>";
 				}else{
-					$tpr.= "<TH bgcolor=$col><img src=\"$IMG/town/m_4.gif\" title=\"$town2_name【$CONNAME[$town2_con]】\" width=15 height=10></TH>";
+					$tpr.= "<th bgcolor=$col><img src=\"$IMG/town/m_4.gif\" title=\"$town2_name【$CONNAME[$town2_con]】\" width=15 height=10></th>";
 				}
 			}else{
-				$tpr.= "<TH>　</TH>";
+				$tpr.= "<th>　</th>";
 			}
 		}
-		$tpr.= "</TR>";
+		$tpr.= "</tr>";
 	}
 	$tpr.="</table>";
 
@@ -71,33 +71,33 @@ sub ram_down {
 
 	&header;
 	print <<"EOF";
-<TABLE border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">計略</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center>$tpr</TD>
-      <TD bgcolor="#330000"><FONT color="#ffffcc">對他國的城鎮進行計略。<BR>實行者的名聲需要大於５００，每次施計扣除１００名聲及３００萬<BR>請選擇要實施的對象及施計的內容。<BR>本鎮$town_build_name[12]等級$town_build_data[12]，國家資金：$scon_gold</FONT></TD>
-    </TR>
-    <TR>
-      <TD colspan="2" align="center">
-以下公式還需計算對方城鎮$town_build_name[12]等級所減的效果，才是實際效果<BR>
-下毒：（（運氣＋精神）／２０）ｘ（１＋$town_build_name[12]等級／１０）<BR>
-流言：（（智力＋精神）／２）ｘ（１＋$town_build_name[12]等級／１０）<BR>
+<table border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">計略</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center>$tpr</td>
+      <td bgcolor="#330000"><font color="#ffffcc">對他國的城鎮進行計略。<br>實行者的名聲需要大於５００，每次施計扣除１００名聲及３００萬<br>請選擇要實施的對象及施計的內容。<br>本鎮$town_build_name[12]等級$town_build_data[12]，國家資金：$scon_gold</font></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
+以下公式還需計算對方城鎮$town_build_name[12]等級所減的效果，才是實際效果<br>
+下毒：（（運氣＋精神）／２０）ｘ（１＋$town_build_name[12]等級／１０）<br>
+流言：（（智力＋精神）／２）ｘ（１＋$town_build_name[12]等級／１０）<br>
 調處離山：機率〔（智力－對方智力）ｘ（１＋$town_build_name[12]等級／１０）〕％
 	<form action="./country.cgi" method="post">
 	$movelist
 	$list
-	<INPUT type=hidden name=id value=$mid>
-	<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-	<INPUT type=hidden name=mode value=ram_down2>
-	<INPUT type=submit value=計略 CLASS=FC></form>
+	<input type=hidden name=id value=$mid>
+	<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+	<input type=hidden name=mode value=ram_down2>
+	<input type=submit value=計略 CLASS=FC></form>
 $BACKTOWNBUTTON
-	</TD>	
-    </TR>
-  </TBODY>
-</TABLE>
+	</td>	
+    </tr>
+  </tbody>
+</table>
 <center></center>
 EOF
 

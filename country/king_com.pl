@@ -38,25 +38,25 @@ sub king_com {
 	closedir(dirlist);
 
 	for($i=0;$i<6;$i++){
-		$ylist[$i].="</select><BR>";
-		$ylist[$i].="官職名稱<input type=text size=10 name=yname value=$y_name[$i]><BR>";
+		$ylist[$i].="</select><br>";
+		$ylist[$i].="官職名稱<input type=text size=10 name=yname value=$y_name[$i]><br>";
 
 		$list[$i].="$ylist $ylist[$i]<input type=hidden name=no value=$i>";
 	}
 	&header;
 	
 	print <<"EOF";
-<TABLE border="0" width="90%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">官職任命</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/country2.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="#ffffcc">本國官職人員最多可任命６人。<BR>任命者的名聲需要５００以上、官職名稱由國王命名。<BR>請選擇要任職的人員。</FONT></TD>
-    </TR>
-    <TR>
-      <TD colspan="2" align="center">
+<table border="0" width="90%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">官職任命</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/country2.jpg"></td>
+      <td bgcolor="#330000"><font color="#ffffcc">本國官職人員最多可任命６人。<br>任命者的名聲需要５００以上、官職名稱由國王命名。<br>請選擇要任職的人員。</font></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
 	<table class=TC width=80%>
 	<tr><td colspan=6 align=center><font color=$FCOLOR2>任命</font></td></tr>
 	<tr>
@@ -70,70 +70,70 @@ sub king_com {
 	<tr><td bgcolor=$FCOLOR2 align=center>
 	<form action="./country.cgi" method="post">
 	$list[0]
-	<INPUT type=hidden name=id value=$mid>
-	<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-	<INPUT type=hidden name=mode value=king_com2>
-	<INPUT type=submit value=決定 CLASS=FC>
-        <INPUT type=button value=取消官職 CLASS=FC onclick="javascript:clcom(0);">
+	<input type=hidden name=id value=$mid>
+	<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+	<input type=hidden name=mode value=king_com2>
+	<input type=submit value=決定 CLASS=FC>
+        <input type=button value=取消官職 CLASS=FC onclick="javascript:clcom(0);">
 	</td></form>
 	<td bgcolor=$FCOLOR2 align=center>
 	<form action="./country.cgi" method="post">
 	$list[1]
-	<INPUT type=hidden name=id value=$mid>
-	<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-	<INPUT type=hidden name=mode value=king_com2>
-	<INPUT type=submit value=決定 CLASS=FC>
-        <INPUT type=button value=取消官職 CLASS=FC onclick="javascript:clcom(1);">
+	<input type=hidden name=id value=$mid>
+	<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+	<input type=hidden name=mode value=king_com2>
+	<input type=submit value=決定 CLASS=FC>
+        <input type=button value=取消官職 CLASS=FC onclick="javascript:clcom(1);">
 	</td></form>
 	<td bgcolor=$FCOLOR2 align=center>
 	<form action="./country.cgi" method="post">
 	$list[2]
-	<INPUT type=hidden name=id value=$mid>
-	<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-	<INPUT type=hidden name=mode value=king_com2>
-	<INPUT type=submit value=決定 CLASS=FC>
-        <INPUT type=button value=取消官職 CLASS=FC onclick="javascript:clcom(2);">
+	<input type=hidden name=id value=$mid>
+	<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+	<input type=hidden name=mode value=king_com2>
+	<input type=submit value=決定 CLASS=FC>
+        <input type=button value=取消官職 CLASS=FC onclick="javascript:clcom(2);">
 	</td></form>
 	<td bgcolor=$FCOLOR2 align=center>
         <form action="./country.cgi" method="post">
         $list[3]
-        <INPUT type=hidden name=id value=$mid>
-        <INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-        <INPUT type=hidden name=mode value=king_com2>
-        <INPUT type=submit value=決定 CLASS=FC>
-	<INPUT type=button value=取消官職 CLASS=FC onclick="javascript:clcom(3);">
+        <input type=hidden name=id value=$mid>
+        <input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+        <input type=hidden name=mode value=king_com2>
+        <input type=submit value=決定 CLASS=FC>
+	<input type=button value=取消官職 CLASS=FC onclick="javascript:clcom(3);">
         </td></form>
         <td bgcolor=$FCOLOR2 align=center>
         <form action="./country.cgi" method="post">
         $list[4]
-        <INPUT type=hidden name=id value=$mid>
-        <INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-        <INPUT type=hidden name=mode value=king_com2>
-        <INPUT type=submit value=決定 CLASS=FC>
-	<INPUT type=button value=取消官職 CLASS=FC onclick="javascript:clcom(4);">
+        <input type=hidden name=id value=$mid>
+        <input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+        <input type=hidden name=mode value=king_com2>
+        <input type=submit value=決定 CLASS=FC>
+	<input type=button value=取消官職 CLASS=FC onclick="javascript:clcom(4);">
         </td></form>
         <td bgcolor=$FCOLOR2 align=center>
         <form action="./country.cgi" method="post">
         $list[5]
-        <INPUT type=hidden name=id value=$mid>
-        <INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-        <INPUT type=hidden name=mode value=king_com2>
-        <INPUT type=submit value=決定 CLASS=FC>
-	<INPUT type=button value=取消官職 CLASS=FC onclick="javascript:clcom(5);">
+        <input type=hidden name=id value=$mid>
+        <input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+        <input type=hidden name=mode value=king_com2>
+        <input type=submit value=決定 CLASS=FC>
+	<input type=button value=取消官職 CLASS=FC onclick="javascript:clcom(5);">
         </td></form>
         <form action="./country.cgi" method="post" id="clf">
-        <INPUT type=hidden name=id value=$mid>
-        <INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-        <INPUT type=hidden name=mode value=king_com2>
+        <input type=hidden name=id value=$mid>
+        <input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+        <input type=hidden name=mode value=king_com2>
 	<input type=hidden name=no>
 	</form>
 </tr>
 	</table>
 $BACKTOWNBUTTON
-      </TD>
-    </TR>
-  </TBODY>
-</TABLE>
+      </td>
+    </tr>
+  </tbody>
+</table>
 <script language="javascript">
 function clcom(ino){
 	document.getElementById('clf').no.value=ino;

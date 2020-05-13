@@ -55,23 +55,23 @@ sub inn{
 	close(OUT);
 
 	print <<"EOF";
-<TABLE border="0" width="80%" bgcolor="#ffffff" height="150" align=center CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">宿屋</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/inn2.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="#ffffcc"><font color=#AAAAFF>$mname</font>在這住了一晚<BR>$mes。<BR>住一晚後你的<FONT COLOR=GREEN>ＨＰ</FONT>及<FONT COLOR=GREEN>ＭＰ</FONT>還有<FONT COLOR=GREEN>健康度</FONT>獲得回復。</FONT></TD>
-    </TR>
-    <TR>
-      <TD colspan="2" align="right">
+<table border="0" width="80%" bgcolor="#ffffff" height="150" align=center CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">宿屋</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/inn2.jpg"></td>
+      <td bgcolor="#330000"><font color="#ffffcc"><font color=#AAAAFF>$mname</font>在這住了一晚<br>$mes。<br>住一晚後你的<font COLOR=GREEN>ＨＰ</font>及<font COLOR=GREEN>ＭＰ</font>還有<font COLOR=GREEN>健康度</font>獲得回復。</font></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
 	$STPR
 $BACKTOWNBUTTON
-	</TD>
-    </TR>
-  </TBODY>
-</TABLE>
+	</td>
+    </tr>
+  </tbody>
+</table>
 EOF
 	&chara_input;
 	&footer;

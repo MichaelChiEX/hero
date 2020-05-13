@@ -53,13 +53,13 @@ if ($itype <3){
 		}
 		$armtable.="
 			<tr class='equip' data-ele='$ELE[$arm_ele]' bgcolor=white style='color: $ELE_BG[$arm_ele]'>
-				<TD><font size=2>$arm_name</font></TD>
-				<TD><font size=2>$sta_name</font></TD>
-				<TD>$ELE[$arm_ele]</TD>
-				<TD><font size=2>$arm_dmg</font></TD>
-				<TD><font size=2>$arm_wei</font></TD>
-				<TD align=right><font size=2>$arm_val</font></TD>
-				<TD align=right><font size=2>$buy_area</font></TD>
+				<td><font size=2>$arm_name</font></td>
+				<td><font size=2>$sta_name</font></td>
+				<td>$ELE[$arm_ele]</td>
+				<td><font size=2>$arm_dmg</font></td>
+				<td><font size=2>$arm_wei</font></td>
+				<td align=right><font size=2>$arm_val</font></td>
+				<td align=right><font size=2>$buy_area</font></td>
 			</tr>";
 	}
 } elsif ($itype eq 3) {
@@ -94,13 +94,13 @@ if ($itype <3){
 				}
 				$armtable.="
 					<tr class='equip' data-ele='$ELE[$arm_ele]' bgcolor=white style='color: $ELE_BG[$arm_ele]'>
-						<TD><font size=2>$arm_name</font></TD>
-						<TD><font size=2>$arm_t</font></TD>
-						<TD>$ELE[$arm_ele]</TD>
-						<TD><font size=2>$arm_dmg</font></TD>
-						<TD><font size=2>$arm_wei</font></TD>
-						<TD align=right><font size=2>$arm_val</font></TD>
-						<TD align=right><font size=2>$buy_area</font></TD>
+						<td><font size=2>$arm_name</font></td>
+						<td><font size=2>$arm_t</font></td>
+						<td>$ELE[$arm_ele]</td>
+						<td><font size=2>$arm_dmg</font></td>
+						<td><font size=2>$arm_wei</font></td>
+						<td align=right><font size=2>$arm_val</font></td>
+						<td align=right><font size=2>$buy_area</font></td>
 					</tr>";
 			}
 		}

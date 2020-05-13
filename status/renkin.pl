@@ -39,11 +39,11 @@ sub renkin {
 	<table border="0" width="90%" align=center bgcolor="#000000" height="150" class=TC>
 		<tbody>
 			<tr>
-				<td colspan="3" align="center" bgcolor="$FCOLOR"><FONT color="#ffffcc">煉金</FONT></td>
+				<td colspan="3" align="center" bgcolor="$FCOLOR"><font color="#ffffcc">煉金</font></td>
 			</tr>
 			<tr>
 				<td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/inn.jpg"></td>
-				<td bgcolor="#330000" colspan="3"><FONT color="#ffffcc">在此可以利用你的熟練度製作以下的物品但你必須先學會煉金的相關技能。<br>請選擇你要製作的物品及輸入要製作的數量。</FONT></td>
+				<td bgcolor="#330000" colspan="3"><font color="#ffffcc">在此可以利用你的熟練度製作以下的物品但你必須先學會煉金的相關技能。<br>請選擇你要製作的物品及輸入要製作的數量。</font></td>
 			</tr>
 			<tr>
 				<td align=center bgcolor="ffffff" colspan=2 width=55%>

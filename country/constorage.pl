@@ -37,7 +37,7 @@ sub constorage {
                                                 $it_type_name.="、$abname";
                                         }
                                 }
-			$ittable.="<TR><TD width=5% bgcolor=ffffcc><input type=button value=存入 onclick=javascript:this.form.no.value=$no1;this.form.submit();></TD><TD bgcolor=white><font size=2>$it_name</font></TD><TD bgcolor=white><font size=2>$it_dmg</font></TD><TD bgcolor=white><font size=2>$it_wei</font></TD><TD bgcolor=white><font size=2>$ELE[$it_ele]</font></TD><TD bgcolor=white><font size=2>$EQU[$it_ki]</font></TD><TD bgcolor=white><font size=2>$it_type_name</font></TD></TR>";
+			$ittable.="<tr><td width=5% bgcolor=ffffcc><input type=button value=存入 onclick=javascript:this.form.no.value=$no1;this.form.submit();></td><td bgcolor=white><font size=2>$it_name</font></td><td bgcolor=white><font size=2>$it_dmg</font></td><td bgcolor=white><font size=2>$it_wei</font></td><td bgcolor=white><font size=2>$ELE[$it_ele]</font></td><td bgcolor=white><font size=2>$EQU[$it_ki]</font></td><td bgcolor=white><font size=2>$it_type_name</font></td></tr>";
 		}
                 $no1++;
         }
@@ -60,9 +60,9 @@ sub constorage {
                                         }
                                 }
 			if ($canget) {
-				$sttable.="<TR><TD width=5% bgcolor=ffffcc><input type=button value=取出 onclick=javascript:this.form.no.value=$no2;this.form.submit();></TD><TD bgcolor=white><font size=2>$it_name</font></TD><TD bgcolor=white><font size=2>$it_dmg</font></TD><TD bgcolor=white><font size=2>$it_wei</font></TD><TD bgcolor=white><font size=2>$ELE[$it_ele]</font></TD><TD bgcolor=white><font size=2>$EQU[$it_ki]</font></TD><TD bgcolor=white><font size=2>$it_type_name</font></TD></TR>";
+				$sttable.="<tr><td width=5% bgcolor=ffffcc><input type=button value=取出 onclick=javascript:this.form.no.value=$no2;this.form.submit();></td><td bgcolor=white><font size=2>$it_name</font></td><td bgcolor=white><font size=2>$it_dmg</font></td><td bgcolor=white><font size=2>$it_wei</font></td><td bgcolor=white><font size=2>$ELE[$it_ele]</font></td><td bgcolor=white><font size=2>$EQU[$it_ki]</font></td><td bgcolor=white><font size=2>$it_type_name</font></td></tr>";
 			}else{
-				$sttable.="<TR><TD width=5% bgcolor=ffffcc></TD><TD bgcolor=white><font size=2>$it_name</font></TD><TD bgcolor=white><font size=2>$it_dmg</font></TD><TD bgcolor=white><font size=2>$it_wei</font></TD><TD bgcolor=white><font size=2>$ELE[$it_ele]</font></TD><TD bgcolor=white><font size=2>$EQU[$it_ki]</font></TD><TD bgcolor=white><font size=2>$it_type_name</font></TD></TR>";
+				$sttable.="<tr><td width=5% bgcolor=ffffcc></td><td bgcolor=white><font size=2>$it_name</font></td><td bgcolor=white><font size=2>$it_dmg</font></td><td bgcolor=white><font size=2>$it_wei</font></td><td bgcolor=white><font size=2>$ELE[$it_ele]</font></td><td bgcolor=white><font size=2>$EQU[$it_ki]</font></td><td bgcolor=white><font size=2>$it_type_name</font></td></tr>";
 			}
 		}
                 $no2++;
@@ -70,17 +70,17 @@ sub constorage {
         &header;
 
         print <<"EOF";
-<TABLE border="0" width="90%" align=center bgcolor="#000000" height="150" CLASS=TC>
-  <TBODY>
-    <TR>
-      <TD colspan="3" align="center" bgcolor="$FCOLOR"><FONT color="#ffffcc">國庫</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/storage.jpg"></TD>
-      <TD bgcolor="#330000" colspan="3"><FONT color="#ffffcc"><font color=#AAAAFF>$con_name國</font>的國庫<BR>您可以將身上的裝備捐入國家的國庫中。<BR>但只有國王及官職人員可以提取裝備<BR><font color=yellow>注意：寵物、道具及合成材料無法存放到國庫</FONT></TD>
-    </TR>
-    <TR>
-      <TD align=center bgcolor="ffffff" colspan=2 width=55% valign=top>
+<table border="0" width="90%" align=center bgcolor="#000000" height="150" CLASS=TC>
+  <tbody>
+    <tr>
+      <td colspan="3" align="center" bgcolor="$FCOLOR"><font color="#ffffcc">國庫</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/storage.jpg"></td>
+      <td bgcolor="#330000" colspan="3"><font color="#ffffcc"><font color=#AAAAFF>$con_name國</font>的國庫<br>您可以將身上的裝備捐入國家的國庫中。<br>但只有國王及官職人員可以提取裝備<br><font color=yellow>注意：寵物、道具及合成材料無法存放到國庫</font></td>
+    </tr>
+    <tr>
+      <td align=center bgcolor="ffffff" colspan=2 width=55% valign=top>
         <table border=0 width="100%" bgcolor=$FCOLOR CLASS=TC>
         <tr><td colspan=7 align=center><font color=ffffcc>$con_name國倉庫物品一覽($no2/$CONITEM_MAX)</font></td></tr>
         <tr>
@@ -88,16 +88,16 @@ sub constorage {
         </tr>
         <form action="./country.cgi" method="post">
         $sttable
-        <TR><TD colspan=8 align=center bgcolor="ffffff">
-        <INPUT type=hidden name=id value=$mid>
-        <INPUT type=hidden name=no>
-        <INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-        <INPUT type=hidden name=itype value=$itype>
-        <INPUT type=hidden name=mode value=constorage_out>
-        </TD></TR></form>
+        <tr><td colspan=8 align=center bgcolor="ffffff">
+        <input type=hidden name=id value=$mid>
+        <input type=hidden name=no>
+        <input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+        <input type=hidden name=itype value=$itype>
+        <input type=hidden name=mode value=constorage_out>
+        </td></tr></form>
         </table>
 
-        <TD bgcolor="#ffffff" align=center valign=top>
+        <td bgcolor="#ffffff" align=center valign=top>
         <table border=0 width="100%" bgcolor=$FCOLOR CLASS=TC>
         <tr><td colspan=7 align=center><font color=ffffcc>手持物品一覽($no1/$ITM_MAX)</font></td></tr>
         <tr>
@@ -105,23 +105,23 @@ sub constorage {
         </tr>
         <form action="./country.cgi" method="post">
         $ittable
-        <TR><TD colspan=8 align=center bgcolor="ffffff">
-        <INPUT type=hidden name=id value=$mid>
-        <INPUT type=hidden name=no>
-        <INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-        <INPUT type=hidden name=itype value=$itype>
-        <INPUT type=hidden name=mode value=constorage_in>
-        </TD></TR></form>
+        <tr><td colspan=8 align=center bgcolor="ffffff">
+        <input type=hidden name=id value=$mid>
+        <input type=hidden name=no>
+        <input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+        <input type=hidden name=itype value=$itype>
+        <input type=hidden name=mode value=constorage_in>
+        </td></tr></form>
         </table>
-        </TD>
-    </TR>
-    <TR>
-    <TD colspan="3" align="center" bgcolor="ffffff">
+        </td>
+    </tr>
+    <tr>
+    <td colspan="3" align="center" bgcolor="ffffff">
 $BACKTOWNBUTTON
-        </TD>
-    </TR>
-  </TBODY>
-</TABLE>
+        </td>
+    </tr>
+  </tbody>
+</table>
 EOF
 
         &footer;

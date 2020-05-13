@@ -80,7 +80,7 @@ sub kunren2{
                     </tbody>
                 </table>
             </td>
-            <td align="center" bgcolor="$FCOLOR2" width="20%"><IMG src="$IMG/town/machi.jpg" width="150" height="113" border="0"></td>
+            <td align="center" bgcolor="$FCOLOR2" width="20%"><img src="$IMG/town/machi.jpg" width="150" height="113" border="0"></td>
             <td bgcolor="#cccccc" width=30%>
             <table border="0" width="100%" height="100%" bgcolor=$ELE_BG[$eele]>
                 <tbody>
@@ -278,7 +278,7 @@ EOF
 	<input type=hidden name=mode value=inn>
 	<input type="submit" value="宿屋" CLASS=FC>
 	</form>
-	<P><hr size=0></center>
+	<p><hr size=0></center>
 	</center>
 EOF
 	&footer;

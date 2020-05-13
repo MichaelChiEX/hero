@@ -132,275 +132,275 @@ $status_s
 	    </td>
 		<tr>
 	    <td bgcolor="ffffff" id="guestList">
-	    </TD>
+	    </td>
 	    </tr><tr><td><iframe onload="javascript:try{setframeheight();}catch(e){}" framebroder="0" width="100%" height="500" id="actionframe" name="actionframe" style="display:none" scrolling="no"></iframe>
 	    </td>
 	    </tr>
 	    </table>
-	<CENTER>
+	<center>
 	<table CLASS=CC width=94% id="subTable">
-	    <TR>
-	    <TD colspan=11 bgcolor=$ELE_BG[$con_ele] style="color:$ELE_C[$con_ele]" id="con_name1">
-	    </TD>
-	    </TR>
-	    <TR>
-	    <TD colspan=11 bgcolor=$ELE_C[$con_ele] style="color:$ELE_BG[$con_ele]" id="con_mes">
-	    </TD>
-	    </TR>
+	    <tr>
+	    <td colspan=11 bgcolor=$ELE_BG[$con_ele] style="color:$ELE_C[$con_ele]" id="con_name1">
+	    </td>
+	    </tr>
+	    <tr>
+	    <td colspan=11 bgcolor=$ELE_C[$con_ele] style="color:$ELE_BG[$con_ele]" id="con_mes">
+	    </td>
+	    </tr>
 	</table>
-	<TABLE border="0" width="95%" id="mainTable">
-	<TBODY>
+	<table border="0" width="95%" id="mainTable">
+	<tbody>
 	  $top_print
-          <TR>
-            <TD height="39">
+          <tr>
+            <td height="39">
 <a name="upl"></a>
-            <TABLE border="0" width=100% bgcolor="#FFFFFF" CLASS=CC>
-              <TBODY>
-                <TR>
+            <table border="0" width=100% bgcolor="#FFFFFF" CLASS=CC>
+              <tbody>
+                <tr>
                 <form action="./etc.cgi" method="post" target="actionframe">
                 <input type=hidden name=id value=$mid>
-                <INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+                <input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
                 <input type=hidden name=mode value=setkey>
-                  <TD bgcolor="#FFFFFF" width=100>快速指令<INPUT type="button" CLASS=MFC value="設定" onclick="actform(this.form)">
-		</TD>
+                  <td bgcolor="#FFFFFF" width=100>快速指令<input type="button" CLASS=MFC value="設定" onclick="actform(this.form)">
+		</td>
 </form>
                 <form action="" method="post" id="fastf" target="actionframe">
                 <input type=hidden name=id value=$mid>
-                <INPUT type=hidden name=pass value=$mpass>
+                <input type=hidden name=pass value=$mpass>
                 <input type=hidden name=rmode value=$in{'rmode'}>
                 <input type=hidden name=rnd>
                 <input type=hidden name=mode></form>
-		<TD bgcolor="#FFFFFF" align=right>$fastbutton</TD>
-		</TR>
-		</TBODY>
-	</TABLE>
-	</TD>
-	</TR>
-          <TR>
-            <TD height="39">
+		<td bgcolor="#FFFFFF" align=right>$fastbutton</td>
+		</tr>
+		</tbody>
+	</table>
+	</td>
+	</tr>
+          <tr>
+            <td height="39">
 <a name="upl"></a>
-            <TABLE border="0" width=100% bgcolor="$FCOLOR2" CLASS=CC>
-              <TBODY>
-                <TR>
-                  <TD colspan="5"><FONT color="#ffffcc">角色狀態</FONT></TD>
-                  <TD><FONT color="#ffffcc">指令清單</FONT></TD>
-		<TD colspan="2">
+            <table border="0" width=100% bgcolor="$FCOLOR2" CLASS=CC>
+              <tbody>
+                <tr>
+                  <td colspan="5"><font color="#ffffcc">角色狀態</font></td>
+                  <td><font color="#ffffcc">指令清單</font></td>
+		<td colspan="2">
 <table border=0 width=100% id=table1 cellspacing=0 cellpadding=0>
 	<tr>
 		<td><DIV id=tok style="color:white"><b>讀取資料中..</b></DIV></td>
 		<td align=right><input type=submit CLASS=MFC value="[F5]更新" onclick="javascript:get_all_data();" id="rebutton"></td>
 	</tr>
 </table>
-		</TD>
-                </TR>
-                <TR>
-                  <TD bgcolor="$ELE_C[$mele]" width="50" rowspan="4"><a href="#downl"><img border=0 onmouseover="s_status.style.display='';" onmouseout="s_status.style.display='none';" src="$IMG/chara/$mchara.gif"></a></TD>
-                  <TD bgcolor="$ELE_C[$mele]" width="10%">等級</TD>
-                  <TD bgcolor="$ELE_C[$mele]" width="10%" id="mlv"></TD>
-                  <TD bgcolor="$ELE_C[$mele]" width="10%">屬性</TD>
-                  <TD bgcolor="$ELE_C[$mele]" width="10%" id="mele"></TD>
-                  <TD bgcolor="$ELE_C[$mele]" style="color:blue">訓練．戰鬥</TD>
-                  <TD bgcolor="$ELE_C[$mele]">
+		</td>
+                </tr>
+                <tr>
+                  <td bgcolor="$ELE_C[$mele]" width="50" rowspan="4"><a href="#downl"><img border=0 onmouseover="s_status.style.display='';" onmouseout="s_status.style.display='none';" src="$IMG/chara/$mchara.gif"></a></td>
+                  <td bgcolor="$ELE_C[$mele]" width="10%">等級</td>
+                  <td bgcolor="$ELE_C[$mele]" width="10%" id="mlv"></td>
+                  <td bgcolor="$ELE_C[$mele]" width="10%">屬性</td>
+                  <td bgcolor="$ELE_C[$mele]" width="10%" id="mele"></td>
+                  <td bgcolor="$ELE_C[$mele]" style="color:blue">訓練．戰鬥</td>
+                  <td bgcolor="$ELE_C[$mele]">
                 <form action="./battle.cgi" method="post" id="battlef" target="actionframe">
                 <input type=hidden name=id value=$mid>
-                <INPUT type=hidden name=pass value=$mpass>
+                <input type=hidden name=pass value=$mpass>
                 <input type=hidden name=rmode value=$in{'rmode'}>
                 <input type=hidden name=rnd>
-                <SELECT name=mode style="WIDTH: 160px">
+                <select name=mode style="WIDTH: 160px">
 		</SELECT>
 <div style="color:blue;display:none" id="keyver">
 請輸入驗證碼：<input type=text name=rnd2 size=10>
 </div>
-		</TD>
-                  <TD bgcolor="$ELE_C[$mele]" width=5%><INPUT type="button" id="battlebutton" CLASS=MFC value="實行" onClick="javascript:spshow=true;actform(this.form);"></TD>
-                </form></TR>
-                <TR>
-                  <TD bgcolor="$ELE_C[$mele]" width="10%">HP</TD>
-                  <TD bgcolor="$ELE_C[$mele]" width="10%" id="mhp" style="color:red"></TD>
-                  <TD bgcolor="$ELE_C[$mele]" width="10%">職業</TD>
-                  <TD bgcolor="$ELE_C[$mele]" width="10%" id="mclass"></TD>
-                  <TD bgcolor="$ELE_C[$mele]" style="color:red">城鎮設施</TD>
-                  <TD bgcolor="$ELE_C[$mele]">
+		</td>
+                  <td bgcolor="$ELE_C[$mele]" width=5%><input type="button" id="battlebutton" CLASS=MFC value="實行" onClick="javascript:spshow=true;actform(this.form);"></td>
+                </form></tr>
+                <tr>
+                  <td bgcolor="$ELE_C[$mele]" width="10%">HP</td>
+                  <td bgcolor="$ELE_C[$mele]" width="10%" id="mhp" style="color:red"></td>
+                  <td bgcolor="$ELE_C[$mele]" width="10%">職業</td>
+                  <td bgcolor="$ELE_C[$mele]" width="10%" id="mclass"></td>
+                  <td bgcolor="$ELE_C[$mele]" style="color:red">城鎮設施</td>
+                  <td bgcolor="$ELE_C[$mele]">
 	<form action="./town.cgi" method="post" id="townf" target="actionframe">
                 <input type=hidden name=id value=$mid>
-                <INPUT type=hidden name=pass value=$mpass>
+                <input type=hidden name=pass value=$mpass>
                 <input type=hidden name=rmode value=$in{'rmode'}>
-                  <SELECT name=mode>
-                    <OPTION value=inn>宿屋
-                    <OPTION value=quest>任務屋
-                    <OPTION value=arm>武器店
-                    <OPTION value=pro>防具店
-                    <OPTION value=acc>飾品店
-                    <OPTION value=item>道具店
-                    <OPTION value=petup>寵物店
-                    <OPTION value=mix>工房
-                    <OPTION value=mix_change>原料黑商
-                    <OPTION value=mixbook>熟書合成室
-                    <OPTION value=bank>銀行
-                    <OPTION value=storage>倉庫
-                    <OPTION value=arena>鬥技場
-                    <OPTION value=hinn>高級旅館
-                    <OPTION value=fshop>拍賣所
-                    <OPTION value=sshop>交易所
-                    <OPTION value=battle_entry>天下第一武道會
+                  <select name=mode>
+                    <option value=inn>宿屋
+                    <option value=quest>任務屋
+                    <option value=arm>武器店
+                    <option value=pro>防具店
+                    <option value=acc>飾品店
+                    <option value=item>道具店
+                    <option value=petup>寵物店
+                    <option value=mix>工房
+                    <option value=mix_change>原料黑商
+                    <option value=mixbook>熟書合成室
+                    <option value=bank>銀行
+                    <option value=storage>倉庫
+                    <option value=arena>鬥技場
+                    <option value=hinn>高級旅館
+                    <option value=fshop>拍賣所
+                    <option value=sshop>交易所
+                    <option value=battle_entry>天下第一武道會
                 </SELECT>
-      		  </TD>
-                  <TD bgcolor="$ELE_C[$mele]" width=5%>
-			<INPUT type="button" CLASS=MFC id="townbutton" value="實行" onClick="javascript:actform(this.form);">
-		</TD></form>
-                </TR>
-                <TR>
-                  <TD bgcolor="$ELE_C[$mele]" width="10%">MP</TD>
-                  <TD bgcolor="$ELE_C[$mele]" width="10%" id="mmp" style="color:blue"></TD>
-                  <TD bgcolor="$ELE_C[$mele]" width="10%">熟練度</TD>
-                  <TD bgcolor="$ELE_C[$mele]" id="mabp"></TD>
-                  <TD bgcolor="$ELE_C[$mele]" style="color:green">各項設定</TD>
-                  <TD bgcolor="$ELE_C[$mele]">
+      		  </td>
+                  <td bgcolor="$ELE_C[$mele]" width=5%>
+			<input type="button" CLASS=MFC id="townbutton" value="實行" onClick="javascript:actform(this.form);">
+		</td></form>
+                </tr>
+                <tr>
+                  <td bgcolor="$ELE_C[$mele]" width="10%">MP</td>
+                  <td bgcolor="$ELE_C[$mele]" width="10%" id="mmp" style="color:blue"></td>
+                  <td bgcolor="$ELE_C[$mele]" width="10%">熟練度</td>
+                  <td bgcolor="$ELE_C[$mele]" id="mabp"></td>
+                  <td bgcolor="$ELE_C[$mele]" style="color:green">各項設定</td>
+                  <td bgcolor="$ELE_C[$mele]">
                <form action="./status.cgi" method=post id="statusf" target="actionframe">
                 <input type=hidden name=id value=$mid>
-                <INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+                <input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
 
-                <SELECT name=mode>
-                    <OPTION value=status>查看個人資料
-                    <OPTION value=equip>使用/裝備/寵物
-                    <OPTION>==== 傳送 ====
-                    <OPTION value=money_send>傳送金錢
-                    <OPTION value=item_send>傳送道具
-                    <OPTION>==== 技能設定 ====
-                    <OPTION value=tec_set>技能變更
-                    <OPTION value=sk_set>奧義變更
-                    <OPTION value=skill>奧義取得/修行
-                    <OPTION>==== 職業 ====
-                    <OPTION value=change>轉職
-                    <OPTION value=getabp>取得熟練度
-                    <OPTION>==== 煉金 ====
-                    <OPTION value=renkin>製作物品
-                    <OPTION>==== 自訂 ====
-                    <OPTION value=data_change>美容院
-                    <OPTION value=prof_edit>更改自傳
-                    <OPTION>==== 其他 ====
-                    <OPTION value=hero>登錄傳說英雄
-                    <OPTION value=con_renew>更新所屬國家情報
+                <select name=mode>
+                    <option value=status>查看個人資料
+                    <option value=equip>使用/裝備/寵物
+                    <option>==== 傳送 ====
+                    <option value=money_send>傳送金錢
+                    <option value=item_send>傳送道具
+                    <option>==== 技能設定 ====
+                    <option value=tec_set>技能變更
+                    <option value=sk_set>奧義變更
+                    <option value=skill>奧義取得/修行
+                    <option>==== 職業 ====
+                    <option value=change>轉職
+                    <option value=getabp>取得熟練度
+                    <option>==== 煉金 ====
+                    <option value=renkin>製作物品
+                    <option>==== 自訂 ====
+                    <option value=data_change>美容院
+                    <option value=prof_edit>更改自傳
+                    <option>==== 其他 ====
+                    <option value=hero>登錄傳說英雄
+                    <option value=con_renew>更新所屬國家情報
                     </SELECT>
 
-                    </TD>
-                  <TD bgcolor="$ELE_C[$mele]" width=5%>
-		<INPUT type="button" CLASS=MFC id="statusbutton" value="實行" onClick="javascript:actform(this.form);"></TD>
+                    </td>
+                  <td bgcolor="$ELE_C[$mele]" width=5%>
+		<input type="button" CLASS=MFC id="statusbutton" value="實行" onClick="javascript:actform(this.form);"></td>
 		  </form>
-                </TR>
-                <TR>
-                  <TD bgcolor="$ELE_C[$mele]" width="10%">經驗值</TD>
-                  <TD bgcolor="$ELE_C[$mele]" width="10%" id="mex"></TD>
-                  <TD bgcolor="$ELE_C[$mele]" width="10%">名聲</TD>
-                  <TD bgcolor="$ELE_C[$mele]" width="10%" id="mcex"></TD>
-                  <TD bgcolor="$ELE_C[$mele]">軍事&#12539;內政</TD>
-                  <TD bgcolor="$ELE_C[$mele]">
+                </tr>
+                <tr>
+                  <td bgcolor="$ELE_C[$mele]" width="10%">經驗值</td>
+                  <td bgcolor="$ELE_C[$mele]" width="10%" id="mex"></td>
+                  <td bgcolor="$ELE_C[$mele]" width="10%">名聲</td>
+                  <td bgcolor="$ELE_C[$mele]" width="10%" id="mcex"></td>
+                  <td bgcolor="$ELE_C[$mele]">軍事&#12539;內政</td>
+                  <td bgcolor="$ELE_C[$mele]">
 		<form action="./country.cgi" method="post" target="actionframe" id="countryf">
 		<input type=hidden name=id value=$mid>
-		<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+		<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
 		
-		<SELECT name=mode> 
-		  <OPTION>====== 交流 ======
-                    <OPTION value=all_conv selected>世界留言板
-                    <OPTION value=con_conv>$con_name國留言板
-                    <OPTION value=all_rule>世界法規
-                    <OPTION value=rule>$con_name國法規
-                    <OPTION value=king_conv>官職會議
-                    <OPTION>====== 軍事 ======
-		    <OPTION value=town_build_up>軍防建設
-                    <OPTION value=town_def_up>徵兵
-                    <OPTION value=town_def_tran>練兵
-                    <OPTION value=ram_down>施計
-                    <OPTION>====== 內政 ======
-                    <OPTION value=money_get>回收收益金
-                    <OPTION value=suport_money>貢獻資金
-                    <OPTION value=town_up>都市開發
-                    <OPTION value=town_arm>武器．防具開發
-		    <OPTION value=town_armdel>武器．防具刪除
-                    <OPTION value=sirei>更改國家公告
-		    <OPTION value=unit>隊伍編成
-		    <OPTION>====== 王&#12539;官職 ======
-		    <OPTION value=king_com>任命官職
-		    <OPTION value=king_change>國王交替
-		    <OPTION value=discharge>解雇
-		    <OPTION>====== 警備 ======
-                    <OPTION value=def>城鎮守備
-                    <OPTION value=def_out>解除守備
-                    <OPTION >=======獨立=========
-                    <OPTION value=con_change>入國
-                    <OPTION value=con_change3>下野
-                    <OPTION value=build>建國
-                    <OPTION>====== 國庫 ======
-		    <OPTION value=constorage>國庫
-		    <OPTION value=constorage_up>國庫擴充
-                    <OPTION value=constorage_log>國庫紀錄
-                    </SELECT></TD>
-                  <TD bgcolor="$ELE_C[$mele]" width=5%>
-<INPUT type="button" CLASS=MFC id="countrybutton" value="實行" onClick="javascript:actform(this.form);"></TD>
+		<select name=mode> 
+		  <option>====== 交流 ======
+                    <option value=all_conv selected>世界留言板
+                    <option value=con_conv>$con_name國留言板
+                    <option value=all_rule>世界法規
+                    <option value=rule>$con_name國法規
+                    <option value=king_conv>官職會議
+                    <option>====== 軍事 ======
+		    <option value=town_build_up>軍防建設
+                    <option value=town_def_up>徵兵
+                    <option value=town_def_tran>練兵
+                    <option value=ram_down>施計
+                    <option>====== 內政 ======
+                    <option value=money_get>回收收益金
+                    <option value=suport_money>貢獻資金
+                    <option value=town_up>都市開發
+                    <option value=town_arm>武器．防具開發
+		    <option value=town_armdel>武器．防具刪除
+                    <option value=sirei>更改國家公告
+		    <option value=unit>隊伍編成
+		    <option>====== 王&#12539;官職 ======
+		    <option value=king_com>任命官職
+		    <option value=king_change>國王交替
+		    <option value=discharge>解雇
+		    <option>====== 警備 ======
+                    <option value=def>城鎮守備
+                    <option value=def_out>解除守備
+                    <option >=======獨立=========
+                    <option value=con_change>入國
+                    <option value=con_change3>下野
+                    <option value=build>建國
+                    <option>====== 國庫 ======
+		    <option value=constorage>國庫
+		    <option value=constorage_up>國庫擴充
+                    <option value=constorage_log>國庫紀錄
+                    </SELECT></td>
+                  <td bgcolor="$ELE_C[$mele]" width=5%>
+<input type="button" CLASS=MFC id="countrybutton" value="實行" onClick="javascript:actform(this.form);"></td>
 		</form>
-                </TR>
-                <TR>
-                  <TD bgcolor="$ELE_C[$mele]" width="72" id="mname"></TD>
-                  <TD bgcolor="$ELE_C[$mele]" width="10%">資金<br>銀行</TD>
-                  <TD bgcolor="$ELE_C[$mele]" width="134" id="mgold"></TD>
-                  <TD bgcolor="$ELE_C[$mele]" width="86" id="mtype"></TD>
-                  <TD bgcolor="$ELE_C[$mele]" width="34" id="mjps"></TD>
-                  <TD bgcolor="$ELE_C[$mele]">其他</TD>
-                  <TD bgcolor="$ELE_C[$mele]">
+                </tr>
+                <tr>
+                  <td bgcolor="$ELE_C[$mele]" width="72" id="mname"></td>
+                  <td bgcolor="$ELE_C[$mele]" width="10%">資金<br>銀行</td>
+                  <td bgcolor="$ELE_C[$mele]" width="134" id="mgold"></td>
+                  <td bgcolor="$ELE_C[$mele]" width="86" id="mtype"></td>
+                  <td bgcolor="$ELE_C[$mele]" width="34" id="mjps"></td>
+                  <td bgcolor="$ELE_C[$mele]">其他</td>
+                  <td bgcolor="$ELE_C[$mele]">
 		<form action="./etc.cgi" method="post">
 		<input type=hidden name=id value=$mid>
-		<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+		<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
 		
-		<SELECT name=mode> 
-		　　<OPTION value=move selected>移動
-                    <OPTION value=inv>城鎮攻擊
-		    <OPTION value=mode_change>更改顯示畫面
+		<select name=mode> 
+		　　<option value=move selected>移動
+                    <option value=inv>城鎮攻擊
+		    <option value=mode_change>更改顯示畫面
      		 </SELECT>
-		</TD>
-                  <TD bgcolor="$ELE_C[$mele]" width=5%>
-		<INPUT type="submit" CLASS=MFC value="實行" onSubmit="return" check()>
-		</TD></FORM>
-                </TR>
+		</td>
+                  <td bgcolor="$ELE_C[$mele]" width=5%>
+		<input type="submit" CLASS=MFC value="實行" onSubmit="return" check()>
+		</td></FORM>
+                </tr>
 		
-              </TBODY>
-            </TABLE>
-            </TD>
-          </TR>
-          <TR>
-            <TD>
+              </tbody>
+            </table>
+            </td>
+          </tr>
+          <tr>
+            <td>
 $maplogshow
 	    </td>
-          </TR>
+          </tr>
 	  
  
-          <TR>
-    <TD>
-    <TABLE CLASS=TC WIDTH=100%>
-	<TR><TD colspan=2 align=center>
-	<font color=ffffcc>CHAT</font><BR>
+          <tr>
+    <td>
+    <table CLASS=TC WIDTH=100%>
+	<tr><td colspan=2 align=center>
+	<font color=ffffcc>CHAT</font><br>
 <input type="button" value="[F5]更新所有資料" CLASS=FC style="WIDTH: 200px" onclick="javascript:get_all_data();" id="rbutton">
-	</TD></TR>
-	<TR><TD colspn=2 bgcolor=$FCOLOR2 align=center>
-	</TD>
-	</TR>
-	<TR>
-	<TD bgcolor=$FCOLOR2 width=50% valign='top'>
-	<a name="downl">世界頻道</a><BR>
+	</td></tr>
+	<tr><td colspn=2 bgcolor=$FCOLOR2 align=center>
+	</td>
+	</tr>
+	<tr>
+	<td bgcolor=$FCOLOR2 width=50% valign='top'>
+	<a name="downl">世界頻道</a><br>
 	世頻發言：<input type=text name=mes1 size=30 onKeyPress="return submitenter(1,event)" id="mes1">
     <input type=button id=chat_button1 name=chat_button1 class=FC value=發言 onclick="javascript:chkchat(1);"><a href="#upl">↑↑↑↑↑↑</a>
 <table border=0 bgcolor=$FCOLOR width=100% id=mes_all>
 </table>
 	<br>
-        $mname的私頻</font><input type="button" value="[F5]更新所有資料" CLASS=FC onclick="javascript:get_all_data();" id="rbutton2"><BR>
+        $mname的私頻</font><input type="button" value="[F5]更新所有資料" CLASS=FC onclick="javascript:get_all_data();" id="rbutton2"><br>
         私頻發言：<input type=text name=mes3 size=30 onKeyPress="return submitenter(3,event)" id="mes3">
     <input type=button id=chat_button3 name=chat_button3 class=FC value=發言 onclick="javascript:chkchat(3);">
-<BR>發言對象名稱：</font><input type=text name=aite size=10 id=aite>
+<br>發言對象名稱：</font><input type=text name=aite size=10 id=aite>
 <a href="#upl">↑↑↑↑↑↑</a>
         </form>
 <table border=0 bgcolor=$FCOLOR width=100% id=mes_private>
 </table>
-	<TD bgcolor=$FCOLOR2 width=50% valign='top'>
-所屬國頻道<BR>
+	<td bgcolor=$FCOLOR2 width=50% valign='top'>
+所屬國頻道<br>
 	$con_name國頻發言：<input type=text name=mes2 size=30 onKeyPress="return submitenter(2,event)" id="mes2">
     <input type=button id=chat_button2 name=chat_button2 class=FC value=發言 onclick="javascript:chkchat(2);"><a href="#upl">↑↑↑↑↑↑</a>
 	</form>
@@ -408,34 +408,34 @@ $maplogshow
 </table>
  
 	<br>
-        <a name="down2"></a>隊伍頻<BR>
+        <a name="down2"></a>隊伍頻<br>
         隊伍發言：<input type=text name=mes4 size=30 onKeyPress="return submitenter(4,event)" id="mes4">
     <input type=button id=chat_button4 name=chat_button4 class=FC value=發言 onclick="javascript:chkchat(4);"><a href="#upl">↑↑↑↑↑↑</a>
         </form>
 <table border=0 bgcolor=$FCOLOR width=100% id=mes_unit>
 </table>
-	</TD>
-	</TR>
-	</TD>
-     </TABLE>
-	</TD>
-	</TR>
-        </TBODY>
-      </TABLE>
-      </TD>
-    </TR>
+	</td>
+	</tr>
+	</td>
+     </table>
+	</td>
+	</tr>
+        </tbody>
+      </table>
+      </td>
+    </tr>
 <form action="./status.cgi" method="post" target="chat_post" name="m_all" id="m_all">
         <input type=hidden name=id value=$mid>
-        <INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+        <input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
         <input type=hidden name=mode value=chat>
         <input type=hidden name=mes_sel>
         <input type=hidden name=mes>
         <input type=hidden name=aite>
 </form>
 <iframe src="" width=0 height=0 name=chat_post id=chat_post></iframe>
-  </TBODY>
-</TABLE>
-</CENTER>
+  </tbody>
+</table>
+</center>
 <div id="newmsg" style="position:absolute;filter:blendTrans(duration=1); visibility:hidden; background-color:black;width:400px;height:100px;z-index:20;left: 50px;top:0px;"><table border=0 bgcolor=#gray width=100% id=newmsgtb></table></div>
 <div id=ver1 style="position: absolute; left: 144px; top: 148px;display:none"><img src="" height="80" width="200" id="verimg"></div>";
 <SCRIPT LANGUAGE = "JavaScript"> 
@@ -665,7 +665,7 @@ function country_show(dtstr){
   }
 }
 function maplog_show(obj,ldata){
-  obj.innerHTML="●" +ldata+ "<BR>"+obj.innerHTML;
+  obj.innerHTML="●" +ldata+ "<br>"+obj.innerHTML;
 }
 function chat_show(dtstr){
   var dt=dtstr.split('<>');
@@ -694,7 +694,7 @@ function chat_show(dtstr){
   if(oTb){
      create_tb(oTb,dt[2],dt[3],dt[4],dt[5],$MES_MAX+privadd);
      if(getObj('town_datas')){
-        shotmes[dt[1]]="<a href=#"+dows+"><font color=#AAAAFF>["+shmt+"]</font></a>"+dt[3]+dt[4]+"<font color=gray>"+dt[5]+"</font><BR>";
+        shotmes[dt[1]]="<a href=#"+dows+"><font color=#AAAAFF>["+shmt+"]</font></a>"+dt[3]+dt[4]+"<font color=gray>"+dt[5]+"</font><br>";
      }
   }
 }
@@ -704,7 +704,7 @@ function town_def_show(dtstr){
 	  var dt=dtstr.split('<>');
 	  for(var i=1;i<dt.length;i++){
 		var dt2=dt[i].split(' ');
-		getObj('def_list').innerHTML+="<IMG Src=$IMG/town/shield.jpg><a href=\\\"javascript:void(0)\\\" onClick=\\\"javascipt:show_other_status('"+dt2[1]+"');\\\">"+dt2[0]+"</a>";
+		getObj('def_list').innerHTML+="<img Src=$IMG/town/shield.jpg><a href=\\\"javascript:void(0)\\\" onClick=\\\"javascipt:show_other_status('"+dt2[1]+"');\\\">"+dt2[0]+"</a>";
 	  }
   }
 }
@@ -841,7 +841,7 @@ function chara_show(dtstr){
   }
   var m_maxmaxhp=mmax[0]*5+mmax[1]*10+mmax[3]*3-2000;
   var m_maxmaxmp=mmax[2]*5 + mmax[3]*3 -800;
-  getObj('mname').innerHTML=dt[1]+'<BR>'+'戰數：'+dt[36];
+  getObj('mname').innerHTML=dt[1]+'<br>'+'戰數：'+dt[36];
   getObj('chara_maxmaxhp').innerHTML=dt[4]+'('+m_maxmaxhp+')';
   getObj('chara_maxmaxmp').innerHTML=dt[6]+'('+m_maxmaxmp+')';
   getObj('mlv').innerHTML=parseInt(dt[18]/100)+1;
@@ -873,7 +873,7 @@ function create_tb(tbl1,chara,lname,lmes,daytime,maxmsg){
 	var oTd2=oTr.insertCell(-1);
 	oTd.align="left";
 	oTd2.bgColor="#000000";
-	oTd2.innerHTML='<b>'+lname+'<BR><font color=ffffff>「'+lmes+'」</b></font><font color=#999999 size=1><BR>('+daytime+')</font>';
+	oTd2.innerHTML='<b>'+lname+'<br><font color=ffffff>「'+lmes+'」</b></font><font color=#999999 size=1><br>('+daytime+')</font>';
 		var rws=tbl1.getElementsByTagName('TR');
 	if(tbl1.rows.length>maxmsg){
 		tbl1.rows[maxmsg].parentNode.removeChild(tbl1.rows[maxmsg]);
@@ -947,10 +947,10 @@ function backtown(){
 	getObj('subTable').style.display='';
 	getObj('actionframe').style.display='none';
 	if(isIE){
-		document.frames('actionframe').document.body.innerHTML='<BR><BR><p align="center"><i><font size=4 color=white>資料讀取中....</font></i></p>';
+		document.frames('actionframe').document.body.innerHTML='<br><br><p align="center"><i><font size=4 color=white>資料讀取中....</font></i></p>';
 	}else{
 	var iObj = document.getElementById('actionframe').contentDocument;
-	iObj.body.innerHTML='<BR><BR><p align="center"><i><font color=white size=4>資料讀取中....</font></i></p>';
+	iObj.body.innerHTML='<br><br><p align="center"><i><font color=white size=4>資料讀取中....</font></i></p>';
 	}
         var iObj;
        if(isIE){

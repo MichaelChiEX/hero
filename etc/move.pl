@@ -21,12 +21,12 @@ sub move{
 		$CONNAME[$con2_id]=$con2_name;
 	}
 
-	$tpr="<table bgcolor=663300><TD width=15 height=5 bgcolor=ffffcc CLASS=GC>　</TD>";
+	$tpr="<table bgcolor=663300><td width=15 height=5 bgcolor=ffffcc CLASS=GC>　</td>";
 	for($i=0;$i<6;$i++){
-		$tpr.= "<TD width=15 height=5 bgcolor=ffffcc><font size=1>$i</font></TD>";
+		$tpr.= "<td width=15 height=5 bgcolor=ffffcc><font size=1>$i</font></td>";
 	}
 	for($i=0;$i<6;$i++){
-		$tpr.= "<TR><TD bgcolor=ffffcc><font size=1>$i</font></td>";
+		$tpr.= "<tr><td bgcolor=ffffcc><font size=1>$i</font></td>";
 		for($j=0;$j<6;$j++){
 			$m_hit=0;
 			foreach(@TOWN_DATA){
@@ -41,15 +41,15 @@ sub move{
 				}
 			
 				if($town2_id eq 0){
-					$tpr.= "<TH bgcolor=$col><img src=\"$IMG/town/m_2.gif\" title=\"$town2_name($ELE[$town2_ele])【$CONNAME[$town2_con]國】\" width=15 height=10></TH>";
+					$tpr.= "<th bgcolor=$col><img src=\"$IMG/town/m_2.gif\" title=\"$town2_name($ELE[$town2_ele])【$CONNAME[$town2_con]國】\" width=15 height=10></th>";
 				}else{
-					$tpr.= "<TH bgcolor=$col><img src=\"$IMG/town/m_4.gif\" title=\"$town2_name($ELE[$town2_ele])【$CONNAME[$town2_con]國】\" width=15 height=10></TH>";
+					$tpr.= "<th bgcolor=$col><img src=\"$IMG/town/m_4.gif\" title=\"$town2_name($ELE[$town2_ele])【$CONNAME[$town2_con]國】\" width=15 height=10></th>";
 				}
 			}else{
-				$tpr.= "<TH>　</TH>";
+				$tpr.= "<th>　</th>";
 			}
 		}
-		$tpr.= "</TR>";
+		$tpr.= "</tr>";
 	}
 	$tpr.="</table>";
 
@@ -60,9 +60,9 @@ sub move{
 		$xx=abs($town2_x-$town_x);
 		$yy=abs($town2_y-$town_y);
 		if($xx <= "1" && $yy <= "1"){
-			$towntable.="<TR><TD bgcolor=yellow>($town2_x,$town2_y)</TD><TD bgcolor=yellow>$town2_name</TD><TD bgcolor=yellow>$ELE[$town2_ele]</TD><TD bgcolor=yellow>免費</TD><TD bgcolor=yellow><input type=button class=FC value=移動 onclick='javascript:moves($town2_id);'></TD></TR>";
+			$towntable.="<tr><td bgcolor=yellow>($town2_x,$town2_y)</td><td bgcolor=yellow>$town2_name</td><td bgcolor=yellow>$ELE[$town2_ele]</td><td bgcolor=yellow>免費</td><td bgcolor=yellow><input type=button class=FC value=移動 onclick='javascript:moves($town2_id);'></td></tr>";
 		}elsif($moveall){
-			$towntable.="<TR><TD bgcolor=#EEEEFF>($town2_x,$town2_y)</TD><TD bgcolor=#EEEEFF>$town2_name</TD><TD bgcolor=#EEEEFF>$ELE[$town2_ele]</TD><TD bgcolor=#EEEEFF>飛行術</TD><TD bgcolor=#EEEEFF><input type=button class=FC value=移動 onclick='javascript:moves($town2_id);'></TD></TR>";
+			$towntable.="<tr><td bgcolor=#EEEEFF>($town2_x,$town2_y)</td><td bgcolor=#EEEEFF>$town2_name</td><td bgcolor=#EEEEFF>$ELE[$town2_ele]</td><td bgcolor=#EEEEFF>飛行術</td><td bgcolor=#EEEEFF><input type=button class=FC value=移動 onclick='javascript:moves($town2_id);'></td></tr>";
 		}else{
 			$coins=($xx+$yy)*5;
 			if($mbank+$mgold>100000000){
@@ -70,23 +70,23 @@ sub move{
 			}elsif($mbank+$mgold>30000000){
 				$coins*=2;
 			}
-			$towntable.="<TR><TD bgcolor=white>($town2_x,$town2_y)</TD><TD bgcolor=white>$town2_name</TD><TD bgcolor=white>$ELE[$town2_ele]</TD><TD bgcolor=white>$coins萬</TD><TD bgcolor=white><input type=button class=FC value=移動 onclick='javascript:moves($town2_id);'></TD></TR>";
+			$towntable.="<tr><td bgcolor=white>($town2_x,$town2_y)</td><td bgcolor=white>$town2_name</td><td bgcolor=white>$ELE[$town2_ele]</td><td bgcolor=white>$coins萬</td><td bgcolor=white><input type=button class=FC value=移動 onclick='javascript:moves($town2_id);'></td></tr>";
 		}
 	}
 	&header;
 	
 	print <<"EOF";
-<TABLE border="0" width="80%" bgcolor="#ffffff" height="150" align=center CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">移動</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center>$tpr</TD>
-      <TD bgcolor="#330000"><FONT color="#ffffcc">移動到其他城鎮，請選擇將要移動到的地點，學會飛行術後可以免費所有城鎮移動。<BR>你目前的所在地：$town_x - $town_y</FONT></TD>
-    </TR>
-    <TR>
-      <TD colspan="2" align="right">
+<table border="0" width="80%" bgcolor="#ffffff" height="150" align=center CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">移動</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center>$tpr</td>
+      <td bgcolor="#330000"><font color="#ffffcc">移動到其他城鎮，請選擇將要移動到的地點，學會飛行術後可以免費所有城鎮移動。<br>你目前的所在地：$town_x - $town_y</font></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
         <table border=0 width="100%" bgcolor=$FCOLOR CLASS=TC>
         <tr><td colspan=7 align=center><font color=ffffcc>移動城鎮一覽</font></td></tr>
         <tr>
@@ -94,23 +94,23 @@ sub move{
         </tr>
         <form action="./etc.cgi" method="post" id=movef name=movef>
         $towntable
-        <TR><TD colspan=7 align=center bgcolor="ffffff">
-        <INPUT type=hidden name=id value=$mid>
-        <INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-        <INPUT type=hidden name=tid id=tid>
-        <INPUT type=hidden name=mode value=move2>
-        </TD></TR></form>
+        <tr><td colspan=7 align=center bgcolor="ffffff">
+        <input type=hidden name=id value=$mid>
+        <input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+        <input type=hidden name=tid id=tid>
+        <input type=hidden name=mode value=move2>
+        </td></tr></form>
         </table>
 	<form action="./top.cgi" method="POST">
-	<INPUT type=hidden name=id value=$mid>
+	<input type=hidden name=id value=$mid>
 	
-	<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-	<INPUT type=submit CLASS=FC value=回到城鎮>
-	</TD>
+	<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+	<input type=submit CLASS=FC value=回到城鎮>
+	</td>
 	
-    </TR>
-  </TBODY>
-</TABLE>
+    </tr>
+  </tbody>
+</table>
 <script language=javascript>
 function moves(tid){
 	document.getElementById('tid').value=tid;

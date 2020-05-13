@@ -9,7 +9,7 @@ $print=&menu();
 print <<"EOF";
 
 <center>
-<FONT size="1" color=\"#ffff99\">
+<font size="1" color=\"#ffff99\">
 $print
 </center>
 <SCRIPT LANGUAGE = "JavaScript">

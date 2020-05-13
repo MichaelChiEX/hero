@@ -39,6 +39,6 @@ require './conf.cgi';
 	print"</table>";
 	$con_no=0;
 	
-	print"</table></center><BR>";
+	print"</table></center><br>";
 &mainfooter;
 exit;

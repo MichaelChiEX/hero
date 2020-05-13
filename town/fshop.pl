@@ -66,16 +66,16 @@ sub fshop {
 		$f_tb="<input type=radio name=no value=$no>";
 		if($f_time<$date || $f_max<=$f_p){
 			$fover=1;
-			$f_timec="<FONT color=red>終了</FONT>";
-			$f_tb="<FONT color=red>終了</FONT>";
+			$f_timec="<font color=red>終了</font>";
+			$f_tb="<font color=red>終了</font>";
 			$rakusatu="$f_lname";
 			$rakuval="$f_p";
 			if($f_last eq $mid || $f_id eq $mid){
-				$f_tb="<FONT color=blue>得標</FONT>";
+				$f_tb="<font color=blue>得標</font>";
 				if ($f_ki eq 4) {
-                                	$rptable.="<TR><TD width=5% bgcolor=ffffcc><input type=radio name=no value=$no></TD><TD bgcolor=white><font size=1>$EQU[$f_ki]</font></TD><TD bgcolor=white>$f_name</TD><TD bgcolor=white>$f_val</TD><TD bgcolor=white align=right>$f_hit</TD><TD bgcolor=white>$f_dmg</TD><TD bgcolor=white>$f_wei</TD><TD bgcolor=white>$ELE[$f_ele]</TD><TD bgcolor=white>$f_hname</TD><TD bgcolor=white>$f_min2</TD><TD bgcolor=white>$f_max2</TD><TD bgcolor=white>$f_p2</TD><TD bgcolor=white>$f_lname</TD><TD bgcolor=white>$f_timec</TD><TD bgcolor=white>$it_type_name</TD></TR>";
+                                	$rptable.="<tr><td width=5% bgcolor=ffffcc><input type=radio name=no value=$no></td><td bgcolor=white><font size=1>$EQU[$f_ki]</font></td><td bgcolor=white>$f_name</td><td bgcolor=white>$f_val</td><td bgcolor=white align=right>$f_hit</td><td bgcolor=white>$f_dmg</td><td bgcolor=white>$f_wei</td><td bgcolor=white>$ELE[$f_ele]</td><td bgcolor=white>$f_hname</td><td bgcolor=white>$f_min2</td><td bgcolor=white>$f_max2</td><td bgcolor=white>$f_p2</td><td bgcolor=white>$f_lname</td><td bgcolor=white>$f_timec</td><td bgcolor=white>$it_type_name</td></tr>";
 				}else{
-                                	$rtable.="<TR><TD width=5% bgcolor=ffffcc><input type=radio name=no value=$no></TD><TD bgcolor=white><font size=1>$EQU[$f_ki]</font></TD><TD bgcolor=white>$f_name$add</TD><TD colspan=2 bgcolor=white align=right>$f_val2 萬</TD><TD bgcolor=white>$f_dmg</TD><TD bgcolor=white>$f_wei</TD><TD bgcolor=white>$ELE[$f_ele]</TD><TD bgcolor=white>$f_hname</TD><TD bgcolor=white>$f_min2</TD><TD bgcolor=white>$f_max2</TD><TD bgcolor=white>$f_p2</TD><TD bgcolor=white>$f_lname</TD><TD bgcolor=white>$f_timec</TD><TD bgcolor=white>$it_type_name</TD></TR>";
+                                	$rtable.="<tr><td width=5% bgcolor=ffffcc><input type=radio name=no value=$no></td><td bgcolor=white><font size=1>$EQU[$f_ki]</font></td><td bgcolor=white>$f_name$add</td><td colspan=2 bgcolor=white align=right>$f_val2 萬</td><td bgcolor=white>$f_dmg</td><td bgcolor=white>$f_wei</td><td bgcolor=white>$ELE[$f_ele]</td><td bgcolor=white>$f_hname</td><td bgcolor=white>$f_min2</td><td bgcolor=white>$f_max2</td><td bgcolor=white>$f_p2</td><td bgcolor=white>$f_lname</td><td bgcolor=white>$f_timec</td><td bgcolor=white>$it_type_name</td></tr>";
 				}
 			}
 		}
@@ -90,7 +90,7 @@ sub fshop {
 			$rakuval2=$rakuval;
 		}
 		if ($f_ki eq 4 && !$fover) {
-                        $fptable.="<TR><TD width=5% bgcolor=ffffcc><font size=1>$f_tb</font></TD><TD bgcolor=white><font size=1>$EQU[$f_ki]</font></TD><TD bgcolor=white><font size=1>$f_name</font></TD><TD bgcolor=white><font size=1>$f_hit</font></TD><TD bgcolor=white><font size=1>$f_val</font></TD><TD bgcolor=white><font size=1>$f_dmg</font></TD><TD bgcolor=white><font size=1>$f_wei</font></TD><TD bgcolor=white><font size=1>$ELE[$f_ele]</font></TD><TD bgcolor=white><font size=1>$f_hname</font></TD><TD bgcolor=white><font size=1>$f_min2</font></TD><TD bgcolor=white><font size=1>$f_max2</font></TD><TD bgcolor=white><font size=1>$rakuval2</font></TD><TD bgcolor=white><font size=1>$rakusatu</font></TD><TD bgcolor=white><font size=1>$f_timec</font></TD><TD bgcolor=white>$it_type_name</TD></TR>";
+                        $fptable.="<tr><td width=5% bgcolor=ffffcc><font size=1>$f_tb</font></td><td bgcolor=white><font size=1>$EQU[$f_ki]</font></td><td bgcolor=white><font size=1>$f_name</font></td><td bgcolor=white><font size=1>$f_hit</font></td><td bgcolor=white><font size=1>$f_val</font></td><td bgcolor=white><font size=1>$f_dmg</font></td><td bgcolor=white><font size=1>$f_wei</font></td><td bgcolor=white><font size=1>$ELE[$f_ele]</font></td><td bgcolor=white><font size=1>$f_hname</font></td><td bgcolor=white><font size=1>$f_min2</font></td><td bgcolor=white><font size=1>$f_max2</font></td><td bgcolor=white><font size=1>$rakuval2</font></td><td bgcolor=white><font size=1>$rakusatu</font></td><td bgcolor=white><font size=1>$f_timec</font></td><td bgcolor=white>$it_type_name</td></tr>";
 		}else{
         $f_val2=int($f_val/10000);
         if ($f_val2>9999) {
@@ -100,7 +100,7 @@ sub fshop {
         }
 	if(!$fover){
 
-	                $ftable.="<TR><TD width=5% bgcolor=ffffcc><font size=1>$f_tb</font></TD><TD bgcolor=white><font size=1>$EQU[$f_ki]</font></TD><TD bgcolor=white><font size=1>$f_name$add</font></TD><TD colspan=2 bgcolor=white align=right><font size=1>$f_val2</font></TD><TD bgcolor=white><font size=1>$f_dmg</font></TD><TD bgcolor=white><font size=1>$f_wei</font></TD><TD bgcolor=white><font size=1>$ELE[$f_ele]</font></TD><TD bgcolor=white><font size=1>$f_hname</font></TD><TD bgcolor=white><font size=1>$f_min2</font></TD><TD bgcolor=white><font size=1>$f_max2</font></TD><TD bgcolor=white><font size=1>$rakuval2</font></TD><TD bgcolor=white><font size=1>$rakusatu</font></TD><TD bgcolor=white><font size=1>$f_timec</font></TD><TD bgcolor=white>$it_type_name</TD></TR>";
+	                $ftable.="<tr><td width=5% bgcolor=ffffcc><font size=1>$f_tb</font></td><td bgcolor=white><font size=1>$EQU[$f_ki]</font></td><td bgcolor=white><font size=1>$f_name$add</font></td><td colspan=2 bgcolor=white align=right><font size=1>$f_val2</font></td><td bgcolor=white><font size=1>$f_dmg</font></td><td bgcolor=white><font size=1>$f_wei</font></td><td bgcolor=white><font size=1>$ELE[$f_ele]</font></td><td bgcolor=white><font size=1>$f_hname</font></td><td bgcolor=white><font size=1>$f_min2</font></td><td bgcolor=white><font size=1>$f_max2</font></td><td bgcolor=white><font size=1>$rakuval2</font></td><td bgcolor=white><font size=1>$rakusatu</font></td><td bgcolor=white><font size=1>$f_timec</font></td><td bgcolor=white>$it_type_name</td></tr>";
 	}
 		}	
 		$no++;
@@ -128,9 +128,9 @@ sub fshop {
                         $it_type_name="";
                 }
 		if ($it_ki eq 4) {
-                        $pettable.="<TR><TD width=5% bgcolor=ffffcc><input type=radio name=itno value=$no2></TD><TD bgcolor=white><font size=1>$it_name</font></TD><TD bgcolor=white><font size=1>$it_hit</font></TD><TD bgcolor=white><font size=1>$it_val</font></TD><TD bgcolor=white><font size=1>$it_dmg</font></TD><TD bgcolor=white><font size=1>$it_wei</font></TD><TD bgcolor=white><font size=1>$ELE[$it_ele]</font></TD><TD bgcolor=white><font size=1>$EQU[$it_ki]</font></TD><TD bgcolor=white><font size=1>$it_type_name</font></TD></TR>";
+                        $pettable.="<tr><td width=5% bgcolor=ffffcc><input type=radio name=itno value=$no2></td><td bgcolor=white><font size=1>$it_name</font></td><td bgcolor=white><font size=1>$it_hit</font></td><td bgcolor=white><font size=1>$it_val</font></td><td bgcolor=white><font size=1>$it_dmg</font></td><td bgcolor=white><font size=1>$it_wei</font></td><td bgcolor=white><font size=1>$ELE[$it_ele]</font></td><td bgcolor=white><font size=1>$EQU[$it_ki]</font></td><td bgcolor=white><font size=1>$it_type_name</font></td></tr>";
 		}else{
-	                $ittable.="<TR><TD width=5% bgcolor=ffffcc><input type=radio name=itno value=$no2></TD><TD bgcolor=white><font size=1>$it_name</font></TD><TD colspan=2 bgcolor=white><font size=1>$sel_val</font></TD><TD bgcolor=white><font size=1>$it_dmg</font></TD><TD bgcolor=white><font size=1>$it_wei</font></TD><TD bgcolor=white><font size=1>$ELE[$it_ele]</font></TD><TD bgcolor=white><font size=1>$EQU[$it_ki]</font></TD><TD bgcolor=white><font size=1>$it_type_name</font></TD></TR>";
+	                $ittable.="<tr><td width=5% bgcolor=ffffcc><input type=radio name=itno value=$no2></td><td bgcolor=white><font size=1>$it_name</font></td><td colspan=2 bgcolor=white><font size=1>$sel_val</font></td><td bgcolor=white><font size=1>$it_dmg</font></td><td bgcolor=white><font size=1>$it_wei</font></td><td bgcolor=white><font size=1>$ELE[$it_ele]</font></td><td bgcolor=white><font size=1>$EQU[$it_ki]</font></td><td bgcolor=white><font size=1>$it_type_name</font></td></tr>";
 		}
 		$no2++;
 	}
@@ -138,17 +138,17 @@ sub fshop {
 	&header;
 	
 	print <<"EOF";
-<TABLE border="0" width="90%" align=center bgcolor="#000000" height="150" CLASS=TC>
-  <TBODY>
-    <TR>
-      <TD colspan="4" align="center" bgcolor="$FCOLOR"><FONT color="#ffffcc">拍賣所</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/buki.jpg"></TD>
-      <TD bgcolor="#330000" colspan="3"><FONT color="#ffffcc">[拍賣場店員]<BR>歡迎來到拍賣場。目前拍賣場有以下的物品正在進行拍賣。<BR>請選擇你要拍賣或購買的物品？</FONT></TD>
-    </TR>
-    <TR>
-      <TD align=center bgcolor="ffffff" colspan=4 width=100%>
+<table border="0" width="90%" align=center bgcolor="#000000" height="150" CLASS=TC>
+  <tbody>
+    <tr>
+      <td colspan="4" align="center" bgcolor="$FCOLOR"><font color="#ffffcc">拍賣所</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/buki.jpg"></td>
+      <td bgcolor="#330000" colspan="3"><font color="#ffffcc">[拍賣場店員]<br>歡迎來到拍賣場。目前拍賣場有以下的物品正在進行拍賣。<br>請選擇你要拍賣或購買的物品？</font></td>
+    </tr>
+    <tr>
+      <td align=center bgcolor="ffffff" colspan=4 width=100%>
 	<font size=1>
 	<table border=0 width="100%" bgcolor=$FCOLOR CLASS=TC>
 	<form action="./town.cgi" method="post">
@@ -189,14 +189,14 @@ sub fshop {
 	<td bgcolor=white><font size=1>奧義</font></td>
         </tr>
         $fptable
-	<TR><TD colspan=15 align=center bgcolor="ffffff">
-	拍賣出價：<INPUT type=txt name=gold size=10>萬<br>
-	<INPUT type=hidden name=id value=$mid>
-	<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-	<INPUT type=hidden name=itype value=$itype>
-	<INPUT type=hidden name=mode value=fbid>
-	<INPUT type=submit CLASS=FC value=確定出價></TD></TR></form>
-	</FONT>
+	<tr><td colspan=15 align=center bgcolor="ffffff">
+	拍賣出價：<input type=txt name=gold size=10>萬<br>
+	<input type=hidden name=id value=$mid>
+	<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+	<input type=hidden name=itype value=$itype>
+	<input type=hidden name=mode value=fbid>
+	<input type=submit CLASS=FC value=確定出價></td></tr></form>
+	</font>
 	<form action="./town.cgi" method="post">
 	<tr><td colspan=15 align=center><font color=ffffcc>已得標物品一覽</font></td></tr>
         <tr>
@@ -235,70 +235,70 @@ sub fshop {
 	<td bgcolor=white><font size=1>奧義</font></td>
         </tr>
 	$rptable
-	<TR><TD colspan=15 align=center bgcolor="ffffff">
-	<INPUT type=hidden name=id value=$mid>
-	<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-	<INPUT type=hidden name=mode value=fget>
-	<INPUT type=submit CLASS=FC value=收取得標物></TD></TR></form>
+	<tr><td colspan=15 align=center bgcolor="ffffff">
+	<input type=hidden name=id value=$mid>
+	<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+	<input type=hidden name=mode value=fget>
+	<input type=submit CLASS=FC value=收取得標物></td></tr></form>
 	</table>
-	</TD></TR>
+	</td></tr>
 	<tr>
-	<TD bgcolor="#ffffff" colspan="6" align=center>
-	$STPR<BR>
+	<td bgcolor="#ffffff" colspan="6" align=center>
+	$STPR<br>
 	<form action="./town.cgi" method="POST">
 	<table border=0 width="90%" align=center bgcolor=$FCOLOR CLASS=TC>
-	<BR>
-	<TR><td colspan=10 align=center bgcolor="$FCOLOR"><font color=ffffcc>目前持有物</font></td></tr>
-	<TR>
-	<TD bgcolor=ffffcc></TD><td bgcolor=white><font size=1>名稱</font></td><td colspan=2 bgcolor=white><font size=1>價值</font></td><td bgcolor=white><font size=1>威力</font></td><td bgcolor=white><font size=1>重量</font></td><td bgcolor=white><font size=1>屬性</font></td><td bgcolor=white><font size=1>種類</font></td><td bgcolor=white><font size=1>奧義</font></td>
-	</TR>
+	<br>
+	<tr><td colspan=10 align=center bgcolor="$FCOLOR"><font color=ffffcc>目前持有物</font></td></tr>
+	<tr>
+	<td bgcolor=ffffcc></td><td bgcolor=white><font size=1>名稱</font></td><td colspan=2 bgcolor=white><font size=1>價值</font></td><td bgcolor=white><font size=1>威力</font></td><td bgcolor=white><font size=1>重量</font></td><td bgcolor=white><font size=1>屬性</font></td><td bgcolor=white><font size=1>種類</font></td><td bgcolor=white><font size=1>奧義</font></td>
+	</tr>
 	$ittable
-        <TR><td colspan=10 align=center bgcolor="$FCOLOR"><font color=ffffcc>持有寵物</font></td></tr>
-        <TR>
-        <TD bgcolor=ffffcc></TD><td bgcolor=white><font size=1>名稱</font></td><td bgcolor=white><font size=1>等級</font></td><td bgcolor=white><font size=1>威力</font></td><td bgcolor=white><font size=1>防禦</font></td><td bgcolor=white><font size=1>速度</font></td><td bgcolor=white><font size=1>屬性</font></td><td bgcolor=white><font size=1>種類</font></td><td bgcolor=white><font size=1>奧義</font></td>
-        </TR>
+        <tr><td colspan=10 align=center bgcolor="$FCOLOR"><font color=ffffcc>持有寵物</font></td></tr>
+        <tr>
+        <td bgcolor=ffffcc></td><td bgcolor=white><font size=1>名稱</font></td><td bgcolor=white><font size=1>等級</font></td><td bgcolor=white><font size=1>威力</font></td><td bgcolor=white><font size=1>防禦</font></td><td bgcolor=white><font size=1>速度</font></td><td bgcolor=white><font size=1>屬性</font></td><td bgcolor=white><font size=1>種類</font></td><td bgcolor=white><font size=1>奧義</font></td>
+        </tr>
         $pettable
-	<TR><TD colspan=9 align=center bgcolor=ffffff>
+	<tr><td colspan=9 align=center bgcolor=ffffff>
 	<table border=0 width="50%" align=center bgcolor=$FCOLOR CLASS=TC>
 	<tr>
-	<TD bgcolor="#ffffff" colspan="3" align=center>
+	<td bgcolor="#ffffff" colspan="3" align=center>
 	起標價：
-	</TD>
-	<TD bgcolor="#ffffff" colspan="3" align=center>
-	<INPUT type=txt name=mingold size=10>萬<br>
-	</TD>
+	</td>
+	<td bgcolor="#ffffff" colspan="3" align=center>
+	<input type=txt name=mingold size=10>萬<br>
+	</td>
 	</tr>
-	<TD bgcolor="#ffffff" colspan="3" align=center>
+	<td bgcolor="#ffffff" colspan="3" align=center>
 	直接購買價：
-	</TD>
-	<TD bgcolor="#ffffff" colspan="3" align=center>
-	<INPUT type=txt name=maxgold size=10>萬<br>
-	</TD>
+	</td>
+	<td bgcolor="#ffffff" colspan="3" align=center>
+	<input type=txt name=maxgold size=10>萬<br>
+	</td>
 	</tr>
-	<TD bgcolor="#ffffff" colspan="3" align=center>
+	<td bgcolor="#ffffff" colspan="3" align=center>
 	期限：
-	</TD>
-	<TD bgcolor="#ffffff" colspan="3" align=center>
-	<INPUT type=txt name=hour size=10>小時<br>
-	</TD>
+	</td>
+	<td bgcolor="#ffffff" colspan="3" align=center>
+	<input type=txt name=hour size=10>小時<br>
+	</td>
 	</tr>
 	</table>
-	<INPUT type=hidden name=id value=$mid>
-	<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-	<INPUT type=hidden name=itype value=$itype>
-	<INPUT type=hidden name=mode value=fex>
-	<INPUT type=submit CLASS=FC value=確定拍賣></TD></form>
-	</TR></font>
+	<input type=hidden name=id value=$mid>
+	<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+	<input type=hidden name=itype value=$itype>
+	<input type=hidden name=mode value=fex>
+	<input type=submit CLASS=FC value=確定拍賣></td></form>
+	</tr></font>
 	</table>
-	</TD>
-    </TR>
-    <TR>
-    <TD colspan="7" align="center" bgcolor="ffffff">
+	</td>
+    </tr>
+    <tr>
+    <td colspan="7" align="center" bgcolor="ffffff">
 $BACKTOWNBUTTON
-	</TD>
-    </TR>
-  </TBODY>
-</TABLE>
+	</td>
+    </tr>
+  </tbody>
+</table>
 EOF
 
 	&footer;

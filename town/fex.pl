@@ -52,26 +52,26 @@ sub fex{
 	&header;
 	
 print <<"EOF";
-<TABLE border="0" width="80%" align=center bgcolor="#000000" height="150" CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="$FCOLOR"><FONT color="$FCOLOR2">拍賣所</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="$FCOLOR2" width=20% align=center><img src="$IMG/etc/buki.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="$FCOLOR2">拍賣所店員：<BR><font color=#AAAAFF>$it_name</font>以底價<font color=green>$mg2萬</font>、直接購買金額<font color=green>$mx2萬</font>為期<font color=green>$in{'hour'}小時</font>進行拍賣。</FONT></TD>
-    </TR>
-    <TR>
-    <TD colspan="2" align="center" bgcolor="ffffff">
+<table border="0" width="80%" align=center bgcolor="#000000" height="150" CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="$FCOLOR"><font color="$FCOLOR2">拍賣所</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="$FCOLOR2" width=20% align=center><img src="$IMG/etc/buki.jpg"></td>
+      <td bgcolor="#330000"><font color="$FCOLOR2">拍賣所店員：<br><font color=#AAAAFF>$it_name</font>以底價<font color=green>$mg2萬</font>、直接購買金額<font color=green>$mx2萬</font>為期<font color=green>$in{'hour'}小時</font>進行拍賣。</font></td>
+    </tr>
+    <tr>
+    <td colspan="2" align="center" bgcolor="ffffff">
 	<form action="./town.cgi" method="POST">
-	<INPUT type=hidden name=mode value=fshop>
-	<INPUT type=hidden name=id value=$mid>
-	<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-	<INPUT type=submit CLASS=FC value=回到拍賣所></TD></form>
-	</TD>
-    </TR>
-  </TBODY>
-</TABLE>
+	<input type=hidden name=mode value=fshop>
+	<input type=hidden name=id value=$mid>
+	<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+	<input type=submit CLASS=FC value=回到拍賣所></td></form>
+	</td>
+    </tr>
+  </tbody>
+</table>
 <center></center>
 EOF
 

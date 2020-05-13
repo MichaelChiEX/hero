@@ -45,7 +45,7 @@ sub item_send {
     }
 
     if($in{'sendname'} ne""){
-        $sendmsg="<BR><FONT color=#ffffcc><font color=blue>$mname</font>傳送<font color=red>$in{'senditem'}</font>給<font color=lighgreen>$in{'sendname'}</font>。</FONT>";
+        $sendmsg="<br><font color=#ffffcc><font color=blue>$mname</font>傳送<font color=red>$in{'senditem'}</font>給<font color=lighgreen>$in{'sendname'}</font>。</font>";
     }
 
     &header;
@@ -54,11 +54,11 @@ sub item_send {
 <table border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
     <tbody>
         <tr>
-            <td colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">傳送物品</FONT></td>
+            <td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">傳送物品</font></td>
         </tr>
         <tr>
             <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/pub.jpg" width="157" height="100"></td>
-            <td bgcolor="#330000"><FONT color="#ffffcc">請直接輸入對方的角色名稱，並選擇要傳送的物品，每件物品傳送將花費銀行存款１０萬。$sendmsg</FONT></td>
+            <td bgcolor="#330000"><font color="#ffffcc">請直接輸入對方的角色名稱，並選擇要傳送的物品，每件物品傳送將花費銀行存款１０萬。$sendmsg</font></td>
         </tr>
         <tr>
             <td colspan="2" align="center">
@@ -122,11 +122,11 @@ sub item_send {
                         $elelist
                     </select>
                     數量:<input type=text size=3 name=num value=1>
-                    <INPUT type=hidden name=id value=$mid>
-                    <INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-                    <INPUT type=hidden name=mode value=item_send3>
-                    <INPUT type=hidden name=itkind value="stone">
-                    <INPUT type=button value=傳送原料 onclick="javascript:subs(this);">
+                    <input type=hidden name=id value=$mid>
+                    <input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+                    <input type=hidden name=mode value=item_send3>
+                    <input type=hidden name=itkind value="stone">
+                    <input type=button value=傳送原料 onclick="javascript:subs(this);">
                 </form>
                 <table border="0" align=center width="100%" height="1" CLASS=MC>
                     <tbody>
@@ -161,7 +161,7 @@ sub item_send {
                     <input type=hidden name=id value=$mid>
                     <input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
                     <input type=hidden name=mode value=item_send3>
-                    <INPUT type=hidden name=itkind value="fruit">
+                    <input type=hidden name=itkind value="fruit">
                     <input type=button value=傳送能力果 onclick="javascript:subs(this);">
                 </form>
                 <table border="0" align=center width="100%" height="1" CLASS=MC>
@@ -187,7 +187,7 @@ sub item_send {
                     <input type=hidden name=id value=$mid>
                     <input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
                     <input type=hidden name=mode value=item_send3>
-                    <INPUT type=hidden name=itkind value="act">
+                    <input type=hidden name=itkind value="act">
                     <input type=button value=傳送活動物品 onclick="javascript:subs(this);">
                 </form>
                 $BACKTOWNBUTTON

@@ -34,22 +34,22 @@ $COMPS=@COMP;
         &header;
 
         print <<"EOF";
-<TABLE border="0" width="90%" align=center bgcolor="#000000" height="150" CLASS=TC>
-  <TBODY>
-    <TR>
-      <TD colspan="4" align="center" bgcolor="$FCOLOR"><FONT color="#ffffcc">熟練之書合成室</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/storage.jpg"></TD>
-      <TD bgcolor="#330000" colspan="3"><FONT color="#ffffcc"><font color=#AAAFFF>$mname</font>完成熟練之書$t_dmg</FONT></TD>
-    </TR>
-    <TR>
-    <TD colspan="4" align="center" bgcolor="ffffff">
+<table border="0" width="90%" align=center bgcolor="#000000" height="150" CLASS=TC>
+  <tbody>
+    <tr>
+      <td colspan="4" align="center" bgcolor="$FCOLOR"><font color="#ffffcc">熟練之書合成室</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/storage.jpg"></td>
+      <td bgcolor="#330000" colspan="3"><font color="#ffffcc"><font color=#AAAFFF>$mname</font>完成熟練之書$t_dmg</font></td>
+    </tr>
+    <tr>
+    <td colspan="4" align="center" bgcolor="ffffff">
 $BACKTOWNBUTTON
-        </TD>
-    </TR>
-  </TBODY>
-</TABLE>
+        </td>
+    </tr>
+  </tbody>
+</table>
 EOF
 
         &footer;

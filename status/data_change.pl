@@ -18,7 +18,7 @@ sub data_change {
             <tr>
                 <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/house.jpg"></td>
                 <td bgcolor="#330000">
-                    <font color="#ffffcc">你好,歡迎來到美容院。<BR>請選擇你要修改的圖案。<BR>
+                    <font color="#ffffcc">你好,歡迎來到美容院。<br>請選擇你要修改的圖案。<br>
                     頭像整型一次需要<font color=red>１０萬</font>。整型一次需要１億</font>
                 </td>
             </tr>
@@ -28,7 +28,7 @@ sub data_change {
                         <img src="$IMG/chara/$mchara.gif" name="Img"><br>
                         <select id=chara name=chara onChange="changeImg(this)">
                         $chara_options
-                        </select><br>選擇你要的圖案。<BR>
+                        </select><br>選擇你要的圖案。<br>
                         <input type=submit CLASS=FC value=變更>
                         <input type=hidden name=id value=$mid>
                         <input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>

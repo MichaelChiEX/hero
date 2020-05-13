@@ -47,14 +47,14 @@ sub name_change {
 	<table border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
 		<tbody>
 			<tr>
-				<td colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">改名神殿</FONT></td>
+				<td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">改名神殿</font></td>
 			</tr>
 			<tr>
-				<td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/palace2.jpg"></TD>
+				<td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/palace2.jpg"></td>
 				<td bgcolor="#330000">
-					<FONT color="#ffffcc">在這裏，你可以修改你的名字或寵物及特武的名字<br>
+					<font color="#ffffcc">在這裏，你可以修改你的名字或寵物及特武的名字<br>
 					(一次只能改一樣,請把要改名的寵物或自製武器拿著)。<br>寵物只可修改終階10級寵。<br>
-					改名需要花費你手中的５０００萬。<br>請輸入你想要修改的名稱。</FONT>
+					改名需要花費你手中的５０００萬。<br>請輸入你想要修改的名稱。</font>
 				</td>
 			</tr>
 			<tr>

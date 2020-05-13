@@ -42,31 +42,31 @@ sub town_armdel {
                                 #        }
                                 #}
                                 
-                                $armtable.="<TR bgcolor=white style='color: $ELE_BG[$arm_ele]'><TD><input type=radio name=dno value=$item_count size=2></TD><TD><font size=2>$arm_name</font></TD><!--<TD><font size=2>$sta_name</font></TD>--><TD id=td_$item_count>$ELE[$arm_ele]</TD><TD><font size=2>$arm_dmg</font></TD><TD><font size=2>$arm_wei</font></TD><TD align=right><font size=2>$arm_val</font></TD><TD align=right><font size=2>$buy_area</font></TD></TR>";
+                                $armtable.="<tr bgcolor=white style='color: $ELE_BG[$arm_ele]'><td><input type=radio name=dno value=$item_count size=2></td><td><font size=2>$arm_name</font></td><!--<td><font size=2>$sta_name</font></td>--><td id=td_$item_count>$ELE[$arm_ele]</td><td><font size=2>$arm_dmg</font></td><td><font size=2>$arm_wei</font></td><td align=right><font size=2>$arm_val</font></td><td align=right><font size=2>$buy_area</font></td></tr>";
                             }
                         }
 					$item_count++;
 		         }
 	&header;
         print <<"EOF";
-<TABLE border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">武器．防具刪除</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/buki.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="#ffffcc">特產品刪除，刪除一品特產品需要花費國家資金１０００萬。<BR>目前國家的資金：$scon_gold Gold</FONT></TD>
-    </TR>
-    <TR>
-<TABLE border="0" width="80%" align=center bgcolor="#ffffff" height="1" CLASS=TC>
-  <TBODY>
-    <TR>
-      <TD align="center" bgcolor="$FCOLOR"><font color="#FFFFCC">
-                本國特產清單</font></TD>
-    </TR>
-    <TR>
-      <TD align=center bgcolor="ffffff" height="48">
+<table border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">武器．防具刪除</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/buki.jpg"></td>
+      <td bgcolor="#330000"><font color="#ffffcc">特產品刪除，刪除一品特產品需要花費國家資金１０００萬。<br>目前國家的資金：$scon_gold Gold</font></td>
+    </tr>
+    <tr>
+<table border="0" width="80%" align=center bgcolor="#ffffff" height="1" CLASS=TC>
+  <tbody>
+    <tr>
+      <td align="center" bgcolor="$FCOLOR"><font color="#FFFFCC">
+                本國特產清單</font></td>
+    </tr>
+    <tr>
+      <td align=center bgcolor="ffffff" height="48">
         <table border=0 width="100%" bgcolor=$FCOLOR CLASS=TC>
         <tr><td colspan=7 align=center><font color=ffffcc>清單</font></td></tr>
         <tr>
@@ -82,24 +82,24 @@ sub town_armdel {
 <form action="./country.cgi" method="post">
         $armtable
         </table>
-		</TD>
-	</TR>
-       <TR bgcolor=ffffcc>
-      	<TD colspan="2" align="center">
-        <INPUT type=hidden name=id value=$mid>
-        <INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-        <INPUT type=hidden name=mode value=town_armdel2>
-        <INPUT type=submit value=確定刪除 CLASS=FC></form>
+		</td>
+	</tr>
+       <tr bgcolor=ffffcc>
+      	<td colspan="2" align="center">
+        <input type=hidden name=id value=$mid>
+        <input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+        <input type=hidden name=mode value=town_armdel2>
+        <input type=submit value=確定刪除 CLASS=FC></form>
 $BACKTOWNBUTTON
-      	</TD>
-       </TR>
-    </TBODY>
-</TABLE>
-</TD>
+      	</td>
+       </tr>
+    </tbody>
+</table>
+</td>
 
-    </TR>
-  </TBODY>
-</TABLE>
+    </tr>
+  </tbody>
+</table>
 
 EOF
         &footer;

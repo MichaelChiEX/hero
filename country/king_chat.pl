@@ -67,22 +67,22 @@ sub king_chat {
 	close(OUT);
 
 	print <<"EOF";
-<TABLE border="0" width="80%" align=center bgcolor="#ffffff" height="120" CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD align="center" bgcolor="#993300"><FONT color="#ffffcc">傳送完成</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#330000" height=100><FONT color="#ffffcc">已將內容傳送到對方手中。</FONT></TD>
-    </TR>
-    <TR>
-      <TD align="center">
+<table border="0" width="80%" align=center bgcolor="#ffffff" height="120" CLASS=FC>
+  <tbody>
+    <tr>
+      <td align="center" bgcolor="#993300"><font color="#ffffcc">傳送完成</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#330000" height=100><font color="#ffffcc">已將內容傳送到對方手中。</font></td>
+    </tr>
+    <tr>
+      <td align="center">
 $BACKTOWNBUTTON
-	</TD>
+	</td>
 	
-    </TR>
-  </TBODY>
-</TABLE>
+    </tr>
+  </tbody>
+</table>
 <center></center>
 EOF
 

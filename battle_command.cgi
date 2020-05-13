@@ -20,25 +20,25 @@ sub MATT{
                                 if($ehpd>1000){$ehpd=1000;}
 				if($marmele ne $mele){$ehpd=int($ehpd/2);}
 				$ehp-=$ehpd;
-				$bmess.="<font color=blue>$mname</font>手中的<font color=red>$marmname</font>獲得火神祝福，使用了祝融之怒，給予了<b>$ehpd</b>傷害<BR>";
+				$bmess.="<font color=blue>$mname</font>手中的<font color=red>$marmname</font>獲得火神祝福，使用了祝融之怒，給予了<b>$ehpd</b>傷害<br>";
 			}elsif($marmele eq"2"){
 				$ehpd=int($emaxhp/20);
                                 if($ehp>500){$ehpd=500;}
 				if($marmele ne $mele){$ehpd=int($ehpd/2);}
                                 $ehp-=$ehpd;
 				$mhp+=$ehpd;
-                                $bmess.="<font color=blue>$mname</font>手中的<font color=red>$marmname</font>獲得水神祝福，使用了吸蝕天雨，吸收了<b>$ehpd</b>體力<BR>";
+                                $bmess.="<font color=blue>$mname</font>手中的<font color=red>$marmname</font>獲得水神祝福，使用了吸蝕天雨，吸收了<b>$ehpd</b>體力<br>";
 
                         }elsif($marmele eq"3"){
 				if($marmele eq $mele || int(rand(10))>3){
 					$mcountadd+=int(rand(2)+1);
 					$mmaxcountadd=$mcountadd;
-					$bmess.="<font color=blue>$mname</font>手中的<font color=red>$marmname</font>獲得風神祝福，使用了極速魔音，本回合增加攻擊次數$mcountadd<BR>";
+					$bmess.="<font color=blue>$mname</font>手中的<font color=red>$marmname</font>獲得風神祝福，使用了極速魔音，本回合增加攻擊次數$mcountadd<br>";
 				}
                         }elsif($marmele eq"4"){
 				if($marmele eq $mele || int(rand(10))>4){
 					$mallhit=1;
-                                	$bmess.="<font color=blue>$mname</font>手中的<font color=red>$marmname</font>獲得星神祝福，現在百發百中了<BR>";
+                                	$bmess.="<font color=blue>$mname</font>手中的<font color=red>$marmname</font>獲得星神祝福，現在百發百中了<br>";
 				}
                         }elsif($marmele eq"5" && $turn % 3 eq 0){
 				$tmp_safe=0;
@@ -50,11 +50,11 @@ sub MATT{
 					}
 				}
 				if($tmp_safe eq 1){
-                                $bmess.="<font color=blue>因雙方手中的武都受雷神的祝褔</font>，<font color=red>所以麻痺效果抵消了</font><BR>";
+                                $bmess.="<font color=blue>因雙方手中的武都受雷神的祝褔</font>，<font color=red>所以麻痺效果抵消了</font><br>";
 				}else{
 					if($marmele eq $mele || int(rand(10))>4){
 	                                $epara2=1;$msv=0;
-        	                        $bmess.="<font color=blue>$mname</font>手中的<font color=red>$marmname</font>獲得雷神祝福，使用了天降奔雷，對手被麻痺了<BR>";
+        	                        $bmess.="<font color=blue>$mname</font>手中的<font color=red>$marmname</font>獲得雷神祝福，使用了天降奔雷，對手被麻痺了<br>";
 					}
 				}
                         }elsif($marmele eq"6"){
@@ -69,13 +69,13 @@ sub MATT{
 				if($ehpd>1000){$ehpd=1000;}
 				if($mproele ne $mele){$ehpd=int($ehpd/2);}
                                 $mhp+=$ehpd;
-                                $bmess.="<font color=blue>$mname</font>身上的<font color=red>$mproname</font>獲得水神加護，使用了海洋恩惠，恢復了<b>$ehpd</b>體力<BR>";
+                                $bmess.="<font color=blue>$mname</font>身上的<font color=red>$mproname</font>獲得水神加護，使用了海洋恩惠，恢復了<b>$ehpd</b>體力<br>";
                         }elsif($mproele eq"3"){
 				if($mproele eq $mele || int(rand(10))>3){
 #                                $mmaxcountadd+=1;
 				$mcountadd+=1;
 				$mmaxcountadd=$mcountadd;
-                                $bmess.="<font color=blue>$mname</font>身上的<font color=red>$mproname</font>獲得風神加護，使用了颶風之變，本回合增加攻擊次數增1<BR>";
+                                $bmess.="<font color=blue>$mname</font>身上的<font color=red>$mproname</font>獲得風神加護，使用了颶風之變，本回合增加攻擊次數增1<br>";
 				}
                         }elsif($mproele eq"4"){
                         }elsif($mproele eq"5"){
@@ -96,7 +96,7 @@ sub MATT{
 				}else{
 					$mdsta+=18;
 				}
-                                $mmess.="<font color=blue>$ename</font>手中的<font color=red>$earmname</font>獲得光神祝福，使用了天音聖歌，增加自身戰技防禦力$mdsta%<BR>";
+                                $mmess.="<font color=blue>$ename</font>手中的<font color=red>$earmname</font>獲得光神祝福，使用了天音聖歌，增加自身戰技防禦力$mdsta%<br>";
                         }elsif($earmele eq"7"){
 				if($earmele eq $eele){
 	                                $mhitup2+=0.5;
@@ -104,7 +104,7 @@ sub MATT{
 					$mhitup2+=0.25;
 				}
 				$tmp_show=$mhitup2*100;
-                                $bmess.="<font color=blue>$ename</font>手中的<font color=red>$earmname</font>獲得闇神祝福，使用了禁語咒殺，減少$tmp_show%戰技發動率<BR>";
+                                $bmess.="<font color=blue>$ename</font>手中的<font color=red>$earmname</font>獲得闇神祝福，使用了禁語咒殺，減少$tmp_show%戰技發動率<br>";
                         }
                 }
 		#他自防特效
@@ -114,20 +114,20 @@ sub MATT{
                                 if($ehpd>1000){$ehpd=1000;}
 				if($eproele ne $eele){$ehpd=int($ehpd/2);}
                                 $mhp-=$ehpd;
-                                $bmess.="<font color=blue>$ename</font>身上的<font color=red>$eproname</font>獲得火神加護，使用了地獄煉火，給予了<b>$ehpd</b>傷害<BR>";
+                                $bmess.="<font color=blue>$ename</font>身上的<font color=red>$eproname</font>獲得火神加護，使用了地獄煉火，給予了<b>$ehpd</b>傷害<br>";
                         }elsif($eproele eq"2"){
                         }elsif($eproele eq"3"){
                         }elsif($eproele eq"4"){
 				if($eproele eq $eele || int(rand(10))>3){
                                 $mcountadd-=1;
 				$mmaxcountadd-=1;
-                                $bmess.="<font color=blue>$ename</font>身上的<font color=red>$eproname</font>獲得星神加護，使用了七星連鎖，本回合減少攻擊次數一<BR>";
+                                $bmess.="<font color=blue>$ename</font>身上的<font color=red>$eproname</font>獲得星神加護，使用了七星連鎖，本回合減少攻擊次數一<br>";
 				}
                         }elsif($eproele eq"5"){
 				if($eproele eq $eele || int(rand(10))>3){
                                 $mcountadd-=1;
 				$mmaxcountadd-=1;
-                                $bmess.="<font color=blue>$ename</font>身上的<font color=red>$eproname</font>獲得雷神加護，使用了絕雷之牢，本回合減少攻擊次數一<BR>";
+                                $bmess.="<font color=blue>$ename</font>身上的<font color=red>$eproname</font>獲得雷神加護，使用了絕雷之牢，本回合減少攻擊次數一<br>";
 				}
                         }elsif($eproele eq"6"){
 				if($eproele eq $eele){
@@ -135,14 +135,14 @@ sub MATT{
 				}else{
 					$mdsta+=25;
 				}
-                                $mmess.="<font color=blue>$ename</font>身上的<font color=red>$eproname</font>獲得光神加護，使用了天使護環，增加自身戰技防禦力$mdsta%<BR>";
+                                $mmess.="<font color=blue>$ename</font>身上的<font color=red>$eproname</font>獲得光神加護，使用了天使護環，增加自身戰技防禦力$mdsta%<br>";
                         }elsif($eproele eq"7"){
 				if($eproele eq $eele){
                                 	$mddmg+=20;
 				}else{
 					$mddmg+=10;
 				}
-                                $bmess.="<font color=blue>$ename</font>身上的<font color=red>$eproname</font>獲得闇神祝福，使用了黑洞嗜咒，減少$mddmg%物理傷害<BR>";
+                                $bmess.="<font color=blue>$ename</font>身上的<font color=red>$eproname</font>獲得闇神祝福，使用了黑洞嗜咒，減少$mddmg%物理傷害<br>";
                         }
                 }
                 if($ehp<=1){$ehp=1;}
@@ -152,15 +152,15 @@ sub MATT{
 			$hpsai=int($mabdmg[1]/100*$mmaxhp);
 			$mhp+=$hpsai;
 			if($mhp>$mmaxhp){$mhp=$mmaxhp;}
-			$bmess.="[再生]$mname回復<font color=blue><b>$hpsai</b></font>HP。<BR>";
+			$bmess.="[再生]$mname回復<font color=blue><b>$hpsai</b></font>HP。<br>";
 		}
 		if($mab[54]){
 			$smhp=$mhp;
 			$mhp_tmp=int($smhp*0.1);
-			$bmess.="<font color=red><b>[亡命鎖鏈]自身扣血$mhp_tmp</b></font><BR>";
+			$bmess.="<font color=red><b>[亡命鎖鏈]自身扣血$mhp_tmp</b></font><br>";
 			$mhp-=$mhp_tmp;
                         $mhp_tmp=int($smhp*0.2);
-                        $bmess.="<font color=red><b>[亡命鎖鏈]$ename扣血$mhp_tmp</b></font><BR>";
+                        $bmess.="<font color=red><b>[亡命鎖鏈]$ename扣血$mhp_tmp</b></font><br>";
 			$ehp-=$mhp_tmp;
 			if($ehp<1){$ehp=1;}
 		}
@@ -176,7 +176,7 @@ sub MATT{
 			$emp-=$mmp_tmp;
 			if($mhp>$mmaxhp){$mhp=$mmaxhp;}
 			if($mmp>$mmaxmp){$mmp=$mmaxmp;}
-                        $bmess.="<font color=blue><b>[吸血鬼之吻]吸收對方$mhp_tmpＨＰ、$mmp_tmpＭＰ<BR>";
+                        $bmess.="<font color=blue><b>[吸血鬼之吻]吸收對方$mhp_tmpＨＰ、$mmp_tmpＭＰ<br>";
                 }
 		if($mhp<=1){$mhp=1;}
 		$mkai = int($mspeed/100 + rand($mspeed/100)) + 1;
@@ -187,11 +187,11 @@ sub MATT{
                 if($eab[45]){$mkai-=(int(rand(2))+1);}
 
 		if($mkai<1){$mkai=1;}	
-		$bmess.="<font color=blue size=4><b>$mname</b></font>的<font color=blue size=4><b>$mkai</b></font>回攻擊！<BR>";
+		$bmess.="<font color=blue size=4><b>$mname</b></font>的<font color=blue size=4><b>$mkai</b></font>回攻擊！<br>";
 		if($mpara){
                         if($mab[1]){$tmp_rand=200;}else{$tmp_rand=100;}
                         if($mab[42] && $mabdmg[42]>int(rand($tmp_rand))){
-                                $bmess.="<font color=green>成功解掉身上的毒</font><BR>";
+                                $bmess.="<font color=green>成功解掉身上的毒</font><br>";
                         }else{
                                 if($mab[1]){
 					$mabdmg_tmp=int($mabdmg[1]/5);
@@ -206,13 +206,13 @@ sub MATT{
                                         if($mpara<0){$mpara=0;}
                                         $eab[14]=0;
                                         $eabdmg[14]=0;
-                                        $bmess.="<font color=red>[中毒]毒性與身上的再生技進行中合，再生降為$mabdmg[1]％。</font><BR>";
+                                        $bmess.="<font color=red>[中毒]毒性與身上的再生技進行中合，再生降為$mabdmg[1]％。</font><br>";
                                 }else{
                                         $mhpd=int(rand($mmaxhp*$mpara/10));
                                         if($mhpd>5000){$mhpd=5000;}
                                         $mhp-=$mhpd;$mlose_hp+=$mhpd;
                                         if($mhp<=1){$mhp=1;}
-                                        $bmess.="<font color=red>[中毒]失去<b>$mhpd</b>HP。</font><BR>";
+                                        $bmess.="<font color=red>[中毒]失去<b>$mhpd</b>HP。</font><br>";
                                 }
                         }
 		}
@@ -224,7 +224,7 @@ sub MATT{
 				$mgold-=$mgoldlose;
 				$ehp-=$ehpd;$elose_hp+=$ehpd;
 				if($ehp<1){$ehp=1;}
-				$bmess.="<font color=red size=3>$mname將$mgoldlose Gold丟到$ename的臉上，造成$ehpd傷害及心靈上的創傷！</font><BR>";
+				$bmess.="<font color=red size=3>$mname將$mgoldlose Gold丟到$ename的臉上，造成$ehpd傷害及心靈上的創傷！</font><br>";
 			}
 		}
 		for($kou=0;$kou<$mkai;$kou++){
@@ -250,7 +250,7 @@ sub MATT{
 					$mhpup=$mtec_str[$magic] + int(rand($mfai/2));
 					$mhp+=$mhpup;
 					if($mhp>$mmaxhp){$mhp=$mmaxhp;}
-					$bmess.="回復<font color=blue><b>$mhpup</b></font>HP。<BR>";
+					$bmess.="回復<font color=blue><b>$mhpup</b></font>HP。<br>";
 				}elsif($mtec_sta[$magic] eq 2){
 					$tmp_hp=int($mmaxhp/10);
 					$tmp_mp=int($mmaxmp/10);
@@ -258,16 +258,16 @@ sub MATT{
 					$mmp+=$tmp_mp;
 					if($mhp>$mmaxhp){$tmp_hp=$tmp_hp-$mhp+$mmaxhp;$mhp=$mmaxhp;}
 					if($mmp>$mmaxmp){$tmp_mp=$tmp_mp-$mmp+$mmaxmp;$mmp=$mmaxmp;}
-					$bmess.="<font color=blue>$tmp_hpＨＰ及$tmp_mpＭＰ回復。</font><BR>";
+					$bmess.="<font color=blue>$tmp_hpＨＰ及$tmp_mpＭＰ回復。</font><br>";
 				}elsif($mtec_sta[$magic] eq 3){
 					$mat+=int($mfai*($mtec_str[$magic]/100));
-					$bmess.="<font color=blue>攻擊力上昇。</font><BR>";
+					$bmess.="<font color=blue>攻擊力上昇。</font><br>";
 				}elsif($mtec_sta[$magic] eq 4){
 					$mdef+=int($mfai*($mtec_str[$magic]/100));
-					$bmess.="<font color=blue>耐久力上昇。</font><BR>";
+					$bmess.="<font color=blue>耐久力上昇。</font><br>";
 				}elsif($mtec_sta[$magic] eq 5){
 					$mmdef+=int($mfai*($mtec_str[$magic]/100));
-					$bmess.="<font color=blue>魔法耐久力上昇。</font><BR>";
+					$bmess.="<font color=blue>魔法耐久力上昇。</font><br>";
 				}elsif($mtec_sta[$magic] eq 6){
 					$mdmg=$mtec_str[$magic] + int(rand($mint))-int($emdef);
 					$msv=6;
@@ -279,43 +279,43 @@ sub MATT{
 					if($emp<0){$emp=0;}
 					$mmp+=$msmp;
 					if($mmp>$mmaxmp){$mmp=$mmaxmp;}
-					$bmess.="$ename被吸取了<font color=red>$msmp</font>MP。<BR>";
+					$bmess.="$ename被吸取了<font color=red>$msmp</font>MP。<br>";
 				}elsif($mtec_sta[$magic] eq 8){
                                         $ehpd=int($ehp/$mtec_str[$magic]);
                                         $ehp-=$ehpd;$elose_hp+=$ehpd;
-                                        $bmess.="$ename失去了$ehpd HP。<BR>";
+                                        $bmess.="$ename失去了$ehpd HP。<br>";
 				}elsif($mtec_sta[$magic] eq 18){
 					$tmp_hp=int($mhp/10);
 					$tmp_maxhp=int($mmaxhp/10);
 					$mhp-=$tmp_hp;
 					$mmp+=$tmp_maxhp;
 					if($mmp>$mmaxmp){$mmp=$mmaxmp;}
-					$bmess.="<font color=red>失去$tmp_hpＨＰ</font>、<font color=blue>增加$tmp_maxhpＭＰ。</font><BR>";
+					$bmess.="<font color=red>失去$tmp_hpＨＰ</font>、<font color=blue>增加$tmp_maxhpＭＰ。</font><br>";
                                 }elsif($mtec_sta[$magic] eq 20){
                                         $tmp_mp=int(rand($mmp));
                                         $ehp-=$tmp_mp;
 					$mmp=0;
                                         if($ehp<1){$ehp=0;}
-                                        $bmess.="$ename<font color=red>失去$tmp_mpＨＰ</font><BR>";
+                                        $bmess.="$ename<font color=red>失去$tmp_mpＨＰ</font><br>";
                                 }elsif($mtec_sta[$magic] eq 22){
 					$tmp_hp=int(rand($mfai)+$magi);
 					$mhp+=$tmp_hp;
 					$ehp-=$tmp_hp;
 					if($mhp>$mmaxhp){$mhp=$mmaxhp;}
 					if($ehp<1){$ehp=1;}
-                                        $bmess.="$ename被吸取了<font color=red>$tmp_hp</font>ＨＰ。<BR>";
+                                        $bmess.="$ename被吸取了<font color=red>$tmp_hp</font>ＨＰ。<br>";
                                 }elsif($mtec_sta[$magic] eq 23){
                                         $tmp_mp=int(rand($mfai)+$magi);
                                         $mmp+=$tmp_mp;
                                         $emp-=$tmp_mp;
                                         if($mmp>$mmaxmp){$mmp=$mmaxmp;}
                                         if($emp<1){$emp=0;}
-                                        $bmess.="$ename被吸取了<font color=red>$tmp_mp</font>ＭＰ。<BR>";
+                                        $bmess.="$ename被吸取了<font color=red>$tmp_mp</font>ＭＰ。<br>";
                                 }elsif($mtec_sta[$magic] eq 24){
 					$tmp_mp=int($mint/2+rand($mfai*2));
 					$emp-=$tmp_mp;
 					if($emp<1){$emp=0;}
-                                        $bmess.="$emane<font color=red>失去$tmp_mpＭＰ</font><BR>";
+                                        $bmess.="$emane<font color=red>失去$tmp_mpＭＰ</font><br>";
 				}else{
 $at=1;
 					if($mtec_sta[$magic] eq 15){
@@ -400,7 +400,7 @@ $at=2;
 				}
 				if($eab[12] && 100>int(rand($tmp_efai))){
 					if($mab[43] && $mabdmg[43]>int(rand(100))){
-                                                $bmess.="<font color=blue size=3>$ename的反擊發動！</font>，但被對方回避了<BR>";
+                                                $bmess.="<font color=blue size=3>$ename的反擊發動！</font>，但被對方回避了<br>";
                                         }else{
 						$edmg=int(($mdmg+int(rand($estr)))/2*$eabdmg[12]);
 						if($edmg<1){$edmg=1;}
@@ -408,14 +408,14 @@ $at=2;
 						if($mhp<1){$mhp=1;}
 						$mdmg=0;
 						$hitrand=0;
-						$bmess.="<font color=blue size=3>$ename的反擊發動！</font><BR>$mname受<font color=red size=4><b>$edmg</b></font>傷害。<BR>";
+						$bmess.="<font color=blue size=3>$ename的反擊發動！</font><br>$mname受<font color=red size=4><b>$edmg</b></font>傷害。<br>";
 					}
 				}elsif($tmp_esh>int(rand(1000)) && $mallhit eq 0){
-					$bmess.="<font color=blue size=3>$ename閃避了攻擊。<BR></font>";
+					$bmess.="<font color=blue size=3>$ename閃避了攻擊。<br></font>";
 					$mdmg=0;
 					$hitrand=0;
 				}elsif($esh2>int(rand(1000))){
-					$bmess.="<font color=blue size=3>$ename擋住了攻擊。<BR></font>";
+					$bmess.="<font color=blue size=3>$ename擋住了攻擊。<br></font>";
 					$mdmg=0;
 					$hitrand=0;
 				}elsif($mcl>int(rand(1000)) && !$eab[44]){
@@ -425,10 +425,10 @@ $at=2;
 						$mdmg=int($mdmg*$mabdmg[23]);
 					}
 					if($mdmg<=0 && $hitrand eq 0){
-						$bmess.="<font color=red>$ename</font>未受到傷害。<BR>";
+						$bmess.="<font color=red>$ename</font>未受到傷害。<br>";
 					}
 				}elsif($tmp_speed>int(rand(1000)) && $mallhit eq 0){
-					$bmess.="<font color=green size=3>$ename躲避了攻擊。<BR></font>";
+					$bmess.="<font color=green size=3>$ename躲避了攻擊。<br></font>";
                                         $mdmg=0;
                                         $hitrand=0;
 				}
@@ -439,55 +439,55 @@ $at=2;
                                               $mdmg=int($mdmg*$mabdmg[23]);
                                       }
                                       if($mdmg<=0 && $hitrand eq 0){
-                                              $bmess.="<font color=red>$ename</font>未受到傷害。<BR>";
+                                              $bmess.="<font color=red>$ename</font>未受到傷害。<br>";
                                       }
 				} #at=2
 				#elsif($mdmg<=0){
-			#		$bmess.="<font color=red>$ename</font>未受到傷害。<BR>";
+			#		$bmess.="<font color=red>$ename</font>未受到傷害。<br>";
 				#}
 				##傷害
 				if($mdmg<=0 && $hitrand eq 0){
 					$mdmg=0;
-					#$bmess.="<BR>";
-					$bmess.="<font color=red>$ename</font>未受到傷害。<BR>";
+					#$bmess.="<br>";
+					$bmess.="<font color=red>$ename</font>未受到傷害。<br>";
 				}elsif($mdmg<=0){
 					$mdmg=1;
 				}
 				if($mdmg){
-					$bmess.="<font color=red>$ename</font>受到<font color=red size=4><b>$mdmg</b></font>傷害。<BR>";
+					$bmess.="<font color=red>$ename</font>受到<font color=red size=4><b>$mdmg</b></font>傷害。<br>";
 					if($msv eq 2){
 						$edef-=int($edef/10);
 						if($edef < 0){$edef=0;}
-						$bmess.="$ename的防御力下降。<BR>";
+						$bmess.="$ename的防御力下降。<br>";
 					}
 					elsif(int(rand(4)) eq 2 && $msv eq 3 || $mab[14] && int(rand(6)) < 1){
 						$epara=$mabdmg[14];
 						if(!$epara){$epara=1;}
-						$bmess.="<font color=red>$ename中毒。</font><BR>";
+						$bmess.="<font color=red>$ename中毒。</font><br>";
 					}
 					elsif($msv eq 4 && $msh<1000 && int(rand(3)) eq 1){
 						$msh+=40;
-						$bmess.="<font color=red>$ename的命中率下降。</font><BR>";
+						$bmess.="<font color=red>$ename的命中率下降。</font><br>";
 					}
 					elsif(int(rand(8)) eq 2 && $msv eq 5 || $mab[24] && int(rand(15)) eq 1){
 						$epara2=1;
 						$msv=0;
-						$bmess.="<font color=red>$ename麻痺。</font><BR>";
+						$bmess.="<font color=red>$ename麻痺。</font><br>";
 					}
 					elsif($msv eq 6 || $mab[28] && int(rand(4)) eq 1){
 						$mhpup=int($mdmg/2);
 						$mhp+=$mhpup;
 						if($mhp>$mmaxhp){$mhp=$mmaxhp;}
-						$bmess.="$mname吸取了<font color=blue>$mhpup</font>HP。<BR>";
+						$bmess.="$mname吸取了<font color=blue>$mhpup</font>HP。<br>";
 					}
 					elsif(int(rand(8)) eq 2 && $msv eq 7 || $mab[16] && int(rand(100)) < $mabdmg[16]){
 						$espeed-=50;
 						if($espeed<0){$espeed=0;}
-						$bmess.="<font color=red>$ename速度下降。</font><BR>";
+						$bmess.="<font color=red>$ename速度下降。</font><br>";
 					}
 					elsif($mab[26] && int(rand(3)) eq 1){
 						$addmg = int(rand(200));
-						$bmess.="<font color=red size=2>追加<b>$addmg</b>的傷害。</font><BR>";
+						$bmess.="<font color=red size=2>追加<b>$addmg</b>的傷害。</font><br>";
 						$mdmg += $addmg;
 					}
 					elsif($mab[27] && int(rand(3)) eq 1){
@@ -496,7 +496,7 @@ $at=2;
 						if($emp<0){$emp=0;}
 						$mmp+=$msmp;
 						if($mmp>$mmaxmp){$mmp=$mmaxmp;}
-						$bmess.="$ename的<font color=red>$msmp</font>ＭＰ被奪走。<BR>";
+						$bmess.="$ename的<font color=red>$msmp</font>ＭＰ被奪走。<br>";
 					}elsif($mab[57] && int(rand(2)) eq 1 && $msta_eq_disable<2 && $esta_eq_count>0){
 						if($msta_eq_disable eq 0){
 							$abrand=int(rand($esta_eq_count))+1;
@@ -507,7 +507,7 @@ $at=2;
 							$mab[57]=int(rand(2));
 							$mabdmg[57]=$mab[57];
 							$msta_eq_disable++;
-                                                        $bmess.="<font color=red>[神之封印]$ename的奧義:$eabname[$iab]被封住了！</font><BR>";
+                                                        $bmess.="<font color=red>[神之封印]$ename的奧義:$eabname[$iab]被封住了！</font><br>";
 						}elsif($msta_eq_disable eq 1){
 							$mab[57]=0;
 							$mabdmg[57]=0;
@@ -520,7 +520,7 @@ $at=2;
                         	                                $atype = $eabtype[$iab];
                                 	                        $eab[$atype]=0;
                                         	                $eabdmg[$atype]=0;
-        	                                                $bmess.="<font color=red>[神之封印]$ename的能力:$eabname[$iab]被封住了！</font><BR>";
+        	                                                $bmess.="<font color=red>[神之封印]$ename的能力:$eabname[$iab]被封住了！</font><br>";
 
 							}else{
                                                                 $bmess.="第二次神之封印發動失敗！";
@@ -537,7 +537,7 @@ if($atype ne 11){
                                                 if($eab[$atype]){
                                                         $eab[$atype] = 0;
                                                         $eabdmg[$atype]=0;
-                                                        $bmess.="<font color=red>$ename的能力:$eabname[$iab]被封住了！</font><BR>";
+                                                        $bmess.="<font color=red>$ename的能力:$eabname[$iab]被封住了！</font><br>";
                                                 }
                                                 }
 }
@@ -546,16 +546,16 @@ if($atype ne 11){
 					if(($ename ne "要塞" && int(rand(30)) eq 7 && $msv eq 1 || $ename ne "要塞" && $mab[9] && int(rand(1000)) < $mabdmg[9]) && $turn>1){
 						if($eab[40] && $eabdmg[40]>int(rand(100))){
 							$msv=0;
-							$bmess.="<font color=red>不死鳥保護住$ename。</font><BR>";
+							$bmess.="<font color=red>不死鳥保護住$ename。</font><br>";
 						}elsif($eab[49] && $eabdmg[49]>int(rand(100))){
 							$mhp=1;
-                                                        $bmess.="<font color=red>$mname對死神使出即死，但死神將即死回報給對方。</font><BR>";
+                                                        $bmess.="<font color=red>$mname對死神使出即死，但死神將即死回報給對方。</font><br>";
 						}elsif($eab[49]){
 							$msv=0;
-							$bmess.="<font color=red>死神保護住$ename。</font><BR>";
+							$bmess.="<font color=red>死神保護住$ename。</font><br>";
 						}else{
 							$ehp=0;
-							$bmess.="<font color=red>$ename即死。</font><BR>";
+							$bmess.="<font color=red>$ename即死。</font><br>";
 						}
 					}
 				}
@@ -563,13 +563,13 @@ if($atype ne 11){
 				if($maxdmg < $mdmg){$maxdmg = $mdmg;}
 			}
 			if($ehp<=0){
-				$bmess.="<BR><font color=red size=4><b>$ename倒下！</b></font><BR>";
+				$bmess.="<br><font color=red size=4><b>$ename倒下！</b></font><br>";
 			}
 			if($ehp<=0 && $eab[11]  && int(rand(100)) < $eabdmg[11] && !$mhflg){
 				$ehp=int($emaxhp/2);
 				if($eabdmg[11] eq"100"){$ehp=$ehp*2;}
 				if ($eabdmg[11]<100){$mhflg=1;}
-				$bmess.="<font color=red>$ename復活！</font><BR>";
+				$bmess.="<font color=red>$ename復活！</font><br>";
 			}elsif($ehp<=0){
 				$ehp=0;
 				$win=1;
@@ -578,9 +578,9 @@ if($atype ne 11){
 			if($kou>20){&error;}
 			if($win){last;}
 		}
-		$bmess.="<BR>";
+		$bmess.="<br>";
 	}else{
-		$bmess.="<font color=red>$mname無法行動。</font><BR>";
+		$bmess.="<font color=red>$mname無法行動。</font><br>";
 	}
 	$mpara2=0;
 	}
@@ -607,24 +607,24 @@ sub EATT{
                                 if($mhpd>1000){$mhpd=1000;}
 				if($earmele ne $eele){$mhpd=int($mhpd/2);}
                                 $mhp-=$mhpd;
-                                $mmess.="<font color=blue>$ename</font>手中的<font color=red>$earmname</font>獲得火神祝福，使用了祝融之怒，給予了<b>$mhpd</b>傷害<BR>";
+                                $mmess.="<font color=blue>$ename</font>手中的<font color=red>$earmname</font>獲得火神祝福，使用了祝融之怒，給予了<b>$mhpd</b>傷害<br>";
                         }elsif($earmele eq"2"){
                                 $mhpd=int($mmaxhp/20);
                                 if($mhpd>500){$mhpd=500;}
 				if($earmele ne $eele){$mhpd=int($mhpd/2);}
                                 $mhp-=$mhpd;
                                 $ehp+=$mhpd;
-                                $mmess.="<font color=blue>$ename</font>手中的<font color=red>$earmname</font>獲得水神祝福，使用了吸蝕天雨，吸收了<b>$mhpd</b>ＨＰ<BR>";
+                                $mmess.="<font color=blue>$ename</font>手中的<font color=red>$earmname</font>獲得水神祝福，使用了吸蝕天雨，吸收了<b>$mhpd</b>ＨＰ<br>";
                         }elsif($earmele eq"3"){
 				if($earmele eq $eele || int(rand(10))>3){
                                 $ecountadd+=int(rand(2)+1);
 				$emaxcountadd=$ecountadd;
-                                $mmess.="<font color=blue>$ename</font>手中的<font color=red>$earmname</font>獲得風神祝福，使用了極速魔音，本回合增加攻擊次數$ecountadd<BR>";
+                                $mmess.="<font color=blue>$ename</font>手中的<font color=red>$earmname</font>獲得風神祝福，使用了極速魔音，本回合增加攻擊次數$ecountadd<br>";
 				}
                         }elsif($earmele eq"4"){
 				if($earmele eq $eele || int(rand(10))>4){
                                 $eallhit=1;
-                                $mmess.="<font color=blue>$ename</font>手中的<font color=red>$earmname</font>獲得星神祝福，現在百發百中了<BR>";
+                                $mmess.="<font color=blue>$ename</font>手中的<font color=red>$earmname</font>獲得星神祝福，現在百發百中了<br>";
 				}
                         }elsif($earmele eq"5" && $turn % 3 eq 0){
                                 $tmp_safe=0;
@@ -636,11 +636,11 @@ sub EATT{
                                         }
                                 }
                                 if($tmp_safe eq 1){
-					$mmess.="<font color=blue>因雙方手中的武都受雷神的祝褔</font>，<font color=red>所以麻痺效果抵消了</font><BR>";
+					$mmess.="<font color=blue>因雙方手中的武都受雷神的祝褔</font>，<font color=red>所以麻痺效果抵消了</font><br>";
 				}else{
 					if($earmele eq $eele || int(rand(10))>4){
         	                        $mpara2=1;
-	                                $mmess.="<font color=blue>$ename</font>手中的<font color=red>$earmname</font>獲得雷神祝福，使用了天降奔雷，對手被麻痺了<BR>";
+	                                $mmess.="<font color=blue>$ename</font>手中的<font color=red>$earmname</font>獲得雷神祝福，使用了天降奔雷，對手被麻痺了<br>";
 					}
 				}
                         }elsif($earmele eq"6"){
@@ -655,13 +655,13 @@ sub EATT{
 				if($mhpd>1000){$mhpd=1000;}
 				if($eproele ne eele){$mhpd=int($mhpd/2);}
                                 $ehp+=$mhpd;
-                                $mmess.="<font color=blue>$ename</font>身上的<font color=red>$eproname</font>獲得水神加護，使用了海洋恩惠，恢復了<b>$mhpd</b>體力<BR>";
+                                $mmess.="<font color=blue>$ename</font>身上的<font color=red>$eproname</font>獲得水神加護，使用了海洋恩惠，恢復了<b>$mhpd</b>體力<br>";
                         }elsif($eproele eq"3"){
 				if($eproele eq $eele || int(rand(10))>3){
 #                                $emaxcountadd+=1;
 				$ecountadd+=1;
 				$emaxcountadd=$ecountadd;
-                                $mmess.="<font color=blue>$ename</font>身上的<font color=red>$eproname</font>獲得風神加護，使用了颶風之變，本回合增加攻擊次數1<BR>";
+                                $mmess.="<font color=blue>$ename</font>身上的<font color=red>$eproname</font>獲得風神加護，使用了颶風之變，本回合增加攻擊次數1<br>";
 				}
                         }elsif($eproele eq"4"){
                         }elsif($eproele eq"5"){
@@ -682,7 +682,7 @@ sub EATT{
 				}else{
 					$edsta+=18;
 				}
-                                $bmess.="<font color=blue>$mname</font>手中的<font color=red>$marmname</font>獲得光神祝福，使用了天音聖歌，增加自身戰技防禦力$edsta%<BR>";
+                                $bmess.="<font color=blue>$mname</font>手中的<font color=red>$marmname</font>獲得光神祝福，使用了天音聖歌，增加自身戰技防禦力$edsta%<br>";
                         }elsif($marmele eq"7"){
 				if($marmele eq $mele){
                                 	$ehitup2+=0.5;
@@ -690,7 +690,7 @@ sub EATT{
 					$ehitup2+=0.25;
 				}
 				$tmp_show=$ehitup2*100;
-                                $mmess.="<font color=blue>$mname</font>手中的<font color=red>$marmname</font>獲得闇神祝福，使用了禁語咒殺，減少$tmp_show%戰技發動率<BR>";
+                                $mmess.="<font color=blue>$mname</font>手中的<font color=red>$marmname</font>獲得闇神祝福，使用了禁語咒殺，減少$tmp_show%戰技發動率<br>";
                         }
                 }
                 #他自防特效
@@ -700,20 +700,20 @@ sub EATT{
                                 if($mhpd>1000){$mhpd=1000;}
 				if($mproele ne $mele){$mhpd=int($mhpd/2);}
                                 $ehp-=$mhpd;
-                                $mmess.="<font color=blue>$mname</font>身上的<font color=red>$mproname</font>獲得火神加護，使用了地獄煉火，給予了<b>$mhpd</b>傷害<BR>";
+                                $mmess.="<font color=blue>$mname</font>身上的<font color=red>$mproname</font>獲得火神加護，使用了地獄煉火，給予了<b>$mhpd</b>傷害<br>";
                         }elsif($mproele eq"2"){
                         }elsif($mproele eq"3"){
                         }elsif($mproele eq"4"){
 				if($mproele eq $mele || int(rand(10))>4){
                                 $ecountadd-=1;
 				$emaxcountadd-=1;
-                                $mmess.="<font color=blue>$mname</font>身上的<font color=red>$mproname</font>獲得星神加護，使用了七星連鎖，本回合減少攻擊次數一１<BR>";
+                                $mmess.="<font color=blue>$mname</font>身上的<font color=red>$mproname</font>獲得星神加護，使用了七星連鎖，本回合減少攻擊次數一１<br>";
 				}
                         }elsif($mproele eq"5"){
 				if($mproele eq $mele || int(rand(10))>3){
                                 $ecountadd-=1;
 				$emaxcountadd-=1;
-                                $mmess.="<font color=blue>$mname</font>身上的<font color=red>$mproname</font>獲得雷神加護，使用了絕雷之牢，本回合減少攻擊次數一<BR>";
+                                $mmess.="<font color=blue>$mname</font>身上的<font color=red>$mproname</font>獲得雷神加護，使用了絕雷之牢，本回合減少攻擊次數一<br>";
 				}
 
                         }elsif($mproele eq"6"){
@@ -722,14 +722,14 @@ sub EATT{
 				}else{
 					$edsta+=25;
 				}
-                                $bmess.="<font color=blue>$mname</font>身上的<font color=red>$mproname</font>獲得光神加護，使用了天使護環，增加自身戰技防禦力$edsta%<BR>";
+                                $bmess.="<font color=blue>$mname</font>身上的<font color=red>$mproname</font>獲得光神加護，使用了天使護環，增加自身戰技防禦力$edsta%<br>";
                         }elsif($mproele eq"7"){
 				if($mproele eq $mele){
 	                                $eddmg+=20;
 				}else{
 					$eddmg+=10;
 				}
-                                $mmess.="<font color=blue>$mname</font>身上的<font color=red>$mproname</font>獲得闇神祝福，使用了黑洞嗜咒，減少$eddmg%物理傷害<BR>";
+                                $mmess.="<font color=blue>$mname</font>身上的<font color=red>$mproname</font>獲得闇神祝福，使用了黑洞嗜咒，減少$eddmg%物理傷害<br>";
                         }
                 }
                 if($ehp<=1){$ehp=1;}
@@ -739,15 +739,15 @@ sub EATT{
 			$hpsai=int($eabdmg[1]/100*$emaxhp);
 			$ehp+=$hpsai;
 			if($ehp>$emaxhp){$ehp=$emaxhp;}
-			$mmess.="[再生]$ename回復<font color=blue><b>$hpsai</b></font>HP。<BR>";
+			$mmess.="[再生]$ename回復<font color=blue><b>$hpsai</b></font>HP。<br>";
 		}
                 if($eab[54]){
 			$sehp=$ehp;
                         $ehp_tmp=int($sehp*0.1);
-                        $mmess.="<font color=red><b>[亡命鎖鏈]自身扣血$ehp_tmp</b></font><BR>";
+                        $mmess.="<font color=red><b>[亡命鎖鏈]自身扣血$ehp_tmp</b></font><br>";
                         $ehp-=$ehp_tmp;
                         $ehp_tmp=int($sehp*0.2);
-                        $mmess.="<font color=red><b>[亡命鎖鏈]$mname扣血$ehp_tmp</b></font><BR>";
+                        $mmess.="<font color=red><b>[亡命鎖鏈]$mname扣血$ehp_tmp</b></font><br>";
                         $mhp-=$ehp_tmp;
 			if($mhp<1){$mhp=1;}
                 }
@@ -763,7 +763,7 @@ sub EATT{
                         $mmp-=$emp_tmp;
                         if($ehp>$emaxhp){$ehp=$emaxhp;}
                         if($emp>$emaxmp){$emp=$emaxmp;}
-			$mmess.="<font color=blue><b>[吸血鬼之吻]吸收對方$ehp_tmpＨＰ、$emp_tmpＭＰ<BR>";
+			$mmess.="<font color=blue><b>[吸血鬼之吻]吸收對方$ehp_tmpＨＰ、$emp_tmpＭＰ<br>";
 		}
                 if($ehp<=1){$ehp=1;}
 		$ekai = int($espeed/100 + rand($espeed/100)) + 1;
@@ -774,11 +774,11 @@ sub EATT{
                 if($mab[45]){$ekai-=(int(rand(2))+1);}
 
 		if($ekai<1){$ekai=1;}
-		$mmess.="<font color=red size=4><b>$ename</b></font>的<font color=blue size=4><b>$ekai</b></font>回攻擊！<BR>";
+		$mmess.="<font color=red size=4><b>$ename</b></font>的<font color=blue size=4><b>$ekai</b></font>回攻擊！<br>";
 		if($epara){
                         if($eab[1]){$tmp_rand=200;}else{$tmp_rand=100;}
                         if($eab[42] && $eabdmg[42]>int(rand($tmp_rand))){
-                                $mmess.="<font color=green>成功解掉身上的毒</font><BR>";
+                                $mmess.="<font color=green>成功解掉身上的毒</font><br>";
                         }else{
                                 if($eab[1]){
 					$eabdmg_tmp=int($eabdmg[1]/5);
@@ -793,13 +793,13 @@ sub EATT{
 					if($epara<0){$epara=0};
                                         $mab[14]=0;
                                         $mabdmg[14]=0;
-                                        $mmess.="<font color=red>[中毒]毒性與身上的再生技進行中合，再生降為$eabdmg[1]％。</font><BR>";
+                                        $mmess.="<font color=red>[中毒]毒性與身上的再生技進行中合，再生降為$eabdmg[1]％。</font><br>";
                                 }else{
                                         $ehpd=int(rand($emaxhp*$epara/10));
                                         if($ehpd>5000){$ehpd=5000;}
                                         $ehp-=$ehpd;$elose_hp+=$ehpd;
 				if($ehp<=1){$ehp=1;}
-				$mmess.="<font color=red>[中毒]失去<b>$ehpd</b>HP。</font><BR>";
+				$mmess.="<font color=red>[中毒]失去<b>$ehpd</b>HP。</font><br>";
 			}
 		}
 	}
@@ -812,7 +812,7 @@ sub EATT{
 			$egold-=$egoldlose;
 			$mhp-=$mhpd;$mlose_hp+=$mhpd;
 			if($mhp<1){$mhp=1;}
-			$mmess.="<font color=red size=3>$ename將$egoldlose Gold丟到$mname的臉上，造成$mhpd傷害及心靈上的創傷！</font><BR>";
+			$mmess.="<font color=red size=3>$ename將$egoldlose Gold丟到$mname的臉上，造成$mhpd傷害及心靈上的創傷！</font><br>";
 		}
 	}
 
@@ -839,7 +839,7 @@ sub EATT{
 				$ehpup=$etec_str[$magic] + int(rand($efai/2));
 				$ehp+=$ehpup;
 				if($ehp>$emaxhp){$ehp=$emaxhp;}
-				$mmess.="回復<font color=blue><b>$ehpup</b></font>回復。<BR>";
+				$mmess.="回復<font color=blue><b>$ehpup</b></font>回復。<br>";
 			}elsif($etec_sta[$magic] eq 2){
 				$tmp_hp=int($emaxhp/10);
 				$tmp_mp=int($emaxmp/10);
@@ -847,16 +847,16 @@ sub EATT{
 				$emp+=$tmp_mp;
 				if($ehp>$emaxhp){$tmp_hp=$tmp_hp-$ehp+$emaxhp;$ehp=$emaxhp;}
 				if($emp>$emaxmp){$tmp_mp=$tmp_mp-$emp+$emaxmp;$emp=$emaxmp;}
-				$mmess.="<font color=blue>$tmp_hpＨＰ及$tmp_mpＭＰ回復。</font><BR>";
+				$mmess.="<font color=blue>$tmp_hpＨＰ及$tmp_mpＭＰ回復。</font><br>";
 			}elsif($etec_sta[$magic] eq 3){
 				$eat+=int($efai*($etec_str[$magic]/100));
-				$mmess.="<font color=blue>攻擊力上昇。</font><BR>";
+				$mmess.="<font color=blue>攻擊力上昇。</font><br>";
 			}elsif($etec_sta[$magic] eq 4){
 				$edef+=int($efai*($etec_str[$magic]/100));
-				$mmess.="<font color=blue>耐久力上昇。</font><BR>";
+				$mmess.="<font color=blue>耐久力上昇。</font><br>";
 			}elsif($etec_sta[$magic] eq 5){
 				$emdef+=int($efai*($etec_str[$magic]/100));
-				$mmess.="<font color=blue>魔法耐久力上昇。</font><BR>";
+				$mmess.="<font color=blue>魔法耐久力上昇。</font><br>";
 			}elsif($etec_sta[$magic] eq 6){
 				$edmg=$etec_str[$magic] + int(rand($eint))-int($mmdef);
 				$esv=6;
@@ -868,43 +868,43 @@ sub EATT{
 				if($mmp<0){$mmp=0;}
 				$emp+=$esmp;
 				if($emp>$emaxmp){$emp=$emaxmp;}
-				$mmess.="$mname被吸取<font color=red><b>$esmp</b></font>MP。<BR>";
+				$mmess.="$mname被吸取<font color=red><b>$esmp</b></font>MP。<br>";
 			}elsif($etec_sta[$magic] eq 8){
 				$mhpd=int($mhp/$etec_str[$magic]);
 				$mhp-=$mhpd;$mlose_hp+=$mhpd;
-				$mmess.="$mname失去了$mhpd HP。<BR>";
+				$mmess.="$mname失去了$mhpd HP。<br>";
 			}elsif($etec_sta[$magic] eq 18){
 				$tmp_hp=int($ehp/10);
 				$tmp_maxhp=int($emaxhp/10);
 				$ehp-=$tmp_hp;
 				$emp+=$tmp_maxhp;
 				if($emp>$emaxmp){$emp=$emaxmp;}
-                                        $mmess.="<font color=red>失去$tmp_hpＨＰ</font>、<font color=blue>增加$tmp_maxhpＭＰ。</font><BR>";
+                                        $mmess.="<font color=red>失去$tmp_hpＨＰ</font>、<font color=blue>增加$tmp_maxhpＭＰ。</font><br>";
                                 }elsif($etec_sta[$magic] eq 20){
                                         $tmp_mp=int(rand($emp));
                                         $mhp-=$tmp_mp;
 					$emp=0;
                                         if($mhp<1){$mhp=0;}
-                                        $mmess.="$mname<font color=red>失去$tmp_mpＨＰ</font><BR>";
+                                        $mmess.="$mname<font color=red>失去$tmp_mpＨＰ</font><br>";
                                 }elsif($etec_sta[$magic] eq 22){
                                         $tmp_hp=int(rand($efai)+$eagi);
                                         $ehp+=$tmp_hp;
                                         $mhp-=$tmp_hp;
                                         if($ehp>$emaxhp){$ehp=$emaxhp;}
                                         if($mhp<1){$mhp=1;}
-                                        $mmess.="$mname被吸取了<font color=red>$tmp_hp</font>ＨＰ。<BR>";
+                                        $mmess.="$mname被吸取了<font color=red>$tmp_hp</font>ＨＰ。<br>";
                                 }elsif($etec_sta[$magic] eq 23){
                                         $tmp_mp=int(rand($efai)+$eagi);
                                         $emp+=$tmp_mp;
                                         $mmp-=$tmp_mp;
                                         if($emp>$emaxmp){$emp=$emaxmp;}
                                         if($mmp<1){$mmp=0;}
-                                        $mmess.="$mname被吸取了<font color=red>$tmp_mp</font>ＭＰ。<BR>";
+                                        $mmess.="$mname被吸取了<font color=red>$tmp_mp</font>ＭＰ。<br>";
                                 }elsif($etec_sta[$magic] eq 24){
 					$tmp_mp=int($eint/2+rand($efai*2));
 					$mmp-=$tmp_mp;
 					if($mmp<1){$mmp=0;}
-                                        $mmess.="$mname<font color=red>失去$tmp_mpＭＰ</font><BR>";
+                                        $mmess.="$mname<font color=red>失去$tmp_mpＭＰ</font><br>";
 				}else{
 $at=1;
                                         if($etec_sta[$magic] eq 15){
@@ -988,7 +988,7 @@ $at=2;
 				}
 				if($mab[12] && 100>int(rand($tmp_mfai))){
 					if($eab[43] && $eabdmg[43]>int(rand(100))){	
-                                                $mmess.="<font color=blue size=3>$mname的反擊發動！</font>，但被對方回避了<BR>";
+                                                $mmess.="<font color=blue size=3>$mname的反擊發動！</font>，但被對方回避了<br>";
                                         }else{
 						$mdmg=int(($edmg+int(rand($mstr)))/2*$mabdmg[12]);
 						if($mdmg<1){$mdmg=1;}
@@ -996,14 +996,14 @@ $at=2;
 						if($ehp<1){$ehp=1;}
 						$edmg=0;
 						$hitrand=0;
-						$mmess.="<font color=blue size=3>$mname的反擊發動！</font><BR>$ename受到<font color=red size=5><b>$mdmg</b></font>的傷害。<BR>";
+						$mmess.="<font color=blue size=3>$mname的反擊發動！</font><br>$ename受到<font color=red size=5><b>$mdmg</b></font>的傷害。<br>";
                                         }
 				}elsif($tmp_msh>int(rand(1000)) && $eallhit eq 0){
-					$mmess.="<font color=blue size=3>$mname閃避了攻擊。<BR></font>";
+					$mmess.="<font color=blue size=3>$mname閃避了攻擊。<br></font>";
 					$edmg=0;
 					$hitrand=0;
 				}elsif($msh2>int(rand(1000))){
-					$mmess.="<font color=blue size=3>$mname擋住了攻擊。<BR></font>";
+					$mmess.="<font color=blue size=3>$mname擋住了攻擊。<br></font>";
 					$edmg=0;
 					$hitrand=0;
 				}elsif($ecl>int(rand(1000)) && !$mab[44]){
@@ -1013,10 +1013,10 @@ $at=2;
 						$edmg=int($edmg*$eabdmg[23]);
 					}
 					if($edmg<=0 && $hitrand eq 0){
-						$mmess.="<font color=blue>$mname</font>未受到傷害。<BR>";
+						$mmess.="<font color=blue>$mname</font>未受到傷害。<br>";
 					}
 				}elsif($tmp_speed>int(rand(1000)) && $eallhit eq 0){
-                                        $mmess.="<font color=green size=3>$mname躲避了攻擊。<BR></font>";
+                                        $mmess.="<font color=green size=3>$mname躲避了攻擊。<br></font>";
                                         $edmg=0;
                                         $hitrand=0;
                                 }
@@ -1027,70 +1027,70 @@ $at=2;
                                                 $edmg=int($edmg*$eabdmg[23]);
                                         }
                                         if($edmg<=0 && $hitrand eq 0){
-                                                $mmess.="<font color=blue>$mname</font>未受到傷害。<BR>";
+                                                $mmess.="<font color=blue>$mname</font>未受到傷害。<br>";
                                         }
 
 				}#at=2
 				#elsif($edmg<=0){
-				#	$mmess.="<font color=blue>$mname</font>未受到傷害。<BR>";
+				#	$mmess.="<font color=blue>$mname</font>未受到傷害。<br>";
 				#}
 				##傷害
 				if($edmg<=0 && $hitrand eq 0){
 					$edmg=0;
-					#$mmess.="<BR>";
-					$mmess.="<font color=blue>$mname</font>未受到傷害。<BR>";
+					#$mmess.="<br>";
+					$mmess.="<font color=blue>$mname</font>未受到傷害。<br>";
 				}elsif($edmg<=0){
 					$edmg=1;
 				}
 				if($edmg){
-					$mmess.="<font color=blue>$mname</font>受到<font color=red size=4><b>$edmg</b></font>的傷害。<BR>";
+					$mmess.="<font color=blue>$mname</font>受到<font color=red size=4><b>$edmg</b></font>的傷害。<br>";
 					if($esv eq 2){
 						$mdef-=int($mdef/10);
 						if($mdef < 0){$mdef=0;}
-						$mmess.="$mname的防御力下降。<BR>";
+						$mmess.="$mname的防御力下降。<br>";
 					}
 					elsif(int(rand(4)) eq 2 && $esv eq 3 || $eab[14] && int(rand(6)) < 1){
 						$mpara=$eabdmg[14];
 						if(!$mpara){$mpara=1;}
-						$mmess.="<font color=red>$mname中毒。</font><BR>";
+						$mmess.="<font color=red>$mname中毒。</font><br>";
 					}
 					elsif($esv eq 4 && $esh<3000 && int(rand(3)) eq 2){
 						$esh+=40;
-						$mmess.="<font color=red>$mname的命中率下降。</font><BR>";
+						$mmess.="<font color=red>$mname的命中率下降。</font><br>";
 					}
 					elsif(int(rand(8)) eq 2 && $esv eq 5 || $eab[24] && int(rand(15)) eq 1){
 						$mpara2=1;
-						$mmess.="<font color=red>$mname麻痺。</font><BR>";
+						$mmess.="<font color=red>$mname麻痺。</font><br>";
 					}
 					elsif($esv eq 6 || $eab[28] && int(rand(4)) eq 1){
 						$ehpup=int($edmg/2);
 						$ehp+=$ehpup;
 						if($ehp>$emaxhp){$ehp=$emaxhp;}
-						$mmess.="$ename吸取了<font color=blue>$ehpup</font>HP。<BR>";
+						$mmess.="$ename吸取了<font color=blue>$ehpup</font>HP。<br>";
 					}
 					elsif(int(rand(8)) eq 2 && $esv eq 7 || $eab[16] && int(rand(1000)) < $eabdmg[16]){
 						$mspeed-=50;
 						if($mspeed<0){$mspeed=0;}
-						$mmess.="<font color=red>$mname速度下降。</font><BR>";
+						$mmess.="<font color=red>$mname速度下降。</font><br>";
 					}
 					elsif((int(rand(30)) eq 7 && $esv eq 1 || $eab[9] && int(rand(1000)) < $eabdmg[9]) && $turn>2){
 						if($mab[40] && $mabdmg[40]>int(rand(100))){
 							$esv=0;
-							$mmess.="<font color=red>不死鳥保護住$mname。</font><BR>";
+							$mmess.="<font color=red>不死鳥保護住$mname。</font><br>";
 						}elsif($mab[49] && $mabdmg[49]>int(rand(100))){
                                                         $ehp=1;
-                                                        $mmess.="<font color=red>$ename對死神使出即死，對死神使出即死，但死神將即死回報給對方。</font><BR>";
+                                                        $mmess.="<font color=red>$ename對死神使出即死，對死神使出即死，但死神將即死回報給對方。</font><br>";
 						}elsif($mab[49]){
 							$esv=0;
-							$mmess.="<font color=red>死神保護住$mname。</font><BR>";
+							$mmess.="<font color=red>死神保護住$mname。</font><br>";
 						}else{
 							$mhp=0;
-							$mmess.="<font color=red>$mname即死。</font><BR>";
+							$mmess.="<font color=red>$mname即死。</font><br>";
 						}
 					}
 					elsif($eab[26] && int(rand(3)) eq 1){
 						$addmg = int(rand(200));
-						$mmess.="追加<font color=red size=2><b>$addmg</b></font>的傷害。<BR>";
+						$mmess.="追加<font color=red size=2><b>$addmg</b></font>的傷害。<br>";
 						$edmg += $addmg;
 					}
 					elsif($eab[27] && int(rand(3)) eq 1){
@@ -1099,7 +1099,7 @@ $at=2;
 						if($mmp<0){$mmp=0;}
 						$emp+=$esmp;
 						if($emp>$emaxmp){$emp=$emaxmp;}
-						$mmess.="$mname被奪走了<font color=red>$esmp</font>MP。<BR>";
+						$mmess.="$mname被奪走了<font color=red>$esmp</font>MP。<br>";
 					}elsif($eab[57] && int(rand(2)) eq 1 && $esta_eq_disable<2 && $msta_eq_count>0){
                                                 if($esta_eq_disable eq 0){
                                                         $abrand=int(rand($msta_eq_count))+1;
@@ -1110,7 +1110,7 @@ $at=2;
                                                         $eab[57]=int(rand(2));
                                                         $eabdmg[57]=$mab[57];
 							$esta_eq_disable++;
-                                                        $mmess.="<font color=red>[神之封印]$mname的奧義:$mabname[$iab]被封住了！</font><BR>";
+                                                        $mmess.="<font color=red>[神之封印]$mname的奧義:$mabname[$iab]被封住了！</font><br>";
                                                 }elsif($esta_eq_disable eq 1){
                                                         $eab[57]=0;
                                                         $eabdmg[57]=0;
@@ -1123,7 +1123,7 @@ $at=2;
                                                                 $atype = $mabtype[$iab];
                                                                 $mab[$atype]=0;
                                                                 $mabdmg[$atype]=0;
-                                                                $mmess.="<font color=red>[神之封印]$mname的奧義:$mabname[$iab]被封住了！</font><BR>";
+                                                                $mmess.="<font color=red>[神之封印]$mname的奧義:$mabname[$iab]被封住了！</font><br>";
 
                                                         }else{
                                                                 $mmess.="第二次神之封印發動失敗！";
@@ -1141,7 +1141,7 @@ $at=2;
                                                                         $mab[$atype] = 0;
                                                                         #先攻、神風需要清掉威力
                                                                         $mabdmg[$atype]=0;
-                                                                        $mmess.="<font color=red>$mname的屬性:$mabname[$iab]>被封住了！</font><BR>";
+                                                                        $mmess.="<font color=red>$mname的屬性:$mabname[$iab]>被封住了！</font><br>";
                                                                 }
                                                         }
                                                 }
@@ -1150,13 +1150,13 @@ $at=2;
 				$mhp-=$edmg;$mlose_hp+=$edmg;
 			}
 			if($mhp<=0){
-					$mmess.="<BR><font color=red size=4><b>$mname倒下。</b></font><BR>";
+					$mmess.="<br><font color=red size=4><b>$mname倒下。</b></font><br>";
 			}
 			if($mhp<=0 && $mab[11]  && int(rand(100)) < $mabdmg[11] && !$ehflg){
 				$mhp=int($mmaxhp/2);
 				if($mabdmg[11] eq"100"){$mhp=$mhp*2;}
 				if($mabdmg[11]<100){$ehflg=1;}
-				$mmess.="<font color=red>$mname復活！</font><BR>";
+				$mmess.="<font color=red>$mname復活！</font><br>";
 			}elsif($mhp<=0){
 				$mhp=0;
 				$lose=1;
@@ -1164,9 +1164,9 @@ $at=2;
 			if($kou>20){&error("錯誤");}
 			if($lose){last;}
 		}
-		$mmess.="<BR>";
+		$mmess.="<br>";
 	}else{
-		$mmess.="<font color=red>$ename無法行動。</font><BR>";
+		$mmess.="<font color=red>$ename無法行動。</font><br>";
 	}
 	$epara2=0;
 }
@@ -1174,67 +1174,67 @@ $at=2;
 #回合別戰鬥結果表示
 sub BPRINT{
 	print <<"EOF";
-<CENTER>
-<TABLE border="0" width="80%" bgcolor="#000000" CLASS=TC>
-  <TBODY>
-    <TR>
-      <TD colspan="8" align="center" bgcolor="$FCOLOR"><B><a href="#lower"><FONT color="#ffffcc">第$turn回合</FONT></a></B></TD>
-    </TR>
-    <TR>
-      <TD colspan="4" bgcolor="000063" align="center"><FONT color="$FCOLOR2"><B><FONT size="-1">$mname</FONT></B></FONT></TD>
-      <TD colspan="4" bgcolor="9c0000" align="center"><B><FONT size="-1" color="$FCOLOR2">$ename</FONT></B></TD>
-    </TR>
-    <TR>
-      <TD colspan="4" bgcolor="$FCOLOR2" align="center"><font size=-1>$bmess</font></TD>
-      <TD colspan="4" bgcolor="$FCOLOR2" align="center"><font size=-1>$mmess</font></TD>
-    </TR>
-	<TR>
-      <TD bgcolor="#ccffff" width=12.5%>HP</TD>
-      <TD bgcolor="#ccffff" width=12.5%>$mhp/$mmaxhp</TD>
-      <TD bgcolor="#ccffff" width=12.5%>MP</TD>
-      <TD bgcolor="#ccffff" width=12.5%>$mmp/$mmaxmp</TD>
-      <TD bgcolor="#ccffff" width=12.5%>HP</TD>
-      <TD bgcolor="#ccffff" width=12.5%>$ehp/$emaxhp</TD>
-      <TD bgcolor="#ccffff" width=12.5%>MP</TD>
-      <TD bgcolor="#ccffff" width=12.5%>$emp/$emaxmp</TD>
-	 </TR>
-  </TBODY>
-</TABLE>
-</CENTER>
-<P>
+<center>
+<table border="0" width="80%" bgcolor="#000000" CLASS=TC>
+  <tbody>
+    <tr>
+      <td colspan="8" align="center" bgcolor="$FCOLOR"><b><a href="#lower"><font color="#ffffcc">第$turn回合</font></a></b></td>
+    </tr>
+    <tr>
+      <td colspan="4" bgcolor="000063" align="center"><font color="$FCOLOR2"><b><font size="-1">$mname</font></b></font></td>
+      <td colspan="4" bgcolor="9c0000" align="center"><b><font size="-1" color="$FCOLOR2">$ename</font></b></td>
+    </tr>
+    <tr>
+      <td colspan="4" bgcolor="$FCOLOR2" align="center"><font size=-1>$bmess</font></td>
+      <td colspan="4" bgcolor="$FCOLOR2" align="center"><font size=-1>$mmess</font></td>
+    </tr>
+	<tr>
+      <td bgcolor="#ccffff" width=12.5%>HP</td>
+      <td bgcolor="#ccffff" width=12.5%>$mhp/$mmaxhp</td>
+      <td bgcolor="#ccffff" width=12.5%>MP</td>
+      <td bgcolor="#ccffff" width=12.5%>$mmp/$mmaxmp</td>
+      <td bgcolor="#ccffff" width=12.5%>HP</td>
+      <td bgcolor="#ccffff" width=12.5%>$ehp/$emaxhp</td>
+      <td bgcolor="#ccffff" width=12.5%>MP</td>
+      <td bgcolor="#ccffff" width=12.5%>$emp/$emaxmp</td>
+	 </tr>
+  </tbody>
+</table>
+</center>
+<p>
 EOF
 }
 
 sub MPRINT{
 	print <<"EOF";
-<CENTER>
-<TABLE border="0" width="80%" bgcolor="#000000" CLASS=TC>
-  <TBODY>
-    <TR>
-      <TD colspan="8" align="center" bgcolor="$FCOLOR"><B><a href="#lower"><FONT color="#ffffcc">第$turn回合</FONT></a></B></TD>
-    </TR>
-    <TR>
-	  <TD colspan="4" bgcolor="9c0000" align="center"><B><FONT size="-1" color="$FCOLOR2">$ename</FONT></B></TD>
-      <TD colspan="4" bgcolor="000063" align="center"><FONT color="$FCOLOR2"><B><FONT size="-1">$mname</FONT></B></FONT></TD>
-    </TR>
-    <TR>
-	  <TD colspan="4" bgcolor="$FCOLOR2" align="center"><font size=-1>$mmess</font></TD>
-      <TD colspan="4" bgcolor="$FCOLOR2" align="center"><font size=-1>$bmess</font></TD>
-    </TR>
-	<TR>
-      <TD bgcolor="#ccffff" width=12.5%>HP</TD>
-      <TD bgcolor="#ccffff" width=12.5%>$ehp/$emaxhp</TD>
-      <TD bgcolor="#ccffff" width=12.5%>MP</TD>
-      <TD bgcolor="#ccffff" width=12.5%>$emp/$emaxmp</TD>
-      <TD bgcolor="#ccffff" width=12.5%>HP</TD>
-      <TD bgcolor="#ccffff" width=12.5%>$mhp/$mmaxhp</TD>
-      <TD bgcolor="#ccffff" width=12.5%>MP</TD>
-      <TD bgcolor="#ccffff" width=12.5%>$mmp/$mmaxmp</TD>
-	</TR>
-  </TBODY>
-</TABLE>
-</CENTER>
-<P>
+<center>
+<table border="0" width="80%" bgcolor="#000000" CLASS=TC>
+  <tbody>
+    <tr>
+      <td colspan="8" align="center" bgcolor="$FCOLOR"><b><a href="#lower"><font color="#ffffcc">第$turn回合</font></a></b></td>
+    </tr>
+    <tr>
+	  <td colspan="4" bgcolor="9c0000" align="center"><b><font size="-1" color="$FCOLOR2">$ename</font></b></td>
+      <td colspan="4" bgcolor="000063" align="center"><font color="$FCOLOR2"><b><font size="-1">$mname</font></b></font></td>
+    </tr>
+    <tr>
+	  <td colspan="4" bgcolor="$FCOLOR2" align="center"><font size=-1>$mmess</font></td>
+      <td colspan="4" bgcolor="$FCOLOR2" align="center"><font size=-1>$bmess</font></td>
+    </tr>
+	<tr>
+      <td bgcolor="#ccffff" width=12.5%>HP</td>
+      <td bgcolor="#ccffff" width=12.5%>$ehp/$emaxhp</td>
+      <td bgcolor="#ccffff" width=12.5%>MP</td>
+      <td bgcolor="#ccffff" width=12.5%>$emp/$emaxmp</td>
+      <td bgcolor="#ccffff" width=12.5%>HP</td>
+      <td bgcolor="#ccffff" width=12.5%>$mhp/$mmaxhp</td>
+      <td bgcolor="#ccffff" width=12.5%>MP</td>
+      <td bgcolor="#ccffff" width=12.5%>$mmp/$mmaxmp</td>
+	</tr>
+  </tbody>
+</table>
+</center>
+<p>
 EOF
 }
 
@@ -1249,7 +1249,7 @@ sub LVUP{
 	if($mlv2>$mlv){
 		for($i=0;$i<$mlv2-$mlv;$i++){
 			$ext_tl_lvup++;
-			$com.="<font color=red>$mname升級！</font><BR>";
+			$com.="<font color=red>$mname升級！</font><br>";
 			if($mflg3 eq""){$mflg3=0;}
 			$hpup=int(rand($mvit/40+$mfai/80+8))+1;$mmaxhp+=$hpup;
 			$mpup=int(rand($mint/40+$mfai/80+2));$mmaxmp+=$mpup;
@@ -1283,14 +1283,14 @@ if($maccno eq"mix" && $mele eq $maccele){$maxmaxmpadd+=1000;}
                         if($PARA_LIMIT < $magi && $mtype ne"5"){$magi=$PARA_LIMIT;$maxcom[7]="<font color=red>（已達能力上限PARA_LIMIT。）</font>";}
 
 			
-			$com.="HP 增加<font color=blue>$hpup</font>$maxcom[0]<BR>";
-			$com.="MP 增加<font color=blue>$mpup</font>$maxcom[1]<BR>";
-			if($strup){$com.="力量 增加<font color=blue>$strup</font>$maxcom[2]<BR>";}
-			if($vitup){$com.="生命 增加<font color=blue>$vitup</font>$maxcom[3]<BR>";}
-			if($intup){$com.="智力 增加<font color=blue>$intup</font>$maxcom[4]<BR>";}
-			if($faiup){$com.="精神 增加<font color=blue>$faiup</font>$maxcom[5]<BR>";}
-			if($dexup){$com.="運氣 增加<font color=blue>$dexup</font>$maxcom[6]<BR>";}
-			if($agiup){$com.="速度 增加<font color=blue>$agiup</font>$maxcom[7]<BR>";}
+			$com.="HP 增加<font color=blue>$hpup</font>$maxcom[0]<br>";
+			$com.="MP 增加<font color=blue>$mpup</font>$maxcom[1]<br>";
+			if($strup){$com.="力量 增加<font color=blue>$strup</font>$maxcom[2]<br>";}
+			if($vitup){$com.="生命 增加<font color=blue>$vitup</font>$maxcom[3]<br>";}
+			if($intup){$com.="智力 增加<font color=blue>$intup</font>$maxcom[4]<br>";}
+			if($faiup){$com.="精神 增加<font color=blue>$faiup</font>$maxcom[5]<br>";}
+			if($dexup){$com.="運氣 增加<font color=blue>$dexup</font>$maxcom[6]<br>";}
+			if($agiup){$com.="速度 增加<font color=blue>$agiup</font>$maxcom[7]<br>";}
 
 		}
 	}
@@ -1313,7 +1313,7 @@ sub MAXUP{
 		$coment="<font color=green><b>$mname的界限值上昇！</b></font>";
 		$rate=1;
 	}
-	$com.="$coment<BR>";
+	$com.="$coment<br>";
 	if ($mmaxstr <400){$mmaxstr += $JMAX[$mtype][0]*$rate;}
 	if ($mmaxvit <400){$mmaxvit += $JMAX[$mtype][1]*$rate;}
 	if ($mmaxint <400){$mmaxint += $JMAX[$mtype][2]*$rate;}

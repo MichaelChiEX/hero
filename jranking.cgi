@@ -2,7 +2,7 @@
 require './sub.cgi';
 require './conf.cgi';
 	&header;
-	print"<table CLASS=TC width=100%><td align=center><font color=#FFFFFF size=4>其他排名</font></td></table><BR>";
+	print"<table CLASS=TC width=100%><td align=center><font color=#FFFFFF size=4>其他排名</font></td></table><br>";
 print"<center><a href=./nranking.cgi><font color=#ffffff><b>本月戰數排名</b></font></a></center>";
 	open(IN,"./data/country.cgi") or &error2('檔案開啟錯誤jranking.cgi(8)。');
 	@COU = <IN>;
@@ -141,6 +141,6 @@ print"<center><a href=./nranking.cgi><font color=#ffffff><b>本月戰數排名</
 		}
 	}
 	print"</table>";
-	print"<center><font color=yellow>遊戲人數：$mn名</font></center><BR>";
+	print"<center><font color=yellow>遊戲人數：$mn名</font></center><br>";
 &mainfooter;
 exit;

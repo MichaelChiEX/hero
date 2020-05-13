@@ -47,22 +47,22 @@ sub rbuy {
 	&header;
 	
 	print <<"EOF";
-<TABLE border="0" width="80%" align=center height="150" CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="$FCOLOR"><FONT color="$FCOLOR2">魔女的店</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="$FCOLOR2" width=20% align=center><img src="$IMG/etc/inn.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="$FCOLOR2">[魔女]<BR>魔女將<font color=green>$it_name</font>給你。$ames<br>總共花費<font color=yellow>$it_val<font> Gold。</FONT></TD>
-    </TR>
-    <TR>
-    <TD colspan="2" align="center" bgcolor="ffffff">
+<table border="0" width="80%" align=center height="150" CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="$FCOLOR"><font color="$FCOLOR2">魔女的店</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="$FCOLOR2" width=20% align=center><img src="$IMG/etc/inn.jpg"></td>
+      <td bgcolor="#330000"><font color="$FCOLOR2">[魔女]<br>魔女將<font color=green>$it_name</font>給你。$ames<br>總共花費<font color=yellow>$it_val<font> Gold。</font></td>
+    </tr>
+    <tr>
+    <td colspan="2" align="center" bgcolor="ffffff">
 $BACKTOWNBUTTON
-	</TD>
-    </TR>
-  </TBODY>
-</TABLE>
+	</td>
+    </tr>
+  </tbody>
+</table>
 <center></center>
 EOF
 	&footer;

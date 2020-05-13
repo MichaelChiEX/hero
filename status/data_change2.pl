@@ -14,22 +14,22 @@ sub data_change2{
 	if($mgold<0){&error("你的金額不足$dgold。");}
 	$mchara=$in{'chara'};
 	print <<"EOF";
-<TABLE border="0" width="80%" bgcolor="#ffffff" height="150" align=center CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">整型</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/house.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="#ffffcc">圖案變更完成。重新登入後將更新你的頭像</FONT></TD>
-    </TR>
-    <TR>
-      <TD colspan="2" align="right">
+<table border="0" width="80%" bgcolor="#ffffff" height="150" align=center CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">整型</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/house.jpg"></td>
+      <td bgcolor="#330000"><font color="#ffffcc">圖案變更完成。重新登入後將更新你的頭像</font></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
 $BACKTOWNBUTTON
-      </TD>
-    </TR>
-  </TBODY>
-</TABLE>
+      </td>
+    </tr>
+  </tbody>
+</table>
 EOF
 	&chara_input;
 	&footer;

@@ -32,7 +32,7 @@ open(IN,"./data/maplog.cgi");
 @MA = <IN>;
 close(IN);
 foreach(@MA){
-	$mapl.="<b><font color=$FCOLOR>●$MA[$m]</font></b><BR>";
+	$mapl.="<b><font color=$FCOLOR>●$MA[$m]</font></b><br>";
 	$m++;
 }
 $m=0;
@@ -40,7 +40,7 @@ open(IN,"./data/maplog9.cgi");
 @SYL = <IN>;
 close(IN);
 foreach(@SYL){
-        $mapsys.="<b><font color=$FCOLOR>●$SYL[$m]</font></b><BR>";
+        $mapsys.="<b><font color=$FCOLOR>●$SYL[$m]</font></b><br>";
         $m++;
 	if ($m>8){last;}
 }
@@ -57,32 +57,32 @@ print <<"EOF";
     background-color: #ffffcc;
 }
 </style>
-<CENTER>
-<TABLE border="0" width="700" cellspacing="5">
-  <TBODY>
-    <TR>
-      <TD colspan="2" width="696" align="center"><FONT style="font-size:40px" font color="#ffff99">$TITLE</FONT><BR><font color=ffffcc>★最大上線人數：$LMAX人<BR></TD>
-    </TR>
-    <TR>
-      <TD colspan="2" width="696" height="25" align="center">
-	<FONT style="font-size:15px" font color="#ffff99">
+<center>
+<table border="0" width="700" cellspacing="5">
+  <tbody>
+    <tr>
+      <td colspan="2" width="696" align="center"><font style="font-size:40px" font color="#ffff99">$TITLE</font><br><font color=ffffcc>★最大上線人數：$LMAX人<br></td>
+    </tr>
+    <tr>
+      <td colspan="2" width="696" height="25" align="center">
+	<font style="font-size:15px" font color="#ffff99">
 	$print
-	</TD>
-    </TR>
+	</td>
+    </tr>
 
-    <TR>
-      <TD colspan="2" bgcolor="#ffff99" width="696" height="23" align="left"><FONT style="font-size:15px" color="#666600">目前線上人員($player人)：$glist</FONT></TD>
-    </TR>
-    <TR>
-      <TD colspan="2" id="Layer1" valign=top><FONT style="font-size:15px" color="#666600"><b><系統公告></b><BR>$mapsys</FONT><BR><font size=1>[Total $count Hit]</font></TD>
-    </TR>
-    <TR>
-      <TD colspan="2" id="Layer1" valign=top><FONT style="font-size:15px" color="#666600"><b><最新情報></b><BR>$mapl</FONT></TD>
-    </TR>
-  </TBODY>
-</TABLE>
-<BR>
-</CENTER>
+    <tr>
+      <td colspan="2" bgcolor="#ffff99" width="696" height="23" align="left"><font style="font-size:15px" color="#666600">目前線上人員($player人)：$glist</font></td>
+    </tr>
+    <tr>
+      <td colspan="2" id="Layer1" valign=top><font style="font-size:15px" color="#666600"><b><系統公告></b><br>$mapsys</font><br><font size=1>[Total $count Hit]</font></td>
+    </tr>
+    <tr>
+      <td colspan="2" id="Layer1" valign=top><font style="font-size:15px" color="#666600"><b><最新情報></b><br>$mapl</font></td>
+    </tr>
+  </tbody>
+</table>
+<br>
+</center>
 EOF
 
 &mainfooter;

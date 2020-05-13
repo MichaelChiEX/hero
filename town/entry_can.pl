@@ -34,21 +34,21 @@ sub entry_can{
 	&header;
 	
 	print <<"EOF";
-<TABLE border="0" width="80%" bgcolor="#ffffff" height="150" align=center CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">取消參賽</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/arena.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="#ffffcc">已取消了大會的參賽。退還 $mgoldx Gold</FONT></TD>
-    </TR>
-    <TR>
-      <TD colspan="2" align="right">
+<table border="0" width="80%" bgcolor="#ffffff" height="150" align=center CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">取消參賽</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/arena.jpg"></td>
+      <td bgcolor="#330000"><font color="#ffffcc">已取消了大會的參賽。退還 $mgoldx Gold</font></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
 $BACKTOWNBUTTON
-    </TR>
-  </TBODY>
-</TABLE>
+    </tr>
+  </tbody>
+</table>
 EOF
 	&footer;
 	exit;

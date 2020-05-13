@@ -2,22 +2,22 @@ sub attestation {
 
 	&header;
 print <<NEW;
-◆ メールに添付された認証キーとＩＤとパスを入力してください。<BR>
+◆ メールに添付された認証キーとＩＤとパスを入力してください。<br>
 ◆ 認証キーが登録されますとゲームを開始することができます。<p>
 
 <center><form method=$method action=./newentry.cgi>
 <table bgcolor=$TABLE_C><tbody bgcolor=$TD_C3>
-<TR><TH bgcolor=$TD_C2 colspan=2>認 証</TH></TR>
-<TR><TH>ID</TH><TD>
-<input type=text name=id class=text size=10></TD></TR>
-<TR><TH>パスワード</TH><TD>
-<input type=password name=pass class=text size=10></TD></TR>
-<TR><TH>認証キー</TH><TD>
-<input type=password name=key class=text size=10></TD></TR>
-</TD></TR>
+<tr><th bgcolor=$TD_C2 colspan=2>認 証</th></tr>
+<tr><th>ID</th><td>
+<input type=text name=id class=text size=10></td></tr>
+<tr><th>パスワード</th><td>
+<input type=password name=pass class=text size=10></td></tr>
+<tr><th>認証キー</th><td>
+<input type=password name=key class=text size=10></td></tr>
+</td></tr>
 <input type=hidden name=mode value="set_entry">
-<TR><TD bgcolor=$TD_C4 colspan=2 align=center><input type=submit value="認証"></TD></TR>
-</TBODY></TABLE>
+<tr><td bgcolor=$TD_C4 colspan=2 align=center><input type=submit value="認証"></td></tr>
+</tbody></table>
 </form>
 
 NEW
@@ -35,7 +35,7 @@ sub set_entry {
 	if($akey ne $in{'key'}){&error2("暗証キーが違います！\n");}
 	if($murl eq ""){&error2("既に認証済みです。");}
 
-	&maplog("<font color=blue><B>[認証]</B></font>$mnameが新たに登録されました！");
+	&maplog("<font color=blue><b>[認証]</b></font>$mnameが新たに登録されました！");
 	$murl="";
 
 	&chara_input;

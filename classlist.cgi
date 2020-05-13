@@ -86,7 +86,7 @@ for($job_level=1;$job_level<7;$job_level++){
 			<td><font color=#0000ff>$cname</font></td>
 			<td><font color=#808000>$uplimit<br>$uplimit2</font></td>
 			<td><font color=#AA5555>$clname</td>
-			<td align=middle><font color=#ff0000>ＨＰ：@cu[0],ＭＰ：@cu[1]<BR>力：@cu[2],命：@cu[3],智：@cu[4],精：@cu[5],運：@cu[6],速@cu[7]</font></td>
+			<td align=middle><font color=#ff0000>ＨＰ：@cu[0],ＭＰ：@cu[1]<br>力：@cu[2],命：@cu[3],智：@cu[4],精：@cu[5],運：@cu[6],速@cu[7]</font></td>
 		</tr>";
 	}
 	$ctable.="</table>";

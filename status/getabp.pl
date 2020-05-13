@@ -27,7 +27,7 @@ sub getabp {
 	foreach(@CLASS_DATA){
 		($cname,$cjp,$cnou,$cup,$cflg,$ctype)=split(/<>/);
 		if($jobflg[$j] && $mclass ne $j){
-			$jobtable.="<TR><TD width=5% bgcolor=ffffcc><input type=radio name=job value=$j></TD><TD bgcolor=$FCOLOR2>$cname</TD><TD bgcolor=$FCOLOR2>$TYPE[$ctype]</TD><TD bgcolor=$FCOLOR2 align=right>$job[$j]</TD></TR>";
+			$jobtable.="<tr><td width=5% bgcolor=ffffcc><input type=radio name=job value=$j></td><td bgcolor=$FCOLOR2>$cname</td><td bgcolor=$FCOLOR2>$TYPE[$ctype]</td><td bgcolor=$FCOLOR2 align=right>$job[$j]</td></tr>";
 		}
 		$j++;
 	}
@@ -36,17 +36,17 @@ sub getabp {
 	&header;
 	
 	print <<"EOF";
-<TABLE border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">取得熟練度</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/palace.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="#ffffcc">進階職業可以取得上階職業之前的剩餘熟練度。取得後本階職業熟練度增加上階職業剩餘熟練度的七成，上階職業熟練度歸０，。<BR>請選擇上階職業。</FONT></TD>
-    </TR>
-    <TR>
-      <TD colspan="2" align="center">
+<table border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">取得熟練度</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/palace.jpg"></td>
+      <td bgcolor="#330000"><font color="#ffffcc">進階職業可以取得上階職業之前的剩餘熟練度。取得後本階職業熟練度增加上階職業剩餘熟練度的七成，上階職業熟練度歸０，。<br>請選擇上階職業。</font></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
 	$STPR 
 
 	<table border=0 width="100%" bgcolor=$FCOLOR CLASS=TC>
@@ -56,17 +56,17 @@ sub getabp {
 	</tr>
 	<form action="./status.cgi" method="post">
 	$jobtable
-	<TR><TD colspan=7 align=center bgcolor="ffffff">
-	<INPUT type=hidden name=id value=$mid>
-	<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-	<INPUT type=hidden name=mode value=getabp2>
-	<INPUT type=submit CLASS=FC value=開始取得></TD></TR></form>
+	<tr><td colspan=7 align=center bgcolor="ffffff">
+	<input type=hidden name=id value=$mid>
+	<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+	<input type=hidden name=mode value=getabp2>
+	<input type=submit CLASS=FC value=開始取得></td></tr></form>
 	</table>
 $BACKTOWNBUTTON
-	</TD>	
-    </TR>
-  </TBODY>
-</TABLE>
+	</td>	
+    </tr>
+  </tbody>
+</table>
 <center></center>
 EOF
 

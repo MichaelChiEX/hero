@@ -32,22 +32,22 @@ sub hinn2{
 	&header;
 	
 	print <<"EOF";
-<TABLE border="0" width="80%" bgcolor="#ffffff" height="150" align=center CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">高級旅館</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/inn2.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="#ffffcc"><font color=lightblue>$mname</font>於高級旅館住了一晚。<BR><font color=green>ＨＰ</font>最大值增加<font color=yellow>$hpup</font>、<font color=green>ＭＰ</font>最大值增加<font color=yellow>$mpup</font>。</FONT></TD>
-    </TR>
-    <TR>
-      <TD colspan="2" align="right">
+<table border="0" width="80%" bgcolor="#ffffff" height="150" align=center CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">高級旅館</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/inn2.jpg"></td>
+      <td bgcolor="#330000"><font color="#ffffcc"><font color=lightblue>$mname</font>於高級旅館住了一晚。<br><font color=green>ＨＰ</font>最大值增加<font color=yellow>$hpup</font>、<font color=green>ＭＰ</font>最大值增加<font color=yellow>$mpup</font>。</font></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
 $BACKTOWNBUTTON
-	</TD>
-    </TR>
-  </TBODY>
-</TABLE>
+	</td>
+    </tr>
+  </tbody>
+</table>
 EOF
 	&chara_input;
 	&footer;

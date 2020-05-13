@@ -82,23 +82,23 @@ if($mid eq $GMID){
 	&header;
 	
 print <<"EOF";
-<TABLE border="0" width="80%" align=center bgcolor="#000000" height="150" CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="$FCOLOR"><FONT color="$FCOLOR2">得標</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="$FCOLOR2" width=20% align=center><img src="$IMG/etc/buki.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="$FCOLOR2">$bidc</FONT></TD>
-    </TR>
-    <TR>
-    <TD colspan="2" align="center" bgcolor="ffffff">
+<table border="0" width="80%" align=center bgcolor="#000000" height="150" CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="$FCOLOR"><font color="$FCOLOR2">得標</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="$FCOLOR2" width=20% align=center><img src="$IMG/etc/buki.jpg"></td>
+      <td bgcolor="#330000"><font color="$FCOLOR2">$bidc</font></td>
+    </tr>
+    <tr>
+    <td colspan="2" align="center" bgcolor="ffffff">
 $BACKTOWNBUTTON
-</TD>
-	</TD>
-    </TR>
-  </TBODY>
-</TABLE>
+</td>
+	</td>
+    </tr>
+  </tbody>
+</table>
 <center></center>
 EOF
 

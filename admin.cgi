@@ -46,9 +46,9 @@ sub TOP {
 	&header;
 	print <<"EOM";
 <h2>管理介面</h2>
-<CENTER>
-<table width=80% cellspacing=1 border=0 bgcolor=aa0000><TBODY bgcolor=FFFFF8>
-<TR><Th>
+<center>
+<table width=80% cellspacing=1 border=0 bgcolor=aa0000><tbody bgcolor=FFFFF8>
+<tr><Th>
 <form method="post" action="./admin.cgi">
 <input type=hidden name=mode value=SEARCHID>
 <input type=text name=mname size=15>
@@ -69,32 +69,32 @@ sub TOP {
 <input type=hidden name=pass value="$in{pass}">
 <input type=submit value='查帳號與檔名不同'>
 <br></form>
-</Th><TD>
+</Th><td>
 ・查帳號。
-</TD></TR>
-<TR><Th>
+</td></tr>
+<tr><Th>
 <form method="post" action="admin.cgi">
 <input type=hidden name=mode value=MENTE>
 <input type=hidden name=id value="$in{id}">
 <input type=hidden name=pass value="$in{pass}">
 <input type=submit value='帳號刪除'>
 <br></form>
-</Th><TD>
+</Th><td>
 ・刪除角色帳號。
-</TD></TR>
+</td></tr>
 
-<TR><Th>
+<tr><Th>
 <form method="post" action="admin.cgi">
 <input type=hidden name=mode value=MINDEL>
 <input type=hidden name=id value="$in{id}">
 <input type=hidden name=pass value="$in{pass}">
 <input type=submit value='閒置帳號刪除'>
 <br></form>
-</Th><TD>
+</Th><td>
 ・$del_day天未滿$del_total戰者刪除。
-</TD></TD></TR>
+</td></td></tr>
 
-<TR><Th>
+<tr><Th>
 <form method="post" action="admin.cgi">
 <input type=hidden name=mode value=LOCK>
 <input type=hidden name=id value="$in{id}">
@@ -102,11 +102,11 @@ sub TOP {
 (外掛帳號)<input type=text name=lockid>
 <input type=submit value='外掛鎖檔'>
 <br></form>
-</Th><TD>
+</Th><td>
 ・參考logfile/verchk/檔案進行鎖檔。
-</TD></TD></TR>
+</td></td></tr>
 
-<TR><Th>
+<tr><Th>
 <form method="post" action="admin.cgi">
 <input type=hidden name=mode value=WARN>
 <input type=hidden name=id value="$in{id}">
@@ -114,11 +114,11 @@ sub TOP {
 <input type=text name=player>
 <input type=submit value='警告'>
 <br></form>
-</Th><TD>
+</Th><td>
 ・輸入要警告的訊息。
-</TD></TD></TR>
+</td></td></tr>
 
-<TR><Th>
+<tr><Th>
 <form method="post" action="admin.cgi">
 <input type=hidden name=mode value=PUBMSG>
 <input type=hidden name=id value="$in{id}">
@@ -126,30 +126,30 @@ sub TOP {
 <input type=text name=pubmsg>
 <input type=submit value='系統公告'>
 <br></form>
-</Th><TD>
+</Th><td>
 ・輸入要公告的訊息。
-</TD></TD></TR>
+</td></td></tr>
 
 
-<TR><Th>
+<tr><Th>
 <form method="post" action="admin.cgi">
 <input type=hidden name=mode value=LOGIN>
-ID:<input type=text size=15 name=id><BR>
-PASS:<input type=password size=15 name=pass><BR>
+ID:<input type=text size=15 name=id><br>
+PASS:<input type=password size=15 name=pass><br>
 <input type=hidden name=aid value="$in{id}">
 <input type=hidden name=apass value="$in{pass}">
 <input type=submit value='登入遊戲'>
 <br></form>
-</Th><TD>
+</Th><td>
 ・直接進入遊戲。
-</TD></TD></TR>
-</TBODY></TABLE>
+</td></td></tr>
+</tbody></table>
 
 <form method="post" action="index.cgi">
 </select><input type=submit value='回到首頁'>
 <br></form>
 
-</CENTER>
+</center>
 
 EOM
 	&mainfooter;
@@ -242,7 +242,7 @@ foreach(@human_data){
 	print "<option value=$eid\.cgi>$eid $ename $ehost\n";
 	if($in{'no'} eq "" || $in{'no'} eq "1"){
 		if($w_host eq "$ehost"){
-			$mess .= "$ename | $w_name<BR>\n";
+			$mess .= "$ename | $w_name<br>\n";
 		}
 	}
 	$w_host = "$ehost";
@@ -325,7 +325,7 @@ sub DEL {
 	close(IN);
 	&time_data;
 
-	unshift(@S_MOVE,"<font color=red><B>\[刪除\]</B></font> <font color=red>$kname</font> 已被系統刪除。($mday日$hour時$min分)\n");
+	unshift(@S_MOVE,"<font color=red><b>\[刪除\]</b></font> <font color=red>$kname</font> 已被系統刪除。($mday日$hour時$min分)\n");
 	splice(@S_MOVE,20);
 
 	open(OUT,">./data/maplog.cgi") or &error2('檔案開啟錯誤admin.cgi(263)。');
@@ -469,7 +469,7 @@ $del_day2=$del_day*60*60*24;
 			($eid,$epass,$ename,$eurl,$echara,$esex,$ehp,$emaxhp,$emp,$emaxmp,$eele,$estr,$evit,$eint,$efai,$edex,$eagi,$emax,$ecom,$egold,$ebank,$eex,$etotalex,$ejp,$eabp,$ecex,$eunit,$econ,$earm,$epro,$eacc,$etec,$esta,$epos,$emes,$ehost,$edate,$esyo,$eclass,$etotal,$ekati,$etype,$eoya,$esk,$eflg,$eflg2,$eflg3,$eflg4,$eflg5,$epet) = split(/<>/,$page[0]);
 $date2=$date-$edate;
 			if($etotal<$del_day && $date2>$del_day2){
-				$mess.="$ename<BR>";
+				$mess.="$ename<br>";
 				$delcount++;
 			}
 		}
@@ -478,7 +478,7 @@ $date2=$date-$edate;
 
 	&header;
 	print <<"EOM";
-<center><h2><font color=red>$del_day天未上線未滿$del_total戰者刪除。<BR></font></h2><hr size=0>
+<center><h2><font color=red>$del_day天未上線未滿$del_total戰者刪除。<br></font></h2><hr size=0>
 <font color=white>
 (共$delcount名)
 $mess
@@ -531,7 +531,7 @@ sub SEARCHID {
 	}
         &header;
         print <<"EOM";
-<center><h2><font color=red>查詢帳號結果。<BR><font color="yellow">$mid</font><BR><font color="yellow">$mpass</font></h2><hr size=0>
+<center><h2><font color=red>查詢帳號結果。<br><font color="yellow">$mid</font><br><font color="yellow">$mpass</font></h2><hr size=0>
 <form method="post" action="admin.cgi">
 <input type=hidden name=id value="$in{id}">
 <input type=hidden name=pass value="$in{pass}">
@@ -563,7 +563,7 @@ sub SEARCHMNAME {
 
         &header;
         print <<"EOM";
-<center><h2><font color=red>查詢帳號結果。<BR><font color="yellow">$mid</font><BR><font color="yellow">$mname</font><BR><font color="yellow">$mpass</font></h2><hr size=0>
+<center><h2><font color=red>查詢帳號結果。<br><font color="yellow">$mid</font><br><font color="yellow">$mname</font><br><font color="yellow">$mpass</font></h2><hr size=0>
 <form method="post" action="admin.cgi">
 <input type=hidden name=id value="$in{id}">
 <input type=hidden name=pass value="$in{pass}">
@@ -626,7 +626,7 @@ $date2=$date-$edate;
 				unlink("$dir2/$eid.cgi");
                                 $dir2="./logfile/fixext";
                                 unlink("$dir2/$eid.cgi");
-				$mess.="$ename<BR>";
+				$mess.="$ename<br>";
 				$count++;
 			}
 		}
@@ -637,7 +637,7 @@ $date2=$date-$edate;
 
 	&header;
 	print <<"EOM";
-<center><h2><font color=red>本次刪除清單如下帳號。<BR>$mess</font></h2><hr size=0>
+<center><h2><font color=red>本次刪除清單如下帳號。<br>$mess</font></h2><hr size=0>
 <form method="post" action="admin.cgi">
 <input type=hidden name=id value="$in{id}">
 <input type=hidden name=pass value="$in{pass}">
@@ -668,14 +668,14 @@ sub SEARCHDFID {
                         $list[$i]="$file";
                         ($eid,$epass,$ename,$eurl,$echara,$esex,$ehp,$emaxhp,$emp,$emaxmp,$eele,$estr,$evit,$eint,$efai,$edex,$eagi,$emax,$ecom,$egold,$ebank,$eex,$etotalex,$ejp,$eabp,$ecex,$eunit,$econ,$earm,$epro,$eacc,$etec,$esta,$epos,$emes,$ehost,$edate,$esyo,$eclass,$etotal,$ekati,$etype,$eoya,$esk,$eflg,$eflg2,$eflg3,$eflg4,$eflg5,$epet) = split(/<>/,$page[0]);
                         if($file ne"$eid".".cgi"){
-				$dflist.="<font size=3><b>$file</b></font><BR>";
-				$dflist.="<font size=2>$page[0]<BR></font>";
+				$dflist.="<font size=3><b>$file</b></font><br>";
+				$dflist.="<font size=2>$page[0]<br></font>";
                         }
                 }
         }
         &header;
         print <<"EOM";
-<center><h2><font color=red>查詢帳號與檔名不同結果。<BR>
+<center><h2><font color=red>查詢帳號與檔名不同結果。<br>
 <p align="left"><font color="yellow">$dflist</p>
 <form method="post" action="admin.cgi">
 <input type=hidden name=id value="$in{id}">

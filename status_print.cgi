@@ -37,7 +37,7 @@ while (($key, $value) = each(%ab_hash)) {
 
 if($mpetname ne""){
     $showpetname="$mpetname($ELE[$mpetele]).lv$mpetlv";
-    $showpetval="<font size=2>威力:$mpetdmg<BR>防禦:$mpetdef<BR>速度:$mpetspeed</font>";
+    $showpetval="<font size=2>威力:$mpetdmg<br>防禦:$mpetdef<br>速度:$mpetspeed</font>";
 }
 
 open(IN,"./logfile/prof/$mid.cgi");
@@ -159,13 +159,13 @@ print <<"EOM";
             <td bgcolor="$ELE_C[$con2_ele]" colspan=2 align=right>$showpetval</td>
         </tr>
         <tr>
-            <td colspan="7" bgcolor="$ELE_BG[$con2_ele]"><FONT color="$ELE_C[$con2_ele]">$mname的自傳</FONT></td>
+            <td colspan="7" bgcolor="$ELE_BG[$con2_ele]"><font color="$ELE_C[$con2_ele]">$mname的自傳</font></td>
         </tr>
         <tr>
             <td colspan="7" bgcolor="$ELE_C[$con2_ele]">$com1</td>
         </tr>
         <tr>
-            <td colspan="7" bgcolor="$ELE_BG[$con2_ele]"><FONT color="$ELE_C[$con2_ele]">$mname的經歷</FONT></td>
+            <td colspan="7" bgcolor="$ELE_BG[$con2_ele]"><font color="$ELE_C[$con2_ele]">$mname的經歷</font></td>
         </tr>
         <tr>
             <td colspan="7" bgcolor="$ELE_C[$con2_ele]">$history</td>

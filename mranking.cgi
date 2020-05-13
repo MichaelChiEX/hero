@@ -71,8 +71,8 @@ foreach(@HERO) {
 }
 
 &header;
-print"<table CLASS=TC width=100%><td align=center><font color=$FCOLOR2 size=4>傳說的英雄</font></td></table><BR>";
-print"<table CLASS=FC>$htable</table></center><BR>";
+print"<table CLASS=TC width=100%><td align=center><font color=$FCOLOR2 size=4>傳說的英雄</font></td></table><br>";
+print"<table CLASS=FC>$htable</table></center><br>";
 &mainfooter;
 
 exit;

@@ -2,7 +2,7 @@
 require './sub.cgi';
 require './conf.cgi';
 	&header;
-	print"<table CLASS=TC width=100%><td align=center><font color=$FCOLOR2 size=4>排名情報</font></td></table><BR>";
+	print"<table CLASS=TC width=100%><td align=center><font color=$FCOLOR2 size=4>排名情報</font></td></table><br>";
 	open(IN,"./data/country.cgi") or &error2('檔案開啟錯誤ranking.cgi(8)。');
 	@COU = <IN>;
 	close(IN);
@@ -76,13 +76,13 @@ if($rcon ne"a9"){
 	$con_no=0;
 	foreach(@COU){
 		($con_id,$con_name,$con_ele,$con_gold,$con_king,$con_yaku,$con_cou,$con_mes,$con_etc)=split(/<>/);
-		$con_table[$con_id].="<tr><td colspan=14 CLASS=FC>$con_table2[$con_id]</td></tr></table><BR>";
+		$con_table[$con_id].="<tr><td colspan=14 CLASS=FC>$con_table2[$con_id]</td></tr></table><br>";
 		print"$con_table[$con_id]";
 		$con_no++;
 	}
 	$con_table[0].="<tr><td colspan=14 CLASS=FC>$con_table2[0]</td></tr></table>";
-	print"$con_table[0]<BR>";
-	print"<center><font color=yellow>遊戲人數：$mn名</font></center><BR>";
+	print"$con_table[0]<br>";
+	print"<center><font color=yellow>遊戲人數：$mn名</font></center><br>";
 	print"\n<script language=javascript>\nfunction opstatus(pid){\nwindow.open('./status_print.cgi?id='+pid, 'newwin', 'width=600,height=400,scrollbars =yes');\n}\n</script>\n";
 &mainfooter;
 

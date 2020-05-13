@@ -60,7 +60,7 @@ sub renkin2 {
 				<td colspan="2" align="center" bgcolor="$FCOLOR"><font color="$FCOLOR2">煉金</font></td>
 			</tr>
 			<tr>
-				<td bgcolor="$FCOLOR2" width=20% align=center><img src="$IMG/etc/inn.jpg"></TD>
+				<td bgcolor="$FCOLOR2" width=20% align=center><img src="$IMG/etc/inn.jpg"></td>
 				<td bgcolor="#330000"><font color="$FCOLOR2">
 					你成功的製作了<font color=blue>$it_name</font><br>本次的煉金消耗了你<font color=red>$lose_abp</font>熟練度。<br>
 					<font color=red>$it_name</font>。</font>

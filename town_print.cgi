@@ -40,21 +40,21 @@ sub town_print {
 	&header;
 
 	print <<"EOM";
-<TABLE WIDTH="100%" CLASS=TC>
-  <TBODY>
-    <TR>
-      <TH BGCOLOR=$TD_C2 height=5>都市名稱</TH>
-      <TH BGCOLOR=$TD_C1 height=5>所屬國</TH>
-      <TH BGCOLOR=$TD_C1 height=5>所在</TH>
-      <TH BGCOLOR=$TD_C4 height=5>收益金</TH>
-      <TH BGCOLOR=$TD_C3 height=5>屬性</TH>
-      <TH BGCOLOR=$TD_C2 height=5>武器開發</TH>
-      <TH BGCOLOR=$TD_C1 height=5>防具開發</TH>
-      <TH BGCOLOR=$TD_C4 height=5>飾品開發</TH>
-      <TH BGCOLOR=$TD_C3 height=5>產業值</TH>
-      <TH BGCOLOR=$TD_C3 height=5>要塞</TH>
+<table WIDTH="100%" CLASS=TC>
+  <tbody>
+    <tr>
+      <th BGCOLOR=$TD_C2 height=5>都市名稱</th>
+      <th BGCOLOR=$TD_C1 height=5>所屬國</th>
+      <th BGCOLOR=$TD_C1 height=5>所在</th>
+      <th BGCOLOR=$TD_C4 height=5>收益金</th>
+      <th BGCOLOR=$TD_C3 height=5>屬性</th>
+      <th BGCOLOR=$TD_C2 height=5>武器開發</th>
+      <th BGCOLOR=$TD_C1 height=5>防具開發</th>
+      <th BGCOLOR=$TD_C4 height=5>飾品開發</th>
+      <th BGCOLOR=$TD_C3 height=5>產業值</th>
+      <th BGCOLOR=$TD_C3 height=5>要塞</th>
 
-    </TR>
+    </tr>
 EOM
 
 	$town_c0=0;$town_c1=0;$town_c2=0;$town_c3=0;
@@ -64,25 +64,25 @@ EOM
 		$TOWN_NAME[$zcid]="$zname";
 		$wc_ele = $c_ele[$zcon];
 print <<"EOM";
-<TR>
-      <TD BGCOLOR=$ELE_C[$wc_ele] height=5 align=center><B><font color=$ELE_BG[$wc_ele]>$zname</TD>
-      <TD BGCOLOR=$ELE_C[$wc_ele] height=5 align=center><font color=$ELE_BG[$wc_ele]>$country_name[$zcon] 國</TD>
-      <TD BGCOLOR=$ELE_C[$wc_ele] height=5><font color=$ELE_BG[$wc_ele]>$zx-$zy</TD>
-      <TD BGCOLOR=$ELE_C[$wc_ele] height=5 align=right><font color=$ELE_BG[$wc_ele]>$zmoney GOLD</TD>
-      <TD BGCOLOR=$ELE_C[$wc_ele] height=5><font color=$ELE_BG[$wc_ele]>$ELE[$zele]</TD>
-      <TD BGCOLOR=$ELE_C[$wc_ele] height=5><font color=$ELE_BG[$wc_ele]>$zarm</TD>
-      <TD BGCOLOR=$ELE_C[$wc_ele] height=5><font color=$ELE_BG[$wc_ele]>$zpro</TD>
-      <TD BGCOLOR=$ELE_C[$wc_ele] height=5><font color=$ELE_BG[$wc_ele]>$zacc</TD>
-      <TD BGCOLOR=$ELE_C[$wc_ele] height=5><font color=$ELE_BG[$wc_ele]>$zind</TD>
-      <TD BGCOLOR=$ELE_C[$wc_ele] height=5><font color=$ELE_BG[$wc_ele]>$town_hp/$town_max</TD>
+<tr>
+      <td BGCOLOR=$ELE_C[$wc_ele] height=5 align=center><b><font color=$ELE_BG[$wc_ele]>$zname</td>
+      <td BGCOLOR=$ELE_C[$wc_ele] height=5 align=center><font color=$ELE_BG[$wc_ele]>$country_name[$zcon] 國</td>
+      <td BGCOLOR=$ELE_C[$wc_ele] height=5><font color=$ELE_BG[$wc_ele]>$zx-$zy</td>
+      <td BGCOLOR=$ELE_C[$wc_ele] height=5 align=right><font color=$ELE_BG[$wc_ele]>$zmoney GOLD</td>
+      <td BGCOLOR=$ELE_C[$wc_ele] height=5><font color=$ELE_BG[$wc_ele]>$ELE[$zele]</td>
+      <td BGCOLOR=$ELE_C[$wc_ele] height=5><font color=$ELE_BG[$wc_ele]>$zarm</td>
+      <td BGCOLOR=$ELE_C[$wc_ele] height=5><font color=$ELE_BG[$wc_ele]>$zpro</td>
+      <td BGCOLOR=$ELE_C[$wc_ele] height=5><font color=$ELE_BG[$wc_ele]>$zacc</td>
+      <td BGCOLOR=$ELE_C[$wc_ele] height=5><font color=$ELE_BG[$wc_ele]>$zind</td>
+      <td BGCOLOR=$ELE_C[$wc_ele] height=5><font color=$ELE_BG[$wc_ele]>$town_hp/$town_max</td>
       
-</TR>
+</tr>
 EOM
 	}
 
 print <<"EOM";
-  </TBODY>
-</TABLE>
+  </tbody>
+</table>
 EOM
 
 	&mainfooter;

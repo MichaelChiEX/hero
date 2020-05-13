@@ -501,43 +501,43 @@ sub status_print{
 	$mken=$mhpr*100;
 
 	$STPR= <<"_STATUS_";
-	<TABLE border="0"cellspacing="2" CLASS=MC>
-        <TBODY>
-          <TR>
-          <TD colspan="2" rowspan="4" bgcolor="$ELE_C[$mele]" align=center><img src="$IMG/chara/$mchara.gif"></TD>
-          <TD bgcolor="$ELE_C[$mele]"><font size=2>名稱</font></TD>
-          <TD colspan="2" bgcolor="$ELE_C[$mele]"><font size=2>$mname</font></TD>
-          <TD bgcolor="$ELE_C[$mele]"><font size=2>LV</TD>
-          <TD colspan="2" bgcolor="$ELE_C[$mele]"><font size=2>$mlv</font></TD>
-          <TD bgcolor="$ELE_C[$mele]"><font size=2>性別</TD>
-          <TD colspan="2" bgcolor="$ELE_C[$mele]"><font size=2>$SEX[$msex]</font></TD>
-          </TR>
-          <TR>
-          <TD bgcolor="$ELE_C[$mele]"><font size=2>HP</TD>
-          <TD colspan="2" bgcolor="$ELE_C[$mele]"><font size=2>$mhp/$mmaxhp</font></TD>
-          <TD bgcolor="$ELE_C[$mele]"><font size=2>MP</TD>
-          <TD colspan="2" bgcolor="$ELE_C[$mele]"><font size=2>$mmp/$mmaxmp</font></TD>
-          <TD bgcolor="$ELE_C[$mele]"><font size=2>健康度</TD>
-          <TD colspan="2" bgcolor="$ELE_C[$mele]"><font size=2>$mken %</font></TD>
-          </TR>
-          <TR>
-          <TD bgcolor="$ELE_C[$mele]"><font size=2>經験值</font></TD>
-          <TD colspan="2" bgcolor="$ELE_C[$mele]"><font size=2>$mex</font></TD>
-          <TD bgcolor="$ELE_C[$mele]"><font size=2>職業</font></TD>
-          <TD colspan="2" bgcolor="$ELE_C[$mele]"><font size=2>$JOB[$mclass]</font></TD>
-          <TD bgcolor="$ELE_C[$mele]"><font size=2>熟練度</font></TD>
-          <TD colspan="2" bgcolor="$ELE_C[$mele]"><font size=2>$mabp</font></TD>
-          </TR>
-	  <TR>
-          <TD bgcolor="$ELE_C[$mele]"><font size=2>資金</font></TD>
-          <TD colspan="2" bgcolor="$ELE_C[$mele]"><font size=2>$smgold</font></TD>
-          <TD bgcolor="$ELE_C[$mele]"><font size=2>銀行</font></TD>
-          <TD colspan="2" bgcolor="$ELE_C[$mele]"><font size=2>$smbank</font></TD>
-          <TD bgcolor="$ELE_C[$mele]"><font size=2>名聲</font></TD>
-          <TD colspan="2" bgcolor="$ELE_C[$mele]"><font size=2>$mcex</font></TD>
-          </TR>
-        </TBODY>
-      </TABLE>
+	<table border="0"cellspacing="2" CLASS=MC>
+        <tbody>
+          <tr>
+          <td colspan="2" rowspan="4" bgcolor="$ELE_C[$mele]" align=center><img src="$IMG/chara/$mchara.gif"></td>
+          <td bgcolor="$ELE_C[$mele]"><font size=2>名稱</font></td>
+          <td colspan="2" bgcolor="$ELE_C[$mele]"><font size=2>$mname</font></td>
+          <td bgcolor="$ELE_C[$mele]"><font size=2>LV</td>
+          <td colspan="2" bgcolor="$ELE_C[$mele]"><font size=2>$mlv</font></td>
+          <td bgcolor="$ELE_C[$mele]"><font size=2>性別</td>
+          <td colspan="2" bgcolor="$ELE_C[$mele]"><font size=2>$SEX[$msex]</font></td>
+          </tr>
+          <tr>
+          <td bgcolor="$ELE_C[$mele]"><font size=2>HP</td>
+          <td colspan="2" bgcolor="$ELE_C[$mele]"><font size=2>$mhp/$mmaxhp</font></td>
+          <td bgcolor="$ELE_C[$mele]"><font size=2>MP</td>
+          <td colspan="2" bgcolor="$ELE_C[$mele]"><font size=2>$mmp/$mmaxmp</font></td>
+          <td bgcolor="$ELE_C[$mele]"><font size=2>健康度</td>
+          <td colspan="2" bgcolor="$ELE_C[$mele]"><font size=2>$mken %</font></td>
+          </tr>
+          <tr>
+          <td bgcolor="$ELE_C[$mele]"><font size=2>經験值</font></td>
+          <td colspan="2" bgcolor="$ELE_C[$mele]"><font size=2>$mex</font></td>
+          <td bgcolor="$ELE_C[$mele]"><font size=2>職業</font></td>
+          <td colspan="2" bgcolor="$ELE_C[$mele]"><font size=2>$JOB[$mclass]</font></td>
+          <td bgcolor="$ELE_C[$mele]"><font size=2>熟練度</font></td>
+          <td colspan="2" bgcolor="$ELE_C[$mele]"><font size=2>$mabp</font></td>
+          </tr>
+	  <tr>
+          <td bgcolor="$ELE_C[$mele]"><font size=2>資金</font></td>
+          <td colspan="2" bgcolor="$ELE_C[$mele]"><font size=2>$smgold</font></td>
+          <td bgcolor="$ELE_C[$mele]"><font size=2>銀行</font></td>
+          <td colspan="2" bgcolor="$ELE_C[$mele]"><font size=2>$smbank</font></td>
+          <td bgcolor="$ELE_C[$mele]"><font size=2>名聲</font></td>
+          <td colspan="2" bgcolor="$ELE_C[$mele]"><font size=2>$mcex</font></td>
+          </tr>
+        </tbody>
+      </table>
 _STATUS_
 }
 
@@ -699,24 +699,24 @@ sub error {
         &header;
         print <<"EOF";
         <center>
-        <TABLE border="0" width="50%" bgcolor="#660000" CLASS=TC>
-        <TBODY>
-        <TR>
-        <TD align="center"><FONT color="#ffffcc"><B>ＥＲＲＯＲ</B></FONT></TD>
-        </TR>
-        <TR>
-        <TD bgcolor="#ffffff" align="center"><BR><B>$_[0]</B>
-        <CENTER>
+        <table border="0" width="50%" bgcolor="#660000" CLASS=TC>
+        <tbody>
+        <tr>
+        <td align="center"><font color="#ffffcc"><b>ＥＲＲＯＲ</b></font></td>
+        </tr>
+        <tr>
+        <td bgcolor="#ffffff" align="center"><br><b>$_[0]</b>
+        <center>
 <input type="button" value="返回" CLASS=FC onclick="javascript:parent.backtown();">
-        </CENTER>
-        </TD>
-        </TR>
-        </TBODY>
-        </TABLE>
-        </CENTER>
-        <BR><BR>
+        </center>
+        </td>
+        </tr>
+        </tbody>
+        </table>
+        </center>
+        <br><br>
         </form>
-        <P><hr size=0></center>
+        <p><hr size=0></center>
         </center>
 EOF
         &footer;
@@ -726,20 +726,20 @@ sub error2 {
         &header;
         print <<"EOF";
         <center>
-        <TABLE border="0" width="50%" bgcolor="#660000" CLASS=TC>
-        <TBODY>
-        <TR>
-        <TD align="center"><FONT color="#ffffcc"><B>ＥＲＲＯＲ</B></FONT></TD>
-        </TR>
-        <TR>
-        <TD bgcolor="#ffffff" align="center"><BR><B>$_[0]</B>
-        </TD>
-        </TR>
-        </TBODY>
-        </TABLE>
-        </CENTER>
-        <BR><BR>
-        <P><hr size=0></center>
+        <table border="0" width="50%" bgcolor="#660000" CLASS=TC>
+        <tbody>
+        <tr>
+        <td align="center"><font color="#ffffcc"><b>ＥＲＲＯＲ</b></font></td>
+        </tr>
+        <tr>
+        <td bgcolor="#ffffff" align="center"><br><b>$_[0]</b>
+        </td>
+        </tr>
+        </tbody>
+        </table>
+        </center>
+        <br><br>
+        <p><hr size=0></center>
         </center>
 EOF
         &footer;
@@ -749,20 +749,20 @@ sub error3 {
         &header;
         print <<"EOF";
         <center>
-        <TABLE border="0" width="50%" bgcolor="#660000" CLASS=TC>
-        <TBODY>
-        <TR>
-        <TD align="center"><FONT color="#ffffcc"><B>ＥＲＲＯＲ</B></FONT></TD>
-        </TR>
-        <TR>
-        <TD bgcolor="#ffffff" align="center"><BR><B>$_[0]</B>
-        </TD>
-        </TR>
-        </TBODY>
-        </TABLE>
-        </CENTER>
-        <BR><BR>
-        <P><hr size=0></center>
+        <table border="0" width="50%" bgcolor="#660000" CLASS=TC>
+        <tbody>
+        <tr>
+        <td align="center"><font color="#ffffcc"><b>ＥＲＲＯＲ</b></font></td>
+        </tr>
+        <tr>
+        <td bgcolor="#ffffff" align="center"><br><b>$_[0]</b>
+        </td>
+        </tr>
+        </tbody>
+        </table>
+        </center>
+        <br><br>
+        <p><hr size=0></center>
         </center>
 <script language=javascript>
 alert('$_[0]');
@@ -777,29 +777,29 @@ sub error_old {
         &header;
         print <<"EOF";
         <center>
-        <TABLE border="0" width="50%" bgcolor="#660000" CLASS=TC>
-        <TBODY>
-        <TR>
-        <TD align="center"><FONT color="#ffffcc"><B>ＥＲＲＯＲ</B></FONT></TD>
-        </TR>
-        <TR>
-        <TD bgcolor="#ffffff" align="center"><BR><B>$_[0]</B>
-        <CENTER>
+        <table border="0" width="50%" bgcolor="#660000" CLASS=TC>
+        <tbody>
+        <tr>
+        <td align="center"><font color="#ffffcc"><b>ＥＲＲＯＲ</b></font></td>
+        </tr>
+        <tr>
+        <td bgcolor="#ffffff" align="center"><br><b>$_[0]</b>
+        <center>
 <form action="./top.cgi" method="POST">
-        <INPUT type=hidden name=id value=$mid>
-        <INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+        <input type=hidden name=id value=$mid>
+        <input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
 
-        <INPUT type=submit CLASS=FC value=回到城鎮>
+        <input type=submit CLASS=FC value=回到城鎮>
 </Form>
-        </CENTER>
-        </TD>
-        </TR>
-        </TBODY>
-        </TABLE>
-        </CENTER>
-        <BR><BR>
+        </center>
+        </td>
+        </tr>
+        </tbody>
+        </table>
+        </center>
+        <br><br>
         </form>
-        <P><hr size=0></center>
+        <p><hr size=0></center>
         </center>
 EOF
         &footer;
@@ -1008,10 +1008,10 @@ sub mainfooter{
         print <<"EOF";
         <DIV align=center>
         <font size=2 color=#FFFFFF>
-        $VER <A HREF="http://farland.jellybean.jp/top.htm" target="blank"><FONT size="2" color="#ffff99">bean</font></a><BR>
-        參考：The Wars of Roses Ver6.4 <a href=\"http://g2.ngw.jp/~maccyu/game/\" target="blank"><FONT size="2" color="#ffff99">maccyu</font></a><br>
-        繁體中文化無限改版:<a href="http://www.gm.idv.tw/"><FONT size="2" color="#ffff99">Zeeman</font></a><br>
-        <BR><BR></font>
+        $VER <A HREF="http://farland.jellybean.jp/top.htm" target="blank"><font size="2" color="#ffff99">bean</font></a><br>
+        參考：The Wars of Roses Ver6.4 <a href=\"http://g2.ngw.jp/~maccyu/game/\" target="blank"><font size="2" color="#ffff99">maccyu</font></a><br>
+        繁體中文化無限改版:<a href="http://www.gm.idv.tw/"><font size="2" color="#ffff99">Zeeman</font></a><br>
+        <br><br></font>
         </body>
         </html>
 EOF
@@ -1021,13 +1021,13 @@ sub quest_form {
 	&header;
         print <<"EOF";
         <center>
-        <TABLE border="0" width="100%" bgcolor="#660000" CLASS=TC height=1>
-        <TBODY>
-        <TR>
-        <TD valign=top height=40 align="center" style="color:#FFFFCC"><B><font size=5><font color=yellow>[$QUEST_NAME[0]]</font>$quest_town_name的村民有任務請求解決</font><BR></B><B>
-        請到$quest_town_name的任務屋接受請求<BR>請於「其他」->「移動」選擇$quest_town_name，再按移動就可移動到該處</B></TD>
-        <TR>
-        </TABLE>
+        <table border="0" width="100%" bgcolor="#660000" CLASS=TC height=1>
+        <tbody>
+        <tr>
+        <td valign=top height=40 align="center" style="color:#FFFFCC"><b><font size=5><font color=yellow>[$QUEST_NAME[0]]</font>$quest_town_name的村民有任務請求解決</font><br></b><b>
+        請到$quest_town_name的任務屋接受請求<br>請於「其他」->「移動」選擇$quest_town_name，再按移動就可移動到該處</b></td>
+        <tr>
+        </table>
         $BACKTOWNBUTTON
 EOF
         &footer;
@@ -1045,13 +1045,13 @@ sub quest_form2 {
 	($quest_town_no,$quest_town_name)=split(/:/,$ext_quest_town);
         print <<"EOF";
         <center>
-        <TABLE border="0" width="100%" bgcolor="#660000" CLASS=TC height=1>
-        <TBODY>
-        <TR>
-        <TD valign=top height=40 align="center" style="color:#FFFFCC"><B><font size=5><font color=yellow>[$QUEST_NAME[0]]</font>你已完成$quest_town_name村民交待的任務</font><BR></B><B>
-        $com到任意城鎮的任務屋交還任務<BR></B></TD>
-        <TR>
-        </TABLE>
+        <table border="0" width="100%" bgcolor="#660000" CLASS=TC height=1>
+        <tbody>
+        <tr>
+        <td valign=top height=40 align="center" style="color:#FFFFCC"><b><font size=5><font color=yellow>[$QUEST_NAME[0]]</font>你已完成$quest_town_name村民交待的任務</font><br></b><b>
+        $com到任意城鎮的任務屋交還任務<br></b></td>
+        <tr>
+        </table>
         $BACKTOWNBUTTON
 EOF
         &footer;
@@ -1060,20 +1060,20 @@ EOF
 
 sub menu{
     my $print="";
-    if($LINK1){$print.="<a href=\"$LINKURL1\" TARGET=\"_top\"><FONT color=\"#ffffcc\">[$LINK1]</a>　";}
-    if($LINK2){$print.="<a href=\"$LINKURL2\" TARGET=\"_blank\"><FONT color=\"#ffffcc\">[$LINK2]</a>　";}
-    if($LINK3){$print.="<a href=\"$LINKURL3\" TARGET=\"_blank\"><FONT color=\"#ffffcc\">[$LINK3]</a>　";}
-    if($LINK4){$print.="<a href=\"$LINKURL4\" TARGET=\"_blank\"><FONT color=\"#ffffcc\">[$LINK4]</a>　";}
-    if($LINK5){$print.="<a href=\"$LINKURL5\" TARGET=\"_blank\"><FONT color=\"#ffffcc\">[$LINK5]</a>　";}
-    if($LINK6){$print.="<a href=\"$LINKURL6\" TARGET=\"_blank\"><FONT color=\"#ffffcc\">[$LINK6]</a>　";}
-    if($LINK7){$print.="<a href=\"$LINKURL7\" TARGET=\"_blank\"><FONT color=\"#ffffcc\">[$LINK7]</a>　";}
-    if($LINK8){$print.="<a href=\"$LINKURL8\" TARGET=\"_blank\"><FONT color=\"#ffffcc\">[$LINK8]</a>　";}
-    if($LINK9){$print.="<a href=\"$LINKURL9\" TARGET=\"_blank\"><FONT color=\"#ffffcc\">[$LINK9]</a>　";}
-    if($LINK10){$print.="<a href=\"$LINKURL10\" TARGET=\"_blank\"><FONT color=\"#ffffcc\">[$LINK10]</a>　";}
-    if($LINK11){$print.="<a href=\"$LINKURL11\" TARGET=\"_blank\"><FONT color=\"#ffffcc\">[$LINK11]</a>　";}
-    if($LINK12){$print.="<a href=\"$LINKURL12\" TARGET=\"_blank\"><FONT color=\"#ffffcc\">[$LINK12]</a>　";}
-    if($LINK13){$print.="<a href=\"$LINKURL13\" TARGET=\"_blank\"><FONT color=\"#ffffcc\">[$LINK13]</a>　";}
-    if($LINK14){$print.="<a href=\"$LINKURL14\" TARGET=\"_blank\"><FONT color=\"#ffffcc\">[$LINK14]</a>　";}
+    if($LINK1){$print.="<a href=\"$LINKURL1\" TARGET=\"_top\"><font color=\"#ffffcc\">[$LINK1]</a>　";}
+    if($LINK2){$print.="<a href=\"$LINKURL2\" TARGET=\"_blank\"><font color=\"#ffffcc\">[$LINK2]</a>　";}
+    if($LINK3){$print.="<a href=\"$LINKURL3\" TARGET=\"_blank\"><font color=\"#ffffcc\">[$LINK3]</a>　";}
+    if($LINK4){$print.="<a href=\"$LINKURL4\" TARGET=\"_blank\"><font color=\"#ffffcc\">[$LINK4]</a>　";}
+    if($LINK5){$print.="<a href=\"$LINKURL5\" TARGET=\"_blank\"><font color=\"#ffffcc\">[$LINK5]</a>　";}
+    if($LINK6){$print.="<a href=\"$LINKURL6\" TARGET=\"_blank\"><font color=\"#ffffcc\">[$LINK6]</a>　";}
+    if($LINK7){$print.="<a href=\"$LINKURL7\" TARGET=\"_blank\"><font color=\"#ffffcc\">[$LINK7]</a>　";}
+    if($LINK8){$print.="<a href=\"$LINKURL8\" TARGET=\"_blank\"><font color=\"#ffffcc\">[$LINK8]</a>　";}
+    if($LINK9){$print.="<a href=\"$LINKURL9\" TARGET=\"_blank\"><font color=\"#ffffcc\">[$LINK9]</a>　";}
+    if($LINK10){$print.="<a href=\"$LINKURL10\" TARGET=\"_blank\"><font color=\"#ffffcc\">[$LINK10]</a>　";}
+    if($LINK11){$print.="<a href=\"$LINKURL11\" TARGET=\"_blank\"><font color=\"#ffffcc\">[$LINK11]</a>　";}
+    if($LINK12){$print.="<a href=\"$LINKURL12\" TARGET=\"_blank\"><font color=\"#ffffcc\">[$LINK12]</a>　";}
+    if($LINK13){$print.="<a href=\"$LINKURL13\" TARGET=\"_blank\"><font color=\"#ffffcc\">[$LINK13]</a>　";}
+    if($LINK14){$print.="<a href=\"$LINKURL14\" TARGET=\"_blank\"><font color=\"#ffffcc\">[$LINK14]</a>　";}
     return $print;
 }
 

@@ -105,7 +105,7 @@ sub town_arm2 {
 			if($m_maxweiex<15){$m_maxweiex=15;}
 
 #範圍顯示
-		#$msgex="最小威力：$m_mindmg　最大威力：$m_maxdmg<BR>威力小於２００時最小重量：$m_minwei　最大重量：$m_maxwei<BR>威力大於等於２００時最小重量：$m_minweiex　最大重量：$m_maxweiex";
+		#$msgex="最小威力：$m_mindmg　最大威力：$m_maxdmg<br>威力小於２００時最小重量：$m_minwei　最大重量：$m_maxwei<br>威力大於等於２００時最小重量：$m_minweiex　最大重量：$m_maxweiex";
 		#值段
 		$sa=$armdmg-$armwei;
 		if($sa<1){$sa=1;}
@@ -168,22 +168,22 @@ sub town_arm2 {
 	&header;
 	
 	print <<"EOF";
-<TABLE border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">$com　開發</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/buki.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="#ffffcc">$com：<font color=red>$in{'name'}</font>($armdmg/$armwei)($ELE[$in{'ele'}])開發完成。<br>$msgex</FONT>$msgex</TD>
-    </TR>
-    <TR>
-      <TD colspan="2" align="center">
+<table border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">$com　開發</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/buki.jpg"></td>
+      <td bgcolor="#330000"><font color="#ffffcc">$com：<font color=red>$in{'name'}</font>($armdmg/$armwei)($ELE[$in{'ele'}])開發完成。<br>$msgex</font>$msgex</td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
 $BACKTOWNBUTTON
-      </TD>	
-    </TR>
-  </TBODY>
-</TABLE>
+      </td>	
+    </tr>
+  </tbody>
+</table>
 <center></center>
 EOF
 

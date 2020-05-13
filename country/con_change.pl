@@ -39,29 +39,29 @@ sub con_change{
 	&header;
 	
 	print <<"EOF";
-<TABLE border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">入國</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/inn.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="#ffffcc">是否要加入$con2_name國？</FONT></TD>
-    </TR>
-    <TR>
-      <TD colspan="2" align="center">
+<table border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">入國</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/inn.jpg"></td>
+      <td bgcolor="#330000"><font color="#ffffcc">是否要加入$con2_name國？</font></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
 	$STPR 
 	<form action="./country.cgi" method="post">
-	<INPUT type=hidden name=id value=$mid>
-	<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+	<input type=hidden name=id value=$mid>
+	<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
 	
-	<INPUT type=hidden name=mode value=con_change2>
-	<INPUT type=submit value=加入 CLASS=FC></form>
+	<input type=hidden name=mode value=con_change2>
+	<input type=submit value=加入 CLASS=FC></form>
 $BACKTOWNBUTTON
-	</TD>	
-    </TR>
-  </TBODY>
-</TABLE>
+	</td>	
+    </tr>
+  </tbody>
+</table>
 <center></center>
 EOF
 

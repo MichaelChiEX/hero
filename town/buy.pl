@@ -43,11 +43,11 @@ sub buy {
         if(int(rand($rand_val)) eq 5){
 	        $up_var=0.4;
                 $it_name="稀有的".$it_name;
-		$ames="<BR><font color=red>＋很幸運的。這次你買到了品質稀有的物品＋</font>";
+		$ames="<br><font color=red>＋很幸運的。這次你買到了品質稀有的物品＋</font>";
         }elsif(int(rand(int($rand_val/2))) eq 7){
                 $up_var=0.2;
                 $it_name="優良的".$it_name;
-                $ames="<BR><font color=red>＋很幸運的。這次你買到了品質優良的物品＋</font>";
+                $ames="<br><font color=red>＋很幸運的。這次你買到了品質優良的物品＋</font>";
         }
         $it_dmg+=int($it_dmg*$up_var);
         if ($it_wei>0){
@@ -76,22 +76,22 @@ sub buy {
 	&header;
 	
 	print <<"EOF";
-<TABLE border="0" width="80%" align=center height="150" CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="$FCOLOR"><FONT color="$FCOLOR2">$EQU[$in{'itype'}]屋</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="$FCOLOR2" width=20% align=center><img src="$IMG/etc/buki.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="$FCOLOR2">[$EQU[$in{'itype'}]屋]<BR>購買$it_name。$ames<br>花費 $it_val Gold。</FONT></TD>
-    </TR>
-    <TR>
-    <TD colspan="2" align="center" bgcolor="ffffff">
+<table border="0" width="80%" align=center height="150" CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="$FCOLOR"><font color="$FCOLOR2">$EQU[$in{'itype'}]屋</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="$FCOLOR2" width=20% align=center><img src="$IMG/etc/buki.jpg"></td>
+      <td bgcolor="#330000"><font color="$FCOLOR2">[$EQU[$in{'itype'}]屋]<br>購買$it_name。$ames<br>花費 $it_val Gold。</font></td>
+    </tr>
+    <tr>
+    <td colspan="2" align="center" bgcolor="ffffff">
 $BACKTOWNBUTTON
-	</TD>
-    </TR>
-  </TBODY>
-</TABLE>
+	</td>
+    </tr>
+  </tbody>
+</table>
 <center></center>
 EOF
 	&footer;

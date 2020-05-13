@@ -24,8 +24,8 @@ sub change2{
 	if($memberup<$totalup){$memberup=$totalup;}
 	if($memberup>100){$memberup=100;}
 
-	$showbouns="<BR>本月升級獎勵,所有屬性增加:$uptmp";
-	$showbouns2="<BR>總戰數/會員等級加成,所有性增加:$memberup";
+	$showbouns="<br>本月升級獎勵,所有屬性增加:$uptmp";
+	$showbouns2="<br>總戰數/會員等級加成,所有性增加:$memberup";
 
 	for($i=0;$i<6;$i++){
 		$jup[$i]=sqrt(sqrt(sqrt($mjp[$i])));
@@ -34,11 +34,11 @@ sub change2{
 		if ($ext_tl_type[$i] ne""){
 			$jup2[$i]+=int($ext_tl_type[$i]/10);
 			if ($jup2[$i]>50){$jup2[$i]=50;}
-			$showbouns.="<BR>本月$TYPE[$i]加值:$jup2[$i]";
+			$showbouns.="<br>本月$TYPE[$i]加值:$jup2[$i]";
 		}
 		if($jup2[$i] eq 50 && $uptmp eq 50){
 			$jup3[$i]=int(rand(50));
-			$showbouns.="<BR><font color=green>($TYPE[$i]額外加值:$jup3[$i])</font>";
+			$showbouns.="<br><font color=green>($TYPE[$i]額外加值:$jup3[$i])</font>";
 		}else{
 			$jup3[$i]=0;
 		}

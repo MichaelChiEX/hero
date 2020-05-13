@@ -38,17 +38,17 @@ sub mix_change {
 	}
 	&header;
 	print <<"EOF";
-<TABLE border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">$ELE[$town_ele]原料黑商</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/inn.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="#ffffcc">你來到$town_name原料黑市交易商，在這你可以用身上的原料跟黑商交換$ELE[$town_ele]原料。<BR>在黑市交易將會扣除你的名聲<BR>目前名聲：<font color="yellow">$mcex</FONT></TD>
-    </TR>
-    <TR>
-      <TD colspan="2" align="center">
+<table border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">$ELE[$town_ele]原料黑商</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/inn.jpg"></td>
+      <td bgcolor="#330000"><font color="#ffffcc">你來到$town_name原料黑市交易商，在這你可以用身上的原料跟黑商交換$ELE[$town_ele]原料。<br>在黑市交易將會扣除你的名聲<br>目前名聲：<font color="yellow">$mcex</font></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
         <table border=0 width="100%" bgcolor=$FCOLOR CLASS=TC>
         <tr><td colspan=7 align=center><font color=ffffcc>目前原料數</font></td></tr>
         <tr>
@@ -74,17 +74,17 @@ $mix_list
 	
 </table>
 $BACKTOWNBUTTON
-</TD>
+</td>
 		<form method="post" action="./town.cgi" name="mix_up">
-			<INPUT type=hidden name=gold value=10000>
-		        <INPUT type=hidden name=id value=$mid>
-		        <INPUT type=hidden name=pow>
-		        <INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-		        <INPUT type=hidden name=mode value=mix_change2>
+			<input type=hidden name=gold value=10000>
+		        <input type=hidden name=id value=$mid>
+		        <input type=hidden name=pow>
+		        <input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+		        <input type=hidden name=mode value=mix_change2>
 		   </form>	
-    </TR>
-  </TBODY>
-</TABLE>
+    </tr>
+  </tbody>
+</table>
 <script language="javascript">
 function mix_ups(ele){
 	mix_up.pow.value=ele;

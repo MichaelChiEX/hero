@@ -13,13 +13,13 @@ sub inv{
 	}
 	if(!$hit){$con2_ele=0;$con2_name="無所屬";$con2_id=0;}
 	$i=0;
-	$tpr="<table bgcolor=663300><TD width=15 height=10 bgcolor=ffffcc CLASS=GC>　</TD>";
+	$tpr="<table bgcolor=663300><td width=15 height=10 bgcolor=ffffcc CLASS=GC>　</td>";
 	for($i=0;$i<6;$i++){
-		$tpr.= "<TD width=15 height=10 bgcolor=ffffcc><font size=1>$i</font></TD>";
+		$tpr.= "<td width=15 height=10 bgcolor=ffffcc><font size=1>$i</font></td>";
 	}
 	for($i=0;$i<6;$i++){
 		$n = $i;
-		$tpr.= "<TR><TD bgcolor=ffffcc><font size=1>$n</font></td>";
+		$tpr.= "<tr><td bgcolor=ffffcc><font size=1>$n</font></td>";
 		for($j=0;$j<6;$j++){
 			$m_hit=0;$tx=0;
 			foreach(@TOWN_DATA){
@@ -35,15 +35,15 @@ sub inv{
 					$col = $ELE_BG[$CONELE[$town2_con]];
 				}
 				if($town2_id eq 0){
-					$tpr.= "<TH bgcolor=$col><img src=\"$IMG/town/m_2.gif\" title=\"$town2_name($ELE[$town2_ele])【$CONNAME[$town2_con]國】\" width=15 height=10></TH>";
+					$tpr.= "<th bgcolor=$col><img src=\"$IMG/town/m_2.gif\" title=\"$town2_name($ELE[$town2_ele])【$CONNAME[$town2_con]國】\" width=15 height=10></th>";
 				}else{
-					$tpr.= "<TH bgcolor=$col><img src=\"$IMG/town/m_4.gif\" title=\"$town2_name($ELE[$town2_ele])【$CONNAME[$town2_con]國】\" width=15 height=10></TH>";
+					$tpr.= "<th bgcolor=$col><img src=\"$IMG/town/m_4.gif\" title=\"$town2_name($ELE[$town2_ele])【$CONNAME[$town2_con]國】\" width=15 height=10></th>";
 				}
 			}else{
-				$tpr.= "<TH>　</TH>";
+				$tpr.= "<th>　</th>";
 			}
 		}
-		$tpr.= "</TR>";
+		$tpr.= "</tr>";
 	}
 	$tpr.="</table>";
 
@@ -56,34 +56,34 @@ sub inv{
 	}
 	$movelist.="</select>";
 	print <<"EOF";
-<TABLE border="0" width="80%" bgcolor="#ffffff" height="150" align=center CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">侵略</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center>$tpr</TD>
-      <TD bgcolor="#330000"><FONT color="#ffffcc">請選擇要侵略的城鎮，每攻擊一次將花費國家資金１００萬。<BR>目前所在地：$town_x - $town_y</FONT></TD>
-    </TR>
-    <TR>
-      <TD colspan="2" align="right">
+<table border="0" width="80%" bgcolor="#ffffff" height="150" align=center CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">侵略</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center>$tpr</td>
+      <td bgcolor="#330000"><font color="#ffffcc">請選擇要侵略的城鎮，每攻擊一次將花費國家資金１００萬。<br>目前所在地：$town_x - $town_y</font></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
 	<form action="./etc.cgi" method="POST">
-	<INPUT type=hidden name=mode value=inv2>
-	<INPUT type=hidden name=id value=$mid>
+	<input type=hidden name=mode value=inv2>
+	<input type=hidden name=id value=$mid>
 	
-	<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+	<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
 	$movelist
-	<INPUT type=submit CLASS=FC value=侵略></form>
+	<input type=submit CLASS=FC value=侵略></form>
 	<form action="./top.cgi" method="POST">
-	<INPUT type=hidden name=id value=$mid>
-	<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+	<input type=hidden name=id value=$mid>
+	<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
 	
-	<INPUT type=submit CLASS=FC value=回到城鎮>
-	</TD>
+	<input type=submit CLASS=FC value=回到城鎮>
+	</td>
 </Form>	
-    </TR>
-  </TBODY>
-</TABLE>
+    </tr>
+  </tbody>
+</table>
 EOF
 	&mainfooter;
 	exit;

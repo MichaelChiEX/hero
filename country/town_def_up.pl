@@ -9,29 +9,29 @@ sub town_def_up {
 		$need_gold=int(3000000/$mfai);
         &header;
         print <<"EOF";
-<TABLE border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">城鎮強化</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/siro.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="#ffffcc">$town_name的城防強化作業，實行者名聲需大於５００。<BR>請輸入徵兵人數。<BR>目前士兵數:$town_hp人，軍營容量：$town_max人，國家資金：$scon_gold</FONT></TD>
-    </TR>
-    <TR>
-      <TD colspan="2" align="center">
+<table border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">城鎮強化</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/siro.jpg"></td>
+      <td bgcolor="#330000"><font color="#ffffcc">$town_name的城防強化作業，實行者名聲需大於５００。<br>請輸入徵兵人數。<br>目前士兵數:$town_hp人，軍營容量：$town_max人，國家資金：$scon_gold</font></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
         <form action="./country.cgi" method="post">
         本次徵兵最多可徵得$max_up_scr人，每人需花費$need_gold Gold<br>
-        徵兵<INPUT type=text name=updata value=1 size=10>人
-        <INPUT type=hidden name=id value=$mid>
-        <INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-        <INPUT type=hidden name=mode value=town_def_up2>
-        <INPUT type=submit value=徵兵 CLASS=FC></form>
+        徵兵<input type=text name=updata value=1 size=10>人
+        <input type=hidden name=id value=$mid>
+        <input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+        <input type=hidden name=mode value=town_def_up2>
+        <input type=submit value=徵兵 CLASS=FC></form>
 $BACKTOWNBUTTON
-        </TD>
-    </TR>
-  </TBODY>
-</TABLE>
+        </td>
+    </tr>
+  </tbody>
+</table>
 <center></center>
 EOF
 

@@ -16,29 +16,29 @@ sub ram_up {
 
 	&header;
 	print <<"EOF";
-<TABLE border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">城鎮強化</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/siro.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="#ffffcc">$town_name的城防強化作業，實行者名聲需大於１００。<BR>請選擇強化的項目及金額。<BR>國家資金：$scon_gold</FONT></TD>
-    </TR>
-    <TR>
-      <TD colspan="2" align="center">
+<table border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">城鎮強化</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/siro.jpg"></td>
+      <td bgcolor="#330000"><font color="#ffffcc">$town_name的城防強化作業，實行者名聲需大於１００。<br>請選擇強化的項目及金額。<br>國家資金：$scon_gold</font></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
 	<form action="./country.cgi" method="post">
 	$list
-	<INPUT type=text size=5 name=gold>萬（不可超過３００萬）
-	<INPUT type=hidden name=id value=$mid>
-	<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-	<INPUT type=hidden name=mode value=ram_up2>
-	<INPUT type=submit value=強化 CLASS=FC></form>
+	<input type=text size=5 name=gold>萬（不可超過３００萬）
+	<input type=hidden name=id value=$mid>
+	<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+	<input type=hidden name=mode value=ram_up2>
+	<input type=submit value=強化 CLASS=FC></form>
 $BACKTOWNBUTTON
-	</TD>	
-    </TR>
-  </TBODY>
-</TABLE>
+	</td>	
+    </tr>
+  </tbody>
+</table>
 <center></center>
 EOF
 

@@ -31,22 +31,22 @@ sub town_build_up2 {
         &town_input;
         &maplog("<font color=blueviolet>[強化]</font><font color=blue>$mname</font>對<font color=green>$town_name</font>進行$town_build_name[$in{'pow'}]強化作業<font color=green>$com</font>上昇了<font color=red>1級</font>。");
         print <<"EOF";
-<TABLE border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">城強化作業</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/siro.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="#ffffcc">$town_name的$town_build_name[$in{'pow'}]等級上昇了1級。</FONT></TD>
-    </TR>
-    <TR>
-      <TD colspan="2" align="center">
+<table border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">城強化作業</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/siro.jpg"></td>
+      <td bgcolor="#330000"><font color="#ffffcc">$town_name的$town_build_name[$in{'pow'}]等級上昇了1級。</font></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
 $BACKTOWNBUTTON
-        </TD>
-    </TR>
-  </TBODY>
-</TABLE>
+        </td>
+    </tr>
+  </tbody>
+</table>
 <center></center>
 EOF
 

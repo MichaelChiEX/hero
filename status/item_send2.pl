@@ -99,7 +99,7 @@ sub item_send2{
 			<input type=hidden name=senditem value=$send_item_name>
 			<input type=hidden name=sendname value=$ename>
 			<input type=hidden name=id value=$mid>
-			<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+			<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
 			<input type=hidden name=mode value=item_send>
 		</form>
 		<script>

@@ -87,22 +87,22 @@ sub rpetup2 {
 
         print <<"EOF";
 
-<TABLE border="0" width="90%" align=center bgcolor="#000000" height="150" CLASS=TC>
-  <TBODY>
-    <TR>
-      <TD colspan="3" align="center" bgcolor="$FCOLOR"><FONT color="#ffffcc">寵物店</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/1.jpg"></TD>
-      <TD bgcolor="#330000" colspan="3"><FONT color="#ffffcc">$showmsg。</FONT></TD>
-    </TR>
-    <TR>
-    <TD colspan="4" align="right" bgcolor="ffffff">
+<table border="0" width="90%" align=center bgcolor="#000000" height="150" CLASS=TC>
+  <tbody>
+    <tr>
+      <td colspan="3" align="center" bgcolor="$FCOLOR"><font color="#ffffcc">寵物店</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/1.jpg"></td>
+      <td bgcolor="#330000" colspan="3"><font color="#ffffcc">$showmsg。</font></td>
+    </tr>
+    <tr>
+    <td colspan="4" align="right" bgcolor="ffffff">
 $BACKTOWNBUTTON
-        </TD>
-    </TR>
-  </TBODY>
-</TABLE>
+        </td>
+    </tr>
+  </tbody>
+</table>
 EOF
 
         &footer;

@@ -34,21 +34,21 @@ sub mix_change2 {
 	&town_input;
 	&header;
 	print <<"EOF";
-<TABLE border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">$ELE[$town_ele]原料黑商</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/inn.jpg"></TD>
-<TD bgcolor="#330000"><FONT color="#ffffcc">你己使用「$ELE[$in{'pow'}]原料」交換「$ELE[$town_ele]原料」<br>目前名聲：<font color="yellow">$mcex</FONT></TD>
-    </TR>
-    <TR>
-      <TD colspan="2" align="center">
+<table border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">$ELE[$town_ele]原料黑商</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/inn.jpg"></td>
+<td bgcolor="#330000"><font color="#ffffcc">你己使用「$ELE[$in{'pow'}]原料」交換「$ELE[$town_ele]原料」<br>目前名聲：<font color="yellow">$mcex</font></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
 $BACKTOWNBUTTON
-</TD>
-  </TBODY>
-</TABLE>
+</td>
+  </tbody>
+</table>
 <script language="javascript">
 function mix_ups(ele){
 	mix_up.pow.value=ele;

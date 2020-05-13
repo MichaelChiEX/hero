@@ -47,56 +47,56 @@ sub unit {
 	$rule.="</table>";
 
 	print <<"EOF";
-<TABLE border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">隊伍編成</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/country2.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="#ffffcc">隊伍編成。<BR>可在此進行隊伍的脫離、解散及解雇。<BR></FONT></TD>
-    </TR>
-    <TR>
-      <TD colspan="2" align="center">
+<table border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">隊伍編成</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/country2.jpg"></td>
+      <td bgcolor="#330000"><font color="#ffffcc">隊伍編成。<br>可在此進行隊伍的脫離、解散及解雇。<br></font></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
 	<form action="./country.cgi" method="POST">
 	$unit
-    </TR>
-    <TR>
-      <TD colspan="6" align="center" bgcolor="#ffffcc">
-	<INPUT type=hidden name=id value=$mid>
-	<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-	<INPUT type=hidden name=mode value=unit_entry>
-	<INPUT type=submit CLASS=FC value=入隊></form>
+    </tr>
+    <tr>
+      <td colspan="6" align="center" bgcolor="#ffffcc">
+	<input type=hidden name=id value=$mid>
+	<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+	<input type=hidden name=mode value=unit_entry>
+	<input type=submit CLASS=FC value=入隊></form>
 	<form action="./country.cgi" method="POST">
-	<INPUT type=hidden name=id value=$mid>
-	<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-	<INPUT type=hidden name=mode value=unit_delete>
-	<INPUT type=submit CLASS=FC value=隊伍解散、脫離></form>
+	<input type=hidden name=id value=$mid>
+	<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+	<input type=hidden name=mode value=unit_delete>
+	<input type=submit CLASS=FC value=隊伍解散、脫離></form>
 $BACKTOWNBUTTON
-     </TD>
-    </TR>
-    <TR>
+     </td>
+    </tr>
+    <tr>
       <td colspan=6 width=100% bgcolor=$ELE_BG[0] align=center><font color=$ELE_C[0]>組新隊伍（名聲１００以上）</font></td>
-    </TR>
-　　<TR bgcolor=$ELE_C[0]>
+    </tr>
+　　<tr bgcolor=$ELE_C[0]>
 	<form action="./country.cgi" method="POST">
-	<TD colspan=3 align=right>隊伍名（２～１０字）</TD>
-      	<TD colspan=3><input type=text name=unit></TD>
-    </TR>
-    <TR bgcolor=$ELE_C[0]>
-	<TD colspan=3 align=right>隊伍介紹(２０字以內)</TD>
-      	<TD colspan=3><input type=text size=60 name=com></TD>
-    </TR>
-　　<TR>
-      <TD colspan="6" align="center" bgcolor="#ffffcc">
-	<INPUT type=hidden name=id value=$mid>
-	<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-	<INPUT type=hidden name=mode value=unit_edit>
-	<INPUT type=submit CLASS=FC value=新隊伍編成></form>
-	</TD>
-    </TR>
-  </TBODY>
-</TABLE>
+	<td colspan=3 align=right>隊伍名（２～１０字）</td>
+      	<td colspan=3><input type=text name=unit></td>
+    </tr>
+    <tr bgcolor=$ELE_C[0]>
+	<td colspan=3 align=right>隊伍介紹(２０字以內)</td>
+      	<td colspan=3><input type=text size=60 name=com></td>
+    </tr>
+　　<tr>
+      <td colspan="6" align="center" bgcolor="#ffffcc">
+	<input type=hidden name=id value=$mid>
+	<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+	<input type=hidden name=mode value=unit_edit>
+	<input type=submit CLASS=FC value=新隊伍編成></form>
+	</td>
+    </tr>
+  </tbody>
+</table>
 <center></center>
 EOF
 	&footer;

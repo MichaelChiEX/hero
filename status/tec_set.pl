@@ -44,11 +44,11 @@ sub tec_set {
 	<table border="0" width="80%" align=center bgcolor="#ffffff" height="150" class=FC>
 		<tbody>
 			<tr>
-				<td colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">技能變更</FONT></td>
+				<td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">技能變更</font></td>
 			</tr>
 			<tr>
 				<td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/house.jpg"></td>
-				<td bgcolor="#330000"><FONT color="#ffffcc">戰鬥時的技能變更。<br>請個別在以下三個發動條件選擇技能。<br>技能修件的發動優先權為：條件三＞條件二＞條件一。</FONT></td>
+				<td bgcolor="#330000"><font color="#ffffcc">戰鬥時的技能變更。<br>請個別在以下三個發動條件選擇技能。<br>技能修件的發動優先權為：條件三＞條件二＞條件一。</font></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">

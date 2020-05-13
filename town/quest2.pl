@@ -11,7 +11,7 @@ sub quest2 {
 		if($ext_quest_total ne "-1" && $ext_quest_total ne ""){&error("你的作務未完成，無法再接受此任務");}
 		$ext_quest_total=$mtotal+int(rand(50))+50;
                 $lifetotal=$ext_quest_total-$mtotal;
-                $com="你已接受村民的請求，請到各地打怪，幫村民消除$lifetotal隻怪物吧<BR>※不限時間";
+                $com="你已接受村民的請求，請到各地打怪，幫村民消除$lifetotal隻怪物吧<br>※不限時間";
 	}elsif($in{'qno'} eq "ok0"){
 		if($ext_quest_total ne "-2"){&error("你的<font color=blue>[$QUEST_NAME[0]]</font>任務未完成，無法交還此任務");}
                         $ext_quest_total="-1";
@@ -48,7 +48,7 @@ sub quest2 {
                 }elsif($quest1_item eq ""){
                         $quest1_limit_time=$date+600;
                         &get_quest1();
-                        $com="<font color=blue>[$QUEST_NAME[1]]</font>任務(請到<B>$quest1_town_name</B>購買<B>$quest1_item</B>送到<B>$quest1_town_name</B>的任務屋)※限時１０分鐘";
+                        $com="<font color=blue>[$QUEST_NAME[1]]</font>任務(請到<b>$quest1_town_name</b>購買<b>$quest1_item</b>送到<b>$quest1_town_name</b>的任務屋)※限時１０分鐘";
                 }elsif($quest1_limit_time<=$date){
                         $com="<font color=blue>[".$QUEST_NAME[1]."]</font><font color=red>將".$ELE[$quest1_mix]."原料１０分鐘內送到$quest1_town_name任務失敗</font>";
                         $quest1_limit_time="";
@@ -59,7 +59,7 @@ sub quest2 {
                         $tmp_time=$quest1_limit_time-$date;
                         &finish_quest1;
                         if($finish[1]){
-                                $com="<font color=blue>[$QUEST_NAME[1]]</font>你交出了$quest1_item完成任務!!<BR>獲得打怪金錢２倍效果：３０分鐘！";
+                                $com="<font color=blue>[$QUEST_NAME[1]]</font>你交出了$quest1_item完成任務!!<br>獲得打怪金錢２倍效果：３０分鐘！";
                                 $quest1_limit_time="";
                                 $quest1_town_no="";
                                 $quest1_town_name="";
@@ -98,9 +98,9 @@ sub quest2 {
                         $quest2_town_no=$townx_id;
                         $quest2_town_name=$townx_name."($townx_x，$townx_y)";
                         $quest2_count="0";
-                        $com="<font color=blue>[$QUEST_NAME[2]]</font>任務(請到<B>$quest2_town_name的$SEN[$quest2_map]</B>不住宿不存錢打贏１０隻<B>$SEN[$quest2_map]</B>怪※限時１０分鐘";
+                        $com="<font color=blue>[$QUEST_NAME[2]]</font>任務(請到<b>$quest2_town_name的$SEN[$quest2_map]</b>不住宿不存錢打贏１０隻<b>$SEN[$quest2_map]</b>怪※限時１０分鐘";
                 }elsif($quest2_limit_time<=$date){
-                        $com="<font color=blue>[".$QUEST_NAME[2]."]</font><font color=red>到<B>$quest2_town_name</B>不住宿不存錢打贏１０隻<B>$SEN[$quest2_map]</B>怪失敗</font>";
+                        $com="<font color=blue>[".$QUEST_NAME[2]."]</font><font color=red>到<b>$quest2_town_name</b>不住宿不存錢打贏１０隻<b>$SEN[$quest2_map]</b>怪失敗</font>";
                         $quest2_limit_time="";
                         $quest2_town_no="";
                         $quest2_town_name="";
@@ -108,7 +108,7 @@ sub quest2 {
                         $quest2_count="";
                 }else{
                         if($quest2_count>9){
-                                $com="<font color=blue>[$QUEST_NAME[2]]</font>你挑戰自我成功，完成任務!!<BR>獲得打怪熟練２倍效果：３０分鐘！";
+                                $com="<font color=blue>[$QUEST_NAME[2]]</font>你挑戰自我成功，完成任務!!<br>獲得打怪熟練２倍效果：３０分鐘！";
                                 $quest2_limit_time="";
                                 $quest2_town_no="";
                                 $quest2_town_name="";
@@ -131,7 +131,7 @@ sub quest2 {
 			$quest5_town_no=$townx_id;
 	                $quest5_town_name=$townx_name."($townx_x，$townx_y)";
 	                $quest5_mix=int(rand(7))+1;
-	                $com="<font color=blue>[$QUEST_NAME[5]]</font>任務(請將１個<B>$ELE[$quest5_mix]原料</B>送到<B>$quest5_town_name</B>的任務屋)※限時１０分鐘";
+	                $com="<font color=blue>[$QUEST_NAME[5]]</font>任務(請將１個<b>$ELE[$quest5_mix]原料</b>送到<b>$quest5_town_name</b>的任務屋)※限時１０分鐘";
 	        }elsif($quest5_limit_time<=$date){
 	                $com="<font color=blue>[".$QUEST_NAME[5]."]</font><font color=red>將".$ELE[$quest5_mix]."原料１０分鐘內送到$quest5_town_name任務失敗</font>";
                         $quest5_limit_time="";
@@ -142,7 +142,7 @@ sub quest2 {
 	                $tmp_time=$quest5_limit_time-$date;
 	                if($ext_mix[$quest5_mix]>=0){
                                 $ext_mix[$quest5_mix]-=1;
-	        		$com="<font color=blue>[$QUEST_NAME[5]]</font>你交出了１個$ELE[$quest5_mix]原料完成任務!!<BR>獲得打到原料數量加２倍效果：１小時！";
+	        		$com="<font color=blue>[$QUEST_NAME[5]]</font>你交出了１個$ELE[$quest5_mix]原料完成任務!!<br>獲得打到原料數量加２倍效果：１小時！";
                                 $quest5_limit_time="";
                                 $quest5_town_no="";
                                 $quest5_town_name="";
@@ -162,30 +162,30 @@ sub quest2 {
 	&chara_input;
 	&ext_input;
 	print <<"EOF";
-<TABLE border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">任事屋</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/inn.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="#ffffcc">這裏是村民的委託所，在這可以接到各種任務</FONT></TD>
-    </TR>
-    <TR>
-      <TD colspan="2" align="center" style="color:blue">
+<table border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">任事屋</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/inn.jpg"></td>
+      <td bgcolor="#330000"><font color="#ffffcc">這裏是村民的委託所，在這可以接到各種任務</font></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center" style="color:blue">
 $com
-<BR>
+<br>
 	</font>
         <form action="./town.cgi" method="POST">
-        <INPUT type=hidden name=id value=$mid>
-        <INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-        <INPUT type=hidden name=mode value=quest>
-        <INPUT type=submit CLASS=FC value=回到任務屋></form>
+        <input type=hidden name=id value=$mid>
+        <input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+        <input type=hidden name=mode value=quest>
+        <input type=submit CLASS=FC value=回到任務屋></form>
 $BACKTOWNBUTTON
-	</TD>
-    </TR>
-  </TBODY>
-</TABLE>
+	</td>
+    </tr>
+  </tbody>
+</table>
 EOF
 
 	&footer;
@@ -289,7 +289,7 @@ sub get_quest_gift{
 	open(OUT,">./logfile/item/$mid.cgi");
 	print OUT @ITEM;
 	close(OUT);
-	$com.="<BR>§因為多次的解決村民的問題，特別贈送了$cit_name";
+	$com.="<br>§因為多次的解決村民的問題，特別贈送了$cit_name";
 	}
 }
 1;

@@ -51,22 +51,22 @@ sub bank2{
 	&header;
 	
 	print <<"EOF";
-<TABLE border="0" width="80%" bgcolor="#ffffff" height="150" align=center CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">銀行</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/pub.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="#ffffcc">$gold Gold$com。</FONT></TD>
-    </TR>
-    <TR>
-      <TD colspan="2" align="right">
+<table border="0" width="80%" bgcolor="#ffffff" height="150" align=center CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">銀行</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/pub.jpg"></td>
+      <td bgcolor="#330000"><font color="#ffffcc">$gold Gold$com。</font></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="right">
 $BACKTOWNBUTTON
-     </TD>
-    </TR>
-  </TBODY>
-</TABLE>
+     </td>
+    </tr>
+  </tbody>
+</table>
 EOF
 	&chara_input;
 	&footer;

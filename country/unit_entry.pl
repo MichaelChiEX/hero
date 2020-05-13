@@ -57,22 +57,22 @@ sub unit_entry {
 	&header;
 	&chara_input;
 	print <<"EOF";
-<TABLE border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">入隊</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/country2.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="#ffffcc">加入了$unit隊伍。<BR></FONT></TD>
-    </TR>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#ffffcc">
+<table border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">入隊</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/country2.jpg"></td>
+      <td bgcolor="#330000"><font color="#ffffcc">加入了$unit隊伍。<br></font></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center" bgcolor="#ffffcc">
 $BACKTOWNBUTTON
-      </TD>
-    </TR>
-  </TBODY>
-</TABLE>
+      </td>
+    </tr>
+  </tbody>
+</table>
 <center></center>
 EOF
 	&footer;

@@ -48,7 +48,7 @@ sub action {
 
 	&header;
 	print <<"EOF";
-	<TABLE border="0" width="90%" align=center bgcolor="#000000" height="150" CLASS=TC>
+	<table border="0" width="90%" align=center bgcolor="#000000" height="150" CLASS=TC>
 		<tbody>
 			<tr>
 				<td colspan="3" align="center" bgcolor="$FCOLOR"><font color="#ffffcc">$ACTNAME[$ACTOPEN]活動兌換所</font></td>
@@ -82,7 +82,7 @@ sub action {
 					</table>
 				</td>
 				<td bgcolor="#ffffff" align=center valign=top>
-					<TABLE border="0" align=center width="100%" height="1" CLASS=MC>
+					<table border="0" align=center width="100%" height="1" CLASS=MC>
 						<tbody>
 							<tr>
 								<td colspan="9" align="center" bgcolor="$ELE_BG[$mele]"><font color=$ELE_C[$mele]>活動物品</font></td>

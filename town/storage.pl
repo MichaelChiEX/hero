@@ -25,24 +25,24 @@ sub storage {
 				}
 			if($it_no eq"rea" && $it_ki>=0 && $it_ki<3){
 				if($it_sta ne""){
-					$storage_up.="<Option value=$no1>$it_name($it_dmg/$it_wei)(+2)</option>";
+					$storage_up.="<option value=$no1>$it_name($it_dmg/$it_wei)(+2)</option>";
 				}else{
-                                        $storage_up.="<Option value=$no1>$it_name($it_dmg/$it_wei)(+1)</option>";
+                                        $storage_up.="<option value=$no1>$it_name($it_dmg/$it_wei)(+1)</option>";
 				}
 			}
 		}else{
 			$it_type_name="";
 		}
-		if($it_ki ne"4" || $member_point ne""){$ittable.="<TR><TD width=45% bgcolor=ffffcc><input type=checkbox id=C$no1 name=C$no1 value=$no1><font size=2>$it_name</font><input type=button value=存入 onclick=javascript:this.form.no.value=$no1;this.form.submit();></TD><TD bgcolor=white><font size=2>$it_dmg</font></TD><TD bgcolor=white><font size=2>$it_wei</font></TD><TD bgcolor=white><font size=2>$ELE[$it_ele]</font></TD><TD bgcolor=white><font size=2>$EQU[$it_ki]</font></TD><TD bgcolor=white><font size=2>$it_type_name</font></TD></TR>";}
+		if($it_ki ne"4" || $member_point ne""){$ittable.="<tr><td width=45% bgcolor=ffffcc><input type=checkbox id=C$no1 name=C$no1 value=$no1><font size=2>$it_name</font><input type=button value=存入 onclick=javascript:this.form.no.value=$no1;this.form.submit();></td><td bgcolor=white><font size=2>$it_dmg</font></td><td bgcolor=white><font size=2>$it_wei</font></td><td bgcolor=white><font size=2>$ELE[$it_ele]</font></td><td bgcolor=white><font size=2>$EQU[$it_ki]</font></td><td bgcolor=white><font size=2>$it_type_name</font></td></tr>";}
 		$no1++;
 	}
 	if($storage_up ne""){
 		$storage_up=<<"STEOF";
         <form action="./town.cgi" method="post">
-        <INPUT type=hidden name=id value=$mid>
-        <INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-        <INPUT type=hidden name=mode value=storage_up>
-	<INPUT type=hidden name=itcount value=$no1>
+        <input type=hidden name=id value=$mid>
+        <input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+        <input type=hidden name=mode value=storage_up>
+	<input type=hidden name=itcount value=$no1>
         擴充倉庫：<select szie="1" name="no">$storage_up</select>
 	<input type=button value="擴充" name="B1" onclick="javascript:if(confirm('確定要擴倉嗎?')){this.form.submit();};">
         </form>
@@ -94,7 +94,7 @@ STEOF
 		}
 		if($ki_hit){
 			$no3++;
-			$sttable.="<TR><TD width=5% bgcolor=$bgcolor><input type=checkbox id=S$no2 name=S$no2 value=$no2></TD><TD bgcolor=$bgcolor colspan=2><font size=2>$it_name<input type=button value=取出 onclick=javascript:this.form.no.value=$no2;this.form.submit();></font></TD><TD bgcolor=$bgcolor><font size=2>$it_dmg</font></TD><TD bgcolor=$bgcolor><font size=2>$it_wei</font></TD><TD bgcolor=$bgcolor><font size=2>$ELE[$it_ele]</font></TD><TD bgcolor=$bgcolor><font size=2>$EQU[$it_ki]</font></TD><TD bgcolor=$bgcolor><font size=2>$it_type_name</font></TD></TR>\n";
+			$sttable.="<tr><td width=5% bgcolor=$bgcolor><input type=checkbox id=S$no2 name=S$no2 value=$no2></td><td bgcolor=$bgcolor colspan=2><font size=2>$it_name<input type=button value=取出 onclick=javascript:this.form.no.value=$no2;this.form.submit();></font></td><td bgcolor=$bgcolor><font size=2>$it_dmg</font></td><td bgcolor=$bgcolor><font size=2>$it_wei</font></td><td bgcolor=$bgcolor><font size=2>$ELE[$it_ele]</font></td><td bgcolor=$bgcolor><font size=2>$EQU[$it_ki]</font></td><td bgcolor=$bgcolor><font size=2>$it_type_name</font></td></tr>\n";
 		}
 
 		$no2++;
@@ -112,29 +112,29 @@ STEOF
 		}
 	}	
 	print <<"EOF";
-<TABLE border="0" width="90%" align=center bgcolor="#000000" height="150" CLASS=TC>
-  <TBODY>
-    <TR>
-      <TD colspan="3" align="center" bgcolor="$FCOLOR"><FONT color="#ffffcc">倉庫</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/storage.jpg"></TD>
-      <TD bgcolor="#330000" colspan="3"><FONT color="#ffffcc"><font color=#AAAFFF>$mname</font>的倉庫<BR>你可以在此將身上的物品放入倉庫或從倉庫取出物品。<BR><font color=yellow>注意：寵物無法放到庫倉(贊助會員例外)</FONT></TD>
-    </TR>
-    <TR>
-      <TD align=center bgcolor="ffffff" colspan=2 width=55% valign=top>
+<table border="0" width="90%" align=center bgcolor="#000000" height="150" CLASS=TC>
+  <tbody>
+    <tr>
+      <td colspan="3" align="center" bgcolor="$FCOLOR"><font color="#ffffcc">倉庫</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/storage.jpg"></td>
+      <td bgcolor="#330000" colspan="3"><font color="#ffffcc"><font color=#AAAFFF>$mname</font>的倉庫<br>你可以在此將身上的物品放入倉庫或從倉庫取出物品。<br><font color=yellow>注意：寵物無法放到庫倉(贊助會員例外)</font></td>
+    </tr>
+    <tr>
+      <td align=center bgcolor="ffffff" colspan=2 width=55% valign=top>
         <form action="./town.cgi" method="post" id="sortf">
-        <INPUT type=hidden name=id value=$mid>
-        <INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-        <INPUT type=hidden name=mode value=storage_sort>
+        <input type=hidden name=id value=$mid>
+        <input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+        <input type=hidden name=mode value=storage_sort>
         </form>
 
 	<table border=0 width="100%" bgcolor=$FCOLOR CLASS=TC>
         <form action="./town.cgi" method="POST">
-        <INPUT type=hidden name=id value=$mid>
-        <INPUT type=hidden name=pass value=$mpass>
+        <input type=hidden name=id value=$mid>
+        <input type=hidden name=pass value=$mpass>
         <input type=hidden name=rmode value=$in{'rmode'}>
-        <INPUT type=hidden name=mode value=storage_sort_name>
+        <input type=hidden name=mode value=storage_sort_name>
 	<tr><td colspan=8 align=center>
 <font color=ffffcc>
 <!--
@@ -142,15 +142,15 @@ STEOF
 -->
 倉庫物品一覽-$EQU[$it_show_no]($no3/$no2/$STORITM_MAX)
         </form>
-<!--<INPUT type=button onclick="javascript:sortf.value='storage_sort';sortf.submit();" value=依種類排序>-->
+<!--<input type=button onclick="javascript:sortf.value='storage_sort';sortf.submit();" value=依種類排序>-->
 </font></td></tr>
 	<tr>
         <form action="./town.cgi" method="POST" id="eqf">
-        <INPUT type=hidden name=id value=$mid>
-        <INPUT type=hidden name=pass value=$mpass>
+        <input type=hidden name=id value=$mid>
+        <input type=hidden name=pass value=$mpass>
         <input type=hidden name=rmode value=$in{'rmode'}>
-        <INPUT type=hidden name=itype>
-        <INPUT type=hidden name=mode value=storage>
+        <input type=hidden name=itype>
+        <input type=hidden name=mode value=storage>
         </form>
 $eqselect
         </tr>
@@ -159,21 +159,21 @@ $eqselect
 	</tr>
 	<form action="./town.cgi" method="post">
 	$sttable
-	<TR><TD colspan=8 align=center bgcolor="ffffff">
-	<INPUT type=hidden name=id value=$mid>
-	<INPUT type=hidden name=no id=no>
-	<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-	<INPUT type=hidden name=itype value=$it_show_no>
-	<INPUT type=hidden name=mode value=storage_out>
-        <INPUT type=button value=勾選項目取出倉庫 onclick="javascript:chkform(this.form,'S');">
-	</TD></TR></form>
+	<tr><td colspan=8 align=center bgcolor="ffffff">
+	<input type=hidden name=id value=$mid>
+	<input type=hidden name=no id=no>
+	<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+	<input type=hidden name=itype value=$it_show_no>
+	<input type=hidden name=mode value=storage_out>
+        <input type=button value=勾選項目取出倉庫 onclick="javascript:chkform(this.form,'S');">
+	</td></tr></form>
 	</table>
 	
-	<TD bgcolor="#ffffff" align=center valign=top>
+	<td bgcolor="#ffffff" align=center valign=top>
         <form action="./town.cgi" method="post">
-        <INPUT type=hidden name=id value=$mid>
-        <INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-        <INPUT type=hidden name=mode value=storage_up>
+        <input type=hidden name=id value=$mid>
+        <input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+        <input type=hidden name=mode value=storage_up>
         $storage_up(使用特武可擴充倉庫)
         </form>
 	<table border=0 width="100%" bgcolor=$FCOLOR CLASS=TC>
@@ -183,24 +183,24 @@ $eqselect
 	</tr>
 	<form action="./town.cgi" method="post" id="sitemf">
 	$ittable
-	<TR><TD colspan=8 align=center bgcolor="ffffff">
-	<INPUT type=hidden name=id value=$mid>
-	<INPUT type=hidden name=no>
-	<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-	<INPUT type=hidden name=itype value=$it_show_no>
-	<INPUT type=hidden name=mode value=storage_in>
-	<INPUT type=button value=勾選項目存入倉庫 onclick="javascript:chkform(this.form,'C');">
-	</TD></TR></form>
+	<tr><td colspan=8 align=center bgcolor="ffffff">
+	<input type=hidden name=id value=$mid>
+	<input type=hidden name=no>
+	<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+	<input type=hidden name=itype value=$it_show_no>
+	<input type=hidden name=mode value=storage_in>
+	<input type=button value=勾選項目存入倉庫 onclick="javascript:chkform(this.form,'C');">
+	</td></tr></form>
 	</table>
-	</TD>
-    </TR>
-    <TR>
-    <TD colspan="3" align="center" bgcolor="ffffff">
+	</td>
+    </tr>
+    <tr>
+    <td colspan="3" align="center" bgcolor="ffffff">
 $BACKTOWNBUTTON
-	</TD>
-    </TR>
-  </TBODY>
-</TABLE>
+	</td>
+    </tr>
+  </tbody>
+</table>
 <Script language="javascript">
 function seleq(eqno){
 	eqf.itype.value=eqno;

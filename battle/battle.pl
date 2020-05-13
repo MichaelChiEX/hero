@@ -367,7 +367,7 @@ sub bat{
         </tbody>
       </table>
       </td>
-      <td align="center" bgcolor="$FCOLOR2" width="20%"><a href="#lower"><IMG src="$IMG/etc/$mode2.jpg" width="150" height="113" border="0"></a></td>
+      <td align="center" bgcolor="$FCOLOR2" width="20%"><a href="#lower"><img src="$IMG/etc/$mode2.jpg" width="150" height="113" border="0"></a></td>
       <td bgcolor="#cccccc" width=30%>
       <table border="0" width="100%" height="100%" bgcolor=$ELE_BG[$eele]>
         <tbody>
@@ -740,14 +740,14 @@ EOF
 					}else{
 						$ext_mix[$ino]++;
 					}
-					$com.="<br><B>發現<font color=#ff0066>$ELE[$ino]原料</font></B>!!<br>";
+					$com.="<br><b>發現<font color=#ff0066>$ELE[$ino]原料</font></b>!!<br>";
 					if($STORITM_MAX<$ext_mix[$ino]){
 						$com.="<font color=#ff0000>但因此原料數量達倉庫上限,所以被丟棄</font>";
 						$ext_mix[$ino]--;
 					#原料任務效果
 					}elsif($quest_time[5]>=$date){
 						$ext_mix[$ino]++;
-						$com.="<br><font color=green><B>$QUEST_NAME[5]任務效果追加１個<font color=#ff0066>$ELE[$ino]原料</font></B>!!</font><br>";	
+						$com.="<br><font color=green><b>$QUEST_NAME[5]任務效果追加１個<font color=#ff0066>$ELE[$ino]原料</font></b>!!</font><br>";	
 						if($STORITM_MAX<$ext_mix[$ino]){
 							$com.="<font color=#ff0000>但因此原料數量達倉庫上限,所以被丟棄</font>";
 							$ext_mix[$ino]--;
@@ -931,7 +931,7 @@ EOF
 				$reano=6;
 				$ino=$ACTOPEN-1;
 				$reahit=1;
-				$com.="<br><B>發獲得<font color=#ff0066>$ACTITEM[$ACTOPEN]</font></B>!!<br>";
+				$com.="<br><b>發獲得<font color=#ff0066>$ACTITEM[$ACTOPEN]</font></b>!!<br>";
 				&maplog("<font color=#ff0066>[活動]</font><font color=blue>$mname</font>於<font color=green><font color=blue>$SEN[$in{'mode'}]</font></font>獲得<font color=red>$ACTITEM[$ACTOPEN]</font>!!");
 				&maplog7("<font color=#ff0066>[活動]</font><font color=blue>$mname</font>於<font color=green><font color=blue>$SEN[$in{'mode'}]</font></font>獲得<font color=red>$ACTITEM[$ACTOPEN]</font>!!");
 			}
@@ -948,7 +948,7 @@ EOF
 					}else{
 						$ext_mix[$ino]++;
 					}
-					$com.="<br><B>發現<font color=#ff0066>建國之石</font></B>!!<br>";
+					$com.="<br><b>發現<font color=#ff0066>建國之石</font></b>!!<br>";
 					$iflg=1;
 					$reano=5;
 			}
@@ -1018,7 +1018,7 @@ EOF
 					open(OUT,">./logfile/item/$in{'id'}.cgi");
 					print OUT @ITEM;
 					close(OUT);
-					$com.="<br><B>發現<font color=#ff0066>$it_name $it_desc</font></B>!!<br>";
+					$com.="<br><b>發現<font color=#ff0066>$it_name $it_desc</font></b>!!<br>";
 					&maplog("<font color=#ff0066>[打寶]</font><font color=blue>$mname</font>於<font color=green><font color=blue>$SEN[$in{'mode'}]</font></font>獲得<font color=red>$it_name</font><font color=green>$it_desc</font>!!");
 					&maplog7("<font color=#ff0066>[打寶]</font><font color=blue>$mname</font>於<font color=green><font color=blue>$SEN[$in{'mode'}]</font></font>獲得$led<font color=red>$it_name</font><font color=green>$it_desc</font>!!");
 				}

@@ -9,7 +9,7 @@ sub sshop4{
 
 	($f_no,$f_ki,$f_name,$f_val,$f_dmg,$f_wei,$f_ele,$f_hit,$f_cl,$f_type,$f_sta,$f_flg,$f_id,$f_hname,$f_min,$f_max,$f_p,$f_last,$f_lname,$f_time,$f_pat)=split(/<>/,$FREE[$in{'no'}]);
 	if ($f_id ne $mid){
-		&error("你要取回的交易品不是你所有<BR>請重新進入交易所確認");
+		&error("你要取回的交易品不是你所有<br>請重新進入交易所確認");
 	}
 	if ($f_time>$date){
 		&error("你要取回的文易品時間還沒到期");
@@ -34,26 +34,26 @@ sub sshop4{
 	&header;
 	
 print <<"EOF";
-<TABLE border="0" width="80%" align=center bgcolor="#000000" height="150" CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="$FCOLOR"><FONT color="$FCOLOR2">交易所</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="$FCOLOR2" width=20% align=center><img src="$IMG/etc/buki.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="$FCOLOR2">你已成功取「$f_name」</FONT></TD>
-    </TR>
-    <TR>
-    <TD colspan="2" align="center" bgcolor="ffffff">
+<table border="0" width="80%" align=center bgcolor="#000000" height="150" CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="$FCOLOR"><font color="$FCOLOR2">交易所</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="$FCOLOR2" width=20% align=center><img src="$IMG/etc/buki.jpg"></td>
+      <td bgcolor="#330000"><font color="$FCOLOR2">你已成功取「$f_name」</font></td>
+    </tr>
+    <tr>
+    <td colspan="2" align="center" bgcolor="ffffff">
 	<form action="./town.cgi" method="POST">
-	<INPUT type=hidden name=mode value=sshop>
-	<INPUT type=hidden name=id value=$mid>
-	<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-	<INPUT type=submit CLASS=FC value=回到交易所></TD></form>
-	</TD>
-    </TR>
-  </TBODY>
-</TABLE>
+	<input type=hidden name=mode value=sshop>
+	<input type=hidden name=id value=$mid>
+	<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+	<input type=submit CLASS=FC value=回到交易所></td></form>
+	</td>
+    </tr>
+  </tbody>
+</table>
 <center></center>
 EOF
 

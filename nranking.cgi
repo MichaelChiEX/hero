@@ -83,7 +83,7 @@ for($i=0;$i<15;$i++){
 }
 
 &header;
-print"<table CLASS=TC width=100%><td align=center><font color=$FCOLOR2 size=4>本月戰數排名</font></td></table><BR>";
+print"<table CLASS=TC width=100%><td align=center><font color=$FCOLOR2 size=4>本月戰數排名</font></td></table><br>";
 print"<center><a href=./jranking.cgi><font color=#FFFFFF><b>其他排名</b></font></a></center>";
 print"<table colspan=5>";
 for($i=0;$i<15;$i++){
@@ -96,7 +96,7 @@ for($i=0;$i<15;$i++){
         }
 }
 print"</table>";
-print"<center><font color=yellow>遊戲人數：$mn名</font></center><BR>";
+print"<center><font color=yellow>遊戲人數：$mn名</font></center><br>";
 &mainfooter;
 
 exit;

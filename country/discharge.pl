@@ -27,23 +27,23 @@ sub discharge {
 	closedir(dirlist);
 
 	
-	$list.="</select><BR>";
+	$list.="</select><br>";
 	$list.="<input type=hidden name=no value=$i>";
 
 	&header;
 	
 	print <<"EOF";
-<TABLE border="0" width="90%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
-  <TBODY>
-    <TR>
-      <TD colspan="2" align="center" bgcolor="#993300"><FONT color="#ffffcc">解雇</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/country2.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="#ffffcc">在此進行解雇。<BR>只有國王或官員可以進行解雇(需要消費１００點名聲)。<BR>被解雇的人將無法再次加入$con_name國、並且名聲歸０。<BR>請選擇要解雇的對象。</FONT></TD>
-    </TR>
-    <TR>
-      <TD colspan="2" align="center">
+<table border="0" width="90%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">解雇</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/country2.jpg"></td>
+      <td bgcolor="#330000"><font color="#ffffcc">在此進行解雇。<br>只有國王或官員可以進行解雇(需要消費１００點名聲)。<br>被解雇的人將無法再次加入$con_name國、並且名聲歸０。<br>請選擇要解雇的對象。</font></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center">
 	<table class=TC width=80%>
 	<tr><td align=center><font color=$FCOLOR2>解雇</font></td></tr>
 	<tr>
@@ -52,18 +52,18 @@ sub discharge {
 	<tr><td bgcolor=$FCOLOR2 align=center>
 	<form action="./country.cgi" method="post">
 	$list
-	<INPUT type=hidden name=id value=$mid>
-	<INPUT type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-	<INPUT type=hidden name=mode value=discharge2>
-	<INPUT type=submit value=決定 CLASS=FC>
+	<input type=hidden name=id value=$mid>
+	<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+	<input type=hidden name=mode value=discharge2>
+	<input type=submit value=決定 CLASS=FC>
 	</td></form>
 	</tr>
 	</table>
 $BACKTOWNBUTTON
-      </TD>
-    </TR>
-  </TBODY>
-</TABLE>
+      </td>
+    </tr>
+  </tbody>
+</table>
 <center>$STPR</center>
 EOF
 

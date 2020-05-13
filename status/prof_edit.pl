@@ -10,14 +10,14 @@ sub prof_edit {
 	<table class=TC width="100%" height=100%>
 		<tbody>
 			<tr>
-				<td bgcolor=$FCOLOR width=100% height=5 align=center><font color=$FCOLOR2 size=4>＜＜<B> * 更新自傳 *</B>＞＞</font></td>
+				<td bgcolor=$FCOLOR width=100% height=5 align=center><font color=$FCOLOR2 size=4>＜＜<b> * 更新自傳 *</b>＞＞</font></td>
 			</tr>
 			<tr>
 				<td height="5">
 					<table border="0" width=100%>
 						<tr><td>
 							<img src=\"$IMG/etc/machi.jpg\"></td><td width="100%" bgcolor=000000>
-							<font color=ffffff>在此可以隨時更新自傳。<BR>可以輸入你要大家點閱你時可以看到的內容，請不要輸入不雅的字眼。</font>
+							<font color=ffffff>在此可以隨時更新自傳。<br>可以輸入你要大家點閱你時可以看到的內容，請不要輸入不雅的字眼。</font>
 						</td></tr>
 					</table>
 				</td>
@@ -43,7 +43,7 @@ sub prof_edit {
 				<td align=center bgcolor=$FCOLOR2>
 					<br>
 					<form action="./status.cgi" method="post">
-						請輸入自傳內容：<BR>
+						請輸入自傳內容：<br>
 						<textarea name=message cols=50 rows=10></textarea>
 						<img src="$IMG/chara/$mchara.gif">
 						<input type=hidden name=id value=$mid>

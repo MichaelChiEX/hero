@@ -96,11 +96,11 @@ sub storage2 {
 	
 	print <<"EOF";
         <form action="./town.cgi" method="POST" id="backf">
-        <INPUT type=hidden name=id value=$mid>
-        <INPUT type=hidden name=pass value=$mpass>
+        <input type=hidden name=id value=$mid>
+        <input type=hidden name=pass value=$mpass>
 	<input type=hidden name=rmode value=$in{'rmode'}>
-	<INPUT type=hidden name=itype value=$ritype>
-        <INPUT type=hidden name=mode value=storage>
+	<input type=hidden name=itype value=$ritype>
+        <input type=hidden name=mode value=storage>
         </form>
 <script language="javascript">
 document.getElementById('backf').submit();

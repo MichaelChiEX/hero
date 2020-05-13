@@ -7,34 +7,34 @@ open(IN,"./logfile/constorage/$mcon"."_mes.cgi");
 @MA = <IN>;
 close(IN);
 foreach(@MA){
-	$mapl.="<b><font color=$FCOLOR>●$MA[$m]</font></b><BR>";
+	$mapl.="<b><font color=$FCOLOR>●$MA[$m]</font></b><br>";
 	$m++;
 }
 
 print <<"EOF";
-<CENTER>
-<TABLE border="0" width="90%" align=center bgcolor="#000000" height="150" CLASS=TC>
-  <TBODY>
-    <TR>
-      <TD colspan=2 align="center" bgcolor="$FCOLOR"><FONT color="#ffffcc">$con_name的國庫紀錄</FONT></TD>
-    </TR>
-    <TR>
-      <TD bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/storage.jpg"></TD>
-      <TD bgcolor="#330000"><FONT color="#ffffcc">在此你可以查看最近國庫的各項存取紀錄。</font></TD>
-    </TR>
-	<TR>
-    <TD colspan=2 align="center" bgcolor="ffffff">
+<center>
+<table border="0" width="90%" align=center bgcolor="#000000" height="150" CLASS=TC>
+  <tbody>
+    <tr>
+      <td colspan=2 align="center" bgcolor="$FCOLOR"><font color="#ffffcc">$con_name的國庫紀錄</font></td>
+    </tr>
+    <tr>
+      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/storage.jpg"></td>
+      <td bgcolor="#330000"><font color="#ffffcc">在此你可以查看最近國庫的各項存取紀錄。</font></td>
+    </tr>
+	<tr>
+    <td colspan=2 align="center" bgcolor="ffffff">
 $BACKTOWNBUTTON
-   </TD>
-	</TR>
-    <TR>
-      <TD colspan=2 bgcolor="#ffffcc"><FONT style="font-size:15px" color="#666600"><BR>$mapl</FONT><BR></TD>
-    </TR>
-  </TBODY>
-</TABLE>
-<BR>
-</P>
-</CENTER>
+   </td>
+	</tr>
+    <tr>
+      <td colspan=2 bgcolor="#ffffcc"><font style="font-size:15px" color="#666600"><br>$mapl</font><br></td>
+    </tr>
+  </tbody>
+</table>
+<br>
+</p>
+</center>
 
 <hr>
 EOF
