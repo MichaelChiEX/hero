@@ -353,6 +353,4 @@ $MES[2]="武器、防具及飾品的重量會影響到你的速度。";
 $MES[3]="在與自己屬性一樣的城鎮戰鬥將會有加成喔。";
 $MES[4]="名聲越高，買東西的折扣越多，最多可到８５折。";
 
-#特別log追蹤
-$LOG_ID[0]="";
 $BACKTOWNBUTTON="<input type=\"button\" value=\"[F4]回到城鎮\" CLASS=FC onclick=\"javascript:parent.backtown();\">";

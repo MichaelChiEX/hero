@@ -215,9 +215,6 @@ sub bat{
 	}elsif($in{'mode'} eq 40){
 		$mode=7;
 	}
-	if($SP_LOG){
-		&verchklog("戰:".$SEN[$in{'mode'}]);
-	}
  
 	$mtotal++;
 	#排名統計

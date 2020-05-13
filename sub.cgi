@@ -40,15 +40,6 @@ sub chara_open{
         }else{
                 if($in{'id'} ne "$mid" or $in{'pass'} ne "$mpass"){&error2("角色檔案出錯，請確認您輸入的帳號密碼正確，如果一樣出現此訊息，請申請新>帳號，留訊息給(GM)老頭兒，「我的角色帳號xxx，於x月x日無法登入」，GM看到此訊息將會進行處理，處理完後請刪除此分身帳號。");}
         }
-	$SP_LOG=0;
-	if($LOG_ID[0] ne"" && $in{'id'} ne""){
-		foreach(@LOG_ID){
-			if($_ eq $in{'id'}){
-				$SP_LOG=1;
-				last;
-			}
-		}
-	}
 }
 
 sub chara_input {

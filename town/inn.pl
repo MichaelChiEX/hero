@@ -5,9 +5,6 @@ sub inn{
 	&status_print;
 	&ext_open;
 	&quest_open;
-        if($SP_LOG){
-                &verchklog("宿$mhp/$mmp");
-        }
 
 	$inn_gold=int($mmaxhp+$mmaxmp+($mstr+$mvit+$mint+$mdex+$mfai+$magi)/3);
 	if($inn_gold<10){$inn_gold=10;}

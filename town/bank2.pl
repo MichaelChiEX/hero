@@ -12,9 +12,6 @@ sub bank2{
 		$mgold-=$gold;
 		if($mgold<0){&error("所持金不足。");}
 		$mbank+=$gold;
-	        if($SP_LOG){
-        	        &verchklog("存:".$gold);
-	        }
                 &ext_open;
                 &quest_open;
                 if($quest2_town_no eq $mpos && $quest2_limit_time>$date && $quest2_count<10){
@@ -29,18 +26,12 @@ sub bank2{
 		$mgold+=$gold;
 		$mbank-=$gold;
 		if($mbank<0){&error("銀行的資金不足。");}
-                if($SP_LOG){
-                        &verchklog("取:".$gold);
-                }
 	}elsif($in{'mode'} eq"bankall"){
 		$com="存入";
 		if($mgold<0){&error("所持金不足。");}
 		$gold=$mgold;
 		$mbank+=$gold;
 		$mgold=0;
-                if($SP_LOG){
-                        &verchklog("存:".$gold);
-                }
 		&ext_open;
 		&quest_open;
 	        if($quest2_town_no eq $mpos && $quest2_limit_time>$date && $quest2_count<10){
@@ -55,9 +46,6 @@ sub bank2{
 		if($mbank<$gold){&error("銀行的資金不足。");}
 		$mbank=0;
 		$mgold+=$gold;	
-                if($SP_LOG){
-                        &verchklog("取:".$gold);
-                }
 	}else{&error("資料傳輸有誤，<a href='./login.cgi'>請重新登入</a>。");}
 	
 	&header;
