@@ -31,15 +31,15 @@ if($ext_tmpxs>0){
             open(IN,"./data/maplog.cgi");
             @MAP = <IN>;
             close(IN);
-            foreach(@MAP){
-                $maplog.="MAPLOG<>$MAP[$l]";
+            foreach $m (@MAP){
+                $maplog.="MAPLOG<>$m";
             }
         
             open(IN,"./data/maplog5.cgi");
             @MAP2 = <IN>;
             close(IN);
-            foreach(@MAP2){
-                $maplog2.="MAPLOG2<>$MAP2[$l2]";
+            foreach $m (@MAP2){
+                $maplog2.="MAPLOG2<>$m";
             }
         }
     }
