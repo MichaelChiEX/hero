@@ -10,8 +10,6 @@ $VER="Farland History Ⅱ Ver2.11";
 $GMID="";
 ##タイトル
 $TITLE="無限冒險";
-##ajax版本，主要是增加這個值來通知用戶端目前最新版本，如果版本不同將讓用戶端自動更新
-$AJAXVER="2.0";
 $FH_URL="";
 ##活動開啟0不開,1以上開啟
 $ACTOPEN=0;

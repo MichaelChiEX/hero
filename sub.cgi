@@ -808,14 +808,12 @@ EOF
 
 #rエラー
 sub error_alert {
-        &header;
-        print <<"EOF";
-<script language="javascript">
-alert('$_[0]');
-</script>
-EOF
-        &footer;
-        exit;
+	print "Cache-Control: no-cache\n";
+	print "Pragma: no-cache\n";
+	print "Status: 400\n";
+	print "Content-type: text/html\n\n";
+	print $_[0];        
+	exit;
 }
 
 ##展開任務資料
@@ -947,7 +945,6 @@ sub header{
 <head>
 <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=utf-8">
 <STYLE type="text/css">
-<!--
 body, td { font-size:12px}
 A:HOVER{
  color: blue;
@@ -962,18 +959,11 @@ A:HOVER{
 .TOC {border-top-width : medium;border-right-width : medium;border-bottom-width : medium;border-left-width :medium; border-color : $ELE_BG[$town_ele] $ELE_BG[$town_ele] $ELE_BG[$town_ele] $ELE_BG[$town_ele];border-style : double double double double;background-color : $ELE_BG[$town_ele];color : black;}
 .dmg { color: #FF0000; font-size: 10pt }
 .clit { color: #0000FF; font-size: 10pt }
--->
 </STYLE>
 
 
 EOF
 
-	#if($tmode eq "timer"){
-	#if($s_time > 0){
-	#}
-
-	#}
-	
 	print "<title>$TITLE</title>\n";
 	print "</head>";
 	print "<body background=\"$BGIF\" bgcolor=\"$BG\" topmargin=\"0\" leftmargin=\"0\" rightmargin=\"0\" bottommargin=\"0\" marginwidth=\"0\" marginheight=\"0\">";
@@ -982,7 +972,7 @@ EOF
 sub footer{
 	print <<"EOF";
 <script language="javascript">
-	parent.scrollToTop.action();
+scrollTo(0,0);
 function keyDownHandler(e) {
     if (e) { // Firefox
         if(e.keyCode==115){

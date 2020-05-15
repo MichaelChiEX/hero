@@ -1,32 +1,28 @@
 #! /usr/bin/perl
 require './sub.cgi';
 require './conf.cgi';
-#require './data/town_mes.cgi';
+
  
 &decode;
-if($ENV{'HTTP_REFERER'} !~ /cgi$/ ){ &error2("<a href='./login.cgi'>請重新登入</a>。"); }
-$tmode = "timer";
+
 &chara_open;
-#if($murl ne ""){&error2("此帳號尚未認證,請先收信啟用帳號。");}
 &town_open;
 &con_open;
 &time_data;
 foreach(@CON_DATA){
-        ($con2_id,$con2_name,$con2_ele,$con2_gold,$con2_king,$con2_yaku,$con2_cou,$con2_mes,$con2_etc)=split(/<>/);
-        if("$con2_id" eq "$town_con"){$hit=1;last;}
+    ($con2_id,$con2_name,$con2_ele,$con2_gold,$con2_king,$con2_yaku,$con2_cou,$con2_mes,$con2_etc)=split(/<>/);
+    if("$con2_id" eq "$town_con"){$hit=1;last;}
 } 
+if(!$hit){$con2_ele=0;$con2_name="無所屬";$con2_id=0;}
+
 &fixext_open;
 foreach(@fixext_fkey){
 	($fclass,$fcmd,$fname)=split(/,/,$_);
 	if($fclass ne""){
-		if($fastbutton eq""){
 		$fastbutton.="<input type=button value=$fname onclick=fastkeyform('$fclass','$fcmd');>";
-		}else{
-                $fastbutton.="　<input type=button value=$fname onclick=fastkeyform('$fclass','$fcmd');>";
-		}
 	}
 }
-if(!$hit){$con2_ele=0;$con2_name="無所屬";$con2_id=0;}
+
 &ext_open;
 $maplogshow="";
 if($ext_show_mode ne"N"){
@@ -50,18 +46,12 @@ if($ext_show_mode ne"N"){
             </tr></table>
 SOF
 }
-if ($mid eq $GMID){
-        $member_fix_time2=2;
-} 
 &header;
-if($in{'id'} eq""){&error2("帳號不存在，<a href='./login.cgi'>請重新登入</a>。");}
-if($in{'pass'} eq""){&error2("密碼不存在，<a href='./login.cgi'>請重新登入</a>。");}
- 
 if($hour > 20 || $hour < 4){$timg ="$TOWN_IMG2";}
 else{$timg ="$TOWN_IMG";}
 if($mflg<2){require'./etc/top_print.pl';&top_print;}
 $status_s=<<"EOF";
-<div style="position: absolute; width: 187px; height: 143px; z-index: 1; left: 145px; top: 400px" id="s_status"  style="display:none">
+<div style="position: absolute; width: 187px; height: 143px; z-index: 1; left: 145px; top: 400px; display:none" id="s_status">
 <table border="1" width="269" cellspacing="0" cellpadding="0" style="font-size: 12px" bgcolor="#FFFFcc">
         <tr>
                 <td align="right" height="20" width="49"><font color="red">ＨＰ</font></td>
@@ -111,19 +101,23 @@ EOF
  
 ##畫面表示
 print <<"EOF";
-<style type="text/css">
-<!--
-#ver1 {
- z-index:1;
- FILTER: alpha(opacity=80); /* IE使用的半透明 */
- -moz-opacity: 0.8; /* Firefox使用的半透明*/
- background-color: #ffffDD;
- width: 186px;
- height: 36px;
+<style>
+.mes_block{
+    height:700px;
+    width:100%;
+    overflow:auto;
 }
--->
+.mes_block td:nth-child(1){
+    text-align: center;
+    width: 15%;
+    background-color: #000000;
+}
+.mes_block td:nth-child(2){
+    align: left;
+    width: 85%;
+    background-color: #000000;
+}
 </style>
-
 $status_s
 <table width=94% align=center CLASS=CC>
 	    <tr>
@@ -178,7 +172,6 @@ $status_s
 	</tr>
           <tr>
             <td height="39">
-<a name="upl"></a>
             <table border="0" width=100% bgcolor="$FCOLOR2" CLASS=CC>
               <tbody>
                 <tr>
@@ -208,9 +201,7 @@ $status_s
                 <input type=hidden name=rnd>
                 <select name=mode style="WIDTH: 160px">
 		</SELECT>
-<div style="color:blue;display:none" id="keyver">
-請輸入驗證碼：<input type=text name=rnd2 size=10>
-</div>
+<input type="checkbox" id="autoattack" />自動戰鬥
 		</td>
                   <td bgcolor="$ELE_C[$mele]" width=5%><input type="button" id="battlebutton" CLASS=MFC value="實行" onClick="javascript:spshow=true;actform(this.form);"></td>
                 </form></tr>
@@ -226,23 +217,24 @@ $status_s
                 <input type=hidden name=pass value=$mpass>
                 <input type=hidden name=rmode value=$in{'rmode'}>
                   <select name=mode>
-                    <option value=inn>宿屋
-                    <option value=quest>任務屋
-                    <option value=arm>武器店
-                    <option value=pro>防具店
-                    <option value=acc>飾品店
-                    <option value=item>道具店
-                    <option value=petup>寵物店
-                    <option value=mix>工房
-                    <option value=mix_change>原料黑商
-                    <option value=mixbook>熟書合成室
-                    <option value=bank>銀行
-                    <option value=storage>倉庫
-                    <option value=arena>鬥技場
-                    <option value=hinn>高級旅館
-                    <option value=fshop>拍賣所
-                    <option value=sshop>交易所
-                    <option value=battle_entry>天下第一武道會
+                    <option value=inn>宿屋</option>
+                    <option value=quest>任務屋</option>
+                    <option value=arm>武器店</option>
+                    <option value=pro>防具店</option>
+                    <option value=acc>飾品店</option>
+                    <option value=item>道具店</option>
+                    <option value=petup>寵物店</option>
+                    <option value=mix>工房</option>
+                    <option value=mix_change>原料黑商</option>
+                    <option value=mixbook>熟書合成室</option>
+                    <option value=bank>銀行</option>
+                    <option value=storage>倉庫</option>
+                    <option value=arena>鬥技場</option>
+                    <option value=hinn>高級旅館</option>
+                    <option value=fshop>拍賣所</option>
+                    <option value=sshop>交易所</option>
+                    <option value=battle_entry>天下第一武道會</option>
+                    <option value="action">活動兌換屋</option>
                 </SELECT>
       		  </td>
                   <td bgcolor="$ELE_C[$mele]" width=5%>
@@ -371,111 +363,73 @@ $status_s
 $maplogshow
 	    </td>
           </tr>
-	  
- 
           <tr>
     <td>
     <table CLASS=TC WIDTH=100%>
-	<tr><td colspan=2 align=center>
-	<font color=ffffcc>CHAT</font><br>
-<input type="button" value="[F5]更新所有資料" CLASS=FC style="WIDTH: 200px" onclick="javascript:get_all_data();" id="rbutton">
-	</td></tr>
-	<tr><td colspn=2 bgcolor=$FCOLOR2 align=center>
-	</td>
-	</tr>
-	<tr>
-	<td bgcolor=$FCOLOR2 width=50% valign='top'>
-	<a name="downl">世界頻道</a><br>
-	世頻發言：<input type=text name=mes1 size=30 onKeyPress="return submitenter(1,event)" id="mes1">
-    <input type=button id=chat_button1 name=chat_button1 class=FC value=發言 onclick="javascript:chkchat(1);"><a href="#upl">↑↑↑↑↑↑</a>
-<table border=0 bgcolor=$FCOLOR width=100% id=mes_all>
-</table>
-	<br>
-        $mname的私頻</font><input type="button" value="[F5]更新所有資料" CLASS=FC onclick="javascript:get_all_data();" id="rbutton2"><br>
-        私頻發言：<input type=text name=mes3 size=30 onKeyPress="return submitenter(3,event)" id="mes3">
-    <input type=button id=chat_button3 name=chat_button3 class=FC value=發言 onclick="javascript:chkchat(3);">
-<br>發言對象名稱：</font><input type=text name=aite size=10 id=aite>
-<a href="#upl">↑↑↑↑↑↑</a>
-        </form>
-<table border=0 bgcolor=$FCOLOR width=100% id=mes_private>
-</table>
-	<td bgcolor=$FCOLOR2 width=50% valign='top'>
-所屬國頻道<br>
-	$con_name國頻發言：<input type=text name=mes2 size=30 onKeyPress="return submitenter(2,event)" id="mes2">
-    <input type=button id=chat_button2 name=chat_button2 class=FC value=發言 onclick="javascript:chkchat(2);"><a href="#upl">↑↑↑↑↑↑</a>
-	</form>
-<table border=0 bgcolor=$FCOLOR width=100% id=mes_con>
-</table>
- 
-	<br>
-        <a name="down2"></a>隊伍頻<br>
-        隊伍發言：<input type=text name=mes4 size=30 onKeyPress="return submitenter(4,event)" id="mes4">
-    <input type=button id=chat_button4 name=chat_button4 class=FC value=發言 onclick="javascript:chkchat(4);"><a href="#upl">↑↑↑↑↑↑</a>
-        </form>
-<table border=0 bgcolor=$FCOLOR width=100% id=mes_unit>
-</table>
-	</td>
-	</tr>
-	</td>
-     </table>
+        <tr>
+            <td colspan=2 align=center>
+                <font color=ffffcc>CHAT</font><br>
+                <input type="button" value="[F5]更新所有資料" CLASS=FC style="WIDTH: 200px" onclick="javascript:get_all_data();" id="rbutton">
+            </td>
+        </tr>
+        <tr>
+            <td bgcolor=$FCOLOR2 width=50% valign='top'>
+                <a name="downl">世界頻道</a><br>
+                世頻發言：<input type=text name=mes1 size=30 onKeyPress="return submitenter(1,event)" id="mes1">
+                <input type=button id=chat_button1 name=chat_button1 class=FC value=發言 onclick="javascript:chkchat(1);"><a href="#upl">↑↑↑↑↑↑</a>
+                <div class="mes_block">
+                    <table border=0 bgcolor=$FCOLOR width=100% id=mes_all></table>
+                </div>
+	            <br>$mname的私頻</font><input type="button" value="[F5]更新所有資料" CLASS=FC onclick="javascript:get_all_data();" id="rbutton2"><br>
+                私頻發言：<input type=text name=mes3 size=30 onKeyPress="return submitenter(3,event)" id="mes3">
+                <input type=button id=chat_button3 name=chat_button3 class=FC value=發言 onclick="javascript:chkchat(3);">
+                <br>發言對象名稱：</font><input type=text name=aite size=10 id=aite>
+                <a href="#upl">↑↑↑↑↑↑</a>
+                <div class="mes_block">
+                    <table border=0 bgcolor=$FCOLOR width=100% id=mes_private></table>
+                </div>
+            </td>
+	        <td bgcolor=$FCOLOR2 width=50% valign='top'>
+                所屬國頻道<br>
+                $con_name國頻發言：<input type=text name=mes2 size=30 onKeyPress="return submitenter(2,event)" id="mes2">
+                <input type=button id=chat_button2 name=chat_button2 class=FC value=發言 onclick="javascript:chkchat(2);"><a href="#upl">↑↑↑↑↑↑</a>
+                <div class="mes_block">
+                    <table border=0 bgcolor=$FCOLOR width=100% id=mes_con></table>
+                </div>
+            	<br>
+                <a name="down2"></a>隊伍頻<br>
+                隊伍發言：<input type=text name=mes4 size=30 onKeyPress="return submitenter(4,event)" id="mes4">
+                <input type=button id=chat_button4 name=chat_button4 class=FC value=發言 onclick="javascript:chkchat(4);"><a href="#upl">↑↑↑↑↑↑</a>
+                <div class="mes_block">
+                    <table border=0 bgcolor=$FCOLOR width=100% id=mes_unit></table>
+                </div>
+	        </td>
+	    </tr>
+    </table>
 	</td>
 	</tr>
         </tbody>
       </table>
       </td>
     </tr>
-<form action="./status.cgi" method="post" target="chat_post" name="m_all" id="m_all">
-        <input type=hidden name=id value=$mid>
-        <input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-        <input type=hidden name=mode value=chat>
-        <input type=hidden name=mes_sel>
-        <input type=hidden name=mes>
-        <input type=hidden name=aite>
-</form>
-<iframe src="" width=0 height=0 name=chat_post id=chat_post></iframe>
-  </tbody>
+</tbody>
 </table>
 </center>
-<div id="newmsg" style="position:absolute;filter:blendTrans(duration=1); visibility:hidden; background-color:black;width:400px;height:100px;z-index:20;left: 50px;top:0px;"><table border=0 bgcolor=#gray width=100% id=newmsgtb></table></div>
-<div id=ver1 style="position: absolute; left: 144px; top: 148px;display:none"><img src="" height="80" width="200" id="verimg"></div>";
-<SCRIPT LANGUAGE = "JavaScript"> 
+<div id="newmsg" style="position:fixed;filter:blendTrans(duration=1); display:none; background-color:black;width:400px;height:100px;z-index:20;left: 50px;top:100px;"><table border=0 width=100% id=newmsgtb></table></div>
+<script> 
 var spshow=true;
-function keyDownHandler(e) {   
-    if (e) { // Firefox
-	if(e.keyCode ==116){
-                if(getObj('actionframe').style.display !='none')
-                getObj('actionframe').contentWindow.location.reload();
-		else if(!getObj('rbutton').disabled)
-		get_all_data();
-        	e.preventDefault();   
-	        e.stopPropagation();
-	}else if(e.keyCode==115){
-                if(getObj('actionframe').style.display !='none')
-                backtown();
-                e.preventDefault();
-                e.stopPropagation();
-	}
-    } else { // IE
-	if(window.event.keyCode == 116){   
-	        window.event.keyCode = 0;
-                if(getObj('actionframe').style.display!='none')
-                document.frames('actionframe').location.reload();
-		else if(!getObj('rbutton').disabled)
-		get_all_data();
-        	return false;
-	}else if(window.event.keyCode == 115){
-                window.event.keyCode = 0;
-                if(getObj('actionframe').style.display!='none')
-                backtown();
-                return false;
-	}
-    }   
-}   
-document.onkeydown = keyDownHandler;
-var userAgent = window.navigator.userAgent;
-var isIE = userAgent.indexOf("MSIE") > 0;
-getObj('s_status').style.display='none';
-var chattime=5;
+document.addEventListener('keydown', (e) => {
+    if (e.key==='F4'){
+        backtown();
+        e.preventDefault();
+        e.stopPropagation();
+    }else if(e.key==='F5'){
+        get_all_data();
+        e.preventDefault();
+        e.stopPropagation();
+    }
+});
+var chattime=0;
 var battlemap='';
 var mcon='$mcon';
 function cdtime(){
@@ -487,11 +441,11 @@ function cdtime(){
 		}
 		chattime--;
 	}else{
-                for(var i=1;i<5;i++){
-                        var buttonObj=getObj('chat_button'+i);
-                        buttonObj.value='發言';
-                        buttonObj.disabled=false;
-                }
+        for(var i=1;i<5;i++){
+            var buttonObj=getObj('chat_button'+i);
+            buttonObj.value='發言';
+            buttonObj.disabled=false;
+        }
 	}
 	setTimeout("cdtime();",1000);
 }
@@ -505,360 +459,295 @@ function submitenter(mes_sel,e){
 	}
 }
 function chkchat(mes_sel){
-	var mes=getObj('mes'+mes_sel);
-	if(mes){
-	if (mes.value ==''){
-		alert('請輸入訊息內容!');
-	}else{
-		if (chattime==0){
-			var form=getObj('m_all');
-			form.mes.value=mes.value;
-			form.mes_sel.value=mes_sel;
-			form.aite.value=getObj('aite').value;
-			form.submit();
-			mes.value='';
-			chattime=10;
-		}else{
-			alert('下次可發言時間剩餘'+chattime+'秒');
-		}
-	}
-	}else{
-		alert('程式發生錯誤');
-	}
+    const mes = getObj('mes'+mes_sel);
+	if(mes.value ==''){
+        alert('請輸入訊息內容!');
+    }else if(chattime !== 0){
+        alert('下次可發言時間剩餘'+chattime+'秒');
+    }else{
+        const data = new URLSearchParams({
+            mes: mes.value, mes_sel: mes_sel, aite:getObj('aite').value,
+            id: "$mid", pass: "$mpass", mode: "chat"
+        });
+        fetch("status.cgi", {
+            method: 'POST',
+            body: data
+        }).then(res => {
+            if(!res.ok){
+                res.text().then(text => alert(text));
+            }else{
+                mes.value='';
+                chattime=10;
+                get_all_data();
+            }
+        });
+    }
 }
-setTimeout('get_all_data()',1000);
 cdtime();
 var systime=0;
 var lastchattime='';
 var logtime='';
 var mtime='';
-var fmes=[0,0,0,0,0];
 var shotmes=['','','','',''];
 var moya=0;
 var BTIME=-1;
-var Mmr=0;
 function loading(msgs,disb){
 	BTIME=-1;
  	getObj("tok").innerHTML =("<font color=yellow>剩餘秒數讀取中...</font>");
-         getObj('rbutton').value=msgs;
-         getObj('rbutton').disabled=disb;
-         getObj('rbutton2').value=msgs;
-         getObj('rbutton2').disabled=disb;
-	 getObj('rebutton').disabled=disb;
-	 getObj('rebutton').value=msgs;
+    getObj('rbutton').value=msgs;
+    getObj('rbutton').disabled=disb;
+    getObj('rbutton2').value=msgs;
+    getObj('rbutton2').disabled=disb;
+    getObj('rebutton').disabled=disb;
+    getObj('rebutton').value=msgs;
 	getObj('battlebutton').disabled=disb;
-        getObj('townbutton').disabled=disb;
-        getObj('statusbutton').disabled=disb;
-        getObj('countrybutton').disabled=disb;
-
+    getObj('townbutton').disabled=disb;
+    getObj('statusbutton').disabled=disb;
+    getObj('countrybutton').disabled=disb;
 }
 loading('讀取資料中...',true);
 function get_all_data(){
 	loading('更新中...',true);
-	sid=Math.random();
 	var url='';
-	xmlHttp=GetXmlHttpObject();
+	xmlHttp = new XMLHttpRequest();
 	if (xmlHttp==null) {
   		alert ("Your browser does not support AJAX!");
   		return;
   	} 
-  	var spage='';
-  	url='ajax.cgi?id=$in{'id'}&pass=$in{'pass'}&tt='+lastchattime+'&mdate='+mtime+'&logtime='+logtime+'&moya='+moya;
-	url=url+"&sid="+sid;
+  	url='ajax.cgi?id=$in{'id'}&pass=$in{'pass'}&tt='+lastchattime+'&logtime='+logtime+'&moya='+moya;
 	xmlHttp.onreadystatechange=function(){
 		if(xmlHttp.readyState==4){
 			var d = xmlHttp.responseText;
-			if(d.length>10){
-				var tow_data = d.split('\\n');
-				for (var i=tow_data.length-1;i>-1;i--){
-					var dt=tow_data[i].split('<>');
-					if(dt[0]=='VER'){
-						if (dt[1] !='$AJAXVER'){
-							alert('因為系統版本更新，本頁面將自動重新整理');
-							location.reload();
-						}else{
-				                        loading('[F5]更新所有資料',false);
-				                        list_init();
-				                        getObj('guestList').innerHTML="";
-				                        fmes[1]=0;fmes[2]=0;fmes[3]=0;fmes[4]=0;
-						}
-						break;
-					}
-				}
-		                for (var i=tow_data.length-1;i>-1;i--){
-					if(tow_data[i].length>5){
-				            	var dt=tow_data[i].split('<>');
-						if(dt[0]=='ERROR'){
-							alert(dt[1]);
-							location.href='index.cgi';
-							break;
-						}else if(dt[0]=='ERROR2'){
-							alert(dt[1]);
-							break;
-						}else if(dt[0]=='CHAT'){
-						    chat_show(tow_data[i]);
-						}else if(dt[0]=='GUEST'){
-						    guest_show(tow_data[i]);
-                                                }else if(dt[0]=='TOWNDEF'){
-                                                        town_def_show(tow_data[i]);
-						}else if(dt[0]=='TOWN'){
-							town_show(tow_data[i]);
-						}else if(dt[0]=='COUNTRY'){
-                                                        country_show(tow_data[i]);
-						}else if(dt[0]=='BATTLE'){
-							bat_list_show(tow_data[i]);
-						}else if(dt[0]=='GUESTCOUNT'){
-							getObj('totalPlayer').innerHTML="目前線上人數："+dt[1]+"人";
-						}else if(dt[0]=='CHARA'){
-						    chara_show(tow_data[i]);
-						}else if(dt[0]=='ALLTIME'){
-							if(logtime != dt[4]){getObj('maplog').innerHTML="";getObj('maplog2').innerHTML="";}
-							logtime=dt[4];
-							lastchattime=dt[3];
-							mtime=dt[2];
-							systime=dt[1];
-							BTIME=dt[5];
-						}else if(dt[0]=='MAPLOG'){
-							maplog_show(getObj('maplog'),dt[1]);
-                                                }else if(dt[0]=='MAPLOG2'){
-							maplog_show(getObj('maplog2'),dt[1]);
-						}else if(dt[0]=='ACTION'){
-							list_show(getObj('townf').mode,'last',dt[1],'yellow');
-                                                }else if(dt[0]=='TOWNSP'){
-							list_show(getObj('townf').mode,'first',dt[1],'#ffc0cb');
-							if(spshow){
-								spshow=false;
-								alert('城鎮出現特殊的選項');
-							}
-                                                }else if(dt[0]=='STATUSSP'){
-							list_show(getObj('statusf').mode,'first',dt[1],'#CCFFCC');
-							if(spshow){
-								spshow=false;
-								alert('各項設定出現特殊的選項');
-							}
-						}else if(dt[0]=='MEMBER'){
-							if (dt[0]=='1'){Mmr=1;}
-						}
-					}
-				}
-      			}
-			if(getObj('town_datas'))
+            var tow_data = d.split('\\n');
+            loading('[F5]更新所有資料',false);
+            list_init();
+            getObj('guestList').innerHTML="";
+            for (var i=tow_data.length-1;i>-1;i--){
+                if(tow_data[i].length>5){
+                    var dt=tow_data[i].split('<>');
+                    if(dt[0]=='ERROR'){
+                        alert(dt[1]);
+                        location.href='index.cgi';
+                        break;
+                    }else if(dt[0]=='CHAT'){
+                        chat_show(tow_data[i]);
+                    }else if(dt[0]=='GUEST'){
+                        guest_show(tow_data[i]);
+                    }else if(dt[0]=='TOWNDEF'){
+                        town_def_show(tow_data[i]);
+                    }else if(dt[0]=='TOWN'){
+                        town_show(tow_data[i]);
+                    }else if(dt[0]=='COUNTRY'){
+                        country_show(tow_data[i]);
+                    }else if(dt[0]=='BATTLE'){
+                        bat_list_show(tow_data[i]);
+                    }else if(dt[0]=='GUESTCOUNT'){
+                        getObj('totalPlayer').innerHTML="目前線上人數："+dt[1]+"人";
+                    }else if(dt[0]=='CHARA'){
+                        chara_show(tow_data[i]);
+                    }else if(dt[0]=='ALLTIME'){
+                        if(logtime != dt[4]){getObj('maplog').innerHTML="";getObj('maplog2').innerHTML="";}
+                        systime=dt[1];
+                        lastchattime=dt[2];
+                        logtime=dt[3];
+                        BTIME=dt[4];
+                    }else if(dt[0]=='MAPLOG'){
+                        maplog_show(getObj('maplog'),dt[1]);
+                    }else if(dt[0]=='MAPLOG2'){
+                        maplog_show(getObj('maplog2'),dt[1]);
+                    }else if(dt[0]=='TOWNSP'){
+                        list_show(getObj('townf').mode, dt[1],'#ffc0cb');
+                        if(spshow){
+                            spshow=false;
+                            alert('城鎮出現特殊的選項');
+                        }
+                    }else if(dt[0]=='STATUSSP'){
+                        list_show(getObj('statusf').mode, dt[1],'#CCFFCC');
+                        if(spshow){
+                            spshow=false;
+                            alert('各項設定出現特殊的選項');
+                        }
+                    }
+                }
+            }
+            
 			getObj('shot_mesg').innerHTML=shotmes[1]+shotmes[2]+shotmes[3]+shotmes[4];
 		}else if(xmlHttp.readyState==2){
 			loading('更新中...',true);
 		}
 	}
- 
-	if (url != '') {
-		xmlHttp.open("GET",url,true);
-		xmlHttp.send(null);
-	}
- 
+    xmlHttp.open("GET",url,true);
+    xmlHttp.send(null);
 }
 function country_show(dtstr){
-  var dt=dtstr.split('<>');
-  getObj('con_name1').innerHTML=dt[2]+"國公告";
-  getObj('con_mes').innerHTML=dt[8];
-  if(getObj('town_datas')){
-	getObj('con_gold_name').innerHTML=dt[2]+"國資金";
-	getObj('con_gold').innerHTML=chdl(dt[4]);
-  }
+    var dt=dtstr.split('<>');
+    getObj('con_name1').innerHTML=dt[2]+"國公告";
+    getObj('con_mes').innerHTML=dt[8];
+    if(getObj('town_datas')){
+        getObj('con_gold_name').innerHTML=dt[2]+"國資金";
+        getObj('con_gold').innerHTML=chdl(dt[4]);
+    }
 }
 function maplog_show(obj,ldata){
   obj.innerHTML="●" +ldata+ "<br>"+obj.innerHTML;
 }
 function chat_show(dtstr){
-  var dt=dtstr.split('<>');
-  var oTb;
-  var shmt="";
-  var fmes_tmp=0;
-  var dows="downl";
-  var privadd=0;
-  if(dt[1]=='1'){
-     shmt="世";
-     oTb = getObj('mes_all');
-  }else if(dt[1]=='2'){
-     shmt="國";
-     oTb = getObj('mes_con');
-  }else if(dt[1]=='3'){
-     privadd=0;
-     shmt="私";dows="down2";
-     oTb = getObj('mes_private');
-     create_tb(getObj('newmsgtb'),dt[2],dt[3],dt[4],dt[5],1);
-     shownewmsg();
-  }else if(dt[1]=='4'){
-     shmt="隊";dows="down2";
-     oTb = getObj('mes_unit');
-  }
-  fmes[dt[1]]++;fmes_tmp=fmes[dt[1]];
-  if(oTb){
-     create_tb(oTb,dt[2],dt[3],dt[4],dt[5],$MES_MAX+privadd);
-     if(getObj('town_datas')){
-        shotmes[dt[1]]="<a href=#"+dows+"><font color=#AAAAFF>["+shmt+"]</font></a>"+dt[3]+dt[4]+"<font color=gray>"+dt[5]+"</font><br>";
-     }
-  }
+    var dt=dtstr.split('<>');
+    var oTb;
+    var shmt="";
+    var dows="downl";
+    if(dt[1]=='1'){
+        shmt="世";
+        oTb = getObj('mes_all');
+    }else if(dt[1]=='2'){
+        shmt="國";
+        oTb = getObj('mes_con');
+    }else if(dt[1]=='3'){
+        shmt="私";dows="down2";
+        oTb = getObj('mes_private');
+        create_tb(getObj('newmsgtb'),dt[2],dt[3],dt[4],dt[5],1);
+        shownewmsg();
+    }else if(dt[1]=='4'){
+        shmt="隊";dows="down2";
+        oTb = getObj('mes_unit');
+    }
+    if(oTb){
+        create_tb(oTb,dt[2],dt[3],dt[4],dt[5],$MES_MAX);
+        if(getObj('town_datas')){
+            shotmes[dt[1]]="<a href=#"+dows+"><font color=#AAAAFF>["+shmt+"]</font></a>"+dt[3]+dt[4]+"<font color=gray>"+dt[5]+"</font><br>";
+        }
+    }
 }
 function town_def_show(dtstr){
-  if(getObj('town_datas')){
-	getObj('def_list').innerHTML="";
-	  var dt=dtstr.split('<>');
-	  for(var i=1;i<dt.length;i++){
-		var dt2=dt[i].split(' ');
-		getObj('def_list').innerHTML+="<img Src=$IMG/town/shield.jpg><a href=\\\"javascript:void(0)\\\" onClick=\\\"javascipt:show_other_status('"+dt2[1]+"');\\\">"+dt2[0]+"</a>";
-	  }
-  }
+    if(getObj('town_datas')){
+        getObj('def_list').innerHTML="";
+        var dt=dtstr.split('<>');
+        for(var i=1;i<dt.length;i++){
+            var dt2=dt[i].split(' ');
+            getObj('def_list').innerHTML+="<img Src=$IMG/town/shield.jpg><a href=\\\"javascript:void(0)\\\" onClick=\\\"javascipt:show_other_status('"+dt2[1]+"');\\\">"+dt2[0]+"</a>";
+        }
+    }
 }
 function bat_list_show(dtstr){
-  var dt=dtstr.split('<>');
-  var batlist=getObj('battlef').mode;
-  var j=batlist.options.length;
-  var wMap = ['1','2','3','4','30','31','40','kunren','toubatsu',''];
-  for(var i=0;i<j;i++){
-	batlist.remove(0);
-  }
-  for(var i=1;i<dt.length;i++){
-	var dt2=dt[i].split(',');
-	if(dt2[0].length>1){
-		var op=document.createElement("option"); 
-		batlist.appendChild(op);
-	        op.text=dt2[0];
-	        op.value=dt2[1];
-		var t=false;
-		for(var j=0;j<wMap.length;j++){
-			if (wMap[j]==dt2[1]){
-				t=true;
-				break;
-			}
-		}
-		if(!t){
-			op.style.backgroundColor="yellow";
-		}
-	}
-  }
-  if(batlist.options[0].value=='1' && battlemap != ''){
-    j=batlist.options.length;
-    for(var i=0;i<j;i++){
-	if(batlist.options[i].value == battlemap){
-try{
-		batlist.options[i].selected=true;
-}catch(e){}
-  	}
+    var dt=dtstr.split('<>');
+    var batlist=getObj('battlef').mode;
+    var wMap = ['1','2','3','4','30','31','40','kunren','toubatsu',''];
+    batlist.innerHTML="";
+    for(var i=1;i<dt.length;i++){
+        var dt2=dt[i].split(',');
+        var op=document.createElement("option"); 
+        batlist.appendChild(op);
+        op.text=dt2[0];
+        op.value=dt2[1];
+        if(wMap.indexOf(op.value) === -1){
+            op.style.backgroundColor="yellow";
+        }
     }
-  }
+    if(batlist.options[0].value=='1' && battlemap != ''){
+        j=batlist.options.length;
+        for(var i=0;i<j;i++){
+            if(batlist.options[i].value == battlemap){
+                batlist.options[i].selected=true;
+            }
+        }
+    }
 }
 function list_show(nlist,insertaddr,dtstr,color){
-  var dt2=dtstr.split(',');
-  if(insertaddr =='last'){
-	var op=document.createElement("option");
-        nlist.appendChild(op);
-        op.text=dt2[0];
-        op.value=dt2[1];
-	if(color !=''){op.style.backgroundColor=color;}
-  }else{
-//     if(isIE){
-	var op=document.createElement("option");
-        nlist.insertBefore(op,nlist.options[0]);
-        op.text=dt2[0];
-        op.value=dt2[1];
-//     }else{
-//	nlist.insertBefore(new Option(dt2[0],dt2[1]), nlist.options[0]);
-//     }
-//     if(color !=''){nlist.options[0].style.backgroundColor=color;}
-        if(color !=''){op.style.backgroundColor=color;}
-     nlist.options[0].selected=true;
-  }
+    var dt2=dtstr.split(',');
+    var op=document.createElement("option");
+    nlist.insertBefore(op,nlist.options[0]);
+    op.text=dt2[0];
+    op.value=dt2[1];
 
+    if(color !=''){op.style.backgroundColor=color;}
+    nlist.options[0].selected=true;
 }
 function list_init(){
-  var townlist=getObj('townf').mode;
-  var j=townlist.options.length-1;
-  for (var i=j;i>=0;i--){
-     if(townlist.options[i].value !='battle_entry')
-	townlist.remove(i);
-     else
-        break;
-  }
-  j=townlist.options.length-1;
-  for (var i=j;i>=0;i--){
-    if(townlist.options[0].value !='inn')
-	townlist.remove(0);
-    else
-        break;
-  }
-  var statuslist=getObj('statusf').mode;
-  j=statuslist.options.length-1;
-  for (var i=j;i>=0;i--){
-     if(statuslist.options[0].value !='status')
-        statuslist.remove(0);
-     else
-        break;
-  }
+    var townlist=getObj('townf').mode;
+    var j=townlist.options.length-1;
+    for (var i=j;i>=0;i--){
+        if(townlist.options[i].value !='battle_entry'){
+            townlist.remove(i);
+        }else{
+            break;
+        }
+    }
+    j=townlist.options.length-1;
+    for (var i=j;i>=0;i--){
+        if(townlist.options[0].value !='inn'){
+            townlist.remove(0);
+        }else{
+            break;
+        }
+    }
+    var statuslist=getObj('statusf').mode;
+    j=statuslist.options.length-1;
+    for (var i=j;i>=0;i--){
+        if(statuslist.options[0].value !='status'){
+            statuslist.remove(0);
+        }else{
+            break;
+        }
+    }
 }
 function town_show(dtstr){
-  var dt=dtstr.split('<>');
-  if(getObj('town_datas')){
-  	var dtetc=dt[15].split(',');
-	var dtbuild=dt[14].split(',');
-	getObj('town_gold').innerHTML=chdl(dt[5]);
-	getObj('town_xy').innerHTML=dt[12] + ' - ' + dt[13];
-	getObj('town_arm').innerHTML=dt[6];
-	getObj('town_pro').innerHTML=dt[7];
-	getObj('town_acc').innerHTML=dt[8];
-	getObj('town_ind').innerHTML=dt[9];
-	getObj('town_hp').innerHTML=dtetc[0]+'//'+dtetc[1];
-	var add_str,add_def;
-	try{
-	add_str='+'+Math.floor(dtetc[2]*dtbuild[5]/20);
-	}catch(e){}
-	try{
-        add_def='+'+Math.floor(dtetc[3]*dtbuild[6]/20);
-	}catch(e){}
-	getObj('town_str').innerHTML=dtetc[2]+''+add_str;
-	getObj('town_def').innerHTML=dtetc[3]+''+add_def;
-	getObj('town_name2').innerHTML=dt[2]+'的情報';
-	getObj('town_name1').innerHTML=dt[2];
-	getObj('con2_name').innerHTML=dt[3];
-	getObj('town_ele').innerHTML=dt[4];
+    var dt=dtstr.split('<>');
+    if(getObj('town_datas')){
+        var dtetc=dt[15].split(',');
+        var dtbuild=dt[14].split(',');
+        getObj('town_gold').innerHTML=chdl(dt[5]);
+        getObj('town_xy').innerHTML=dt[12] + ' - ' + dt[13];
+        getObj('town_arm').innerHTML=dt[6];
+        getObj('town_pro').innerHTML=dt[7];
+        getObj('town_acc').innerHTML=dt[8];
+        getObj('town_ind').innerHTML=dt[9];
+        getObj('town_hp').innerHTML=dtetc[0]+'//'+dtetc[1];
+        var add_str='+'+Math.floor(dtetc[2]*dtbuild[5]/20);
+        var add_def='+'+Math.floor(dtetc[3]*dtbuild[6]/20);
+        getObj('town_str').innerHTML=dtetc[2]+''+add_str;
+        getObj('town_def').innerHTML=dtetc[3]+''+add_def;
+        getObj('town_name2').innerHTML=dt[2]+'的情報';
+        getObj('town_name1').innerHTML=dt[2];
+        getObj('con2_name').innerHTML=dt[3];
+        getObj('town_ele').innerHTML=dt[4];
         getObj('town_def_max').innerHTML=dtbuild[2];
-  }
+    }
 }
 function guest_show(dtstr){
-  var dt=dtstr.split('<>');
-  var oTb = getObj('guestList');
-  oTb.innerHTML="★<a href=\\\"javascript:void(0)\\\" onClick=\\\"javascipt:show_other_status('"+dt[1]+"');\\\"><font color="+dt[2]+">"+dt[3]+"</a></font>"+oTb.innerHTML;;
+    var dt=dtstr.split('<>');
+    var oTb = getObj('guestList');
+    oTb.innerHTML="★<a href=\\\"javascript:void(0)\\\" onClick=\\\"javascipt:show_other_status('"+dt[1]+"');\\\"><font color="+dt[2]+">"+dt[3]+"</a></font>"+oTb.innerHTML;;
 }
 function chara_show(dtstr){
-  var dt=dtstr.split('<>');
-  if(mcon != dt[24]){
-          alert('因為更換國家，系統將自動重新整理');
-          location.reload();
-  }
-  var mjp=dt[20].split(',');
-  var mmax=dt[14].split(',');
-  for(var i=0;i<6;i++){
-	getObj('chara_mjp'+i).innerHTML=mjp[i];
+    var dt=dtstr.split('<>');
+    if(mcon != dt[24]){
+        alert('因為更換國家，系統將自動重新整理');
+        location.reload();
+    }
+    var mjp=dt[20].split(',');
+    var mmax=dt[14].split(',');
+    for(var i=0;i<6;i++){
+        getObj('chara_mjp'+i).innerHTML=mjp[i];
         getObj('chara_max'+i).innerHTML=dt[8+i]+'('+mmax[i]+')';
-  }
-  var m_maxmaxhp=mmax[0]*5+mmax[1]*10+mmax[3]*3-2000;
-  var m_maxmaxmp=mmax[2]*5 + mmax[3]*3 -800;
-  getObj('mname').innerHTML=dt[1]+'<br>'+'戰數：'+dt[36];
-  getObj('chara_maxmaxhp').innerHTML=dt[4]+'('+m_maxmaxhp+')';
-  getObj('chara_maxmaxmp').innerHTML=dt[6]+'('+m_maxmaxmp+')';
-  getObj('mlv').innerHTML=parseInt(dt[18]/100)+1;
-  getObj('mele').innerHTML=dt[7];
-  getObj('mhp').innerHTML=dt[3]+'/'+dt[4];
-  getObj('mmp').innerHTML=dt[5]+'/'+dt[6];
-  getObj('mabp').innerHTML=dt[21];
-  getObj('mtype').innerHTML=dt[47]+'熟練度';
-  getObj('mex').innerHTML=dt[18];
-  getObj('mclass').innerHTML=dt[35];
-  getObj('mcex').innerHTML=dt[22];
-  getObj('mjps').innerHTML=mjp[dt[38]];
-	getObj('ver1').style.display='none';
-	getObj('keyver').style.display='none';
-	getObj('battlef').rnd2.value=dt[39];
-  moya=dt[39];
-  getObj('mgold').innerHTML='<font color=blue>'+chdl(dt[16])+'</font><br><font color=green>'+chdl(dt[17])+'</font>';
+    }
+    var m_maxmaxhp=mmax[0]*5+mmax[1]*10+mmax[3]*3-2000;
+    var m_maxmaxmp=mmax[2]*5 + mmax[3]*3 -800;
+    getObj('mname').innerHTML=dt[1]+'<br>'+'戰數：'+dt[36];
+    getObj('chara_maxmaxhp').innerHTML=dt[4]+'('+m_maxmaxhp+')';
+    getObj('chara_maxmaxmp').innerHTML=dt[6]+'('+m_maxmaxmp+')';
+    getObj('mlv').innerHTML=parseInt(dt[18]/100)+1;
+    getObj('mele').innerHTML=dt[7];
+    getObj('mhp').innerHTML=dt[3]+'/'+dt[4];
+    getObj('mmp').innerHTML=dt[5]+'/'+dt[6];
+    getObj('mabp').innerHTML=dt[21];
+    getObj('mtype').innerHTML=dt[47]+'熟練度';
+    getObj('mex').innerHTML=dt[18];
+    getObj('mclass').innerHTML=dt[35];
+    getObj('mcex').innerHTML=dt[22];
+    getObj('mjps').innerHTML=mjp[dt[38]];
+    getObj('battlef').rnd.value=dt[39];
+    moya=dt[39];
+    getObj('mgold').innerHTML='<font color=blue>'+chdl(dt[16])+'</font><br><font color=green>'+chdl(dt[17])+'</font>';
 }
 function show_other_status(dt1){
 	window.open('./status_print.cgi?id='+dt1, 'newwin', 'width=600,height=400,scrollbars =yes');
@@ -866,54 +755,37 @@ function show_other_status(dt1){
 function create_tb(tbl1,chara,lname,lmes,daytime,maxmsg){
 	var oTr=tbl1.insertRow(0);
 	var oTd=oTr.insertCell(-1);
-	oTd.bgColor="#000000";
-	oTd.align="middle";
-	oTd.width="15%";
-	oTd.innerHTML='<img border=0 src=$IMG/chara/'+chara+'.gif></a>';
+	oTd.innerHTML='<img src=$IMG/chara/'+chara+'.gif></a>';
 	var oTd2=oTr.insertCell(-1);
-	oTd.align="left";
-	oTd2.bgColor="#000000";
 	oTd2.innerHTML='<b>'+lname+'<br><font color=ffffff>「'+lmes+'」</b></font><font color=#999999 size=1><br>('+daytime+')</font>';
-		var rws=tbl1.getElementsByTagName('TR');
+    var rws=tbl1.getElementsByTagName('TR');
 	if(tbl1.rows.length>maxmsg){
 		tbl1.rows[maxmsg].parentNode.removeChild(tbl1.rows[maxmsg]);
- 
 	}
- 
 }
-function GetXmlHttpObject(){
-	var xmlHttp=null;
-	try
-	  {
-	  // Firefox, Opera 8.0+, Safari
-	  xmlHttp=new XMLHttpRequest();
-	  }
-	catch (e)
-	  {
-	  // Internet Explorer
-	  try
-	    {
-	    xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
-	    }
-	  catch (e)
-	    {
-	    xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
-	    }
-	  }
-	return xmlHttp;
-}
+
 function opstatue(pid){
-        window.open('./status_print.cgi?id='+pid, 'newwin', 'width=600,height=400,scrollbars =yes');
+    window.open('./status_print.cgi?id='+pid, 'newwin', 'width=600,height=400,scrollbars =yes');
 }
-        now=new Date();
 function to() {
-	if(BTIME>0){BTIME--;
+	if(BTIME>0){
+        BTIME--;
         getObj("tok").innerHTML =("<font color=#FFFFFF>距下次行動剩餘" + BTIME + "秒</font>");
 	}
-        if(BTIME<1 && !getObj('battlebutton').disabled){
-                getObj("tok").innerHTML =("<font color=#FFFFFF><b>行動ＯＫ</b></font>");
+    if(BTIME<=0){
+		getObj("tok").innerHTML =("<font color=#FFFFFF><b>行動ＯＫ</b></font>");
+        if(getObj("autoattack").checked){
+            const data = new URLSearchParams(new FormData(getObj('battlef')));
+            fetch('battle.cgi', {
+                method: 'POST',
+                body: data
+            }).then(response => {
+                spshow=true;
+                get_all_data();
+            });
         }
-        setTimeout("to()", 1000);
+	}
+	setTimeout("to()", 1000);
 }
 function fastkeyform(fc,fi){
 	fastf.action=fc+'.cgi';
@@ -922,10 +794,8 @@ function fastkeyform(fc,fi){
 }
 function actform(form){
 	getObj('mainTable').style.display='none';
-        getObj('subTable').style.display='none';
+    getObj('subTable').style.display='none';
 	getObj('actionframe').style.display='';
-	getObj('battlef').rnd.value=getObj('battlef').rnd2.value;
-	getObj('ver1').style.display='none';
 	try{
 		var nmp=form.mode.options[form.mode.selectedIndex].value;
 		if(nmp =='1' || nmp=='2' ||nmp=='3' || nmp=='4' || nmp=='30' || nmp=='31' || nmp=='40'){
@@ -935,34 +805,20 @@ function actform(form){
 	form.submit();
 }
 function backtown(){
-	if(isIE){
-		parent.frames['main'].focus();
-	}
-	try{
-		getObj('statusf').mode.options[0].selected=true;
-		getObj('countryf').mode.options[1].selected=true;
-		getObj('townf').mode.options[0].selected=true;
-	}catch(e){}
+    getObj('statusf').mode.options[0].selected=true;
+    getObj('countryf').mode.options[1].selected=true;
+    getObj('townf').mode.options[0].selected=true;
+
 	getObj('mainTable').style.display='';
 	getObj('subTable').style.display='';
 	getObj('actionframe').style.display='none';
-	if(isIE){
-		document.frames('actionframe').document.body.innerHTML='<br><br><p align="center"><i><font size=4 color=white>資料讀取中....</font></i></p>';
-	}else{
+
 	var iObj = document.getElementById('actionframe').contentDocument;
 	iObj.body.innerHTML='<br><br><p align="center"><i><font color=white size=4>資料讀取中....</font></i></p>';
-	}
-        var iObj;
-       if(isIE){
-            iObj=getObj('actionframe');
-            iObj.style.height="400px";
-        }else{
-            iObj = getObj('actionframe');
-            iObj.style.height="400px";
-        }
 
+    getObj('actionframe').style.height="400px";
 	get_all_data();
-	scrollToTop.action();
+	scrollTo(0,0);
 }
 function chdl(dl){
 	var dl1="";
@@ -986,62 +842,19 @@ function getObj(objName){
 	return document.getElementById(objName);
 }
 function setframeheight(){
-        var iObj;
-       if(isIE){
-            iObj=getObj('actionframe');
-            iObj2=document.frames('actionframe').document.body;
-            iObj.style.height=iObj2.scrollHeight;
-        }else{
-            iObj = getObj('actionframe');
-	    iObj.style.height=iObj.contentDocument.body.scrollHeight;
-        }
+    var iObj = getObj('actionframe');
+    iObj.style.height=iObj.contentDocument.body.scrollHeight;
 }
-	scrollToTop=new Object();
-	scrollToTop.scrollTop=null;
-	scrollToTop.scrollLeft=null;
-	scrollToTop.action=function(){
-		if(isIE){
-			parent.frames('main').focus;
-		}else{
-//			parent.contentDocument.getElementById('main').focus;
-		}
-		if(scrollToTop.scrollTop==null){
-		var pageY = window.pageYOffset || (document.documentElement.scrollTop || document.body.scrollTop);
-		var pageX = window.pageXOffset || (document.documentElement.scrollLeft || document.body.scrollLeft);  
-		scrollToTop.scrollTop=pageY;
-		scrollToTop.scrollLeft=pageX;
-		}
-		scrollToTop.scrollTop=0;
-		window.scroll(scrollToTop.scrollLeft,scrollToTop.scrollTop); 
-		if(scrollToTop.scrollTop>0){ 
-		return;
-		}
-		scrollToTop.scrollTop=null;
-		scrollToTop.scrollLeft=null;
-	}
-
-function MoveLayer() {
-	var x = 50;
-	var y = 100;
-	var _y = document.body.scrollTop + y;
-	var diff =(_y - parseInt(document.getElementById('newmsg').style.top))*.40;
-	var rey=_y-diff;
-	document.getElementById('newmsg').style.top=rey;
-	document.getElementById('newmsg').style.right=x;
-	setTimeout("MoveLayer();", 500);
-}
-
 function shownewmsg(msg){
-	document.getElementById('newmsg').style.visibility='visible';
-	MoveLayer("newmsg");
+	document.getElementById('newmsg').style.display='';
 	setTimeout('hidemsg()',5000);
 }
 function hidemsg(){
-	document.getElementById('newmsg').style.visibility='hidden';
+	document.getElementById('newmsg').style.display='none';
 }
+get_all_data();
 to();
-//-->
-</SCRIPT>
+</script>
 EOF
  
 &mainfooter;

@@ -52,7 +52,6 @@ sub bat{
 	close(IN);
 	$player=@newguest;
 	$mixsp=0;
-	if($in{'rnd2'} eq "" && $mtotal ne"0"){&error2("系統已進行更新，請重新登入");}
 	if($member_point eq""){
 		foreach(@newguest) {
 			($gname,$gtime,$gcon,$ghost,$gid)=split(/<>/);

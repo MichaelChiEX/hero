@@ -158,14 +158,14 @@ if($ext_tmpxs>0){
 	}
     #戰鬥地圖
     if ($nowmap eq""){
-            $nowmap="入口";
+        $nowmap="入口";
     }elsif($nowmap eq"25"){
 		$nowmap="王座";
-		$giveupmap.="放棄王座,giveup2<>";
+		$giveupmap.="<>放棄王座,giveup2";
 	}else{
         $nowmap.="層";
     }
-    $dun="$town_name $SEN[1],1<>$town_name $SEN[2],2<>$town_name $SEN[3],3<>$town_name $SEN[4],4<>$town_name $SEN[30],30<>$town_name 禁地$nowmap,31<>魔王城,40<>===============,<>訓練,kunren<>討伐,toubatsu<>$giveupmap";
+    $dun="$town_name $SEN[1],1<>$town_name $SEN[2],2<>$town_name $SEN[3],3<>$town_name $SEN[4],4<>$town_name $SEN[30],30<>$town_name 禁地$nowmap,31<>魔王城,40<>===============,<>訓練,kunren<>討伐,toubatsu$giveupmap";
 
 	##顯示試鍊
 	$moya2=$moya%1000;
@@ -209,16 +209,14 @@ print "Cache-Control: no-cache\n";
 print "Pragma: no-cache\n";
 print "Content-type: text/html\n\n";
 print <<"EOF";
-VER<>$AJAXVER<>
 $atable
 $guestlist
 $ajax_chara_data
 $ajax_con_data
 $town_data$maplog$maplog2
 $town_def_list
-ALLTIME<>$timer<>$mdate<>$chattime<>$LOGTIME<>$BTIME<>
+ALLTIME<>$timer<>$chattime<>$LOGTIME<>$BTIME<>
 $dun
-$acton
 $townsp
 $status
 $member

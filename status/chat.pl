@@ -62,8 +62,6 @@ sub chat {
 				
 				if($ename eq"$in{'aite'}"){$mh=1;last;}
 			}
-			if($mn>10000){&error_alert("ループ");}
-			$mn++;
 		}
 		closedir(dirlist);
 
@@ -105,13 +103,7 @@ sub chat {
 	print "Pragma: no-cache\n";
 	print "Content-type: text/html\n\n";
 
-	print <<"EOF";
-
-	<script>
-	setTimeout("parent.get_all_data()","2000");
-	</script>
-EOF
-
+	print "success";
 	exit;
 }
 
