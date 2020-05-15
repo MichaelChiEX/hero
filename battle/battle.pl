@@ -6,45 +6,6 @@ sub bat{
 	&quest_open;
 	$date = time();
 
-	if($ext_quest_total<$mtotal && $mtotal ne""){
-		if ($ext_quest_total eq"-1" || $ext_quest_total eq""){
-			if($mpos ne $quest_town_no){
-			$i=0;
-		        foreach(@TOWN_DATA){
-		                ($town2_id,$town2_name,$town2_con,$town2_ele,$town2_gold,$town2_arm,$town2_pro,$town2_acc,$town2_ind,$town2_tr,$town2_s,$town2_x,$town2_y)=split(/<>/);
-				if($town2_id>21){last;}
-		                if(abs($town2_x-$town_x) <= "1" && abs($town2_y-$town_y) <= "1" && $town_name ne $town2_name || $moveall){
-		                        $towns[$i]=$town2_id;
-                        		$townn[$i]=$town2_name."($town2_x，$town2_y)";
-                		        $i++
-		                }
-		        }
-			$ext_quest_total="-1";
-		        $gtown=int(rand($i));
-		        $quest_town_no=$towns[$gtown];
-		        $quest_town_name=$townn[$gtown];
-			if($quest_town_no eq""){
-				$quest_town_no=0;
-				$quest_town_name="冒險者中心";
-			}
-			&quest_input;
-			&ext_input;
-			}
-			&quest_form;
-		}elsif($ext_quest_total eq"-2"){
-			&quest_form2;
-		}else{
-			$quest_time[0]=$date+600;
-			$ext_quest_total="-2";
-			&quest_input;
-			&ext_input;
-			&quest_form2;
-		}
-	}
-	if($mtotal eq""){
-		$ext_quest_total="-1";
-	}
-
 	($ext_kinghit,$ext_kingtophit,$ext_kingcount)=split(/,/,$ext_kingetc);
 	if($in{'mode'} eq "" || $SEN[$in{'mode'}] eq ""){&error("資料傳輸錯誤，<a href='./login.cgi'>請重新登入</a>。");}
 	open(IN,"./data/guest_list.cgi");
