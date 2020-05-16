@@ -65,7 +65,6 @@ sub setkey{
         }
     </script>
 EOF
-    &mainfooter;
     exit;
 }
 1;

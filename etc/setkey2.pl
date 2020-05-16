@@ -35,12 +35,7 @@ sub setkey2{
             </tr>
             <tr>
                 <td colspan="2" align="right">
-                    <form action="./top.cgi" method="POST">
-                        <input type=hidden name=id value=$mid>
-                        <input type=hidden name=pass value=$mpass>
-                        <input type=hidden name=rmode value=$in{'rmode'}>
-                        <input type=submit CLASS=FC value=回到城鎮>
-                    </form>
+                    <button onclick="parent.location.reload()" class="FC">回到城鎮</button>
                 </td>
             </tr>
         </tbody>
