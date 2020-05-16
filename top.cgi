@@ -748,6 +748,11 @@ function chara_show(dtstr){
     getObj('battlef').rnd.value=dt[39];
     moya=dt[39];
     getObj('mgold').innerHTML='<font color=blue>'+chdl(dt[16])+'</font><br><font color=green>'+chdl(dt[17])+'</font>';
+
+    if (dt[3]<1 && getObj('autoattack').checked){
+        getObj('autoattack').checked = false;
+        alert('HP不足，停止自動戰鬥。');
+    }
 }
 function show_other_status(dt1){
 	window.open('./status_print.cgi?id='+dt1, 'newwin', 'width=600,height=400,scrollbars =yes');
