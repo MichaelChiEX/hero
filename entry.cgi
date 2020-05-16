@@ -16,10 +16,7 @@ for($i=1; $i<=$CHARAIMG; $i++){
     $chara_list.="<option value='$i'>圖案[$i]</option>";
 }
 
-if($ATTESTATION){$mailcom="<br><font color=red size=2>入力したアドレス宛に認証パスワードがメールにて送られます。登録後、入力したメールアドレス宛に届くメールに記載されたパスワードで認証を行う事で登録完了となります。<br>メールアドレスが正しくない場合、認証メールが届かず登録できません。又、再度登録することもできませんのでご注意下さい。</font>";}
-
 &header;
-
 print <<"EOF";
 <script>
 function changeImg(obj){
@@ -81,7 +78,6 @@ function changeImg(obj){
             <td bgcolor="#ffffcc">屬性</td>
             <td bgcolor="#ffffcc"><select name=ele>$elelist</select></td>
         </tr>
-        <input type=hidden name=con_id value=0>
         <tr>
             <td colspan="2" bgcolor="#ffffcc" align="center"><input type="submit"CLASS=FC value="建立角色"></td>
         </tr>

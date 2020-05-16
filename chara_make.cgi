@@ -1,14 +1,11 @@
 #! /usr/bin/perl
 require './sub.cgi';
 require './conf.cgi';
-require './attestation.cgi';
 
 &decode;
 &host_name;
 
 if($CHARA_ENT){&error2("目前無法再新建帳號。");}
-if($ENV{'HTTP_REFERER'} !~ /cgi$/ ){ &error2("請勿從外部連進入。"); }
-
 if($in{'id'} eq ""){&error2("請輸入帳號!");}
 if ($in{'name'} =~ / / || $in{'name'} =~ /GM/ || $in{'name'} =~ /ＧＭ/ || $in{'name'} =~/,/) {&error("名字中請不要出現空格豆號或ＧＭ等字樣。"); }
 if($in{'pass'} eq $in{'id'}){&error2("帳號與密碼不可一樣!");}
@@ -23,33 +20,21 @@ if(length($in{'name'}) < 4||length($in{'name'}) > 32){&error2("角色名稱請�
 if($in{'sex'} eq ""){&error2("請選擇性別。");}
 if($in{'img'} eq ""){&error2("請選擇角色圖案。");}
 if($in{'ele'} eq ""){&error2("請選擇屬性。");}
-if($in{'con_id'} eq ""){&error2("請選擇所屬國家。");}
-#if ($in{'mail'} =~ /yahoo/ || $in{'mail'} =~ /hotmail/ || $in{'mail'} =~ /excite/ || $in{'mail'} =~ /infoseek/  || $in{'mail'} =~ /goo/) {&error2("そのメールアドレスは使用できません。"); }
 if ($in{'mail'} eq "" || $in{'mail'} !~ /(.*)\@(.*)\.(.*)/){&error2("你的Email輸入有誤");}
 if ($in{'mail'} ne $in{'mailconfirm'}){&error2("你的Email兩次輸入不一致");}
-if($ATTESTATION){
-	$os = 1;
-}else{
-	$os = "";
-}
-                $dir="./logfile/chara";
-                opendir(dirlist,"$dir");
-                while($file = readdir(dirlist)){
-                        if($file =~ /\.cgi/i){
-                                $datames = "查詢：$dir/$file<br>\n";
-                                if(open(cha,"$dir/$file")){
 
-                                @cha = <cha>;
-                                close(cha);
-                                $list[$i]="$file";
-                                ($rid,$rpass,$rname,$rurl,$rchara,$rsex,$rhp,$rmaxhp,$rmp,$rmaxmp,$rele,$rstr,$rvit,$rint,$rfai,$rdex,$ragi,$rmax,$rcom,$rgold,$rbank,$rex,$rtotalex,$rjp,$rabp,$rcex,$runit,$rcon,$rarm,$rpro,$racc,$rtec,$rsta,$rpos,$rmes,$rhost,$rdate,$rsyo,$rclass,$rtotal,$rkati,$rtype) = split(/<>/,$cha[0]);
-                                                        if($rname eq $in{'name'}){closedir(dirlist);&error2("「$rname」已被其
-他玩家使用");}
-                                }
-                        }
-                        if($mn>10000){&error("ループ");}
-                        $mn++;
-                }	
+$dir="./logfile/chara";
+opendir(dirlist,"$dir");
+while($file = readdir(dirlist)){
+    if($file =~ /\.cgi/i){
+        if(open(cha,"$dir/$file")){
+            @cha = <cha>;
+            close(cha);
+            ($rid,$rpass,$rname,$rurl,$rchara,$rsex,$rhp,$rmaxhp,$rmp,$rmaxmp,$rele,$rstr,$rvit,$rint,$rfai,$rdex,$ragi,$rmax,$rcom,$rgold,$rbank,$rex,$rtotalex,$rjp,$rabp,$rcex,$runit,$rcon,$rarm,$rpro,$racc,$rtec,$rsta,$rpos,$rmes,$rhost,$rdate,$rsyo,$rclass,$rtotal,$rkati,$rtype) = split(/<>/,$cha[0]);
+            if($rname eq $in{'name'}){closedir(dirlist);&error2("「$rname」已被其他玩家使用");}
+        }
+    }
+}	
 $id=$in{'id'};
 $pass=$in{'pass'};
 $hp=50;$mp=10;$str=20;$vit=20;$int=20;
@@ -63,24 +48,14 @@ $max="200,200,200,200,200,200";
 $class=0;$kati=0;$total=0;$pos=0;
 $pet="";
 $date = time();
-if($ATTESTATION){$mailcom="<br><font color=red>※你的認證信將發送到你的Email信箱中。</font>";}
 
-open(IN,"./data/country.cgi") or &error2("城市文件無法開啟。");
-@CON_DATA = <IN>;
-close(IN);
-
-foreach(@CON_DATA){
-	($con_id,$con_name,$con_ele)=split(/<>/);
-	if("$con_id" eq "$in{'con_id'}"){$hit=1;last;}
-}
-if($in{'con_id'} ne 0 && !$hit){&error2("請正確選擇所屬國家。");}
-if($in{'con_id'} eq 0){$con_name="無所屬";}
+$con_id="0";
+$con_name="無所屬";
 
 $dir="./logfile/chara";
 opendir(dirlist,"$dir");
 while($file = readdir(dirlist)){
 	if($file =~ /\.cgi/i){
-		$datames = "查詢：$dir/$file<br>\n";
 		if(!open(chara,"$dir/$file")){
 			&error("$dir/$file 找不到檔案。<br>\n");
 		}
@@ -98,65 +73,61 @@ while($file = readdir(dirlist)){
 		if($eid eq"$in{'id'}"){&error2("你輸入的帳號已被申請。");}
 		
 	}
-	if($cn>10000){&error("ループ");}
-	$cn++;
 }
 closedir(dirlist);
 
-if($ATTESTATION){
-	&mail_to;
-}
-	
-unshift(@CHARA_DATA,"$id<>$pass<>$in{'name'}<>$os<>$in{'img'}<>$in{'sex'}<>$hp<>$hp<>$mp<>$mp<>$in{'ele'}<>$str<>$vit<>$int<>$fai<>$dex<>$agi<>$max<><>$gold<>$bank<>0<>0<>0<>0<>$cex<><>$in{'con_id'}<>$arm<>$pro<>$acc<>$tac<>$sta<>$pos<>$mes<>$host<>$date<>$date<>$class<>$total<>$kati<>0<><><>1<><><>$in{'mail'}<><>$pet<>\n");
+unshift(@CHARA_DATA,"$id<>$pass<>$in{'name'}<><>$in{'img'}<>$in{'sex'}<>$hp<>$hp<>$mp<>$mp<>$in{'ele'}<>$str<>$vit<>$int<>$fai<>$dex<>$agi<>$max<><>$gold<>$bank<>0<>0<>0<>0<>$cex<><>$con_id<>$arm<>$pro<>$acc<>$tac<>$sta<>$pos<>$mes<>$host<>$date<>$date<>$class<>$total<>$kati<>0<><><>1<><><>$in{'mail'}<><>$pet<>\n");
 
 open(OUT,">./logfile/chara/$in{'id'}.cgi") or &error2('建立失敗：角色檔案無法寫入。');
 print OUT @CHARA_DATA;
 close(OUT);
-$mid="$id";
+
 &kh_log("成為$con_name國的國民。",$con_name);
 &maplog("<font color=999933>[新進]</font>歡迎<font color=333399>$in{'name'}</font>加入了「$con_name國」</font>。");
 
 &header;
-
 print <<"EOF";
-<p align="center"><br>
-登錄完成</p>
+<p align="center">
+    <br>登錄完成
+</p>
 <center>
-<table border="0" width="415" height="67" bgcolor="#990099">
-  <tbody>
-    <tr>
-      <td bgcolor="#660066" colspan="3" align="center"><font color="#ffffcc">登錄情報</font></td>
-    </tr>
-    <tr>
-      <td bgcolor="#ffffcc">角色名稱</td>
-      <td bgcolor="#ffffcc">$in{'name'}</td>
-    </tr><tr>
-      <td bgcolor="#ffffcc">帳號</td>
-      <td bgcolor="#ffffcc">$id</td>
-    </tr>
-    <tr>
-      <td bgcolor="#ffffcc">密碼</td>
-      <td bgcolor="#ffffcc">$pass</td>
-    </tr>
-    <tr>
-      <td bgcolor="#ffffcc">所屬國家</td>
-      <td bgcolor="#ffffcc">$con_name</td>
-    </tr>
-    <tr>
-      <td colspan="3" bgcolor="#ffcc99"><font color="#993399">帳號已新建完成。<br>
-      請記得你的帳號及密碼。<br>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="3" align=center bgcolor="#ffcc99">
-      	<form action="./top.cgi" method="POST">
-	<input type=hidden name=id value=$in{'id'}>
-	<input type=hidden name=pass value=$in{'pass'}>
-	<input type=submit CLASS=FC value=進入遊戲></form>
-      </td>
-    </tr>
-  </tbody>
-</table>
+    <table border="0" width="415" height="67" bgcolor="#990099">
+        <tbody>
+            <tr>
+                <td bgcolor="#660066" colspan="3" align="center"><font color="#ffffcc">登錄情報</font></td>
+            </tr>
+            <tr>
+                <td bgcolor="#ffffcc">角色名稱</td>
+                <td bgcolor="#ffffcc">$in{'name'}</td>
+            </tr>
+            <tr>
+                <td bgcolor="#ffffcc">帳號</td>
+                <td bgcolor="#ffffcc">$id</td>
+            </tr>
+            <tr>
+                <td bgcolor="#ffffcc">密碼</td>
+                <td bgcolor="#ffffcc">$pass</td>
+            </tr>
+            <tr>
+                <td bgcolor="#ffffcc">所屬國家</td>
+                <td bgcolor="#ffffcc">$con_name</td>
+            </tr>
+            <tr>
+                <td colspan="3" bgcolor="#ffcc99"><font color="#993399">帳號已新建完成。<br>
+                請記得你的帳號及密碼。<br>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" align=center bgcolor="#ffcc99">
+                    <form action="./top.cgi" method="POST">
+                        <input type=hidden name=id value=$in{'id'}>
+                        <input type=hidden name=pass value=$in{'pass'}>
+                        <input type=submit CLASS=FC value=進入遊戲>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </center>
 
 EOF

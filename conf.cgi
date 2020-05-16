@@ -102,12 +102,6 @@ $IMG="/hero_data/img";
 $TOWN_IMG=$IMG."/town/machi.jpg";#昼背景
 $TOWN_IMG2=$IMG."/town/machi2.jpg";#夜背景
 
-# 認証(登録にメールを必要とするか。０：不必要　１：必要　使用する場合はIDを任意のアルファベットに變更することex:fg,asd,oi)
-$ATTESTATION = "0";
-$ATTESTATION_ID = 'ab';
-#sendmailのパス
-$SENDMAIL = '/usr/bin/sendmail';
-
 #URL設定(※)
 $LINK1="首頁";
 $LINKURL1="/";
