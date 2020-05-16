@@ -261,7 +261,7 @@ sub equip2 {
 				if ($rand_val<8) {
 					$rand_val=8;
 				}
-				if (int(rand($rand_val)) eq 1 || $mid eq $GMID) {
+				if (int(rand($rand_val)) eq 1) {
 					$rnd_srar=int(rand($SRARCOUNT));
 					if($rnd_srar eq 14){
 						$rnd_srar=int(rand($SRARCOUNT));

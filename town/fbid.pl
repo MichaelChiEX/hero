@@ -35,11 +35,7 @@ sub fbid{
                 @MMES_DATA = <IN>;
                 close(IN);
                 unshift(@MMES_DATA, "$GMID<>$f_id<>拍賣訊息<>gm<>拍賣訊息<>$bidc<>$tt<>\n");
-if($mid eq $GMID){
-        splice(@MMES_DATA,20);
-}else{
-        splice(@MMES_DATA,$MES_MAX);
-}
+				splice(@MMES_DATA,$MES_MAX);
                 open(OUT,">./logfile/mes/$f_id.cgi");
                 print OUT @MMES_DATA;
                 close(OUT);		

@@ -40,9 +40,6 @@ sub bat{
 	if($member_fix_time){
 		$BTIME=15;
 	}
-	if ($mid eq $GMID){
-		$BTIME=5;
-	}
 	$btime = $BTIME - $date + $mdate;
 	if($btime>0){&error("離下次可戰鬥時間剩$btime 秒。");}
 
@@ -54,9 +51,6 @@ sub bat{
 
 	$mode=$in{'mode'};
 	$mode2=$in{'mode'};
-	if ($mid eq $GMID) {
-		$CHECK_MAP=0;
-	}
 	if ($moya ne $in{'rnd'}) {
 		&error("戰鬥後請勿按重新整理");
 	}elsif($in{'mode'} eq 30){
@@ -686,7 +680,6 @@ EOF
 				}elsif ($mab[38] && int(rand($sr_rnd2)) eq "10") {
 					$reahit=1;
 				}
-				if($mid eq $GMID){$reahit=1;}
 				if ($reahit eq 1){
 					#原料
 					if ($ext_tl_mix eq""){$ext_tl_mix=0;}
@@ -715,7 +708,7 @@ EOF
 					}
 					$iflg=1;
 					$reano=5;
-				}elsif(($mid eq $GMID || int(rand(2500)) eq 1) && $in{'mode'} eq "31" && $nowmap>5){
+				}elsif(int(rand(2500)) eq 1 && $in{'mode'} eq "31" && $nowmap>5){
 					#地獄草
 					$rflg=1;
 					$reahit=1;
@@ -839,7 +832,7 @@ EOF
 					}
 				}
 				$REA[0]="$abname-奧義之石(飾)<>300000<>2<>0<>0<>80<>10<>$rndsta<><><>";
-			}elsif(!$reahit && $in{'mode'} eq"40" && (int(rand($act_rnd)) eq 3 || $mid eq $GMID)){
+			}elsif(!$reahit && $in{'mode'} eq"40" && int(rand($act_rnd)) eq 3){
 			#魔王城掉奧義石
 				$REA="";
 				$reano="7";
@@ -936,7 +929,6 @@ EOF
 						}
 						$rand_val-=$member_level;
 						if($rand_val<3){$rand_val=3;}
-						if ($mid eq $GMID) {$rand_val=2;}
 						if (int(rand($rand_val)) eq 1) {
 							$rnd_srar=int(rand($SRARCOUNT));
 							if ($rnd_srar eq 14) {

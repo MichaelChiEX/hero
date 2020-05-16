@@ -71,7 +71,6 @@ sub action3 {
             $rndi=int(rand(49))+2;
         }
 	}
-	if($mid eq $GMID){$rndi=0;}
 
     $getitem=$tmp_itm[$rndi];
 	($it_no,$it_ki,$it_name,$it_val,$it_dmg,$it_wei,$it_ele,$it_hit,$it_cl,$it_sta,$it_type,$it_flg)=split(/<>/,$getitem);

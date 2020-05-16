@@ -12,7 +12,7 @@ sub rule_delete {
 		$BFILE="./blog/rule/$con_id.cgi";
 		$rule="rule";
 	}elsif($in{'type'} eq 2){
-		if($con_king ne $mid && $mid ne $GMID){&error("國王以外的人無法刪除。");}
+		if($con_king ne $mid){&error("國王以外的人無法刪除。");}
 		$BFILE="./blog/rule/0.cgi";
 		$rule="all_rule";
 	}else{&error("資料傳輸有誤，<a href='./login.cgi'>請重新登入</a>。");}

@@ -136,9 +136,6 @@ if($ext_tmpxs>0){
     if($member_fix_time){
         $BTIME=15;
     }
-    if ($mid eq $GMID){
-        $BTIME=5;
-    }
 	$BTIME = $BTIME - $date + $mdate;
 	if($mflg<2){
 	    #Ajax城鎮情報

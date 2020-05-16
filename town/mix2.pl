@@ -355,7 +355,7 @@ sub mix2 {
 				if($member_mix){$spoint+=50;$member_mix="";}
 	                        $rpoint=int(rand(100));
 	                        splice(@ITEM,$in{'iarmsta'},1);
-	                        if ($spoint>=$rpoint || $mid eq $GMID){
+	                        if ($spoint>=$rpoint){
 	                        	($xmarmno,$marmname,$xmarmval,$xmarmdmg,$xmarmwei,$xmarmele,$xmarmhit,$xmarmcl,$xmarmsta,$xmarmtype,$xmarmflg) = split(/,/,$marm);
 					($xmarm_stas[0],$xmarm_stas[1])=split(/:/,$xmarmsta);
 	                        	$xmarmsta=$abno;
@@ -399,7 +399,7 @@ sub mix2 {
 				if($member_mix){$spoint+=50;$member_mix="";}
 	                        $rpoint=int(rand(100));
 	                        splice(@ITEM,$in{'iprosta'},1);
-	                        if ($spoint>=$rpoint || $mid eq $GMID){
+	                        if ($spoint>=$rpoint){
 	                        	($xmprono,$mproname,$xmproval,$xmprodmg,$xmprowei,$xmproele,$xmprohit,$xmprocl,$xmprosta,$xmprotype,$xmproflg) = split(/,/,$mpro);
 					($xmpro_stas[0],$xmpro_stas[1])=split(/:/,$xmprosta);
 	                        	$xmprosta=$abno;
@@ -444,7 +444,7 @@ sub mix2 {
 				if($member_mix){$spoint+=50;$member_mix="";}
                                 $rpoint=int(rand(100));
                                 splice(@ITEM,$in{'ipetsta'},1);
-                                if ($spoint>=$rpoint || $mid eq $GMID){
+                                if ($spoint>=$rpoint){
                                         ($xmpetno,$mpetname,$xmpetval,$xmpetdmg,$xmpetwei,$xmpetele,$xmpethit,$xmpetcl,$xmpetsta,$xmpettype,$xmpetflg) = split(/,/,$mpet);
 					($xmpet_stas[0],$xmpet_stas[1])=split(/:/,$xmpetsta);
                                         $xmpetsta=$abno;
@@ -537,7 +537,7 @@ sub mix2 {
                                 if($member_mix){$spoint+=50;$member_mix="";}
                                 $rpoint=int(rand(100));
                                 splice(@ITEM,$in{'iaccsta'},1);
-                                if ($spoint>=$rpoint || $mid eq $GMID){
+                                if ($spoint>=$rpoint){
                                         ($xmaccno,$maccname,$xmaccval,$xmaccdmg,$xmaccwei,$xmaccele,$xmacchit,$xmacccl,$xmaccsta,$xmacctype,$xmaccflg) = split(/,/,$macc);
                                         ($xmacc_stas[0],$xmacc_stas[1])=split(/:/,$xmaccsta);
                                         $xmaccsta=$abno;
@@ -577,7 +577,7 @@ sub mix2 {
                                 if($member_mix){$spoint+=50;$member_mix="";}
                                 $rpoint=int(rand(100));
                                 splice(@ITEM,$in{'iarmsta2'},1);
-                                if ($spoint>=$rpoint || $mid eq $GMID){
+                                if ($spoint>=$rpoint){
                                         ($xmarmno,$marmname,$xmarmval,$xmarmdmg,$xmarmwei,$xmarmele,$xmarmhit,$xmarmcl,$xmarmsta,$xmarmtype,$xmarmflg) = split(/,/,$marm);
 					($xmarm_stas[0],$xmarm_stas[1])=split(/:/,$xmarmsta);
                                         $xmarmsta="$xmarm_stas[0]:$abno";
@@ -616,7 +616,7 @@ sub mix2 {
                                 if($member_mix){$spoint+=50;$member_mix="";}
                                 $rpoint=int(rand(100));
                                 splice(@ITEM,$in{'iprosta2'},1);
-                                if ($spoint>=$rpoint || $mid eq $GMID){
+                                if ($spoint>=$rpoint){
                                         ($xmprono,$mproname,$xmproval,$xmprodmg,$xmprowei,$xmproele,$xmprohit,$xmprocl,$xmprosta,$xmprotype,$xmproflg) = split(/,/,$mpro);
                                         ($xmpro_stas[0],$xmpro_stas[1])=split(/:/,$xmprosta);
                                         $xmprosta="$xmpro_stas[0]:$abno";
@@ -655,7 +655,7 @@ sub mix2 {
                                 if($member_mix){$spoint+=50;$member_mix="";}
                                 $rpoint=int(rand(100));
                                 splice(@ITEM,$in{'iaccsta2'},1);
-                                if ($spoint>=$rpoint || $mid eq $GMID){
+                                if ($spoint>=$rpoint){
                                         ($xmaccno,$maccname,$xmaccval,$xmaccdmg,$xmaccwei,$xmaccele,$xmacchit,$xmacccl,$xmaccsta,$xmacctype,$xmaccflg) = split(/,/,$macc);
                                         ($xmacc_stas[0],$xmacc_stas[1])=split(/:/,$xmaccsta);
                                         $xmaccsta="$xmacc_stas[0]:$abno";
@@ -693,7 +693,7 @@ sub mix2 {
                                 if($member_mix){$spoint+=50;$member_mix="";}
                                 $rpoint=int(rand(100));
                                 splice(@ITEM,$in{'ipetsta2'},1);
-                                if ($spoint>=$rpoint || $mid eq $GMID){
+                                if ($spoint>=$rpoint){
                                         ($xmpetno,$mpetname,$xmpetval,$xmpetdmg,$xmpetwei,$xmpetele,$xmpethit,$xmpetcl,$xmpetsta,$xmpettype,$xmpetflg) = split(/,/,$mpet);
                                         ($xmpet_stas[0],$xmpet_stas[1])=split(/:/,$xmpetsta);
                                         $xmpetsta="$xmpet_stas[0]:$abno";

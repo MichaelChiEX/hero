@@ -14,7 +14,7 @@ sub rule_write {
 		$BFILE="./blog/rule/$con_id.cgi";
 		$rule="rule";
 	}elsif($in{'type'} eq 2){
-		if($con_king ne $mid && $mid ne $GMID){&error("國王以外的人無法進行此操作。");}
+		if($con_king ne $mid){&error("國王以外的人無法進行此操作。");}
 		$BFILE="./blog/rule/0.cgi";
 		$rule="all_rule";
 	}else{&error("xxxxxxxxxx。");}

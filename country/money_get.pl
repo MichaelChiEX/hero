@@ -2,17 +2,15 @@ sub money_get{
 	&chara_open;
 	&town_open;
 	&con_open;
-	if($mcon eq 0 && $mid ne $GMID){&error("無所屬國無法進行回收。");}
-	if($mcon ne"$town_con" && $mid ne $GMID){&error("無法在自己的國家城鎮外進行回收。");}
+	if($mcon eq 0){&error("無所屬國無法進行回收。");}
+	if($mcon ne"$town_con"){&error("無法在自己的國家城鎮外進行回收。");}
 	if($town_gold <=200000){&error("收益需要大於２０萬才可進行回收。");}
 	
 	$upgold=$town_gold;
 	$upgold3=int($upgold/50000);
 	$upgold2=int($upgold/20);
 	if($upgold2>1000000){$upgold2=1000000;}
-	if($mid ne $GMID){
-		$con_gold+=$upgold3*50000;
-        }
+	$con_gold+=$upgold3*50000;
 	$mcex+=$upgold3;
 	$mgold+=$upgold2;
 	$upgold=$upgold3*50000;

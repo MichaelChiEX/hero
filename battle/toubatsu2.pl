@@ -21,9 +21,6 @@ sub toubatsu2{
 	($mhpr,$mmpr,$mtim)=split(/<>/,$BC_DATA[0]);
 	if($mhpr eq""){$mhpr=1;}
 	if($mmpr eq""){$mmpr=1;}
-	if($in{'player'} eq $GMID){
-		$mhpr=1;$mmpr=1;
-	}
 
 	if($mhpr<0.2){&error("目前的狀態無法進行討伐。");}
 	$mhp=int($mmaxhp*$mhpr);
@@ -31,11 +28,9 @@ sub toubatsu2{
 
 	$mtotal++;
 	$ktime = $KTIME - $date + $mdate2;
-	if($ktime>0 && $mid ne $GMID){&error("離下次討伐時間剩 $ktime 秒。");}
+	if($ktime>0){&error("離下次討伐時間剩 $ktime 秒。");}
 	if($con_id eq 0){
-		if($in{'player'} ne $GMID){
-			&error("無所屬國角色無法進行。");
-		}
+		&error("無所屬國角色無法進行。");
 	}
 	
 	$conhit=0;
@@ -61,10 +56,6 @@ sub toubatsu2{
 	@BE_DATA = <IN>;
 	close(IN);
 	($ehpr,$empr,$etim)=split(/<>/,$BE_DATA[0]);
-	if($eid eq $GMID){
-		$ehpr=1;
-		$empr=1;
-	}
 	if($ehpr eq""){$ehpr=1;}
 	if($empr eq""){$empr=1;}
 	$ehp=int(($emaxhp+$ehpadd)*$ehpr);

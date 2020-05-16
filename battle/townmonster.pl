@@ -4,7 +4,7 @@ sub townmonster{
     &con_open;
     &time_data;
 
-    if($con_id eq 0 && $mid ne $GMID){&error("無所屬國，無法進行攻擊。");}
+    if($con_id eq 0){&error("無所屬國，無法進行攻擊。");}
     $date = time();
     $btime = $BTIME - $date + $mdate;
     if($btime>0){&error("距離下次行動的時間還剩 $btime 秒。");}
@@ -341,7 +341,6 @@ sub BATTLE{##戰鬥處理
                     if ($rand_val<8) {
                         $rand_val=8;
                     }
-                    if ($mid eq $GMID) {$rand_val=2;}
                     if (int(rand($rand_val*2)) eq 1) {
                         $rnd_srar=int(rand($SRARCOUNT));
                         if ($rnd_srar eq 14) {

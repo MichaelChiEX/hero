@@ -16,7 +16,7 @@ sub move2{
 	if($in{'tid'} eq ""){&error_old("請選擇你要移動到的地點。");}
 	$date = time();
 	$btime = $BTIME - $date + $mdate;
-	if($btime>0 && $mid ne $GMID){&error_old("距離下次可行動的時間剩餘 $btime 秒。");}
+	if($btime>0){&error_old("距離下次可行動的時間剩餘 $btime 秒。");}
 	foreach(@TOWN_DATA){
 		($town2_id,$town2_name,$town2_con,$town2_ele,$town2_gold,$town2_arm,$town2_pro,$town2_acc,$town2_ind,$town2_tr,$town2_s,$town2_x,$town2_y)=split(/<>/);
 		if($in{'tid'} eq $town2_id){last;}

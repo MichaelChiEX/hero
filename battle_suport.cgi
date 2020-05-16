@@ -109,9 +109,6 @@ $eat2=$eat;
 	$espeed=$eagi-$earmwei-$eprowei-$eaccwei+$eadagi + $eadkai * 50 + $epetspeed;
 	
 	#敵HP計算
-if($eid eq $GMID){
-	if ($emaxhp<$mmaxhp){$emaxhp=$mmaxhp;}
-}
 	$ehp=$emaxhp;
 	$emp=$emaxmp;
 
