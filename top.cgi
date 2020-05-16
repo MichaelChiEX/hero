@@ -652,7 +652,7 @@ function bat_list_show(dtstr){
         }
     }
 }
-function list_show(nlist,insertaddr,dtstr,color){
+function list_show(nlist, dtstr,color){
     var dt2=dtstr.split(',');
     var op=document.createElement("option");
     nlist.insertBefore(op,nlist.options[0]);
