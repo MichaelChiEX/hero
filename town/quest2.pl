@@ -26,10 +26,7 @@ sub quest2 {
 		$com="你已完成<font color=blue>[$QUEST_NAME[0]]</font>任務，得到獎利：$getabp熟，$getgold萬";
 		&get_quest_gift;
 	}elsif($in{'qno'} eq "1"){
-		if($date<$quest_time[1]){
-			$tmp_time=$quest_time[1]-$date;
-			&error("<font color=blue>[$QUEST_NAME[1]]</font>任務效果剩餘<b>$tmp_time</b>秒，此時間內無法重接任務");
-		}elsif($quest1_item eq ""){
+		if($quest1_item eq ""){
 			$quest1_limit_time=$date+600;
 			&get_quest1();
 			$com="<font color=blue>[$QUEST_NAME[1]]</font>任務(請到<b>$quest1_town_name</b>購買<b>$quest1_item</b>送到<b>$quest1_town_name</b>的任務屋)※限時１０分鐘";
@@ -48,7 +45,11 @@ sub quest2 {
 					$quest1_town_no="";
 					$quest1_town_name="";
 					$quest1_item="";
-					$quest_time[1]=$date+60*30;
+					if($date<$quest_time[1]){
+						$quest_time[1]=$quest_time[1]+60*30;
+					}else{
+						$quest_time[1]=$date+60*30;
+					}
 					$quest_count[1]+=1;
 			}else{
 					&error("<font color=blue>[".$QUEST_NAME[1]."]</font><font color=red>你身上沒有".$quest1_item."，無法完成任務</font>※任務限時剩餘<b>$tmp_time</b>秒");

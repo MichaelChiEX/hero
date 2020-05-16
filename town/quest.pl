@@ -39,7 +39,8 @@ BTN
     if($date<$quest_time[1]){
         $tmp_time=$quest_time[1]-$date;
         $com.="<br><br><font color=blue>[$QUEST_NAME[1]]</font>任務效果剩餘<b>$tmp_time</b>秒";
-    }elsif($quest1_item eq ""){
+    }
+    if($quest1_item eq ""){
         $questbutton1=<<"BTN";
         <font color=blue>[$QUEST_NAME[1]]</font>任務(購買指定的裝備給指定的任務屋)※限時１０分鐘
         <form action="./town.cgi" method="post">
