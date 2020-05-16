@@ -10,20 +10,17 @@ sub con_change2{
 		if("$con2_id" eq "$town_con"){$hit=1;last;}
 	}
 	if(!$hit){&error("請先移動到將要入國國家的領土上。");}
-	if($town_con eq 0){&error("此處無法進行入國。");}
+
 	open(IN,"./logfile/out/$mid.cgi");
 	@DATA = <IN>;
 	close(IN);
 
-	$c_no = 0;
 	foreach(@DATA){
 		($dcon_id,$dtime)=split(/<>/);
-		if("$dcon_id" eq "$town_con"){$hit2=1;last;}
+		if("$dcon_id" eq "$town_con"){&error("曾被此國家解顧，無法再加入此國家。");}
 	}
-	if($hit2){&error("曾被此國家解顧，無法再加入此國家。");}
 
 	$mcon=$town_con;
-
 	&chara_input;
 	
 	&maplog("<font color=green>[入國]</font>恭喜<font color=blue>$mname</font>加入了<font color=$ELE_BG[$con2_ele]>$con2_name國($ELE[$con2_ele])</font>。");
@@ -32,22 +29,22 @@ sub con_change2{
 	&header;
 
 	print <<"EOF";
-<table border="0" width="80%" bgcolor="#ffffff" height="150" align=center CLASS=FC>
-  <tbody>
-    <tr>
-      <td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">入國</font></td>
-    </tr>
-    <tr>
-      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/inn2.jpg"></td>
-      <td bgcolor="#330000"><font color="#ffffcc">已成功成為$con2_name國的國民。</font></td>
-    </tr>
-    <tr>
-      <td colspan="2" align="right">
-$BACKTOWNBUTTON
-     </td>	
-    </tr>
-  </tbody>
-</table>
+	<table border="0" width="80%" bgcolor="#ffffff" height="150" align=center CLASS=FC>
+		<tbody>
+			<tr>
+				<td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">入國</font></td>
+			</tr>
+			<tr>
+				<td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/inn2.jpg"></td>
+				<td bgcolor="#330000"><font color="#ffffcc">已成功成為$con2_name國的國民。</font></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="right">
+				$BACKTOWNBUTTON
+			</td>	
+			</tr>
+		</tbody>
+	</table>
 EOF
 	&footer;
 	exit;

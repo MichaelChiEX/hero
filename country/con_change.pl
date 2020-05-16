@@ -2,67 +2,39 @@ sub con_change{
 	&chara_open;
 	&con_open;
 	&town_open;
-	if($con_id ne 0){&error("為無所屬身份才可任官。");}
+	if($con_id ne 0){&error("為無所屬身份才可入國。");}
 	foreach(@CON_DATA){
 		($con2_id,$con2_name,$con2_ele,$con2_gold,$con2_king,$con2_yaku,$con2_cou,$con2_mes,$con2_etc)=split(/<>/);
 		if("$con2_id" eq "$town_con"){$hit=1;last;}
 	}
-	$ccount=@CON_DATA;
-	$ccount--;
-	$dir="./logfile/chara";
-	opendir(dirlist,"$dir");
-	$i=0;	
-	$mn++;
-	while($file = readdir(dirlist)){
-	        if($file =~ /\.cgi/i){
-	                $datames = "查詢：$dir/$file<br>\n";
-	                if(!open(cha,"$dir/$file")){
-	                        &error("$dir/$fileがみつかりません。<br>\n");
-	                }
-	                @cha = <cha>;
-	                close(cha);
-	                $list[$i]="$file";
-	                ($rid,$rpass,$rname,$rurl,$rchara,$rsex,$rhp,$rmaxhp,$rmp,$rmaxmp,$rele,$rstr,$rvit,$rint,$rfai,$rdex,$ragi,$rmax,$rcom,$rgold,$rbank,$rex,$rtotalex,$rjp,$rabp,$rcex,$runit,$rcon) = split(/<>/,$cha[0]);
-
-	                $KOKUMIN[$rcon]++;
-	        }
-	        $mn++;
-	        if($mn>10000){&error("ループ");}
-	}
-	$ccount=int($mn/$ccount);
-	if($KOKUMIN[$con2_id]>=$ccount){
-		&error("本國家目前人數$KOKUMIN[$con2_id],已超過目前國家人數上限$ccount人");
-	}
-	if(!$hit){&error("需要移動到將任官的國家才可進行任官。");}
-	if($town_con eq 0){&error("無法對此國家任官。");}
+	if(!$hit){&error("請先移動到將要入國國家的領土上。");}
 
 	&header;
-	
 	print <<"EOF";
-<table border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
-  <tbody>
-    <tr>
-      <td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">入國</font></td>
-    </tr>
-    <tr>
-      <td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/inn.jpg"></td>
-      <td bgcolor="#330000"><font color="#ffffcc">是否要加入$con2_name國？</font></td>
-    </tr>
-    <tr>
-      <td colspan="2" align="center">
-	$STPR 
-	<form action="./country.cgi" method="post">
-	<input type=hidden name=id value=$mid>
-	<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
-	
-	<input type=hidden name=mode value=con_change2>
-	<input type=submit value=加入 CLASS=FC></form>
-$BACKTOWNBUTTON
-	</td>	
-    </tr>
-  </tbody>
-</table>
-<center></center>
+	<table border="0" width="80%" align=center bgcolor="#ffffff" height="150" CLASS=FC>
+		<tbody>
+			<tr>
+				<td colspan="2" align="center" bgcolor="#993300"><font color="#ffffcc">入國</font></td>
+			</tr>
+			<tr>
+				<td bgcolor="#ffffcc" width=20% align=center><img src="$IMG/etc/inn.jpg"></td>
+				<td bgcolor="#330000"><font color="#ffffcc">是否要加入$con2_name國？</font></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center">
+					$STPR 
+					<form action="./country.cgi" method="post">
+						<input type=hidden name=id value=$mid>
+						<input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
+						
+						<input type=hidden name=mode value=con_change2>
+						<input type=submit value=加入 CLASS=FC>
+					</form>
+					$BACKTOWNBUTTON
+				</td>	
+			</tr>
+		</tbody>
+	</table>
 EOF
 
 	&footer;
