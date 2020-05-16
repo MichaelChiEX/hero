@@ -491,6 +491,7 @@ var mtime='';
 var shotmes=['','','','',''];
 var moya=0;
 var BTIME=-1;
+var regular_maps=['1', '2', '3', '4', '30', '31', '40'];
 function loading(msgs,disb){
 	BTIME=-1;
  	getObj("tok").innerHTML =("<font color=yellow>剩餘秒數讀取中...</font>");
@@ -780,6 +781,10 @@ function to() {
     if(BTIME<=0){
 		getObj("tok").innerHTML =("<font color=#FFFFFF><b>行動ＯＫ</b></font>");
         if(getObj("autoattack").checked){
+            var nmp = getObj('battlef').mode.value;
+            if(regular_maps.indexOf(nmp) > -1){
+                battlemap=nmp;
+            }
             const data = new URLSearchParams(new FormData(getObj('battlef')));
             fetch('battle.cgi', {
                 method: 'POST',
@@ -803,7 +808,7 @@ function actform(form){
 	getObj('actionframe').style.display='';
 	try{
 		var nmp=form.mode.options[form.mode.selectedIndex].value;
-		if(nmp =='1' || nmp=='2' ||nmp=='3' || nmp=='4' || nmp=='30' || nmp=='31' || nmp=='40'){
+		if(regular_maps.indexOf(nmp) > -1){
 			battlemap=nmp;
 		}
 	}catch(e){}
