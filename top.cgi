@@ -546,7 +546,7 @@ function get_all_data(){
                     }else if(dt[0]=='CHARA'){
                         chara_show(tow_data[i]);
                     }else if(dt[0]=='ALLTIME'){
-                        if(logtime != dt[4]){getObj('maplog').innerHTML="";getObj('maplog2').innerHTML="";}
+                        if(logtime != dt[3]){getObj('maplog').innerHTML="";getObj('maplog2').innerHTML="";}
                         systime=dt[1];
                         lastchattime=dt[2];
                         logtime=dt[3];
