@@ -2,6 +2,10 @@ sub skill2{
 	&chara_open;
 	if($in{'skill'} eq ""){&error("請選擇要修練的奧義。");}
 	
+	open(IN,"./logfile/ability/$mid.cgi");
+	@ABDATA = <IN>;
+	close(IN);
+
 	require './data/abini.cgi';
 	@jlist = split(/,/,$AJOB[$mclass]);
 
@@ -16,7 +20,16 @@ sub skill2{
 		($abno,$abname,$abcom,$abdmg,$abrate,$abpoint,$abclass,$abtype)=split(/<>/);
 		if($abno eq $in{'skill'}){
 			if($jobflg[$abclass] ne 1){&error("無法修煉此奧義");}
-			$hit=1;
+			$hit=0;
+			foreach(@ABDATA){
+				($kabno,$kabname,$kabcom,$kabdmg,$kabrate,$kabpoint,$kabclass,$kabtype)=split(/<>/);
+				if($kabno eq $abrate){
+					$hit=1;
+					last;
+				}
+			}
+			if(!$hit && $abrate ne 0){&error("需修煉前置奧義");}
+			$hit = 1;
 			$mabp-=$abpoint;
 			if($mabp < 0){&error("你的熟練度不足。");}
 			
