@@ -12,39 +12,39 @@ sub shop {
 	$abname1="";
 	$abname2="";
 	$abname3="";
-        ($marmstas[0],$marmstas[1])=split(/:/,$marmsta);
-        ($mprostas[0],$mprostas[1])=split(/:/,$mprosta);
-        ($maccstas[0],$maccstas[1])=split(/:/,$maccsta);
-        ($mpetstas[0],$mpetstas[1])=split(/:/,$mpetsta);
+	($marmstas[0],$marmstas[1])=split(/:/,$marmsta);
+	($mprostas[0],$mprostas[1])=split(/:/,$mprosta);
+	($maccstas[0],$maccstas[1])=split(/:/,$maccsta);
+	($mpetstas[0],$mpetstas[1])=split(/:/,$mpetsta);
 
 	foreach(@ABILITY){
 		($abno,$abname,$abcom,$abdmg,$abrate,$abpoint,$abclass,$abtype)=split(/<>/);
-                if($marmstas[0] eq $abno){
-                        $abname1=$abname.$abname1;
-                }elsif($marmstas[1] eq $abno){
-                        $abname1.="、$abname";
-                }
-                if($mprostas[0] eq $abno){
-                        $abname2=$abname.$abname2;
-                }elsif($mprostas[1] eq $abno){
-                        $abname2.="、$abname";
-                }
-                if($maccstas[0] eq $abno){
-                        $abname3=$abname.$abname3;
-                }elsif($maccstas[1] eq $abno){
-                        $abname3.="、$abname";
-                }
-                if($mpetstas[0] eq $abno){
-                        $abname4=$abname.$abname4;
-                }elsif($mpetstas[1] eq $abno){
-                        $abname4.="、$abname";
-                }
-		$j++;
+		if($marmstas[0] eq $abno){
+				$abname1=$abname.$abname1;
+		}elsif($marmstas[1] eq $abno){
+				$abname1.="、$abname";
+		}
+		if($mprostas[0] eq $abno){
+				$abname2=$abname.$abname2;
+		}elsif($mprostas[1] eq $abno){
+				$abname2.="、$abname";
+		}
+		if($maccstas[0] eq $abno){
+				$abname3=$abname.$abname3;
+		}elsif($maccstas[1] eq $abno){
+				$abname3.="、$abname";
+		}
+		if($mpetstas[0] eq $abno){
+				$abname4=$abname.$abname4;
+		}elsif($mpetstas[1] eq $abno){
+				$abname4.="、$abname";
+		}
 	}
-        if($abname1 eq""){$abname1="－";}
-        if($abname2 eq""){$abname2="－";}
-        if($abname3 eq""){$abname3="－";}
-        if($abname4 eq""){$abname4="－";}
+	if($abname1 eq""){$abname1="－";}
+	if($abname2 eq""){$abname2="－";}
+	if($abname3 eq""){$abname3="－";}
+	if($abname4 eq""){$abname4="－";}
+
 	$val_off=0;
 	if($mcon eq $town_con && $town_con ne 0){
 		$val_off=int($mcex/100)+1;
@@ -57,9 +57,10 @@ sub shop {
 	elsif($in{'mode'} eq"acc"){$idata="acc";$itype=2;$dev=$town_acc;}
 	elsif($in{'mode'} eq"item"){$idata="item";$itype=3;$dev=$town_ind;}
 	else{&error("資料傳輸有誤，<a href='./login.cgi'>請重新登入</a>。");}
-	open(IN,"./data/$idata.cgi") or &error("檔案開啟錯誤[$idata]town/shop.pl(18)。");
+	open(IN,"./data/$idata.cgi");
 	@ARM_DATA = <IN>;
 	close(IN);
+
 	$no=0;
 	foreach(@ARM_DATA){
 		($arm_name,$arm_val,$arm_dmg,$arm_wei,$arm_ele,$arm_hit,$arm_cl,$arm_sta,$arm_type,$arm_pos)=split(/<>/);
@@ -69,7 +70,7 @@ sub shop {
 			if($arm_sta && $in{'mode'} ne "item"){$arm_name="$arm_name";}
 			$armtable.="<tr><td width=5% bgcolor=ffffcc><input type=radio name=no value=$no></td><td bgcolor=white><font size=2>$arm_name</font></td><td bgcolor=white align=right><font size=2>$arm_val Gold</font></td><td bgcolor=white><font size=2>$arm_dmg</font></td><td bgcolor=white><font size=2>$arm_wei</font></td><td bgcolor=white><font size=2>$ELE[$arm_ele]</font></td><td bgcolor=white><font size=2>$arm_type</font></td></tr>";
 		}elsif($quest1_town_no eq $town_id && $arm_name eq $quest1_item){
-                        $armtable.="<tr><td width=5% bgcolor=ffffcc><input type=radio name=no value=$no></td><td bgcolor=white><font size=2>$arm_name</font></td><td bgcolor=white align=right><font size=2>$arm_val Gold</font></td><td bgcolor=white><font size=2>$arm_dmg</font></td><td bgcolor=white><font size=2>$arm_wei</font></td><td bgcolor=white><font size=2>$ELE[$arm_ele]</font></td><td bgcolor=white><font size=2>$arm_type</font></td></tr>";
+			$armtable.="<tr><td width=5% bgcolor=ffffcc><input type=radio name=no value=$no></td><td bgcolor=white><font size=2>$arm_name</font></td><td bgcolor=white align=right><font size=2>$arm_val Gold</font></td><td bgcolor=white><font size=2>$arm_dmg</font></td><td bgcolor=white><font size=2>$arm_wei</font></td><td bgcolor=white><font size=2>$ELE[$arm_ele]</font></td><td bgcolor=white><font size=2>$arm_type</font></td></tr>";
 		}
 		$no++;
 	}
