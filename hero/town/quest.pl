@@ -19,21 +19,21 @@ sub quest {
         </form>
         <br>
 BTN
-	}elsif($ext_quest_total <= $mtotal){
+	}elsif($ext_quest_total > $mtotal){
+		$lifetotal=$ext_quest_total-$mtotal;
+		$com="<font color=blue>[$QUEST_NAME[0]]</font>你目前正在進行村民委託的任務中(最近各城鎮地怪物變多，請幫忙村民消滅牠們(請在任意城鎮的任意地圖打任意怪$lifetotal隻))※不限時間";
+	}else{
         $questbuttonok0=<<"BTN";
 		<font color=blue>[$QUEST_NAME[0]]</font>感謝你的幫忙，讓大家在城鎮間走動更放心
 	    <form action="./town.cgi" method="post">
 	        <input type=hidden name=id value=$mid>
 	        <input type=hidden name=pass value=$mpass><input type=hidden name=rmode value=$in{'rmode'}>
 	        <input type=hidden name=mode value=quest2>
-	        <input type=hidden name=qno value=ok0>
+	        <input type=hidden name=qno value=0>
         	<input type=submit value=完成$QUEST_NAME[0]任務 class=FC>
         </form>
 	    <br>
 BTN
-	}elsif($mtotal < $ext_quest_total){
-		$lifetotal=$ext_quest_total-$mtotal;
-		$com="<font color=blue>[$QUEST_NAME[0]]</font>你目前正在進行村民委託的任務中(最近各城鎮地怪物變多，請幫忙村民消滅牠們(請在任意城鎮的任意地圖打任意怪$lifetotal隻))※不限時間";
 	}
 	#1贊助裝備任務(金錢加倍30分鐘)
     if($date<$quest_time[1]){

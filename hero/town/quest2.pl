@@ -7,24 +7,26 @@ sub quest2 {
 	$quest_hit=0;
 	$date=time();
 	if($in{'qno'} eq "0"){
-		if($ext_quest_total ne ""){&error("你的作務未完成，無法再接受此任務");}
-		$n = int(rand(50))+50;
-		$ext_quest_total=$mtotal+$n;
-		$com="你已接受村民的請求，請到各地打怪，幫村民消除$n隻怪物吧<br>※不限時間";
-	}elsif($in{'qno'} eq "ok0"){
-		if($ext_quest_total > $mtotal){&error("你的<font color=blue>[$QUEST_NAME[0]]</font>任務未完成，無法交還此任務");}
-		$ext_quest_total="";
-		$quest_count[0]++;
+		if($ext_quest_total eq ""){
+			$n = int(rand(50))+50;
+			$ext_quest_total=$mtotal+$n;
+			$com="你已接受村民的請求，請到各地打怪，幫村民消除$n隻怪物吧<br>※不限時間";
+		}elsif($ext_quest_total > $mtotal){
+			&error("你的<font color=blue>[$QUEST_NAME[0]]</font>任務未完成，無法交還此任務");
+		}else{
+			$ext_quest_total="";
+			$quest_count[0]++;
 
-		$getgold=int($quest_count[0]/5)+100;
-		$getabp=int($quest_count[0]/5)+100;
-		if($getgold>500){$getgold=500;}
-		if($getabp>500){$getabp=500;}
+			$getgold=int($quest_count[0]/5)+100;
+			$getabp=int($quest_count[0]/5)+100;
+			if($getgold>500){$getgold=500;}
+			if($getabp>500){$getabp=500;}
 
-		$mabp+=$getabp;
-		$mgold+=$getgold*10000;
-		$com="你已完成<font color=blue>[$QUEST_NAME[0]]</font>任務，得到獎利：$getabp熟，$getgold萬";
-		&get_quest_gift;
+			$mabp+=$getabp;
+			$mgold+=$getgold*10000;
+			$com="你已完成<font color=blue>[$QUEST_NAME[0]]</font>任務，得到獎利：$getabp熟，$getgold萬";
+			&get_quest_gift;
+		}
 	}elsif($in{'qno'} eq "1"){
 		if($quest1_item eq ""){
 			$quest1_limit_time=$date+600;
