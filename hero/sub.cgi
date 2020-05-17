@@ -1007,47 +1007,6 @@ sub mainfooter{
 EOF
 }
 
-sub quest_form {
-	&header;
-        print <<"EOF";
-        <center>
-        <table border="0" width="100%" bgcolor="#660000" CLASS=TC height=1>
-        <tbody>
-        <tr>
-        <td valign=top height=40 align="center" style="color:#FFFFCC"><b><font size=5><font color=yellow>[$QUEST_NAME[0]]</font>$quest_town_name的村民有任務請求解決</font><br></b><b>
-        請到$quest_town_name的任務屋接受請求<br>請於「其他」->「移動」選擇$quest_town_name，再按移動就可移動到該處</b></td>
-        <tr>
-        </table>
-        $BACKTOWNBUTTON
-EOF
-        &footer;
-        exit;
-}
-
-sub quest_form2 {
-	&header;
-	$ltime=$quest_time[0]-$date;
-	if($ltime>0){
-		$com="請$ltime秒內,";
-	}else{
-		$com="請";
-	}
-	($quest_town_no,$quest_town_name)=split(/:/,$ext_quest_town);
-        print <<"EOF";
-        <center>
-        <table border="0" width="100%" bgcolor="#660000" CLASS=TC height=1>
-        <tbody>
-        <tr>
-        <td valign=top height=40 align="center" style="color:#FFFFCC"><b><font size=5><font color=yellow>[$QUEST_NAME[0]]</font>你已完成$quest_town_name村民交待的任務</font><br></b><b>
-        $com到任意城鎮的任務屋交還任務<br></b></td>
-        <tr>
-        </table>
-        $BACKTOWNBUTTON
-EOF
-        &footer;
-        exit;
-}
-
 sub menu{
     my $print="";
     if($LINK1){$print.="<a href=\"$LINKURL1\" TARGET=\"_top\"><font color=\"#ffffcc\">[$LINK1]</a>　";}
