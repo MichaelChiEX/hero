@@ -58,7 +58,7 @@ sub sk_set {
 			if($abno eq"55" || $abno eq"83" || $abno eq"87" || $abtype eq "21"){
 				$input = "不需安裝";
 			}else{
-				$input = "<input type=radio name=skill2 value=$abno>";
+				$input = "<input type=radio name=skill value=$abno>";
 			}
 			$abtable2.="<tr><td width=5% bgcolor=ffffcc align=center>$input</td><td bgcolor=$FCOLOR2>$abname</td><td bgcolor=$FCOLOR2>$abcom</td></tr>";
 		}

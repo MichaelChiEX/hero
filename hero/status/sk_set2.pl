@@ -1,14 +1,28 @@
 sub sk_set2{
 	&chara_open;
-	if($in{'type'} eq "1" && $in{'skill'} eq "" ){&error("請選擇要變更的主奧義項目。");}
-	if($in{'type'} eq "2" && $in{'skill2'} eq "" ){&error("請選擇要變更的職業奧義項目。");}
+	if($in{'skill'} eq ""){&error("請選擇要變更的奧義項目。");}
+	if($in{'type'} ne "1"  && $in{'type'} ne "2"){&error("請選擇要變更的奧義位置。");}
 	($msk[0],$msk[1]) = split(/,/,$msk);
+
+	open(IN,"./logfile/ability/$mid.cgi");
+	@ABDATA = <IN>;
+	close(IN);
+
+	$hit=0;
+	foreach(@ABDATA){
+		($kabno,$kabname,$kabcom,$kabdmg,$kabrate,$kabpoint,$kabclass,$kabtype)=split(/<>/);
+		if($kabno eq $in{'skill'}){
+			$hit=1;
+			last
+		}
+	}
+	if(!$hit){&error("尚未習得此奧義");}
 	
 	if($in{'type'} eq "1"){
 		if($in{'skill'} eq"103"){&error("十字封印無法裝在主奧義！");}
 		$msk="$in{'skill'},$msk[1]";
 	}elsif($in{'type'} eq "2"){
-		$msk="$msk[0],$in{'skill2'}";
+		$msk="$msk[0],$in{'skill'}";
 	}
 	&chara_input;
 	

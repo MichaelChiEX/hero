@@ -2,12 +2,20 @@ sub skill2{
 	&chara_open;
 	if($in{'skill'} eq ""){&error("請選擇要修練的奧義。");}
 	
+	require './data/abini.cgi';
+	@jlist = split(/,/,$AJOB[$mclass]);
+
+	foreach $job(@jlist){
+		$jobflg[$job] = 1;
+	}
+
 	open(IN,"./data/ability.cgi");
 	@ABILITY = <IN>;
 	close(IN);
 	foreach(@ABILITY){
 		($abno,$abname,$abcom,$abdmg,$abrate,$abpoint,$abclass,$abtype)=split(/<>/);
 		if($abno eq $in{'skill'}){
+			if($jobflg[$abclass] ne 1){&error("無法修煉此奧義");}
 			$hit=1;
 			$mabp-=$abpoint;
 			if($mabp < 0){&error("你的熟練度不足。");}
@@ -20,7 +28,7 @@ sub skill2{
 				if($kabno eq $abno){&error("你已經學習過此奧義。");}
 			}
 			push(@ABDATA,"$abno<>$abname<>$abcom<>$abdmg<>$abrate<>$abpoint<>$abclass<>$abtype<>l<>e<>\n");
-			open(OUT,">./logfile/ability/$mid.cgi") or &error('檔案開案錯誤status/skill2.pl(23)。');
+			open(OUT,">./logfile/ability/$mid.cgi");
 			print OUT @ABDATA;
 			close(OUT);
 			last;
