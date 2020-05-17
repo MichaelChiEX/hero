@@ -31,7 +31,7 @@ sub renkin2 {
 		&error("請不要進行不正當的操作。");
 	}
 	
-	if($mabp<$lose_abp){&error("你的熟練度不足$it_val。");}
+	if($mabp<$lose_abp){&error("你的熟練度不足$lose_abp。");}
 	$mabp-=$lose_abp;
 	if($it_sta ne"100"){
 		open(IN,"./logfile/item/$in{'id'}.cgi");
