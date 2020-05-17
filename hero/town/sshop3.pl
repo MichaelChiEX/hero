@@ -1,7 +1,7 @@
 sub sshop3{
 	&chara_open;
 	&time_data;
-	if($in{'itno'} eq ""){&error("請選擇要出售的品物。");}
+	if($in{'itno'} eq "" || $in{'itno'} < 0){&error("請選擇要出售的物品。");}
 	if($in{'maxgold'} < 1 || $in{'hour'} < 1){&error("請正確輸入售價結束時間。");}
 	if($in{'hour'} > 48){&error("出售時間不可大於２天。");}
 	
@@ -14,7 +14,7 @@ sub sshop3{
 	@ITEM = <IN>;
 	close(IN);
 	($it_no,$it_ki,$it_name,$it_val,$it_dmg,$it_wei,$it_ele,$it_hit,$it_cl,$it_type,$it_sta,$it_flg)=split(/<>/,$ITEM[$in{'itno'}]);
-	if($it_no eq"priv"){&error("此物品無法交易！");}	
+	if($it_no eq"priv" || $in{'itno'}>$#ITEM){&error("此物品無法交易！");}	
 	$xit_val=$it_val*3;
 
 	open(IN,"./data/sfree.cgi") or &error("檔案開啟錯誤town/shop3.pl。");

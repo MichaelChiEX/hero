@@ -1,7 +1,7 @@
 sub fex{
 	&chara_open;
 	&time_data;
-	if($in{'itno'} eq ""){&error("請選擇要拍賣的物品。");}
+	if($in{'itno'} eq "" || $in{'itno'} < 0){&error("請選擇要拍賣的物品。");}
 	if($in{'mingold'} eq "" || $in{'maxgold'} eq "" ||  $in{'hour'} eq ""){&error("請輸入拍賣價格。");}
 	if($in{'maxgold'} <= $in{'mingold'}){&error("起標價不可大於直接購買價。");}
 	if($in{'mingold'} <1 || $in{'maxgold'} < 1 || $in{'hour'} < 1){&error("請正確輸入拍賣價格及拍賣時間。");}
@@ -18,7 +18,7 @@ sub fex{
 	@ITEM = <IN>;
 	close(IN);
 	($it_no,$it_ki,$it_name,$it_val,$it_dmg,$it_wei,$it_ele,$it_hit,$it_cl,$it_type,$it_sta,$it_flg)=split(/<>/,$ITEM[$in{'itno'}]);
-	if($it_no eq"priv"){&error("此物品無法進行拍賣！");}	
+	if($it_no eq "priv" || $in{'itno'} > $#ITEM){&error("此物品無法進行拍賣！");}	
 	$xit_val=$it_val*3;
 
 	open(IN,"./data/free.cgi") or &error("檔案開啟錯誤town/fex.pl(26)。");
