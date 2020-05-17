@@ -10,7 +10,18 @@ sub change2{
 	@CLASS_DATA = <IN>;
 	close(IN);
 
-	($cname,$cjp,$cnou,$cup,$cflg,$ctype)=split(/<>/,$CLASS_DATA[$in{'job'}]);
+	for($j=0; $j<=$#CLASS_DATA; $j++){
+		($cname,$cjp,$cnou,$cup,$cflg,$ctype)=split(/<>/, @CLASS_DATA[$j]);
+		($cjp[0],$cjp[1],$cjp[2],$cjp[3],$cjp[4],$cjp[5]) = split(/,/,$cjp);
+		($cp[0],$cp[1],$cp[2],$cp[3],$cp[4],$cp[5]) = split(/,/,$cnou);
+		if($in{'job'} eq $j && $mjp[0] >= $cjp[0] && $mjp[1] >= $cjp[1] && $mjp[2] >= $cjp[2] && $mjp[3] >= $cjp[3] && $mjp[4] >= $cjp[4] && $mjp[5] >= $cjp[5]
+		&& $mstr >= $cp[0] && $mvit >= $cp[1] && $mint >= $cp[2] && $mfai >= $cp[3] && $mdex >= $cp[4] && $magi >= $cp[5] ){
+			$hit=1;
+			last;
+		}
+	}
+	if(!$hit){&error("無法轉職為所選的職業")}
+
 	($hpup,$mpup,$strup,$vitup,$intup,$faiup,$dexup,$agiup) = split(/,/,$cup);
 
 	$uptmp=int($ext_tl_lvup/100);
