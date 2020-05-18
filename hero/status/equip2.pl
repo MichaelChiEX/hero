@@ -427,56 +427,6 @@ sub equip2 {
 				$mess.="<font color=orange>速度 界限值上昇了$upval點！！</font><br>";
 			}
 			$mmax="$mmaxstr,$mmaxvit,$mmaxint,$mmaxmen,$mmaxdex,$mmaxagi,$mmaxlv";
-		}elsif($it_type eq "101"){
-			$upval = 2;
-			if($it_dmg eq "0" && $mmaxstr<500){
-				$mmaxstr += $upval;
-				$mess.="<font color=orange>力 界限值上昇了$upval點！！</font><br>";
-			}elsif($it_dmg eq "1" && $mmaxvit<500){
-				$mmaxvit += $upval;
-				$mess.="<font color=orange>生命 界限值上昇了$upval點！！</font><br>";
-			}elsif($it_dmg eq "2" && $mmaxint<500){
-				$mmaxint += $upval;
-				$mess.="<font color=orange>智力 界限值上昇了$upval點！！</font><br>";
-			}elsif($it_dmg eq "3" && $mmaxmen<500){
-				$mmaxmen += $upval;
-				$mess.="<font color=orange>精神 界限值上昇了$upval點！！</font><br>";
-			}elsif($it_dmg eq "4" && $mmaxdex<500){
-				$mmaxdex += $upval;
-				$mess.="<font color=orange>運氣 界限值上昇了$upval點！！</font><br>";
-			}elsif($it_dmg eq "5" && $mmaxagi<500){
-				$mmaxagi += $upval;
-				$mess.="<font color=orange>速度 界限值上昇了$upval點！！</font><br>";
-			}
-
-			if($it_wei eq "0"){
-				$mmaxstr -= $upval;
-				$mess.="<font color=blue>力量 界限值下降了$upval點。。</font><br>";
-			}elsif($it_wei eq "1"){
-				$mmaxvit -= $upval;
-				$mess.="<font color=blue>生命 界限值下降了$upval點。。</font><br>";
-			}elsif($it_wei eq "2"){
-				$mmaxint -= $upval;
-				$mess.="<font color=blue>智力 界限值下降了$upval點。。</font><br>";
-			}elsif($it_wei eq "3"){
-				$mmaxmen -= $upval;
-				$mess.="<font color=blue>精神 界限值下降了$upval點。。</font><br>";
-			}elsif($it_wei eq "4"){
-				$mmaxdex -= $upval;
-				$mess.="<font color=blue>運氣 界限值下降了$upval點。。</font><br>";
-			}elsif($it_wei eq "5"){
-				$mmaxagi -= $upval;
-				$mess.="<font color=blue>速度 界限值下降了$upval點。。</font><br>";
-			}
-
-			if($mmaxstr<100){$mmaxstr=100;}
-			if($mmaxvit<100){$mmaxvit=100;}
-			if($mmaxint<100){$mmaxint=100;}
-			if($mmaxmen<100){$mmaxmen=100;}
-			if($mmaxdex<100){$mmaxdex=100;}
-			if($mmaxagi<100){$mmaxagi=100;}
-			
-			$mmax="$mmaxstr,$mmaxvit,$mmaxint,$mmaxmen,$mmaxdex,$mmaxagi,$mmaxlv";
 		}else{
 			&error("此物品無法使用。");
 		}
