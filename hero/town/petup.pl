@@ -33,7 +33,7 @@ sub petup {
 	                if ($PETDATA[$ej][0] eq $mpetname){
 				$tmppoint=$PETDATA[$ej][5]/10000;
                 	        $tranbutton="<input CLASS=FC type=submit value=花費$tmppoint熟練訓練>";
-                                $tranbutton2="<input CLASS=FC style=background-color:yellow type=submit value=花費$tmppoint萬Gold練訓練>";
+                                $tranbutton2="<input CLASS=FC style=background-color:yellow type=submit value=花費$tmppoint萬Gold訓練>";
 				last;
         	        }
 			$ej++;
