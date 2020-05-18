@@ -505,7 +505,7 @@ sub mix2 {
                                         }else{
                                                 $MIXACCADDDMG[$xmaccele]="已達到上限";
                                         }
-                                        $susmsg="<br>第$i次:你已成功強化了<font color=#AAAAFF>$maccname</font><font color=yellow>威力+$MIXACCADDDMG[$xmaccele],重量-$MIXACCADDWEI[$xmaccele]</font>";
+                                        $susmsg.="<br>第$i次:你已成功強化了<font color=#AAAAFF>$maccname</font><font color=yellow>威力+$MIXACCADDDMG[$xmaccele],重量-$MIXACCADDWEI[$xmaccele]</font>";
                                         $macc="$xmaccno,$maccname,$xmaccval,$xmaccdmg,$xmaccwei,$xmaccele,$xmacchit,$xmacccl,$xmaccsta,$xmacctype,$xmaccflg";
                                                                 }else{
                                                                         $susmsg.="<br>第$i次:強化失敗了";
