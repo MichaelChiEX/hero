@@ -665,14 +665,6 @@ function list_show(nlist, dtstr,color){
 }
 function list_init(){
     var townlist=getObj('townf').mode;
-    var j=townlist.options.length-1;
-    for (var i=j;i>=0;i--){
-        if(townlist.options[i].value !='battle_entry'){
-            townlist.remove(i);
-        }else{
-            break;
-        }
-    }
     j=townlist.options.length-1;
     for (var i=j;i>=0;i--){
         if(townlist.options[0].value !='inn'){
