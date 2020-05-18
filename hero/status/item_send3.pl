@@ -3,7 +3,7 @@ sub item_send3{
 	&ext_open;
 	&time_data;
 	$date = time();
-	$btime = 10 - $date + $mdate;
+	$btime = $BTIME - $date + $mdate;
 	if($btime>0){&error("離下次可傳送時間剩$btime 秒。");}
 	if($in{'player'} eq ""){&error("請輸入要接收物品的對象名稱。");}
 	if($in{'player'} eq "$mname"){&error("無法傳物品給自己。");}

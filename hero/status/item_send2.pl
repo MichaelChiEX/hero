@@ -2,7 +2,7 @@ sub item_send2{
 	&chara_open;
 	&time_data;
 	
-	$btime = 60 - $date + $mdate2;
+	$btime = $BTIME - $date + $mdate2;
 	if($btime>0){&error("離下次可重整時間剩於$btime 秒。");}
 	$mdate2=time();
 	if($in{'player'} eq ""){&error("請輸入要接收物品的對象名稱。");}
