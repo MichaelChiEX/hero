@@ -49,8 +49,17 @@ sub bat{
 	@MON_DATA = <IN>;
 	close(IN);
 
+	if($in{'mode'} eq 50){
+		$mabp-=3000;
+		if($mabp<0){&error("熟練不足");}
+		$in{'mode'}=11;
+		$moya=17;
+		$in{'rnd'}=$moya;
+	}
+
 	$mode=$in{'mode'};
 	$mode2=$in{'mode'};
+
 	if ($moya ne $in{'rnd'}) {
 		&error("戰鬥後請勿按重新整理");
 	}elsif($in{'mode'} eq 30){

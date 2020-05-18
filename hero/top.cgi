@@ -491,7 +491,7 @@ var mtime='';
 var shotmes=['','','','',''];
 var moya=0;
 var BTIME=-1;
-var regular_maps=['1', '2', '3', '4', '30', '31', '40'];
+var regular_maps=['1', '2', '3', '4', '30', '31', '40', '50'];
 function loading(msgs,disb){
 	BTIME=-1;
  	getObj("tok").innerHTML =("<font color=yellow>剩餘秒數讀取中...</font>");

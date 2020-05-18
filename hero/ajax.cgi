@@ -162,7 +162,7 @@ if($ext_tmpxs>0){
 	}else{
         $nowmap.="層";
     }
-    $dun="$town_name $SEN[1],1<>$town_name $SEN[2],2<>$town_name $SEN[3],3<>$town_name $SEN[4],4<>$town_name $SEN[30],30<>$town_name 禁地$nowmap,31<>魔王城,40<>===============,<>訓練,kunren<>討伐,toubatsu$giveupmap";
+    $dun="$town_name $SEN[1],1<>$town_name $SEN[2],2<>$town_name $SEN[3],3<>$town_name $SEN[4],4<>$town_name $SEN[30],30<>$town_name 禁地$nowmap,31<>魔王城,40<>藍天之下(-3000熟),50<>===============,<>訓練,kunren<>討伐,toubatsu$giveupmap";
 
 	##顯示試鍊
 	$moya2=$moya%1000;
