@@ -193,60 +193,30 @@ sub equip2 {
 			&maplog("<font color=orange>[寶箱]</font><font color=blue>$mname</font>打開了<font color=green>$it_name</font>獲得<font color=red>$rit_name</font><font color=green>$rit_desc</font>。");
 			&maplog7("<font color=orange>[寶箱]</font><font color=blue>$mname</font>打開了<font color=green>$it_name</font>獲得<font color=red>$rit_name</font><font color=green>$rit_desc</font>。");
 		}elsif($it_type eq"23"){
-			$trlv = $it_type - 19;
-			$rate = $trlv * 25;
-
-			$brand=int(rand(5));
-			if($it_type eq 22){$brand= 1 + int(rand(3));}
-			if($it_type eq 23){$brand= 1 + int(rand(3));$rate = 100;}
-
+			$brand= 1 + int(rand(3));
 			if($brand eq 1){
-				$REA="arm";
 				$reano=0;
-				$b_no2 = int(rand(91));
-				$ino=0;
-				if(int(rand(100)) < $rate){
-					$rflg=1;
-					$REA="rarearm";
-					$b_no2 = int(rand(26));
-					if(($it_type eq 22 && int(rand(10)) eq 1) || $it_type eq 23){
-						$b_no2 = 26 + int(rand(36));
-					}
-					$ino=0;
-				}
-			}elsif($brand eq 2){
-				$REA="pro";
-				$reano=1;
-				$b_no2 = int(rand(59));
-				$ino=0;
-				if(int(rand(100)) < $rate){
-					$rflg=1;
-					$REA="rarepro";
-					$b_no2 = int(rand(23));
-					if(($it_type eq 22 && int(rand(10)) eq 1) || $it_type eq 23){
-						$b_no2 = 23 + int(rand(23));
-					}
-					$ino=0;
-				}
-			}elsif($brand eq 3){
-				$REA="acc";
-				$reano=2;
-				$b_no2 = int(rand(67));
-				$ino=0;
-				if(int(rand(100)) < $rate){
-					$rflg=1;
-					$REA="rareacc";
-					$b_no2 = int(rand(25));
-					if(($it_type eq 22 && int(rand(10)) eq 1) || $it_type eq 23){
-						$b_no2 = 25 + int(rand(25));
-					}
-					$ino=0;
-				}
-			}else{
+				$REA="rarearm";
+				$b_no2 = 26 + int(rand(36));
 				$rflg=1;
-				$REA="item";
+				$ino=0;
+			}elsif($brand eq 2){
+				$reano=1;
+				$REA="rarepro";
+				$b_no2 = 23 + int(rand(23));
+				$rflg=1;
+				$ino=0;
+			}elsif($brand eq 3){
+				$reano=2;
+				$REA="rareacc";
+				$b_no2 = 25 + int(rand(25));
+				$rflg=1;
+				$ino=0;
+			}else{
 				$reano=3;
+				$REA="item";
 				$b_no2 = int(rand(21));
+				$rflg=1;
 				$ino=19;
 			}
 			open(IN,"./data/$REA.cgi");
